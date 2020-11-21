@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,9 +50,28 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'dob' => ['required'],
+            'nomorHP' => ['required', 'integer', 'min:10'],
+            'alamat' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nomorKTP' => ['required', 'integer'],
+            'fotoKTP' => ['required',  'mimes:jpeg,jpg,png'],
+            'fotodenganKTP' => ['required',  'mimes:jpeg,jpg,png'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        
+       
+        // $fotoKTP = $request->fotoKTP;
+        // $image = Image::make($fotoKTP);
+        // Response::make()$image->encode('jpg');
+
+        // $form_data = array(
+        //     'fotoKTP' => $image
+        // );
+
+        // Images::create($form_data);
+
+            
     }
 
     /**
@@ -63,10 +82,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $image = User::count()."_".$data['fotoKTP']->getClientOriginalName();
+        $image2 = User::count()."_".$data['fotodenganKTP']->getClientOriginalName();
+        $data['fotoKTP']->move('storage/images', $image);
+        $data['fotodenganKTP']->move('storage/images', $image2);
+    
         return User::create([
             'name' => $data['name'],
+            'dob' => $data['dob'],
+            'nomorHP' => $data['nomorHP'],
+            'alamat' => $data['alamat'],
             'email' => $data['email'],
+            'nomorKTP' => $data['nomorKTP'],
+            'fotoKTP' => $image,
+            'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
         ]);
-    }
+    
+
+        }       
 }
