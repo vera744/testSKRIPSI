@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -55,13 +55,12 @@ class RegisterController extends Controller
             'alamat' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nomorKTP' => ['required', 'integer'],
-            'fotoKTP' => ['required', 'image'],
-            'fotodenganKTP' => ['required', 'image'],
+            'fotoKTP' => ['required',  'mimes:jpeg,jpg,png'],
+            'fotodenganKTP' => ['required',  'mimes:jpeg,jpg,png'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         
-        
-        
+       
         // $fotoKTP = $request->fotoKTP;
         // $image = Image::make($fotoKTP);
         // Response::make()$image->encode('jpg');
@@ -83,6 +82,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $image = User::count()."_".$data['fotoKTP']->getClientOriginalName();
+        $image2 = User::count()."_".$data['fotodenganKTP']->getClientOriginalName();
+        $data['fotoKTP']->move('storage/images', $image);
+        $data['fotodenganKTP']->move('storage/images', $image2);
+    
         return User::create([
             'name' => $data['name'],
             'dob' => $data['dob'],
@@ -90,9 +94,11 @@ class RegisterController extends Controller
             'alamat' => $data['alamat'],
             'email' => $data['email'],
             'nomorKTP' => $data['nomorKTP'],
-            'fotoKTP' => $data['fotoKTP'],
-            'fotodenganKTP' => $data['fotodenganKTP'],
+            'fotoKTP' => $image,
+            'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
         ]);
+    
+
         }       
 }

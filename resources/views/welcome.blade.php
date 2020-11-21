@@ -120,14 +120,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="images/gambar1.jp" class="d-block w-100" alt="...">
+                        <img src="images/gambar2.jpg" class="d-block w-100" alt="first slide">
                         </div>
+                        
                         <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
+                        <img src="images/gambar1.jpg" class="d-block w-100" alt="second slide">
                         </div>
-                        <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                        </div>
+                    
                     </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -140,8 +139,18 @@
                 </div>
     </div>
 
-
-
+    <div class="container">
+  <div class="row">
+    <div class="col">
+     fenwjkbfejwbfwe
+     kenfjwebe
+    </div>
+    <div class="col">
+      fenwjkbfejwbfwe
+      ewnfjkwebfowe
+      nwejkfbewife
+    </div>
+  </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -152,6 +161,9 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div> 
         
-      
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
     </body>
 </html>

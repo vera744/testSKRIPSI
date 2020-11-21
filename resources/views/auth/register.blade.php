@@ -96,13 +96,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="fotoKTP" class="col-md-4 col-form-label text-md-right">{{ __('Foto KTP') }}</label>
+                            <label for="fotoKTP" class="col-md-4 col-form-label text-md-right" >{{ __('Foto KTP') }}</label>
 
                             <div class="col-md-6">
 
                             <!-- <button style="display:block;widthะ120px; height :30px;"'onclick-"document getElementById('getFile').click()">Unggah Berkas< /button>
                             <input type='file' id="getFile" style="display:none" >       -->
-                                <input id="fotoKTP" type="file" value="Pilih Foto" name="fotoKTP" value="{{ old('fotoKTP') }}" required autocomplete="fotoKTP" autofocus>
+                                <input id="fotoKTP" type="file" value="Pilih Foto" name="fotoKTP" value="{{ old('fotoKTP') }}" required autocomplete="fotoKTP" autofocus accept="image/jpeg, image/jpg, image/png">
 
                                 @error('fotoKTP')
                                     <span class="invalid-feedback" role="alert">
@@ -117,7 +117,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="fotodenganKTP" type="file" name="fotodenganKTP" value="{{ old('fotodenganKTP') }}" required autocomplete="fotodenganKTP" autofocus>
+                                <input id="fotodenganKTP" type="file" name="fotodenganKTP" value="{{ old('fotodenganKTP') }}" required autocomplete="fotodenganKTP" autofocus accept="image/jpeg, image/jpg, image/png">
 
                                 @error('fotodenganKTP')
                                     <span class="invalid-feedback" role="alert">
