@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -116,7 +116,7 @@
                             <label for="fotodenganKTP" class="col-md-4 col-form-label text-md-right">{{ __('Foto Selfie dengan KTP') }}</label>
 
                             <div class="col-md-6">
-                                <br>
+                                
                                 <input id="fotodenganKTP" type="file" name="fotodenganKTP" value="{{ old('fotodenganKTP') }}" required autocomplete="fotodenganKTP" autofocus>
 
                                 @error('fotodenganKTP')
@@ -161,10 +161,11 @@
                     </form>
                     
                             <br>
-                                <h7 style="text-align:center;">Sudah punya akun?</h7>
+                            <div class="col-md-6 offset-md-4">
+                                <h7>Sudah punya akun?</h7>
                                 <br>
-                                <a href="login">Masuk</a>
-                        
+                                <a href="/login">Masuk</a>
+                        </div>
                 </div>
             </div>
         </div>

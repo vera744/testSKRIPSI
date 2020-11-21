@@ -55,10 +55,24 @@ class RegisterController extends Controller
             'alamat' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'nomorKTP' => ['required', 'integer'],
-            'fotoKTP' => ['required'],
-            'fotodenganKTP' => ['required'],
+            'fotoKTP' => ['required', 'image'],
+            'fotodenganKTP' => ['required', 'image'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        
+        
+        
+        // $fotoKTP = $request->fotoKTP;
+        // $image = Image::make($fotoKTP);
+        // Response::make()$image->encode('jpg');
+
+        // $form_data = array(
+        //     'fotoKTP' => $image
+        // );
+
+        // Images::create($form_data);
+
+            
     }
 
     /**
@@ -80,5 +94,5 @@ class RegisterController extends Controller
             'fotodenganKTP' => $data['fotodenganKTP'],
             'password' => Hash::make($data['password']),
         ]);
-    }
+        }       
 }

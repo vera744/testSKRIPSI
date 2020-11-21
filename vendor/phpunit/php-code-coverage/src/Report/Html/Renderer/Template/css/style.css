@@ -120,3 +120,8 @@ svg text {
  overflow-x:hidden;
  overflow-y:scroll;
 }
+
+#h7 {
+    color: white;
+    text-align: center;
+  }
