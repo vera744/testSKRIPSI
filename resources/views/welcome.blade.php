@@ -120,7 +120,11 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+<<<<<<< HEAD
                         <img src="images/gambar2.jpg" class="d-block w-100" alt="first slide">
+=======
+                        <img src="images/gambar1.jpg" class="d-block w-100" alt="...">
+>>>>>>> a5008e4ec9e1046277aba562d0d10c8fd8f47df5
                         </div>
                         <div class="carousel-item">
                         <img src="images/gambar1.jpg" class="d-block w-100" alt="second slide">
