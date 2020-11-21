@@ -120,12 +120,11 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="images/gambar2.jpg" class="d-block w-100" alt="first slide">
-
-               
+                        <img src="images/landscape1.jpg" class="d-block w-100" alt="first slide">
                         </div>
+                        
                         <div class="carousel-item">
-                        <img src="images/gambar1.jpg" class="d-block w-100" alt="second slide">
+                        <img src="images/landscape2.jpg" class="d-block w-100" alt="second slide">
                         </div>
                     
                     </div>
@@ -139,6 +138,7 @@
                 </a>
                 </div>
     </div>
+
     <div class="container">
     <div class="row">
             <div class="col-5">
