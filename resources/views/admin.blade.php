@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('title','Home')
+@extends('template.homeLogin')
+@section('title','Admin')
 @section('container')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">ADMIN DASHBOARD</div>
 
                 <div class="card-body">
                     @if (session('status'))
