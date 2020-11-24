@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/gadai', 'GadaiController@index');
 Route::get('/ecom', 'EcomController@index');
+
