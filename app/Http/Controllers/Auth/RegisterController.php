@@ -49,16 +49,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'dob' => ['required'],
-            'nomorHP' => ['required', 'integer', 'min:10'],
-            'alamat' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'nomorKTP' => ['required', 'integer'],
-            'fotoKTP' => ['required',  'mimes:jpeg,jpg,png'],
-            'fotodenganKTP' => ['required',  'mimes:jpeg,jpg,png'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'name' => 'required|min:5',
+            'dob' => 'required',
+            'nomorHP' => 'required|numeric|min:11',
+            'alamat' => 'required|min:10',
+            'email' => 'required|email|unique:users',
+            'nomorKTP' => 'required|numeric',
+            'fotoKTP' => 'required|mimes:jpeg,jpg,png',
+            'fotodenganKTP' => 'required|mimes:jpeg,jpg,png',
+            'password' => 'required|min:8|alpha_num',
+            'password_confirmation' => 'required|same:password'
+            ]);
         
        
         // $fotoKTP = $request->fotoKTP;
@@ -97,6 +98,7 @@ class RegisterController extends Controller
             'fotoKTP' => $image,
             'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
+            'role' => 'member'
         ]);
     
 
