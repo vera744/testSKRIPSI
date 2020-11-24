@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template.homeLogin')
 @section('title','Home')
 @section('container')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -9,10 +9,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/gambar1.jpg" class="d-block w-100" alt="...">
+        <img src="images/landscape1.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="images/gambar2.jpg" class="d-block w-100" alt="...">
+        <img src="images/landscape2.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="images/gambar3.jpg" class="d-block w-100" alt="...">
