@@ -4,7 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class mortgage extends Model
+class Mortgage extends Model
 {
-    //
+    protected $fillable = [
+         'mortgageID', 'productID', 'customerID', 'adminID', 'duration',
+    ];
+
+    protected $table = 'mortgages';
 }

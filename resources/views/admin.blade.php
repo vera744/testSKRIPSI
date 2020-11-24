@@ -1,5 +1,5 @@
 @extends('template.homeLogin')
-@section('title','Home')
+@section('title','Admin')
 @section('container')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -9,10 +9,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/landscape1.jpg" class="d-block w-100" alt="...">
+        <img src="images/gambar1.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="images/landscape2.jpg" class="d-block w-100" alt="...">
+        <img src="images/gambar2.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="images/gambar3.jpg" class="d-block w-100" alt="...">
@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">ADMIN DASHBOARD</div>
 
                 <div class="card-body">
                     @if (session('status'))

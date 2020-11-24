@@ -19,7 +19,7 @@ class CreateMortgageDetailsTable extends Migration
             $table->integer('loan');
             $table->timestamps();
 
-            $table->foreign('mortgageID')->references('mortgageID')->on('mortgage_details');
+            $table->foreign('mortgageID')->references('mortgageID')->on('mortgages');
 
         });
     }
