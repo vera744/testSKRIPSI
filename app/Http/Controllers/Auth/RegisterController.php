@@ -98,6 +98,7 @@ class RegisterController extends Controller
             'fotoKTP' => $image,
             'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
+            'role' => 'member'
         ]);
     
 
