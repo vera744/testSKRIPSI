@@ -89,7 +89,7 @@
     <div class="flex-center position-ref height-header">
         <div class="top-left links">
          
-            <a href="/" style="background-color: #e3f2fd;">LOGO</a>
+            <a href="{{ url('home')}}" style="background-color: #e3f2fd;">LOGO</a>
             <a href="{{ url('gadai') }}">GADAI</a>
             <a href="{{ url('ecom') }}" >E-COMMERCE</a>
             </div>
@@ -97,7 +97,16 @@
                     
                     <div class="top-right links">
                         @auth
-                            <a href="{{ url('/home') }}">Home</a>
+
+                        <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                         @else
                             <a href="{{ route('login') }}">Login</a>
 
