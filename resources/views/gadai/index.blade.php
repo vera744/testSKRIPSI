@@ -6,6 +6,7 @@
 @section('title','Gadai')
 
 @section('container')
+
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
@@ -83,7 +84,9 @@
   </tbody>
 </table>
 </div>
-<a href="/add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Request</a>
+<form action="{{ url('gadai/add')}}">
+    <input type="submit" class="btn btn-primary" value="Request">
+</form>
 
 
 

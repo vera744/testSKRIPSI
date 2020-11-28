@@ -20,8 +20,10 @@ class CreateMortgageDetailsTable extends Migration
             $table->integer('duration');
             $table->string('status');
             $table->timestamps();
-
+            $table->integer('duration')->default(3);
             $table->foreign('mortgageID')->references('mortgageID')->on('mortgages');
+            $table->string('status')->default('Sedang Ditinjau');
+
 
         });
     }

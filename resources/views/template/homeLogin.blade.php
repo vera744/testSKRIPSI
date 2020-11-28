@@ -82,47 +82,89 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            h3{
+                text-align: center;
+            }
+            
         </style>
     </head>
     <body>
 
-    <div class="flex-center position-ref height-header">
-        <div class="top-left links">
-         
-            <a href="{{ url('home')}}" style="background-color: #e3f2fd;">LOGO</a>
-            <a href="{{ url('gadai') }}">GADAI</a>
-            <a href="{{ url('ecom') }}" >E-COMMERCE</a>
-            </div>
-                @if (Route::has('login'))
-                    
-                    <div class="top-right links">
-                        @auth
+
+    @if(Auth::User()->role == 'admin')
+        <div class="flex-center position-ref height-header">
+            <div class="top-left links">
+            
+                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
+                <a href="{{ url('') }}">Blablabla</a>
+                </div>
+                    @if (Route::has('login'))
                         
-                        <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                        <div class="top-right links">
+                            @auth
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                        @else
-                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-             </div>
-         </div>     
-    </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
 
-    <div class="container-fluid col-12">
-        @yield('container')
-    </div>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </div>
+            </div>     
+        </div>
+
+    @else
+        <div class="flex-center position-ref height-header">
+            <div class="top-left links">
+            
+                <a href="{{ url('home')}}" style="background-color: #e3f2fd;">LOGO</a>
+                <a href="{{ url('gadai') }}">GADAI</a>
+                <a href="{{ url('ecom') }}" >E-COMMERCE</a>
+                </div>
+                    @if (Route::has('login'))
+                        
+                        <div class="top-right links">
+                            @auth
+
+                            <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </div>
+            </div>     
+        </div>
+
+        @endif
+        <div class="container-fluid">
+            @yield('container')
+        </div>
 
     </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth;
@@ -42,6 +43,7 @@ class GadaiController extends Controller
         return view('gadai.record')->with('mortgages', $mortgagesRecord);
     }
 
+
     public function getEntryDataForAjax(int $id) 
     {
       $entries = new Entry(); 
@@ -49,9 +51,22 @@ class GadaiController extends Controller
 
       echo json_encode($entry);
     }
-
     public function add(){
         return view('gadai.add');
     }
+    public function store(Request $request){
 
+        $userID = auth()->User()->id;
+        DB::table('temp')->insert([
+            'productName'=>$request->namaProduk,
+            'productPrice'=>$request->nilaiPinjaman,
+            'customerID'=>$userID,
+            'loan'=>$request->nilaiPinjaman
+        ]);
+
+      
+        return view('gadai.add');
+       
+
+    }
 }
