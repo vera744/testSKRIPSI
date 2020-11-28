@@ -89,7 +89,7 @@
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
             
-                <a href="{{ url('home')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
+                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
                 <a href="{{ url('') }}">Blablabla</a>
                 </div>
                     @if (Route::has('login'))
