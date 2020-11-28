@@ -10,40 +10,43 @@
     <h3 style="text-align:center"> Gadai</h3>
 <br>
 
+
 <table class="table" style="text-align:center">
-  <tr>
-    <th scope="col" style="background-color:grey" >
-      <a href="/gadai" style="color:white">Transaksi Aktif</a>
-    </th>
-    <th scope="col" style="background-color:white">
-     <a href="/record" style="color:black">Record Transaksi</a>
-    </th>
-  </tr>
+   
+<tr>
+
+<th scope="col" style="background-color:white">
+  <a href="/gadai" style="color:black">Transaksi Aktif</a>
+</th>
+<th scope="col" style="background-color:grey">
+  <a href="/record" style="color:white">Record Transaksi</a>
+</th>
+
+</tr>
 </table>
 <div class="table-responsive">
 <table class="table">
 
-  <tr>
+   
+<tr>
         <th>Nama Transaksi</th>
-        <th>Status</th>
         <th></th>
   
     </tr>
-    
   <tbody>
-
-  @foreach($mortgages as $value)
+  
+ 
+    @foreach($mortgages as $value)
     
+
     <tr>
     <td>Transaksi M0{{$value->mortgageID}}</td>
-    <td>{{$value->status}}
-    </td>
     <td><div class="dropdown">
-      <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
+      <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
   </div>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -61,7 +64,7 @@
             <br>
             <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
             <br>
-            <label for="productDescription">Deskripsi Produk: {{$value->productDescription}}</label>
+            <label for="productDescription">Nama Produk: {{$value->productDescription}}</label>
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>
@@ -76,17 +79,13 @@
       </div>
     </div>
   </td>
-  
     </tr>
-  
+
     @endforeach
   </tbody>
 </table>
 </div>
-<a href="/add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Request</a>
-
-
-
+<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Request</a>
 
 @endsection
 

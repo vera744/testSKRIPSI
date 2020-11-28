@@ -97,7 +97,7 @@
                     
                     <div class="top-right links">
                         @auth
-
+                        
                         <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -120,7 +120,7 @@
          </div>     
     </div>
 
-    <div class="container-fluid mx-3 col-12">
+    <div class="container-fluid col-12">
         @yield('container')
     </div>
 

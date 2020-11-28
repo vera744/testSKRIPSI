@@ -16,11 +16,13 @@ class CreateMortgagesTable extends Migration
         Schema::create('mortgages', function (Blueprint $table) {
             $table->bigIncrements('mortgageID');
             $table->unsignedbigInteger('productID');
-            $table->unsignedbigInteger('adminID');
-            $table->integer('duration');
+            $table->unsignedbigInteger('customerID');
             $table->timestamps();
 
             $table->foreign('productID')->references('productID')->on('products');
+            $table->foreign('customerID')->references('id')->on('users');
+            $table->foreign('adminID')->references('id')->on('admins');
+
 
         });
     }
