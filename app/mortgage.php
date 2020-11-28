@@ -10,5 +10,5 @@ class Mortgage extends Model
          'mortgageID', 'productID', 'customerID', 'adminID', 'duration',
     ];
 
-    protected $table = 'mortgages';
+    protected $table = 'users';
 }
