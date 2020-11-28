@@ -19,6 +19,9 @@ class CreateMortgagesTable extends Migration
             $table->unsignedbigInteger('customerID');
             $table->timestamps();
             $table->foreign('productID')->references('productID')->on('products');
+            $table->foreign('customerID')->references('id')->on('users');
+            $table->foreign('adminID')->references('id')->on('admins');
+
 
         });
     }

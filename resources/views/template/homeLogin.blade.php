@@ -91,6 +91,7 @@
     </head>
     <body>
 
+
     @if(Auth::User()->role == 'admin')
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
