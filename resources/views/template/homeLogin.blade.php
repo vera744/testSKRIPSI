@@ -82,6 +82,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            h3{
+                text-align: center;
+            }
+            
         </style>
     </head>
     <body>
@@ -120,7 +125,7 @@
          </div>     
     </div>
 
-    <div class="container-fluid mx-3 col-12">
+    <div class="container-fluid col-12">
         @yield('container')
     </div>
 
