@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth;
+use App\temp;
 
 class GadaiController extends Controller
 {
@@ -54,15 +55,25 @@ class GadaiController extends Controller
         return view('gadai.add');
     }
     public function store(Request $request){
+        
+        if($request->hasFile('fotoProduk')){
+            $file=$request->fotoProduk;
+            $image = $file->getClientOriginalName();
+            $request->file('fotoProduk')->move('storage/fotoProduk',$image);
 
+        }
+        
         $userID = auth()->User()->id;
         DB::table('temp')->insert([
             'productName'=>$request->namaProduk,
             'productPrice'=>$request->nilaiPinjaman,
             'customerID'=>$userID,
-            'loan'=>$request->nilaiPinjaman
-        ]);
+            'loan'=>$request->nilaiPinjaman,
+            'fotoProduk'=>$image
+    ]);
+        
 
+       
       
         return view('gadai.add');
        
