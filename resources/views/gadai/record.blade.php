@@ -24,18 +24,17 @@
 
 </tr>
 </table>
-<div class="table-responsive">
-<table class="table">
 
-   
-<tr>
-        <th>Nama Transaksi</th>
-        <th></th>
-  
+<tbody>
+  @if (count($mortgages)> 0 )
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Nama Transaksi</th>
+      <th>Status</th>
+      <th></th>
     </tr>
-  <tbody>
-  
- 
     @foreach($mortgages as $value)
     
 
@@ -82,11 +81,19 @@
     </tr>
 
     @endforeach
-  </tbody>
 </table>
 </div>
-<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Request</a>
 
+  @else
+
+  <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
+ 
+  @endif
+  
+  </tbody>
+  <form action="{{ url('gadai/add')}}">
+    <input type="submit" class="btn btn-primary" value="Request">
+</form>
 @endsection
 
 <script>
