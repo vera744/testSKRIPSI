@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\GadaiController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,5 +23,10 @@ Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/gadai', 'GadaiController@index');
+Route::get('/gadai/add', 'GadaiController@add');
+Route::post('/gadai/create','GadaiController@create');
+Route::post('/gadai/store','GadaiController@store');
+
+
 Route::get('/ecom', 'EcomController@index');
 

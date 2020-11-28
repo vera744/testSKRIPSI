@@ -82,9 +82,15 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            h3{
+                text-align: center;
+            }
+            
         </style>
     </head>
     <body>
+
     @if(Auth::User()->role == 'admin')
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
@@ -158,5 +164,6 @@
         <div class="container-fluid">
             @yield('container')
         </div>
+
     </body>
 </html>
