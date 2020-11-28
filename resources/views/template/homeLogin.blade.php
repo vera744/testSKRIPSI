@@ -86,7 +86,39 @@
     </head>
     <body>
     @if(Auth::User()->role == 'admin')
-        <h1>Ini PAGE ADMIN</h1>
+        <div class="flex-center position-ref height-header">
+            <div class="top-left links">
+            
+                <a href="{{ url('home')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
+                <a href="{{ url('') }}">Blablabla</a>
+                </div>
+                    @if (Route::has('login'))
+                        
+                        <div class="top-right links">
+                            @auth
+
+                            <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </div>
+            </div>     
+        </div>
+
     @else
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
@@ -122,9 +154,9 @@
             </div>     
         </div>
 
-        <div class="container-fluid mx-3 col-12">
+        @endif
+        <div class="container-fluid">
             @yield('container')
         </div>
-    @endif
     </body>
 </html>
