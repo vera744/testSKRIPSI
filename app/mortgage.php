@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mortgage extends Model
 {
     protected $fillable = [
-         'mortgageID', 'productID', 'customerID', 'adminID', 'duration',
+         'mortgageID', 'productID', 'customerID', 'duration',
     ];
 
-    protected $table = 'users';
+    protected $table = 'mortgages';
 }
