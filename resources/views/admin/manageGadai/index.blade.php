@@ -13,7 +13,7 @@
 <table class="table" style="text-align:center">
   <tr>
     <th scope="col" style="background-color:grey" >
-      <a href="/gadai" style="color:white">Transaksi Aktif</a>
+      <a href="/manageGadai" style="color:white">Transaksi Aktif</a>
     </th>
     <th scope="col" style="background-color:white">
      <a href="/record" style="color:black">Record Transaksi</a>
@@ -27,13 +27,14 @@
   
       <table class="table">
         <tr>
+          <th>No</th>
           <th>Nama Transaksi</th>
-          
           <th></th>
         </tr>
         
         @foreach($temp as $value)
           <tr>
+            <td>{{$loop->iteration}}</td>
             <td>Transaksi M0{{$value->id}}</td>
             <td>
               <div class="dropdown">
@@ -80,8 +81,11 @@
               </div>
             </td>
           </tr>
-        @endforeach
-      </table>
+          @endforeach
+        </table>
+        <div class="d-flex justify-content-center">
+          {{ $temp->links()}}
+        </div>
     </div>
   @else
     <p class="font-weight-bold" style="text-align:center">Tidak ada transaksi tertunda saat ini</p>
