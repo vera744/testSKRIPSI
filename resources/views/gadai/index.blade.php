@@ -21,45 +21,47 @@
     </th>
   </tr>
 </table>
-<div class="table-responsive">
-<table class="table">
 
-  <tr>
+<tbody>
+  @if (count($mortgages)> 0 )
+  <div class="table-responsive">
+  
+  <table class="table">
+    <tr>
         <th>Nama Transaksi</th>
         <th>Status</th>
         <th></th>
   
-    </tr>
+      </tr>
+        @foreach($mortgages as $value)
+      <tr>
     
-  <tbody>
-
-  @foreach($mortgages as $value)
-    
-    <tr>
-    <td>Transaksi M0{{$value->mortgageID}}</td>
-    <td>{{$value->status}}
-    </td>
-    <td><div class="dropdown">
-      <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
-      </a>
-  </div>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M0{{$value->mortgageID}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <td>Transaksi M0{{$value->mortgageID}}</td>
+        <td>{{$value->status}}</td>
+        <td>
+          <div class="dropdown">
+            <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
+            </a>
           </div>
-          <div class="modal-body">
-            <label for="name">Nama: {{$value->name}}</label>
-            <br>
-            <label for="mortgageID">Gadai ID: Transaksi M0{{$value->mortgageID}}</label>
-            <br>
-            <label for="productName">Nama Produk: {{$value->productName}}</label>
-            <br>
+      
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M0{{$value->mortgageID}}
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <label for="name">Nama: {{$value->name}}</label>
+                  <br>
+                  <label for="mortgageID">Gadai ID: Transaksi M0{{$value->mortgageID}}</label>
+                  <br>
+                  <label for="productName">Nama Produk: {{$value->productName}}</label>
+                  <br>
             <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
             <br>
             <label for="productDescription">Deskripsi Produk: {{$value->productDescription}}</label>
@@ -81,12 +83,23 @@
     </tr>
   
     @endforeach
-  </tbody>
-</table>
+    </table>
 </div>
-<form action="{{ url('gadai/add')}}">
+
+  
+  @else
+
+  <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
+ 
+  @endif
+  
+  </tbody>
+  <form action="{{ url('gadai/add')}}">
     <input type="submit" class="btn btn-primary" value="Request">
 </form>
+</table>
+</div>
+
 
 
 
