@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth;
 use App\temp;
+use App\product;
+use App\mortgage_detail;
+use App\Mortgage;
 
 class GadaiController extends Controller
 {
@@ -64,13 +67,25 @@ class GadaiController extends Controller
         }
         
         $userID = auth()->User()->id;
-        DB::table('temp')->insert([
+        temp::insert([
             'productName'=>$request->namaProduk,
             'productPrice'=>$request->nilaiPinjaman,
             'customerID'=>$userID,
             'loan'=>$request->nilaiPinjaman,
             'fotoProduk'=>$image
-    ]);
+        ]);
+        // product::insert([
+        //     'productID'=>$userID,
+        //     'productName'=>$request->namaProduk,
+        //     'productPrice'=>$request->nilaiPinjaman,
+        //     'fotoProduk'=>$image
+        // ]);
+        // Mortgage::insert([
+        //     'mortgageID'=>$userID
+        // ]);
+        // mortgage_detail::insert([
+        //     'loan'=>$request->nilaiPinjaman,
+        // ]);
         
 
        
