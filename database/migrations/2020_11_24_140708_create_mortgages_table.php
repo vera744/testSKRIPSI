@@ -20,8 +20,6 @@ class CreateMortgagesTable extends Migration
             $table->timestamps();
             $table->foreign('productID')->references('productID')->on('products');
             $table->foreign('customerID')->references('id')->on('users');
-
-
         });
     }
 

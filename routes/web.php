@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/admin', 'AdminController@index');
 
+Route::get('/home', 'HomeController@index');
+
+//CUSTOMER
 Route::get('/gadai', 'GadaiController@index');
 
 Route::get('/record', 'GadaiController@record');
@@ -29,7 +30,10 @@ Route::get('/gadai/add', 'GadaiController@add');
 Route::post('/gadai/create','GadaiController@create');
 Route::post('/gadai/store','GadaiController@store');
 
-
-
 Route::get('/ecom', 'EcomController@index');
+
+
+//ADMIN
+Route::get('/admin', 'AdminController@index');
+Route::get('/manageGadai', 'manageGadaiController@index');
 
