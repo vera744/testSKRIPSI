@@ -39,7 +39,7 @@
     
 
     <tr>
-    <td>Transaksi M0{{$value->mortgageID}}</td>
+    <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
     <td><div class="dropdown">
       <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
@@ -49,15 +49,16 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M0{{$value->mortgageID}}</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
+            <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
             <label for="name">Nama: {{$value->name}}</label>
             <br>
-            <label for="mortgageID">Gadai ID: Transaksi M0{{$value->mortgageID}}</label>
+            <label for="mortgageID">Gadai ID: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
             <br>
             <label for="productName">Nama Produk: {{$value->productName}}</label>
             <br>

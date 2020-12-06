@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth;
 use App\temp;
+use App\product;
+use App\mortgage_detail;
+use App\Mortgage;
 
 class GadaiController extends Controller
 {
@@ -17,16 +20,17 @@ class GadaiController extends Controller
     
     public function index(){
         $userLogin = auth()->User()->id;
-        $mortgages = DB::table('mortgages')
-        ->join('users', 'mortgages.customerID', "=", "users.id")
+        $mortgage = Mortgage::
+        join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'diterima', 'sedang berlangsung'])
         ->get();
 
-        return view('gadai.index')->with('mortgages', $mortgages);
+
+        return view('gadai.index')->with('mortgages', $mortgage);
     }
 
     public function record(){
@@ -35,7 +39,7 @@ class GadaiController extends Controller
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak'])
         ->get();
@@ -64,13 +68,61 @@ class GadaiController extends Controller
         }
         
         $userID = auth()->User()->id;
-        DB::table('temp')->insert([
-            'productName'=>$request->namaProduk,
-            'productPrice'=>$request->nilaiPinjaman,
-            'customerID'=>$userID,
-            'loan'=>$request->nilaiPinjaman,
-            'fotoProduk'=>$image
-    ]);
+
+        $product = new product();
+        $product->productName = $request->input('namaProduk');
+        $product->productPrice = $request->input('nilaiPinjaman');
+        $product->fotoProduk= $image;
+        $product->save();
+
+        $mortgage = new Mortgage();
+        $mortgage->productID = $product->id;
+        $mortgage->customerID = $userID;
+        $mortgage->save();
+
+        $mortgageDetails = new mortgage_detail();
+        $mortgageDetails->mortgageID = $mortgage->id;
+        $mortgageDetails->loan = $request->input('nilaiPinjaman');
+        $mortgageDetails->save();
+
+
+
+        // temp::insert([
+        //     'productName'=>$request->namaProduk,
+        //     'productPrice'=>$request->nilaiPinjaman,
+        //     'customerID'=>$userID,
+        //     'loan'=>$request->nilaiPinjaman,
+        //     'fotoProduk'=>$image
+        // ]);
+
+
+    //   $product=  product::create([
+    //         'productName'=>$request->namaProduk,
+    //         'productPrice'=>$request->nilaiPinjaman,
+    //         'fotoProduk'=>$image
+    //     ]);
+
+      //  $product = DB::table('product')->select('ProductID')->where()->get()
+    //   $product=DB::table('products')->latest('productID')->get();
+    //   $productb=DB::table('products')->latest('created_at')->get();
+    //   $productc=DB::table('products')->latest('updated_at')->get();
+        //$productIDnew = $product->productID;
+        // if($product){
+
+        //     $mortg=Mortgage::create([
+        //        'productID' => $product->productID,
+        //        'customerID'=>$userID
+        //     ]);
+        // }
+
+        
+        // $mortgage = mortgage::all();
+        // $mortgageIDnew = $mortgage->mortgageID;
+
+        // mortgage_detail::insert([
+        //     'mortgageID' => $mortgageIDnew,
+        //     'loan'=>$request->nilaiPinjaman,
+        // ]);
         
 
        

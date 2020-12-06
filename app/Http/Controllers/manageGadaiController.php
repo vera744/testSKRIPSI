@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\temp;
+use App\product;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class manageGadaiController extends Controller
@@ -12,6 +15,12 @@ class manageGadaiController extends Controller
     }
     
     public function index(){
-        return view('admin.manageGadai.index');
+        $temp = temp::paginate(5);
+
+        return view('admin.manageGadai.index')->with('temp', $temp);
+    }
+
+    public function update(Request $request, $id){
+
     }
 }
