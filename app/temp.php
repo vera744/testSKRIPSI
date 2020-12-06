@@ -10,7 +10,7 @@ class temp extends Model
 
     
     protected $fillable = [
-        'productID', 'productName','productPrice', 'productDetail', 'productQuantity', 'productDescription','fotoProduk','customerID','loan'
+        'productID', 'productName','productPrice', 'productDetail', 'productQuantity', 'productDescription','fotoProduk','customerID','loan', 'status'
     ];
     
     protected $table ='temp';

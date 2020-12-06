@@ -11,4 +11,8 @@ class Mortgage extends Model
     ];
 
     protected $table = 'mortgages';
+
+    public function products(){
+        return $this->belongsTo('App\product', 'productID', 'productID');
+    }
 }

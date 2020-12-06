@@ -23,6 +23,7 @@ class CreateTempTable extends Migration
             $table->integer('customerID');
             $table->integer('loan');
             $table->string('fotoProduk');
+            $table->string('status')->default('Sedang Ditinjau');
         });
     }
 
