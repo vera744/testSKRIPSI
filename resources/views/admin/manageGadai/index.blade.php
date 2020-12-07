@@ -38,12 +38,12 @@
             <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
             <td>
               <div class="dropdown">
-                <a data-toggle="modal" data-target="#exampleModalLong{{$value->id}}" class="btn btn-secondary   dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
+                <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary   dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
                 </a>
               </div>
       
               <!-- Modal -->
-              <div class="modal fade" id="exampleModalLong{{$value->id}}" tabindex="-1" role="dialog"   aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog"   aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
