@@ -35,7 +35,7 @@
         @foreach($temp as $value)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>Transaksi M0{{$value->id}}</td>
+            <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
             <td>
               <div class="dropdown">
                 <a data-toggle="modal" data-target="#exampleModalLong{{$value->id}}" class="btn btn-secondary   dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
@@ -48,25 +48,25 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLongTitle">
-                        Transaksi M0{{$value->id}}
+                       Transaksi M{{sprintf("%03d",$value->mortgageID)}} 
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                        </button>
                     </div>
                     <div class="modal-body">
-                      <label for="mortgageID">Gadai ID: Transaksi M0{{$value->id}}</label>
+                      <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
                       <label for="productName">Customer ID: {{$value->customerID}}</label>
                       <br>
                       <label for="productName">Nama Produk: {{$value->productName}}</label>
                       <br>
-                      <label for="productName">Harga Produk: {{$value->productPrice}}</label>
-                      <br>
+                      {{-- <label for="productName">Harga Produk: {{$value->productPrice}}</label>
+                      <br> --}}
                       <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
                       <br>
-                      <label for="productDetail">Jumlah Produk: {{$value->productQuantity}}</label>
-                      <br>
+                      {{-- <label for="productDetail">Jumlah Produk: {{$value->productQuantity}}</label>
+                      <br> --}}
                       <label for="productDescription">Deskripsi Produk: {{$value->productDescription}}</label>
                       <br>
                       <label for="loan">Pinjaman: {{$value->loan}}</label>
@@ -84,7 +84,7 @@
           @endforeach
         </table>
         <div class="d-flex justify-content-center">
-          {{ $temp->links()}}
+          {{-- {{ $temp->links()}} --}}
         </div>
     </div>
   @else
