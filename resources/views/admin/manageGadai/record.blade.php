@@ -15,10 +15,10 @@
    
 <tr>
     <th scope="col" style="background-color:white">
-     <a href="/manageGadai" style="color:black">Tinjauan Berjalan</a>
+     <a href="/manageGadai" style="color:black">Tinjauan Masuk</a>
     </th>
     <th scope="col" style="background-color:grey" >
-      <a href="/recordadmin" style="color:white">Tinjauan Selesai</a>
+      <a href="/recordadmin" style="color:white">Tinjauan Berjalan</a>
     </th>
   </tr>
 </table>
@@ -38,6 +38,7 @@
 
     <tr>
     <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
+    <td>{{$value->status}}</td>
     <td><div class="dropdown">
       <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
@@ -68,10 +69,23 @@
             <br>
             <label for="loan">Pinjaman: {{$value->loan}}</label>
 
+            <hr>
+            <form action="/manage/input_transaction/{{$value->mortgageID}}">
+              <label for="">Tanggal Mulai Pinjaman</label> <br>
+              <input type="date" name="tglstart" id="tglstart"> <br>
+              <label for="">Tanggal Akhir</label> <br>
+              <input id="endDate" type="date" name="endDate">
+              <br>  
+              <label for="">Nilai Pinjaman</label> <br>
+              <input class="col-md-6" type="number" name="loans" id="loans" required="required"> <br>
+              <input type="submit" value="input data" class="btn btn-primary">
+        
+          </form>
           </div>
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
+            
           </div>
         </div>
       </div>
@@ -90,9 +104,7 @@
   @endif
   
   </tbody>
-  <form action="{{ url('gadai/add')}}">
-    <input type="submit" class="btn btn-primary" value="Request">
-</form>
+  
 @endsection
 
 <script>

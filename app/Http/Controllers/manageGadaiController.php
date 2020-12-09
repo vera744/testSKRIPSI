@@ -60,10 +60,29 @@ class manageGadaiController extends Controller
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
         ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
-        ->where('status','!=','Sedang Ditinjau')
+        ->where('status','=','Diterima')
         ->get();
         
         return view('admin.manageGadai.record')->with('mortgages', $mortgagesRecord);
+    }
+
+    public function skejul($id, Request $req){
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$req->input('endDate')]);
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['loan'=>$req->input('loans')]);
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['startDate'=>$req->input('tglstart')]);
+       
+        
+     
+        $temp = Mortgage::
+        join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->whereIn('status', ['sedang ditinjau'])->get();
+
+        return view('admin.manageGadai.index')->with('temp', $temp);
+
+
+
     }
 
 }

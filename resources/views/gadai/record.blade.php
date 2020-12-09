@@ -40,6 +40,7 @@
 
     <tr>
     <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
+    <td>{{$value->status}}</td>
     <td><div class="dropdown">
       <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
