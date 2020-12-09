@@ -1,7 +1,7 @@
 $("#tatacaraa").click(function() {
     $('html, body').animate({
         scrollTop: $(".tataCara").offset().top
-    }, 2000);
+    }, 1000);
 });
 
 $("#tentangkamii").click(function() {

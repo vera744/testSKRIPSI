@@ -36,8 +36,13 @@ Route::get('/ecom', 'EcomController@index');
 //ADMIN
 Route::get('/admin', 'AdminController@index');
 Route::get('/manageGadai', 'manageGadaiController@index');
+Route::get('/recordadmin','manageGadaiController@record');
 Route::post('/acceptGadai', 'manageGadaiController@update');
 
 Route::get('/manage/acc/{id}','manageGadaiController@acc');
 
 Route::get('/manage/reject/{id}','manageGadaiController@reject');
+
+
+
+

@@ -21,8 +21,8 @@ class manageGadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->get();
-
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->whereIn('status', ['sedang ditinjau'])
+        ->get();
         return view('admin.manageGadai.index')->with('temp', $temp);
     }
 
@@ -34,7 +34,7 @@ class manageGadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->get();
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->whereIn('status', ['sedang ditinjau'])->get();
 
         return view('admin.manageGadai.index')->with('temp', $temp);
         
@@ -48,9 +48,22 @@ class manageGadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->get();
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')->whereIn('status', ['sedang ditinjau'])->get();
 
         return view('admin.manageGadai.index')->with('temp', $temp);
         
     }
+
+    public function record(){
+        $mortgagesRecord = DB::table('mortgages')
+        ->join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
+        ->where('status','!=','Sedang Ditinjau')
+        ->get();
+        
+        return view('admin.manageGadai.record')->with('mortgages', $mortgagesRecord);
+    }
+
 }

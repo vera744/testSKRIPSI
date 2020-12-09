@@ -13,10 +13,10 @@
 <table class="table" style="text-align:center">
   <tr>
     <th scope="col" style="background-color:grey" >
-      <a href="/manageGadai" style="color:white">Transaksi Aktif</a>
+      <a href="/manageGadai" style="color:white">Tinjauan Berjalan</a>
     </th>
     <th scope="col" style="background-color:white">
-     <a href="/record" style="color:black">Record Transaksi</a>
+     <a href="/recordadmin" style="color:black">Tinjauan Selesai</a>
     </th>
   </tr>
 </table>
