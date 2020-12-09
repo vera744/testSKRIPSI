@@ -38,3 +38,6 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/manageGadai', 'manageGadaiController@index');
 Route::post('/acceptGadai', 'manageGadaiController@update');
 
+Route::get('/manage/acc/{id}','manageGadaiController@acc');
+
+Route::get('/manage/reject/{id}','manageGadaiController@reject');
