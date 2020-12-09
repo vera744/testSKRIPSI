@@ -81,6 +81,22 @@
 
             .card{
                 display: flex;
+                border: none 1px gray;
+              border-radius: 25px;
+            }
+
+            .tataCara{
+              height: max;
+              margin-top: 50px;
+              margin-bottom: 50px;
+              border: 1px solid;
+              border-radius: 5px;
+              padding: 10px;
+             box-shadow: 5px 10px #888888;
+            }
+
+            .tataCara h1{
+              margin-top: 10px;
             }
 
             
@@ -156,7 +172,7 @@
             </div>
             
             <div class="tataCara">
-                  <h1>TATA CARA</h1>
+                  <h1 style="font-weight: bold; text-align: center">Tata Cara</h1>
                 <div class="card-group">
                     <div class="card">
                       {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}

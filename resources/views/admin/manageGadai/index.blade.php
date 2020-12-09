@@ -57,6 +57,10 @@
                     <div class="modal-body">
                       <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
+                      <label for="status" style="color: blue">
+                        STATUS : {{$value->status}}
+                      </label>
+                      <br>
                       <label for="productName">Customer ID: {{$value->customerID}}</label>
                       <br>
                       <label for="productName">Nama Produk: {{$value->productName}}</label>
@@ -72,8 +76,10 @@
                       <label for="loan">Pinjaman: {{$value->loan}}</label>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Terima Request</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button>
+                      {{-- <button type="button" class="btn btn-success" data-dismiss="modal">Terima Request</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button> --}}
+                    <a href="/manage/acc/{{$value->mortgageID}}" class="btn btn-success">Terima Permintaan</a>
+                    <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Permintaan</a>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
