@@ -180,89 +180,9 @@
                
     </div>
             
-    <div class="content d-flex justify-content-center mt-3">
-                <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" style="border-radius: 20px">
-                        <div class="carousel-item active">
-                        <img src="images/car11.jpg" class="d-block w-100" alt="first slide">
-                        </div>
-                        
-                        <div class="carousel-item">
-                        <img src="images/car1.jpg" class="d-block w-100" alt="second slide">
-                        <div class="carousel-caption" style="text-align: left">
-                          <a href="{{ route('register') }}" id="regs">Daftar Sekarang!</a>
-                        </div>
-                        </div>
-                    
-                    </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-                </div>
-    </div>
+   
 
-    <div class="container">
-    <div class="row">
-            <div class="col-5">
-                    {{-- <br><br>
-                    <video src="/videos/video bts.webm" class="rounded mx-auto d-block" style="width:400px;"></video>
-                    </div> --}}
-                   
-                       
-            </div>
-            
-            <div class="tataCara">
-                  <h1>Tata Cara</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni commodi eius, consectetur praesentium tenetur minima facere saepe quam dolorum repudiandae numquam ipsam inventore, cumque tempore fuga distinctio velit unde ipsa!
-                  Iure beatae adipisci porro excepturi, sit enim? Cumque veritatis itaque voluptate nostrum architecto pariatur laborum! Cumque, nulla earum qui ducimus facilis sed eos labore voluptate iste nesciunt praesentium. Est, dignissimos.
-                  Consequatur sit, voluptate, quia non, fugiat optio libero quidem assumenda provident incidunt cum possimus suscipit adipisci numquam iusto doloribus vitae debitis ipsum! Mollitia assumenda quaerat accusamus voluptatibus illo veritatis alias?
-                  Cumque obcaecati molestias, modi fugiat amet aliquam et ea voluptas, sapiente ipsum unde cum quibusdam consequatur ratione ipsa placeat! Aut soluta esse voluptas a adipisci inventore dignissimos atque voluptate aliquid?
-                  Asperiores animi dolore voluptatem eius aperiam fuga, veritatis quos quidem enim, cum mollitia adipisci dolorem? Molestiae omnis excepturi hic doloribus consequatur adipisci veniam amet fugit repellat facere, fuga, nam culpa!</p>
-               </div>
-
-            <div class="tentangKami">
-                <h1 id="scrollTTK">Tentang Kami</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repudiandae rem incidunt porro ea quae exercitationem assumenda totam corporis? Facere ipsam voluptatibus, nulla quas non nemo minus corrupti quae.
-                Laborum incidunt sit, id accusamus blanditiis qui ut maiores optio iste tempora autem et temporibus modi rerum, laudantium mollitia placeat fugit similique sint, quo labore cusequuntur distinctio culpa quaerat dignissimos.
-            </div>
-
-           
-
-    </div>
-</div>
-
-<footer class="page-footer font-small teal pt-4 mt-5" style="background-color: black;color:white">
-  <div class="container-fluid text-center text-md-left">
-    <div class="row">
-      <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-          repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-          harum esse fugiat. Itaque, culpa?</p>
-      </div>
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-      <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-          commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-          excepturi hic.</p>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright text-center py-3">© 2020
-  </div>
-</footer>
+   
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
