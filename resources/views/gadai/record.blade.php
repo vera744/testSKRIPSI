@@ -1,13 +1,13 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@extends('template.homeLogin')
+@extends('layouts.auths')
 
-@section('title','Gadai')
+@section('title','Page Record Gadai')
 
-@section('container')
+@section('content')
 <br>
-    <h3 style="text-align:center"> Gadai</h3>
+    <h3 style="text-align:center"> Gadai RecorC</h3>
 <br>
 
 

@@ -56,9 +56,15 @@
                 
             }
 
-            body{
-                background-image: URL("images/ttkami.jpg");
+            h3{
+                color: #19365C
             }
+            
+            p{
+                color: #19365C
+            }
+            
+          
             
 
 </style>
@@ -66,9 +72,17 @@
     <div id="app">
         <nav class="navbar navbar-expand-md ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                @if(Auth::User()->role == 'admin')
+                <a class="navbar-brand" href="#">
                     <img src="images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
+                @endif
+                @if(Auth::User()->role == 'member')
+                <a class="navbar-brand" href="">
+                    <img src="images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
+                </a>
+                @endif
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,7 +90,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                           
+                        @if(Auth::User()->role == 'admin')
+                        <div class="flex-center position-ref height-header">
+                            <div class="top-left links">
+                            
+                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
+                                <a href="{{ url('') }}">Blablabla</a>
+                                </div>
+                                
+                    @else
+                        <div class="flex-center position-ref height-header">
+                            <div class="top-left links">
+                             <a href="{{ url('gadai') }}">GADAI</a>
+                                <a href="{{ url('ecom') }}" >E-COMMERCE</a>
+                                </div>
+                                </div>
+                            </div>     
+                        </div>
+                
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -94,11 +126,12 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                   Hello, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="">Profile</a>    
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}

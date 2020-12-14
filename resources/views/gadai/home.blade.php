@@ -1,26 +1,25 @@
+@extends('layouts.auths')
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+@section('title','Page Gadai')
 
-@extends('template.homeLogin')
-
-@section('title','Gadai')
-
-@section('container')
+@section('content')
 
 <br>
-    <h3 style="text-align:center"> Gadai</h3>
+    <h3 style="text-align:center"> GadaiCAC</h3>
 <br>
-
 <table class="table" style="text-align:center">
+   
   <tr>
-    <th scope="col" style="background-color:grey" >
+  
+    <th scope="col" style="background-color:grey">
       <a href="/gadai" style="color:white">Transaksi Aktif</a>
     </th>
     <th scope="col" style="background-color:white">
-     <a href="/record" style="color:black">Record Transaksi</a>
+      <a href="/record" style="color:black">Record Transaksi</a>
     </th>
+  
   </tr>
-</table>
+  </table>
 
 <tbody>
   @if (count($mortgages)> 0 )
@@ -70,7 +69,11 @@
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>
-            <label for="loan">Pinjaman: {{$value->loan}}</label>
+            <label for="loan">Pinjaman: {{$value->loan}}</label> <br>
+            <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
+                <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label>
+                  <br>SISA HARI:
+                {{(strtotime($value->endDate)-strtotime(date('d-m-Y')))/86400}} hari
 
           </div>
           <div class="modal-footer">

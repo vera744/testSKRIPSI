@@ -212,40 +212,47 @@
     </div>
 
     <div class="container">
-    <div class="row">
-            <div class="col-5">
-                    {{-- <br><br>
-                    <video src="/videos/video bts.webm" class="rounded mx-auto d-block" style="width:400px;"></video>
-                    </div> --}}
-                   
-                       
-            </div>
-            
-            <div class="tataCara">
-                  <h1>Tata Cara</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni commodi eius, consectetur praesentium tenetur minima facere saepe quam dolorum repudiandae numquam ipsam inventore, cumque tempore fuga distinctio velit unde ipsa!
-                  Iure beatae adipisci porro excepturi, sit enim? Cumque veritatis itaque voluptate nostrum architecto pariatur laborum! Cumque, nulla earum qui ducimus facilis sed eos labore voluptate iste nesciunt praesentium. Est, dignissimos.
-                  Consequatur sit, voluptate, quia non, fugiat optio libero quidem assumenda provident incidunt cum possimus suscipit adipisci numquam iusto doloribus vitae debitis ipsum! Mollitia assumenda quaerat accusamus voluptatibus illo veritatis alias?
-                  Cumque obcaecati molestias, modi fugiat amet aliquam et ea voluptas, sapiente ipsum unde cum quibusdam consequatur ratione ipsa placeat! Aut soluta esse voluptas a adipisci inventore dignissimos atque voluptate aliquid?
-                  Asperiores animi dolore voluptatem eius aperiam fuga, veritatis quos quidem enim, cum mollitia adipisci dolorem? Molestiae omnis excepturi hic doloribus consequatur adipisci veniam amet fugit repellat facere, fuga, nam culpa!</p>
-               </div>
+      <div class="row mt-5">          
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            <h1 id="scrollTTC">Tata Cara</h1>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
+          </div>
+          <div class="col-4 col-sm-6">
+            <img src="images/ttcara.jpg" class="d-block w-100" alt="second slide">      
+          </div>
+        </div>
+      
+    </div>
+{{-- //////////////////////////////////////////////////// --}}
 
-            <div class="tentangKami">
-                <h1 id="scrollTTK">Tentang Kami</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repudiandae rem incidunt porro ea quae exercitationem assumenda totam corporis? Facere ipsam voluptatibus, nulla quas non nemo minus corrupti quae.
-                Laborum incidunt sit, id accusamus blanditiis qui ut maiores optio iste tempora autem et temporibus modi rerum, laudantium mollitia placeat fugit similique sint, quo labore cusequuntur distinctio culpa quaerat dignissimos.
-            </div>
+<div class="row mt-5">
+        
+          
+  <div class="row">
+    <div class="col-8 col-sm-6">
+      <img src="images/ttkami.jpg" class="d-block w-100" alt="second slide">
+    </div>
+    <div class="col-4 col-sm-6">
+      
+      <h1 id="scrollTTK">Tentang Kami</h1>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
+    </div>
+  </div>
+
+</div>
+          
 
            
 
     </div>
 </div>
 
-<footer class="page-footer font-small teal pt-4 mt-5" style="background-color: black;color:white">
+<footer class="page-footer font-small teal pt-4 mt-5" style="background-color: rgb(25, 54, 92);color:white">
   <div class="container-fluid text-center text-md-left">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
+        <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
           repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
           harum esse fugiat. Itaque, culpa?</p>
@@ -253,7 +260,7 @@
 
       <hr class="clearfix w-100 d-md-none pb-3">
       <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
+        <h5 class="text-uppercase font-weight-bold">Gadai & E-Com</h5>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
           commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
           excepturi hic.</p>

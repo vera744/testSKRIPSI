@@ -1,6 +1,6 @@
 $("#tatacaraa").click(function() {
     $('html, body').animate({
-        scrollTop: $(".tataCara").offset().top
+        scrollTop: $("#scrollTTC").offset().top
     }, 1000);
 });
 

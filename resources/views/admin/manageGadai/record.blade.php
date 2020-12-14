@@ -1,11 +1,11 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@extends('template.homeLogin')
+@extends('layouts.auths')
 
-@section('title','Gadai')
+@section('title','Managae Record')
 
-@section('container')
+@section('content')
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
@@ -69,17 +69,34 @@
             <br>
             <label for="loan">Pinjaman: {{$value->loan}}</label>
 
+          @if ($value->startDate!=null && $value->endDate!=null)
+                <br>
+          <label for="">Start Datenya :{{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
+          
+          <label for="">End Datenya : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
+            @endif
+
             <hr>
             <form action="/manage/input_transaction/{{$value->mortgageID}}">
+             @if ($value->startDate!=null)
               <label for="">Tanggal Mulai Pinjaman</label> <br>
-              <input type="date" name="tglstart" id="tglstart"> <br>
-              <label for="">Tanggal Akhir</label> <br>
-              <input id="endDate" type="date" name="endDate">
-              <br>  
-              <label for="">Nilai Pinjaman</label> <br>
-              <input class="col-md-6" type="number" name="loans" id="loans" required="required"> <br>
-              <input type="submit" value="input data" class="btn btn-primary">
+              <input type="text" name="" id=""disabled value="{{date('d-m-Y', strtotime($value->startDate))}}"><br>
+             
         
+             
+            @else
+            <label for="">Tanggal Mulai Pinjaman</label> <br>
+            <input type="date" name="tglstart" id="tglstart" > <br>
+
+             @endif
+             <label for="">Tanggal Akhir</label> <br>
+             <input id="endDate" type="date" name="endDate">
+             <br>  
+             <label for="">Nilai Pinjaman</label> <br>
+             <input class="col-md-6" type="number" name="loans" id="loans" required="required"> <br>
+             <br>
+             <input type="submit" value="Input" class="btn btn-primary">
+            
           </form>
           </div>
           
