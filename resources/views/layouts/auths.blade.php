@@ -122,7 +122,7 @@
                     @else
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
-                             <a href="{{ url('gadai') }}">GADAI</a>
+                             <a href="gadai">GADAI</a>
                                 <a href="#" >E-COMMERCE</a>
                                 </div>
                                 </div>
