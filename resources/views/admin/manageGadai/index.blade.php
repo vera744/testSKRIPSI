@@ -12,11 +12,11 @@
 
 <table class="table" style="text-align:center">
   <tr>
-    <th scope="col" style="background-color:grey" >
-      <a href="/manageGadai" style="color:white">Tinjauan Masuk</a>
+    <th scope="col" class="active">
+      <a href="/manageGadai">Tinjauan Masuk</a>
     </th>
-    <th scope="col" style="background-color:white">
-     <a href="/recordadmin" style="color:black">Tinjauan Berjalan</a>
+    <th scope="col">
+     <a href="/recordadmin">Tinjauan Berjalan</a>
     </th>
   </tr>
 </table>
@@ -95,6 +95,9 @@
     </div>
   @else
     <p class="font-weight-bold" style="text-align:center">Tidak ada transaksi tertunda saat ini</p>
+    <div class="d-flex justify-content-center">
+      <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+    </div>
   @endif
 </tbody>
 

@@ -3,11 +3,11 @@
 
 @extends('layouts.auths')
 
-@section('title','Page Record Gadai')
+@section('title','Record Transaksi')
 
 @section('content')
 <br>
-    <h3 style="text-align:center"> Gadai RecorC</h3>
+    <h3 style="text-align:center">Record Transaksi Gadai</h3>
 <br>
 
 
@@ -15,11 +15,11 @@
    
 <tr>
 
-<th scope="col" style="background-color:white">
-  <a href="/gadai" style="color:black">Transaksi Aktif</a>
+<th scope="col" >
+  <a href="/gadai" >Transaksi Aktif</a>
 </th>
-<th scope="col" style="background-color:grey">
-  <a href="/record" style="color:white">Record Transaksi</a>
+<th scope="col" class="active">
+  <a href="/record" >Record Transaksi</a>
 </th>
 
 </tr>
@@ -89,13 +89,12 @@
   @else
 
   <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
- 
+  <div class="d-flex justify-content-center">
+    <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+  </div>
   @endif
   
   </tbody>
-  <form action="{{ url('gadai/add')}}">
-    <input type="submit" class="btn btn-primary" value="Request">
-</form>
 @endsection
 
 <script>

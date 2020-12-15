@@ -1,21 +1,21 @@
 @extends('layouts.auths')
 
-@section('title','Page Gadai')
+@section('title','Gadai')
 
 @section('content')
 
 <br>
-    <h3 style="text-align:center"> GadaiCAC</h3>
+    <h3 style="text-align:center"> Gadai</h3>
 <br>
 <table class="table" style="text-align:center">
    
   <tr>
   
-    <th scope="col" style="background-color:grey">
-      <a href="/gadai" style="color:white">Transaksi Aktif</a>
+    <th scope="col" class="active">
+      <a href="/gadai">Transaksi Aktif</a>
     </th>
-    <th scope="col" style="background-color:white">
-      <a href="/record" style="color:black">Record Transaksi</a>
+    <th scope="col" >
+      <a href="/record" >Record Transaksi</a>
     </th>
   
   </tr>
@@ -72,8 +72,7 @@
             <label for="loan">Pinjaman: {{$value->loan}}</label> <br>
             <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
                 <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label>
-                  <br>SISA HARI:
-                {{(strtotime($value->endDate)-strtotime(date('d-m-Y')))/86400}} hari
+                  
 
           </div>
           <div class="modal-footer">
@@ -95,13 +94,17 @@
   @else
 
   <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
- 
+  <div class="d-flex justify-content-center">
+    <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+  </div>
   @endif
   
   </tbody>
-  <form action="{{ url('gadai/add')}}">
-    <input type="submit" class="btn btn-primary" value="Request">
-</form>
+  <div class="d-flex justify-content-center">
+    <form action="{{ url('gadai/add')}}">
+      <input type="submit" class="btn style1" value="Request" style="">
+  </form>
+  </div>
 </table>
 </div>
 

@@ -64,24 +64,45 @@
                 color: #19365C
             }
             
-          
-            
+            .btn.style1{
+              border:1px none;
+              background-color: hsl(233,73%,56%);
+              border-radius: 15px;
+              padding: 14px;
+              color: white;
+             
+            }
+            tr{
+                border: 5px solid #E8F1FF  }
+            th{
+                
+            }
+
+            th.active{
+                background-color: #19365C;
+                border-radius: 30px;
+                
+                
+            }
+
+            th.active a{
+                color: white;
+            }
+
+            th a{
+                color: #19365C;
+            }
 
 </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md ">
             <div class="container">
-                @if(Auth::User()->role == 'admin')
-                <a class="navbar-brand" href="#">
+                
+                <a class="navbar-brand" href="/">
                     <img src="images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
-                @endif
-                @if(Auth::User()->role == 'member')
-                <a class="navbar-brand" href="">
-                    <img src="images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
-                </a>
-                @endif
+               
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -102,7 +123,7 @@
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
                              <a href="{{ url('gadai') }}">GADAI</a>
-                                <a href="{{ url('ecom') }}" >E-COMMERCE</a>
+                                <a href="#" >E-COMMERCE</a>
                                 </div>
                                 </div>
                             </div>     

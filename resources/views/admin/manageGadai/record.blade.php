@@ -3,22 +3,22 @@
 
 @extends('layouts.auths')
 
-@section('title','Managae Record')
+@section('title','Manage Record')
 
 @section('content')
 <br>
-    <h3 style="text-align:center"> Gadai</h3>
+    <h3 style="text-align:center"> Transaksi Gadai</h3>
 <br>
 
 
 <table class="table" style="text-align:center">
    
 <tr>
-    <th scope="col" style="background-color:white">
-     <a href="/manageGadai" style="color:black">Tinjauan Masuk</a>
+    <th scope="col" >
+     <a href="/manageGadai">Tinjauan Masuk</a>
     </th>
-    <th scope="col" style="background-color:grey" >
-      <a href="/recordadmin" style="color:white">Tinjauan Berjalan</a>
+    <th scope="col" class="active"  >
+      <a href="/recordadmin" >Tinjauan Berjalan</a>
     </th>
   </tr>
 </table>
@@ -117,7 +117,9 @@
   @else
 
   <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
- 
+  <div class="d-flex justify-content-center">
+    <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+  </div>
   @endif
   
   </tbody>

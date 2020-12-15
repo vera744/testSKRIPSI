@@ -13,14 +13,12 @@
 
 use App\Http\Controllers\GadaiController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index');
