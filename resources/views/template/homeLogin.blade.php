@@ -103,7 +103,7 @@
                         
                         <div class="top-right links">
                             @auth
-
+                        <a href="#">Hallo, {{Auth::User()->name}}</a>
                             <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -138,7 +138,7 @@
                         
                         <div class="top-right links">
                             @auth
-
+                            <a href="#">Hallo, {{Auth::User()->name}}</a>
                             <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

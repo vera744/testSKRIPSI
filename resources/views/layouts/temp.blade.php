@@ -180,96 +180,9 @@
                
     </div>
             
-    <div class="content d-flex justify-content-center mt-3">
-                <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" style="border-radius: 20px">
-                        <div class="carousel-item active">
-                        <img src="images/car11.jpg" class="d-block w-100" alt="first slide">
-                        </div>
-                        
-                        <div class="carousel-item">
-                        <img src="images/car1.jpg" class="d-block w-100" alt="second slide">
-                        <div class="carousel-caption" style="text-align: left">
-                          <a href="{{ route('register') }}" id="regs">Daftar Sekarang!</a>
-                        </div>
-                        </div>
-                    
-                    </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-                </div>
-    </div>
+   
 
-    <div class="container">
-      <div class="row mt-5">          
-        <div class="row">
-          <div class="col-8 col-sm-6">
-            <h1 id="scrollTTC">Tata Cara</h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
-          </div>
-          <div class="col-4 col-sm-6">
-            <img src="images/ttcara.jpg" class="d-block w-100" alt="second slide">      
-          </div>
-        </div>
-      
-    </div>
-{{-- //////////////////////////////////////////////////// --}}
-
-<div class="row mt-5">
-        
-          
-  <div class="row">
-    <div class="col-8 col-sm-6">
-      <img src="images/ttkami.jpg" class="d-block w-100" alt="second slide">
-    </div>
-    <div class="col-4 col-sm-6">
-      
-      <h1 id="scrollTTK">Tentang Kami</h1>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
-    </div>
-  </div>
-
-</div>
-          
-
-           
-
-    </div>
-</div>
-
-<footer class="page-footer font-small teal pt-4 mt-5" style="background-color: rgb(25, 54, 92);color:white">
-  <div class="container-fluid text-center text-md-left">
-    <div class="row">
-      <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-          repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-          harum esse fugiat. Itaque, culpa?</p>
-      </div>
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-      <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase font-weight-bold">Gadai & E-Com</h5>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-          commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-          excepturi hic.</p>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright text-center py-3">© 2020
-  </div>
-</footer>
+   
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
