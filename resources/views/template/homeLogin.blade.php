@@ -133,6 +133,7 @@
                 <a href="{{ url('home')}}" style="background-color: #e3f2fd;">LOGO</a>
                 <a href="{{ url('gadai') }}">GADAI</a>
                 <a href="{{ url('ecom') }}" >E-COMMERCE</a>
+                
                 </div>
                     @if (Route::has('login'))
                         

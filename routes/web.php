@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/gadai.index', 'GadaiController@index');
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index');
@@ -38,3 +38,8 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/manageGadai', 'manageGadaiController@index');
 Route::post('/acceptGadai', 'manageGadaiController@update');
 
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/{id}', 'ProfileController@update');
+
+
+Route::post('/changePassword/{id}','ProfileController@postChangePassword');

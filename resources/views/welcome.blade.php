@@ -52,10 +52,6 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
-
             .title {
                 font-size: 84px;
             }
@@ -117,7 +113,8 @@
                
     </div>
             
-    <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-8 my-4" >
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -125,12 +122,12 @@
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img src="images/landscape1.jpg" class="d-block w-100" alt="first slide">
+                        <div class="carousel-item active" >
+                        <img src="images/HP.png" class="d-block w-100" alt="first slide">
                         </div>
                         
                         <div class="carousel-item">
-                        <img src="images/landscape2.jpg" class="d-block w-100" alt="second slide">
+                        <img src="images/LAPTOP.png" class="d-block w-100" alt="second slide">
                         </div>
                     
                     </div>
@@ -143,6 +140,7 @@
                 <span class="sr-only">Next</span>
                 </a>
                 </div>
+      </div>
     </div>
 
     <div class="container">
@@ -231,6 +229,7 @@
 
             <div class="tentangKami">
                 <h1 id="scrollTTK">Tentang Kami</h1>
+                Garda Dana Indonesia (Gadai) adalah suatu website pegadaian 
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repudiandae rem incidunt porro ea quae exercitationem assumenda totam corporis? Facere ipsam voluptatibus, nulla quas non nemo minus corrupti quae.
                 Laborum incidunt sit, id accusamus blanditiis qui ut maiores optio iste tempora autem et temporibus modi rerum, laudantium mollitia placeat fugit similique sint, quo labore cum eius. Illo, commodi harum.
                 Necessitatibus esse rem eaque sint ipsam iusto quae nam earum iure voluptatibus eos laudantium repudiandae sunt pariatur, saepe quaerat distinctio dolore, et dolores maiores dolorem! Consequuntur distinctio culpa quaerat dignissimos.
