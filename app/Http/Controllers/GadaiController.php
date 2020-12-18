@@ -11,6 +11,9 @@ use App\product;
 use App\mortgage_detail;
 use App\Mortgage;
 
+use App\listProduk;
+use App\kategoriProduk;
+
 class GadaiController extends Controller
 {
 
@@ -31,6 +34,8 @@ class GadaiController extends Controller
 
 
         return view('gadai.index')->with('mortgages', $mortgage);
+
+        
     }
 
     public function record(){
@@ -56,15 +61,27 @@ class GadaiController extends Controller
       echo json_encode($entry);
     }
     public function add(){
-        return view('gadai.add');
-    }
-    public function store(Request $request){
+      
+        //$list= DB::table('list_produk')->groupby('jenisProduk','id', 'merekProduk', 'created_at', 'updated_at')->get();
+        $category = kategoriProduk::all();
         
+        
+
+        return view('gadai.add')->with('category', $category);
+    }
+    public function findProductName(Request $request){
+      
+        $list= listproduk::select('merekProduk','id')->where('kategori_id', $request->id)->take(100)->get();
+
+        return response()->json($list);
+    }
+
+    public function store(Request $request){
+
         if($request->hasFile('fotoProduk')){
             $file=$request->fotoProduk;
             $image = $file->getClientOriginalName();
             $request->file('fotoProduk')->move('storage/fotoProduk',$image);
-
         }
         
         $userID = auth()->User()->id;
@@ -85,50 +102,8 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
-
-
-        // temp::insert([
-        //     'productName'=>$request->namaProduk,
-        //     'productPrice'=>$request->nilaiPinjaman,
-        //     'customerID'=>$userID,
-        //     'loan'=>$request->nilaiPinjaman,
-        //     'fotoProduk'=>$image
-        // ]);
-
-
-    //   $product=  product::create([
-    //         'productName'=>$request->namaProduk,
-    //         'productPrice'=>$request->nilaiPinjaman,
-    //         'fotoProduk'=>$image
-    //     ]);
-
-      //  $product = DB::table('product')->select('ProductID')->where()->get()
-    //   $product=DB::table('products')->latest('productID')->get();
-    //   $productb=DB::table('products')->latest('created_at')->get();
-    //   $productc=DB::table('products')->latest('updated_at')->get();
-        //$productIDnew = $product->productID;
-        // if($product){
-
-        //     $mortg=Mortgage::create([
-        //        'productID' => $product->productID,
-        //        'customerID'=>$userID
-        //     ]);
-        // }
-
-        
-        // $mortgage = mortgage::all();
-        // $mortgageIDnew = $mortgage->mortgageID;
-
-        // mortgage_detail::insert([
-        //     'mortgageID' => $mortgageIDnew,
-        //     'loan'=>$request->nilaiPinjaman,
-        // ]);
-        
-
-       
-      
         return view('gadai.add');
-       
 
+        
     }
 }
