@@ -18,7 +18,9 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 
+
 // Route::get('/home', 'HomeController@index');
+
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index');
@@ -44,3 +46,8 @@ Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul');
 
 
 
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/{id}', 'ProfileController@update');
+
+
+Route::post('/changePassword/{id}','ProfileController@postChangePassword');
