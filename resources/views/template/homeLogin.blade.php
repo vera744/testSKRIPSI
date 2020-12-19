@@ -7,6 +7,8 @@
         <title>
             @yield('title')
         </title>
+        
+        
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -172,6 +174,9 @@
         <div class="container-fluid">
             @yield('container')
         </div>
+        
+        {{-- Ajax --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     </body>
 </html>

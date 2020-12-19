@@ -27,6 +27,7 @@ Route::get('/gadai', 'GadaiController@index');
 
 Route::get('/record', 'GadaiController@record');
 Route::get('/gadai/add', 'GadaiController@add');
+Route::get('/findProductName', 'GadaiController@findProductName');
 Route::post('/gadai/create','GadaiController@create');
 Route::post('/gadai/store','GadaiController@store');
 

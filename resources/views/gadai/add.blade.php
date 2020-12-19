@@ -9,8 +9,30 @@
 <h3>FORM REQUEST GADAI</h3>
     
 <div class="container">
-   <form action="/gadai/store" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
+    <form action="/gadai/store" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    
+    <div class="form-group">
+        <label for="">Jenis Produk</label>
+
+        <select class="form-control input-sm jenisProduk" name="" id="jenisProduk_id">
+            <option value="0" disabled="true" selected="true">Pilih</option>
+            @foreach($category as $value)
+                <option value="{{$value->id}}">{{$value->namaKategori}}</option> 
+            @endforeach
+        </select>
+         
+    </div>
+    
+    <div class="form-group"> 
+        <label for="">Merek Produk</label>
+
+        <select class="form-control input-sm productName" name="" id="">
+            <option value="0" disabled="true" selected="true">Merek Produk</option>
+        </select>
+         
+    </div>
+
         <label for="">Nama Produk</label> <br>
          <input class="col-md-6" type="text" name="namaProduk" required="required"> <br> <br>
         
@@ -27,5 +49,50 @@
         
     </form>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(document).on('change','.jenisProduk', function(){
+            // console.log("yeay berubah");
+
+            var cat_id=$(this).val();
+            // console.log(cat_id);
+            
+            var div=$(this).parent().parent();
+
+            var op=" ";
+            
+
+            $.ajax({
+                type:'get',
+                url:'{!!URL::to('findProductName')!!}',
+                data:{'id':cat_id},
+                success:function(data){
+                    // console.log('success');
+
+                    // console.log(data);
+                    // console.log(data.length);
+
+                    op+='<option value="0" selected disabled>Merek Produk</option>';
+                    for(var i=0;i<data.length;i++){
+                        op+='<option value="'+data[i].id+'">'+data[i].merekProduk+'</option>';
+                    }
+                    
+                    div.find('.productName').html(" ");
+                    div.find('.productName').append(op);
+                
+                },
+                error:function(){
+
+                }
+            });
+        });
+    });
+
+</script>
+
+
 
 @endsection
