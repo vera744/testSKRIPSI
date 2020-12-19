@@ -27,15 +27,14 @@ class GadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk','startDate','endDate')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'diterima', 'sedang berlangsung'])
         ->get();
 
 
-        return view('gadai.index')->with('mortgages', $mortgage);
+        return view('gadai.home')->with('mortgages', $mortgage);
 
-        
     }
 
     public function record(){

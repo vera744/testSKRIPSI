@@ -3,26 +3,24 @@
 
 @extends('layouts.auths')
 
-@section('title','Record Transaksi')
+@section('title','Manage Record')
 
 @section('content')
 <br>
-    <h3 style="text-align:center">Record Transaksi Gadai</h3>
+    <h3 style="text-align:center"> Transaksi Gadai</h3>
 <br>
 
 
 <table class="table" style="text-align:center">
    
 <tr>
-
-<th scope="col" >
-  <a href="/gadai" >Transaksi Aktif</a>
-</th>
-<th scope="col" class="active">
-  <a href="/record" >Record Transaksi</a>
-</th>
-
-</tr>
+    <th scope="col" >
+     <a href="/manageGadai">Tinjauan Masuk</a>
+    </th>
+    <th scope="col" class="active"  >
+      <a href="/recordadmin" >Tinjauan Berjalan</a>
+    </th>
+  </tr>
 </table>
 
 <tbody>
@@ -71,10 +69,40 @@
             <br>
             <label for="loan">Pinjaman: {{$value->loan}}</label>
 
+          @if ($value->startDate!=null && $value->endDate!=null)
+                <br>
+          <label for="">Start Datenya :{{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
+          
+          <label for="">End Datenya : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
+            @endif
+
+            <hr>
+            <form action="/manage/input_transaction/{{$value->mortgageID}}">
+             @if ($value->startDate!=null)
+              <label for="">Tanggal Mulai Pinjaman</label> <br>
+              <input type="text" name="" id=""disabled value="{{date('d-m-Y', strtotime($value->startDate))}}"><br>
+             
+        
+             
+            @else
+            <label for="">Tanggal Mulai Pinjaman</label> <br>
+            <input type="date" name="tglstart" id="tglstart" > <br>
+
+             @endif
+             <label for="">Tanggal Akhir</label> <br>
+             <input id="endDate" type="date" name="endDate">
+             <br>  
+             <label for="">Nilai Pinjaman</label> <br>
+             <input class="col-md-6" type="number" name="loans" id="loans" required="required"> <br>
+             <br>
+             <input type="submit" value="Input" class="btn btn-primary">
+            
+          </form>
           </div>
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
+            
           </div>
         </div>
       </div>
@@ -95,6 +123,7 @@
   @endif
   
   </tbody>
+  
 @endsection
 
 <script>

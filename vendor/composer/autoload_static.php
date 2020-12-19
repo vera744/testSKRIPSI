@@ -423,7 +423,9 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mortgage' => __DIR__ . '/../..' . '/app/Mortgage.php',
+
         'App\\Mortgage_Detail' => __DIR__ . '/../..' . '/app/mortgage_detail.php',
+
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -431,8 +433,10 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+
         'App\\kategoriProduk' => __DIR__ . '/../..' . '/app/kategoriProduk.php',
         'App\\listProduk' => __DIR__ . '/../..' . '/app/listProduk.php',
+
         'App\\temp' => __DIR__ . '/../..' . '/app/temp.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
