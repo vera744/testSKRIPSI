@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@extends('template.homeLogin')
+@extends('layouts.auths')
 
 @section('title','Manage Gadai Transaction')
 
-@section('container')
+@section('content')
 
 <br>
     <h3 style="text-align:center"> Gadai</h3>
@@ -12,11 +12,11 @@
 
 <table class="table" style="text-align:center">
   <tr>
-    <th scope="col" style="background-color:grey" >
-      <a href="/manageGadai" style="color:white">Transaksi Aktif</a>
+    <th scope="col" class="active">
+      <a href="/manageGadai">Tinjauan Masuk</a>
     </th>
-    <th scope="col" style="background-color:white">
-     <a href="/record" style="color:black">Record Transaksi</a>
+    <th scope="col">
+     <a href="/recordadmin">Tinjauan Berjalan</a>
     </th>
   </tr>
 </table>
@@ -57,6 +57,10 @@
                     <div class="modal-body">
                       <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
+                      <label for="status" style="color: blue">
+                        STATUS : {{$value->status}}
+                      </label>
+                      <br>
                       <label for="productName">Customer ID: {{$value->customerID}}</label>
                       <br>
                       <label for="productName">Nama Produk: {{$value->productName}}</label>
@@ -72,8 +76,10 @@
                       <label for="loan">Pinjaman: {{$value->loan}}</label>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Terima Request</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button>
+                      {{-- <button type="button" class="btn btn-success" data-dismiss="modal">Terima Request</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button> --}}
+                    <a href="/manage/acc/{{$value->mortgageID}}" class="btn btn-success">Terima Permintaan</a>
+                    <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Permintaan</a>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
@@ -89,6 +95,9 @@
     </div>
   @else
     <p class="font-weight-bold" style="text-align:center">Tidak ada transaksi tertunda saat ini</p>
+    <div class="d-flex justify-content-center">
+      <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+    </div>
   @endif
 </tbody>
 

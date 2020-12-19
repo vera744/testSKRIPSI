@@ -17,12 +17,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                background-color: rgb(232,241,255);
+            color: black;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            height: 100vh;
+            margin: 0;
             }
 
             .full-height {
@@ -70,13 +70,14 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: gray;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 18px;
                 font-weight: 600;
-                letter-spacing: .1rem;
+                /* letter-spacing: .1rem; */
                 text-decoration: none;
-                text-transform: uppercase;
+                /* text-transform: uppercase; */
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
 
             .m-b-md {
@@ -95,7 +96,10 @@
     @if(Auth::User()->role == 'admin')
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
-            
+                
+                <a class="navbar-brand" href="/">
+                    <img src="{{asset('images/logs.png')}}" width="30" height="30" style="margin-top: -10px">
+                  </a>
                 <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
                 <a href="{{ url('') }}">Blablabla</a>
                 </div>
@@ -103,7 +107,7 @@
                         
                         <div class="top-right links">
                             @auth
-
+                        <a href="#">Hallo, {{Auth::User()->name}}</a>
                             <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -130,7 +134,9 @@
         <div class="flex-center position-ref height-header">
             <div class="top-left links">
             
-                <a href="{{ url('home')}}" style="background-color: #e3f2fd;">LOGO</a>
+                <a class="navbar-brand" href="/">
+                  <img src="{{asset('images/logs.png')}}" width="30" height="30" style="margin-top: -10px">
+                </a>
                 <a href="{{ url('gadai') }}">GADAI</a>
                 <a href="{{ url('ecom') }}" >E-COMMERCE</a>
                 
@@ -139,7 +145,7 @@
                         
                         <div class="top-right links">
                             @auth
-
+                            <a href="#">Hallo, {{Auth::User()->name}}</a>
                             <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

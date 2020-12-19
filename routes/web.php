@@ -13,14 +13,14 @@
 
 use App\Http\Controllers\GadaiController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 
-Route::get('/gadai.index', 'GadaiController@index');
+
+// Route::get('/home', 'HomeController@index');
+
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index');
@@ -36,7 +36,15 @@ Route::get('/ecom', 'EcomController@index');
 //ADMIN
 Route::get('/admin', 'AdminController@index');
 Route::get('/manageGadai', 'manageGadaiController@index');
+Route::get('/recordadmin','manageGadaiController@record');
 Route::post('/acceptGadai', 'manageGadaiController@update');
+Route::get('/manage/acc/{id}','manageGadaiController@acc');
+Route::get('/manage/reject/{id}','manageGadaiController@reject');
+
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul');
+
+
+
 
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/{id}', 'ProfileController@update');

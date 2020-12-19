@@ -1,26 +1,25 @@
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-@extends('template.homeLogin')
+@extends('layouts.auths')
 
 @section('title','Gadai')
 
-@section('container')
+@section('content')
 
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
-
 <table class="table" style="text-align:center">
+   
   <tr>
-    <th scope="col" style="background-color:grey" >
-      <a href="/gadai" style="color:white">Transaksi Aktif</a>
+  
+    <th scope="col" class="active">
+      <a href="/gadai">Transaksi Aktif</a>
     </th>
-    <th scope="col" style="background-color:white">
-     <a href="/record" style="color:black">Record Transaksi</a>
+    <th scope="col" >
+      <a href="/record" >Record Transaksi</a>
     </th>
+  
   </tr>
-</table>
+  </table>
 
 <tbody>
   @if (count($mortgages)> 0 )
@@ -70,7 +69,10 @@
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>
-            <label for="loan">Pinjaman: {{$value->loan}}</label>
+            <label for="loan">Pinjaman: {{$value->loan}}</label> <br>
+            <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
+                <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label>
+                  
 
           </div>
           <div class="modal-footer">
@@ -92,13 +94,17 @@
   @else
 
   <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
- 
+  <div class="d-flex justify-content-center">
+    <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+  </div>
   @endif
   
   </tbody>
-  <form action="{{ url('gadai/add')}}">
-    <input type="submit" class="btn btn-primary" value="Request">
-</form>
+  <div class="d-flex justify-content-center">
+    <form action="{{ url('gadai/add')}}">
+      <input type="submit" class="btn style1" value="Request" style="">
+  </form>
+  </div>
 </table>
 </div>
 
