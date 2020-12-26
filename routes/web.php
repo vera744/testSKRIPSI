@@ -45,8 +45,6 @@ Route::get('/manage/reject/{id}','manageGadaiController@reject');
 Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul');
 
 
-
-
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/{id}', 'ProfileController@update');
 
