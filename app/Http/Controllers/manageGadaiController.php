@@ -18,7 +18,6 @@ class manageGadaiController extends Controller
     }
     
     public function index(){
-        
         $temp = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")

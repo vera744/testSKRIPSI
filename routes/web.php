@@ -14,39 +14,35 @@
 use App\Http\Controllers\GadaiController;
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
-
-
-// Route::get('/home', 'HomeController@index');
-
-
 //CUSTOMER
-Route::get('/gadai', 'GadaiController@index');
+Route::get('/gadai', 'GadaiController@index')->middleware('member');
 
-Route::get('/record', 'GadaiController@record');
-Route::get('/gadai/add', 'GadaiController@add');
-Route::get('/findProductName', 'GadaiController@findProductName');
-Route::post('/gadai/create','GadaiController@create');
-Route::post('/gadai/store','GadaiController@store');
+Route::get('/record', 'GadaiController@record')->middleware('member');
+Route::get('/gadai/add', 'GadaiController@add')->middleware('member');
+Route::get('/findProductName', 'GadaiController@findProductName')->middleware('member');
+Route::post('/gadai/create','GadaiController@create')->middleware('member');
+Route::post('/gadai/store','GadaiController@store')->middleware('member');
 
-Route::get('/ecom', 'EcomController@index');
+Route::get('/ecom', 'EcomController@index')->middleware('member');
 
 
 //ADMIN
 Route::get('/admin', 'AdminController@index');
-Route::get('/manageGadai', 'manageGadaiController@index');
-Route::get('/recordadmin','manageGadaiController@record');
-Route::post('/acceptGadai', 'manageGadaiController@update');
-Route::get('/manage/acc/{id}','manageGadaiController@acc');
-Route::get('/manage/reject/{id}','manageGadaiController@reject');
+Route::get('/manageGadai', 'manageGadaiController@index')->middleware('admin');
+Route::get('/recordadmin','manageGadaiController@record')->middleware('admin');
+Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin');
+Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
+Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
 
-Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul');
-
-
-Route::get('/profile', 'ProfileController@index');
-Route::get('/profile/{id}', 'ProfileController@update');
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
 
 
-Route::post('/changePassword/{id}','ProfileController@postChangePassword');
+Route::get('/profile', 'ProfileController@index')->middleware('member');
+Route::get('/profile/{id}', 'ProfileController@update')->middleware('member');
+
+
+Route::post('/changePassword/{id}','ProfileController@postChangePassword')->middleware('member');

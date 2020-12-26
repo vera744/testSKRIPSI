@@ -10,7 +10,7 @@
     
 <div class="container">
     <form action="/gadai/store" method="post" enctype="multipart/form-data">
-    {{ csrf_field() }}
+    @csrf
     
     <div class="form-group">
         <label for="">Jenis Produk</label>
