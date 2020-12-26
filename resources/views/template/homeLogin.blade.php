@@ -7,8 +7,6 @@
         <title>
             @yield('title')
         </title>
-        
-        
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -71,7 +69,7 @@
                 bottom: 30px;
             }
 
-            .links > a {
+            a {
                 color: gray;
                 padding: 0 25px;
                 font-size: 18px;
@@ -141,14 +139,20 @@
                 </a>
                 <a href="{{ url('gadai') }}">GADAI</a>
                 <a href="{{ url('ecom') }}" >E-COMMERCE</a>
-                
                 </div>
                     @if (Route::has('login'))
                         
                         <div class="top-right links">
                             @auth
-                            <a href="#">Hallo, {{Auth::User()->name}}</a>
-                            <a href="{{ route('logout') }}"
+                            <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="">Profile</a>    
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
@@ -157,6 +161,9 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
+                                </div>
+                            </li>
+                        </ul>
                             @else
                                 <a href="{{ route('login') }}">Login</a>
 
@@ -174,10 +181,11 @@
         <div class="container-fluid">
             @yield('container')
         </div>
-        
+
         {{-- Ajax --}}
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     </body>
 </html>
