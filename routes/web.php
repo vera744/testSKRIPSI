@@ -31,7 +31,6 @@ Route::get('/findProductName', 'GadaiController@findProductName');
 Route::post('/gadai/create','GadaiController@create');
 Route::post('/gadai/store','GadaiController@store');
 
-Route::get('/ecom', 'EcomController@index');
 
 
 //ADMIN
@@ -51,4 +50,8 @@ Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/{id}', 'ProfileController@update');
 
 
+Route::get('/changepassword', 'ProfileController@changepassword');
 Route::post('/changePassword/{id}','ProfileController@postChangePassword');
+
+Route::get('/ecom', 'EcomController@index');
+Route::get('/ecom/detailproduct', 'EcomController@detail');

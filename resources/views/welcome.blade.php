@@ -193,10 +193,6 @@
                         
                         <div class="carousel-item">
                         <img src="images/car1.jpg" class="d-block w-100" alt="second slide">
-                        <div class="carousel-caption" style="text-align: left">
-                          <a href="{{ route('register') }}" id="regs">Daftar Sekarang!</a>
-                        </div>
-
                         </div>
                     
                     </div>

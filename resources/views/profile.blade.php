@@ -1,9 +1,9 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@extends('template.homeLogin')
+@extends('layouts.auths')
 @section('title','Profile')
-@section('container')
+@section('content')
  
 <br>
     <h3 style="text-align:center"> Profile</h3>
@@ -31,7 +31,7 @@
     @foreach($users as $value)
     <form id="formUpdate" action="/profile/{{$value->id}}">
     {{ csrf_field() }}
-    <!-- {{ method_field('patch') }} -->
+
 
  
     <div class="form-group row">
@@ -70,66 +70,14 @@
       </div>
     </div>
    
-    <form class="form" method="POST" action="/changePassword/{{$value->id}}">
-            {{ csrf_field() }}
-    <div class="form-group row">
-      <label for="password" class="col-md-4 col-form-label text-md-right">Kata Sandi  :</label>
-      <div class="col-md-6">
-      <input type="text" id="password" class="form-control" value="********"disabled >
-      </div>
-      <a data-toggle="modal" data-target="#exampleModalLong{{$value->id}}" href="/editPass" id="btnEditPass"  class="btn btn-primary" value="editPass"  hidden>Edit Password</a>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalLong{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Edit Password
-                  </h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group row">
-                    <label for="alamat" class="col-md-4 col-form-label text-md-right">Kata Sandi Lama  :</label>
-                    <div class="col-md-6">
-                      <input type="password" id="oldPass" class="form-control" name="current-password" required >
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="alamat" class="col-md-4 col-form-label text-md-right">Kata Sandi Baru  :</label>
-                    <div class="col-md-6">
-                      <input type="password" id="newPass" class="form-control"   name="new-password" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="alamat" class="col-md-4 col-form-label text-md-right">Konfirmasi Kata Sandi  :</label>
-                    <div class="col-md-6">
-                      <input type="password" id="newPass" class="form-control"  name="konfirmasi-password" required>
-                    </div>
-                  </div>
-
-                </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-   
- </form>
+  
 
 <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button id="btnEdit"  class="btn btn-primary" value="editdata" onclick="myFunc()">
                                     {{ __('Edit') }}
                                 </button>
-                                <button type="submit" id="btnSubmit"  class="btn btn-primary" value="submitdata" disabled> Submit Data
+                                <button type="submit" id="btnSubmit"  class="btn btn-primary" value="submitdata" disabled onclick="func()"> Submit Data
                                 </button>
                             </div>
                         </div>
