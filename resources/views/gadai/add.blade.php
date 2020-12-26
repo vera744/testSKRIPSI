@@ -10,12 +10,12 @@
     
 <div class="container">
     <form action="/gadai/store" method="post" enctype="multipart/form-data">
-    {{ csrf_field() }}
+    @csrf
     
     <div class="form-group">
         <label for="">Jenis Produk</label>
 
-        <select class="form-control input-sm jenisProduk" name="" id="jenisProduk_id">
+        <select class="form-control input-sm jenisProduk" name="jenisProduk" id="jenisProduk_id">
             <option value="0" disabled="true" selected="true">Pilih</option>
             @foreach($category as $value)
                 <option value="{{$value->id}}">{{$value->namaKategori}}</option> 
@@ -27,7 +27,7 @@
     <div class="form-group"> 
         <label for="">Merek Produk</label>
 
-        <select class="form-control input-sm productName" name="" id="">
+        <select class="form-control input-sm productName" name="merekProduk" id="">
             <option value="0" disabled="true" selected="true">Merek Produk</option>
         </select>
          

@@ -18,7 +18,6 @@ class manageGadaiController extends Controller
     }
     
     public function index(){
-        
         $temp = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
@@ -56,6 +55,17 @@ class manageGadaiController extends Controller
         return view('admin.manageGadai.record')->with('mortgages', $mortgagesRecord);
     }
 
+    public function done(){
+        $mortgagesRecord = DB::table('mortgages')
+        ->join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk','startDate','endDate')
+        ->whereIn('status', ['Ditolak', 'Selesai'])
+        ->get();
+        
+        return view('admin.manageGadai.selesai')->with('mortgages', $mortgagesRecord);
+    }
     public function skejul($id, Request $req){
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$req->input('endDate')]);
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['loan'=>$req->input('loans')]);

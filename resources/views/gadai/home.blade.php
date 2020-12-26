@@ -70,10 +70,25 @@
             <label for="status">Status: {{$value->status}}</label>
             <br>
             <label for="loan">Pinjaman: {{$value->loan}}</label> <br>
+            
+            @if($value->startDate && $value->endDate)
             <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
-                <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label>
-                  
+            <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
+            @php
+              $date1=date_create(date('Y-m-d'));
+                $date2=date_create($value->endDate);
+                $diff=date_diff($date1,$date2);
+                echo $diff->format("Sisa Hari : %a hari");
+                
+            @endphp
 
+              @if ($diff->format("%a")<7)
+              <br>
+              <button class="btn style1">Perpanjang</button>
+              @endif
+
+              <button class="btn style1">Bayar</button>
+            @endif
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
