@@ -18,6 +18,9 @@
     <th scope="col">
      <a href="/recordadmin">Tinjauan Berjalan</a>
     </th>
+    <th scope="col">
+      <a href="/tinjauanSelesai">Tinjauan Selesai</a>
+     </th>
   </tr>
 </table>
 

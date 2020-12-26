@@ -20,6 +20,9 @@
     <th scope="col" class="active"  >
       <a href="/recordadmin" >Tinjauan Berjalan</a>
     </th>
+    <th scope="col">
+      <a href="/tinjauanSelesai">Tinjauan Selesai</a>
+     </th>
   </tr>
 </table>
 
