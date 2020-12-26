@@ -123,9 +123,11 @@
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
                              <a href="gadai">GADAI</a>
-                                <a href="#" >E-COMMERCE</a>
+                                <a href="ecom" >E-COMMERCE</a>
+                             
                                 </div>
                                 </div>
+                                @yield('searchBtn')
                             </div>     
                         </div>
                 
@@ -151,7 +153,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">Profile</a>    
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/changepassword">Change Password</a>    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

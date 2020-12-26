@@ -27,7 +27,9 @@ Route::get('/findProductName', 'GadaiController@findProductName')->middleware('m
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
 
-Route::get('/ecom', 'EcomController@index')->middleware('member');
+
+
+
 
 
 //ADMIN
@@ -46,4 +48,10 @@ Route::get('/profile', 'ProfileController@index')->middleware('member');
 Route::get('/profile/{id}', 'ProfileController@update')->middleware('member');
 
 
-Route::post('/changePassword/{id}','ProfileController@postChangePassword')->middleware('member');
+
+Route::get('/changepassword', 'ProfileController@changepassword');
+Route::post('/changePassword/{id}','ProfileController@postChangePassword');
+
+Route::get('/ecom', 'EcomController@index')->middleware('member');
+Route::get('/ecom/detailproduct', 'EcomController@detail');
+

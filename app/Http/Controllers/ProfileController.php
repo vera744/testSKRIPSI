@@ -86,6 +86,16 @@ class ProfileController extends Controller
       }
 
       
+      public function changepassword()
+      {
+          $userLogin = auth()->User()->id;
+          $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+          ->where('id', "=", $userLogin)
+          ->get();
+  
+          return view('changepassword')->with('users', $user);
+      }
+      
     public function postChangePassword(Request $request, $ids2){
 
       $userLogin = auth()->User()->id;
