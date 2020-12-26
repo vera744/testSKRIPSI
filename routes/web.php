@@ -34,6 +34,7 @@ Route::get('/ecom', 'EcomController@index')->middleware('member');
 Route::get('/admin', 'AdminController@index');
 Route::get('/manageGadai', 'manageGadaiController@index')->middleware('admin');
 Route::get('/recordadmin','manageGadaiController@record')->middleware('admin');
+Route::get('/tinjauanSelesai','manageGadaiController@done')->middleware('admin');
 Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin');
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
