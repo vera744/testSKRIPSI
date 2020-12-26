@@ -64,8 +64,6 @@ class GadaiController extends Controller
         //$list= DB::table('list_produk')->groupby('jenisProduk','id', 'merekProduk', 'created_at', 'updated_at')->get();
         $category = kategoriProduk::all();
         
-        
-
         return view('gadai.add')->with('category', $category);
     }
     public function findProductName(Request $request){
@@ -88,6 +86,8 @@ class GadaiController extends Controller
         $product = new product();
         $product->productName = $request->input('namaProduk');
         $product->productPrice = $request->input('nilaiPinjaman');
+        $product->productCategory = $request->get('jenisProduk');
+        $product->productBrand= $request->get('merekProduk');
         $product->fotoProduk= $image;
         $product->save();
 
@@ -101,8 +101,7 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
-        return view('gadai.add');
-
+        return redirect('/gadai');
         
     }
 }

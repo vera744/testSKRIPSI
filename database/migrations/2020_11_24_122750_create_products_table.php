@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('productDetail')->default("ABCD");
             $table->integer('productQuantity')->default(1);
             $table->string('productDescription')->default("Deskripsi");
+            $table->string('productCategory');
+            $table->string('productBrand');
             $table->string('fotoProduk');
 
             $table->timestamps();

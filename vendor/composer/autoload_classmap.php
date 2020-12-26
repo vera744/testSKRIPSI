@@ -18,6 +18,8 @@ return array(
     'App\\Http\\Controllers\\EcomController' => $baseDir . '/app/Http/Controllers/EcomController.php',
     'App\\Http\\Controllers\\GadaiController' => $baseDir . '/app/Http/Controllers/GadaiController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+    'App\\Http\\Controllers\\UpdatePasswordController' => $baseDir . '/app/Http/Controllers/UpdatePasswordController.php',
     'App\\Http\\Controllers\\manageGadaiController' => $baseDir . '/app/Http/Controllers/manageGadaiController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -29,9 +31,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Mortgage' => $baseDir . '/app/Mortgage.php',
-
     'App\\Mortgage_Detail' => $baseDir . '/app/mortgage_detail.php',
-
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -39,10 +39,8 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
-
     'App\\kategoriProduk' => $baseDir . '/app/kategoriProduk.php',
     'App\\listProduk' => $baseDir . '/app/listProduk.php',
-
     'App\\temp' => $baseDir . '/app/temp.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
