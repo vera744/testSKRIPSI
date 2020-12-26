@@ -101,6 +101,7 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
+        
         return redirect('/gadai');
         
     }
