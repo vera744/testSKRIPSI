@@ -17,7 +17,7 @@ class CreateMortgageDetailsTable extends Migration
             $table->bigIncrements('mDetailID');
             $table->unsignedbigInteger('mortgageID');
             $table->integer('loan');
-            $table->integer('duration')->default(3);
+            $table->integer('duration')->default(90);
             $table->foreign('mortgageID')->references('mortgageID')->on('mortgages');
             $table->string('status')->default('Sedang Ditinjau');
             $table->timestamps();
