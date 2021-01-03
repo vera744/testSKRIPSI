@@ -80,9 +80,9 @@
                                 <button type="submit" id="btnSubmit"  class="btn btn-primary" value="submitdata" disabled onclick="func()"> Submit Data
                                 </button>
                             </div>
-                        </div>
+                      
 </div>
-     
+    </div>
 </form>
   @endforeach
 
@@ -98,12 +98,14 @@
   }
 
   // function func(){
+
     // document.getElementById("nomorHP").disabled=true;
     // document.getElementById("alamat").disabled=true;
     // document.getElementById("email").disabled=true;
     // document.getElementById("btnSubmit").disabled=true;
     // document.getElementById("btnEdit").disabled=false;
     // document.getElementById("btnEditPass").hidden=true;
+
   // }
 </script>
 @endsection

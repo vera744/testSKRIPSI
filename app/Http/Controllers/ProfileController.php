@@ -18,6 +18,7 @@ use Redirect;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Flash;
 use Illuminate\Support\Facades\Crypt;
+use profile;
 
 class ProfileController extends Controller
 {

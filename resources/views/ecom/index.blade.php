@@ -1,13 +1,11 @@
-@extends('layouts.auths')
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+@extends('layouts.layoutEcommerce')
 
 @section('title', "E-Commerce")
 
-@section('searchBtn')
-<form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form>
-@endsection
+
 @section('content')
 
 <div class="content d-flex justify-content-center mt-3">
@@ -53,16 +51,15 @@
                 </div>
                 <div class="card-body">
                 <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                        <img src="kategori/phone.png" width="30" height="30" alt="">Handphone
+                    <a class="navbar-brand" href="/produkkategoriHP">Handphone
+                        <!-- <img src="kategori/phone.png" width="30" height="30" alt="">Handphone -->
                     </a>
 
-                    <a class="navbar-brand" href="#">
-                        <img src="kategori/phone.png" width="30" height="30" alt="">Laptop
+                    <a class="navbar-brand" href="/produkkategoriLaptop">Laptop
+                        
                     </a>
 
-                    <a class="navbar-brand" href="#">
-                        <img src="kategori/phone.png" width="30" height="30" alt="">Elektronik
+                    <a class="navbar-brand" href="/produkkategoriElektronik">Elektronik
                     </a>
                     </nav>
                     
@@ -82,29 +79,24 @@
                 <div class="row">
                 @foreach($products as $value)
                 <div class="col-md-4">
-
-                    <div class="card" style="width: 250px; height: 510px;">
-                        <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="300" width="250">
+             
+                
+                <a href="/ecom/detailproduct/{{$value->productID}}" class="productName">
+                    <div class="card" style="width: 250px; height: 350px;">
+                        <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="250" width="250">
                         <div class="card-body">
-                            <a href="{{ url('/productdetails/'.$value->id) }}" class="productName">
-                                {{ $value->productName }}
-                            </a>
-
+                            {{ $value->namaKategori }}
                             <h6>
-                                Rp. {{ $value->productPrice }}
+                            {{ $value->merekProduk }}
+                            {{ $value->productName }}
                             </h6>
-
-                            <p class="card-text">
-                                {{ $value->productDetail }}
-                            </p>
-
                             <h6>
-                                Qty : {{ $value->productQuantity }} 
+                                Rp. {{ number_format($value->loan) }}
                             </h6>
-
                             
                         </div>
-                    </div>      
+                    </div>
+                    </a>      
                 </div>
                 @endforeach
             </div>

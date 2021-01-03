@@ -46,7 +46,7 @@ class GadaiController extends Controller
         ->join('products',"mortgages.productID", "=", "products.productID")
         ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productCondition', 'fotoProduk')
         ->where('customerID', "=", $userLogin)
-        ->whereIn('status', ['selesai', 'ditolak'])
+        ->whereIn('status', ['selesai', 'ditolak', 'gagal'])
         ->get();
         
         return view('gadai.record')->with('mortgages', $mortgagesRecord);
