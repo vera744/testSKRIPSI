@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePasswordRequest;
-use App\Http\Requests\UpdateProfileRequest;
+use App\Rules\CurrentPassword;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -48,16 +48,30 @@ class ProfileController extends Controller
         return view ('profile.changepassword');
       }
 
-      public function updatepassword(UpdatePasswordRequest $request)
+      public function updatepassword(request $request)
       {
-        $validation = $request->validated();
 
-        $validator = Validator::make($request->all(), $validation);
+        $this->validate($request,[
+          'current_password'=>['required',new CurrentPassword()],
+          'password'=>'bail|required|string|min:8|confirmed',
+        ]);
+        
+        $request->user()->update([
+          'password'=>bcrypt($request->password)
+        ]);
 
-        if ($validator->fails())
-        {
-            return redirect()->route('user.password.edit')->withInput()->withErrors($validator);
-        } 
+        // $validation = $request->validated();
+
+        // foreach($validation as $value){
+          
+        // }
+
+        // $validator = Validator::make($request->all(), $validation);
+
+        // if ($validator->fails())
+        // {
+        //     return redirect()->route('user.password.edit')->withInput()->withErrors($validator);
+        // } 
 
         $request->user()->update([
         'password' => Hash::make($request->get('password'))

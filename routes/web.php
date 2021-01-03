@@ -39,7 +39,7 @@ Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('ad
 Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
 
 Route::group(['middleware'=> 'auth'], function() {
-    Route::get('changepassword', 'ProfileController@changepassword')->name('user.password.edit');
+Route::get('changepassword', 'ProfileController@changepassword')->name('user.password.edit');
     Route::patch('changepassword', 'ProfileController@updatepassword')->name('user.password.update');
 });
 

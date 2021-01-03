@@ -21,7 +21,7 @@
       <br>
           
           <div class="card-body">
-            <form method="POST" action="{{route('user.password.update')}}">
+              <form method="POST" action="{{route('user.password.update')}}">
               @method('patch')
               @csrf
           
