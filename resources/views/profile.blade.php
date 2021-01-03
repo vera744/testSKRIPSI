@@ -98,12 +98,14 @@
   }
 
   // function func(){
-  //   document.getElementById("nomorHP").disabled=true;
-  //   document.getElementById("alamat").disabled=true;
-  //   document.getElementById("email").disabled=true;
-  //   document.getElementById("btnSubmit").disabled=true;
-  //   document.getElementById("btnEdit").disabled=false;
-  //   document.getElementById("btnEditPass").hidden=true;
+
+    // document.getElementById("nomorHP").disabled=true;
+    // document.getElementById("alamat").disabled=true;
+    // document.getElementById("email").disabled=true;
+    // document.getElementById("btnSubmit").disabled=true;
+    // document.getElementById("btnEdit").disabled=false;
+    // document.getElementById("btnEditPass").hidden=true;
+
   // }
 </script>
 @endsection
