@@ -20,16 +20,11 @@ Auth::routes();
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index')->middleware('member');
-
 Route::get('/record', 'GadaiController@record')->middleware('member');
 Route::get('/gadai/add', 'GadaiController@add')->middleware('member');
 Route::get('/findProductName', 'GadaiController@findProductName')->middleware('member');
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
-
-
-
-
 
 
 //ADMIN
@@ -43,11 +38,10 @@ Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('ad
 
 Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
 
-
-Route::get('/profile', 'ProfileController@index')->middleware('member');
-Route::get('/profile/{id}', 'ProfileController@update')->middleware('member');
-
-
+Route::group(['middleware'=> 'auth'], function() {
+    Route::get('changepassword', 'ProfileController@changepassword')->name('user.password.edit');
+    Route::patch('changepassword', 'ProfileController@updatepassword')->name('user.password.update');
+});
 
 Route::get('/changepassword', 'ProfileController@changepassword');
 Route::post('/changePassword/{id}','ProfileController@postChangePassword');
