@@ -14,15 +14,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'user1',
+            'name' => 'admin',
             'dob' => Carbon::parse('1999-01-01'),
             'nomorHP'=>'081345678901',
             'alamat' => 'Jalan Yamaneh',
-            'email'=>"user@gmail.com",
+            'email'=>"admin@admin.com",
             'nomorKTP'=>'90909090',
             'fotoKTP'=> 'landscape1.jpg',
             'fotodenganKTP'=>'landscape2.jpg',
-            'role'=>'customer',
+            'role'=>'admin',
             'password'=>bcrypt('00000000')
         ]);
     }

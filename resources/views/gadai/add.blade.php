@@ -10,7 +10,7 @@
     
     <div class="container">
         <form action="/gadai/store" method="POST" enctype="multipart/form-data">
-            @method('patch')
+            {{-- @method('patch') --}}
             @csrf
     
             <div class="form-group">

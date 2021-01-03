@@ -28,7 +28,8 @@ class GadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productCondition', 'fotoProduk','startDate','endDate')
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
         ->get();
