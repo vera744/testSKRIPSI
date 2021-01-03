@@ -13,6 +13,7 @@ use App\Mortgage;
 
 use App\listProduk;
 use App\kategoriProduk;
+use App\Kondisi;
 
 class GadaiController extends Controller
 {
@@ -27,7 +28,7 @@ class GadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk','startDate','endDate')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'productCondition', 'fotoProduk','startDate','endDate')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
         ->get();
@@ -43,7 +44,7 @@ class GadaiController extends Controller
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productDetail', 'productDescription', 'fotoProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productCondition', 'fotoProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak'])
         ->get();
@@ -63,8 +64,9 @@ class GadaiController extends Controller
       
         //$list= DB::table('list_produk')->groupby('jenisProduk','id', 'merekProduk', 'created_at', 'updated_at')->get();
         $category = kategoriProduk::all();
+        $kondisi = Kondisi::all();
         
-        return view('gadai.add')->with('category', $category);
+        return view('gadai.add', compact('category','kondisi'));
     }
     public function findProductName(Request $request){
       
@@ -87,7 +89,8 @@ class GadaiController extends Controller
         $product->productName = $request->input('namaProduk');
         $product->productPrice = $request->input('nilaiPinjaman');
         $product->productCategory = $request->get('jenisProduk');
-        $product->productBrand= $request->get('merekProduk');
+        $product->productBrand = $request->get('merekProduk');
+        $product->productCondition = $request->get('kondisiProduk');
         $product->fotoProduk= $image;
         $product->save();
 
