@@ -43,9 +43,6 @@ Route::group(['middleware'=> 'auth'], function() {
     Route::patch('changepassword', 'ProfileController@updatepassword')->name('user.password.update');
 });
 
-Route::get('/changepassword', 'ProfileController@changepassword');
-Route::post('/changePassword/{id}','ProfileController@postChangePassword');
-
 Route::get('/ecom', 'EcomController@index')->middleware('member');
 Route::get('/ecom/detailproduct', 'EcomController@detail');
 
