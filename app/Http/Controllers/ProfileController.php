@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Flash;
 use Illuminate\Support\Facades\Crypt;
+use profile;
 
 class ProfileController extends Controller
 {
@@ -96,39 +97,39 @@ class ProfileController extends Controller
           return view('changepassword')->with('users', $user);
       }
       
-    public function postChangePassword(Request $request, $ids2){
+  //   public function postChangePassword(Request $request, $ids2){
 
-      $userLogin = auth()->User()->id;
+  //     $userLogin = auth()->User()->id;
 
-      $validatedData = $request->validate([
-        'current-password' => 'required',
-        'new-password' => 'required|string|confirmed',
-        'konfirmasi-password' => 'required|string|confirmed',
-    ]);
+  //     $validatedData = $request->validate([
+  //       'current-password' => 'required',
+  //       'new-password' => 'required|string|confirmed',
+  //       'konfirmasi-password' => 'required|string|confirmed',
+  //   ]);
 
 
-      if (!(Hash::check($request->get('current-password'), $ids2->password)))
-      {
-          return redirect()->back()->with("error","Password lama anda salah");
-      }
+  //     if (!(Hash::check($request->get('current-password'), $ids2->password)))
+  //     {
+  //         return redirect()->back()->with("error","Password lama anda salah");
+  //     }
 
-      if(strcmp($request->get('current-password'), $request->get('new-password')) == 0)
-      {
-          return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
-      }
+  //     if(strcmp($request->get('current-password'), $request->get('new-password')) == 0)
+  //     {
+  //         return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
+  //     }
 
-      if(strcmp($request->get('new-password'), $request->get('konfirm-password')) != 0)
-      {
-          return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
-      }
+  //     if(strcmp($request->get('new-password'), $request->get('konfirm-password')) != 0)
+  //     {
+  //         return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
+  //     }
 
   
      
-      $ids2->password = bcrypt($request->get('new-password'));
-      $user->save();
+  //     $ids2->password = bcrypt($request->get('new-password'));
+  //     $user->save();
 
-      return redirect()->back()->with("success","Password berhasil diubah");
-  }
+  //     return redirect()->back()->with("success","Password berhasil diubah");
+  // }
 
 
 }

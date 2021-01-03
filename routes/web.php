@@ -44,14 +44,20 @@ Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('ad
 Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
 
 
-Route::get('/profile', 'ProfileController@index')->middleware('member');
-Route::get('/profile/{id}', 'ProfileController@update')->middleware('member');
-
-
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/{id}', 'ProfileController@update');
 
 Route::get('/changepassword', 'ProfileController@changepassword');
 Route::post('/changePassword/{id}','ProfileController@postChangePassword');
 
+//ECOM
 Route::get('/ecom', 'EcomController@index')->middleware('member');
-Route::get('/ecom/detailproduct', 'EcomController@detail');
+Route::get('/ecom/detailproduct/{productID}', 'EcomController@productdetail')->middleware('member');
+Route::get('/search', 'EcomController@search')->name('search');
+Route::get('/produkkategoriHP', 'EcomController@handphone');
+Route::get('/produkkategoriLaptop', 'EcomController@laptop');
+Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 
+Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
+
+Route::get('/ecom/cart','CartController@index')->middleware('auth');
