@@ -1,12 +1,12 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@extends('layouts.layoutEcommerce')
+@extends('template.homeLogin')
 
 @section('title', "E-Commerce")
 
 
-@section('content')
+@section('container')
 
 <div class="content d-flex justify-content-center mt-3">
                 <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">

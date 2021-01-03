@@ -70,6 +70,7 @@
             <label for="status">Status: {{$value->status}}</label>
             <br>
             <label for="loan">Pinjaman: {{$value->loan}}</label> <br>
+            <label for="loan">Kondisi Produk: {{$value->namaKondisi}}</label> <br>
             
             @if($value->startDate && $value->endDate)
             <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>

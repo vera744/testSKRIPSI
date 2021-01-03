@@ -64,9 +64,7 @@
             <br>
             <label for="productName">Nama Produk: {{$value->productName}}</label>
             <br>
-            <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
-            <br>
-            <label for="productDescription">Nama Produk: {{$value->productDescription}}</label>
+            <label for="productCondition">Rincian Produk: {{$value->namaKondisi}}</label>
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>

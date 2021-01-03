@@ -21,7 +21,8 @@ class EcomController extends Controller
            ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
            ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-           ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+           ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+           ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
            ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
            ->where('productQuantity', "=", "1")
            ->get();
@@ -36,7 +37,8 @@ class EcomController extends Controller
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-        ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
         ->where('products.productID', "=", $id)
         ->get();
         
@@ -56,7 +58,8 @@ class EcomController extends Controller
            ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
            ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-           ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+           ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+           ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
            ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
            ->where('productQuantity', "=", "1")
            ->where('productName', 'like', "%$query%")
@@ -76,7 +79,8 @@ class EcomController extends Controller
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-        ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
         ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "handphone")
@@ -93,7 +97,8 @@ class EcomController extends Controller
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-        ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
         ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "laptop")
@@ -111,7 +116,8 @@ class EcomController extends Controller
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
-        ->select('products.productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
         ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "elektronik")
@@ -122,7 +128,7 @@ class EcomController extends Controller
 
     // public function detail(){
     //     $products = Product::
-    //     select('productID', 'productName', 'productPrice', 'productDetail','productDescription', 'fotoProduk')
+    //     select('productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk')
     //     ->get();
 
     //     return view('ecom.detailproduct')->with('products', $products);
