@@ -89,14 +89,14 @@
              
             @else
             <label for="">Tanggal Mulai Pinjaman</label> <br>
-            <input type="date" name="tglstart" id="tglstart" > <br>
+            <input type="date" name="tglstart" id="tglstart"> <br>
 
              @endif
              <label for="">Tanggal Akhir</label> <br>
              <input id="endDate" type="date" name="endDate">
              <br>  
              <label for="">Nilai Pinjaman</label> <br>
-             <input class="col-md-6" type="number" name="loans" id="loans" required="required"> <br>
+             <input class="col-md-6" type="number" name="loans" id="loans" required="required" value="{{$value->loan}}"> <br>
              <br>
              <input type="submit" value="Input" class="btn btn-primary">
             
@@ -156,4 +156,5 @@ function getEntryData(entryId) {
     }
   });
 }
+src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js">
 </script>
