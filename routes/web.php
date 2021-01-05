@@ -25,6 +25,7 @@ Route::get('/gadai/add', 'GadaiController@add')->middleware('member');
 Route::get('/findProductName', 'GadaiController@findProductName')->middleware('member');
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
+Route::get('/cart','CartController@index');
 
 
 //ADMIN
