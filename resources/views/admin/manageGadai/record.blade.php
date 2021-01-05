@@ -34,6 +34,7 @@
     <tr>
       <th>Nama Transaksi</th>
       <th>Status</th>
+      <th>Sisa Hari</th>
       <th></th>
     </tr>
     @foreach($mortgages as $value)
@@ -42,6 +43,17 @@
     <tr>
     <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
     <td>{{$value->status}}</td>
+    @php
+    $date1=date_create(date('Y-m-d'));
+      $date2=date_create($value->endDate);
+      $diff=date_diff($date1,$date2); 
+  @endphp
+    @if ($diff->format("%a"))
+    <td>{{$diff->format("%a")}} hari</td>
+    @else
+    <td>-</td>
+    @endif
+
     <td><div class="dropdown">
       <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
