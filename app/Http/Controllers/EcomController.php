@@ -23,7 +23,7 @@ class EcomController extends Controller
            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
            ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
            ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-           ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
+           ->whereIn('status', ['sedang berlangsung', 'gagal'])
            ->where('productQuantity', "=", "1")
            ->get();
    

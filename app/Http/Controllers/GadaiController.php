@@ -28,8 +28,10 @@ class GadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
         ->get();
@@ -45,7 +47,10 @@ class GadaiController extends Controller
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'productCondition', 'fotoProduk')
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak', 'gagal'])
         ->get();

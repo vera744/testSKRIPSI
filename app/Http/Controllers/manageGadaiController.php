@@ -22,8 +22,10 @@ class manageGadaiController extends Controller
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate')->whereIn('status', ['sedang ditinjau'])
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate','namaKategori', 'merekProduk')->whereIn('status', ['sedang ditinjau'])
         ->get();
         return view('admin.manageGadai.index')->with('temp', $temp);
     }
@@ -49,8 +51,10 @@ class manageGadaiController extends Controller
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->whereIn('status', ['Sudah Ditinjau', 'Sedang Berlangsung'])->orderBy('mortgages.mortgageID')
         ->get();
         
@@ -62,8 +66,10 @@ class manageGadaiController extends Controller
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->whereIn('status', ['Ditolak', 'Selesai','Gagal'])
         ->get();
         

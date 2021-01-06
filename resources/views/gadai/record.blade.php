@@ -57,15 +57,16 @@
           </div>
           <div class="modal-body">
             <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
-            <label for="name">Nama: {{$value->name}}</label>
-            <br>
+          
             <label for="mortgageID">Gadai ID: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
+            <br>
+            <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
+            <br>
+            <label for="productMerk">Merek Produk: {{$value->merekProduk}}</label>
             <br>
             <label for="productName">Nama Produk: {{$value->productName}}</label>
             <br>
-            <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
-            <br>
-            <label for="productDescription">Nama Produk: {{$value->productDescription}}</label>
+            <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}}</label>
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>

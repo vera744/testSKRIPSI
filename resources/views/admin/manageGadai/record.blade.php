@@ -62,9 +62,13 @@
             <br>
             <label for="mortgageID">Gadai ID: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
             <br>
+            <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
+            <br>
+            <label for="productMerk">Merek Produk: {{$value->merekProduk}}</label>
+            <br>
             <label for="productName">Nama Produk: {{$value->productName}}</label>
             <br>
-            <label for="productCondition">Rincian Produk: {{$value->namaKondisi}}</label>
+            <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}}</label>
             <br>
             <label for="status">Status: {{$value->status}}</label>
             <br>
