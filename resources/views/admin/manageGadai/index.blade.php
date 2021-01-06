@@ -58,6 +58,7 @@
                        </button>
                     </div>
                     <div class="modal-body">
+                    <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
                       <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
                       <label for="status" style="color: blue">
@@ -66,16 +67,18 @@
                       <br>
                       <label for="productName">Customer ID: {{$value->customerID}}</label>
                       <br>
+                      <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
+                      <br>
+                      <label for="productMerk">Merek Produk: {{$value->merekProduk}}</label>
+                      <br>
                       <label for="productName">Nama Produk: {{$value->productName}}</label>
                       <br>
-                      {{-- <label for="productName">Harga Produk: {{$value->productPrice}}</label>
-                      <br> --}}
-                      <label for="productDetail">Rincian Produk: {{$value->productDetail}}</label>
+                      <label for="productPrice">Harga Produk: {{$value->productPrice}}</label>
+                      <br> 
+                      
+                       <label for="productQty">Jumlah Produk: {{$value->productQuantity}}</label>
                       <br>
-                      {{-- <label for="productDetail">Jumlah Produk: {{$value->productQuantity}}</label>
-                      <br> --}}
-                      <label for="productDescription">Deskripsi Produk: {{$value->productDescription}}</label>
-                      <br>
+                
                       <label for="loan">Pinjaman: {{$value->loan}}</label>
                     </div>
                     <div class="modal-footer">

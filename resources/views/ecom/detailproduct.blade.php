@@ -1,9 +1,9 @@
-@extends('template.homeLogin')
+@extends('layouts.layoutEcommerce')
 
 @section('title', "Detail Produk")
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@section('container')
+@section('content')
 
 @foreach($products as $value)
 
@@ -43,18 +43,12 @@
               <th class="pl-0 w-25" scope="row" name="quantity" id="quantity"><strong>Kuantitas</strong></th>
               <td>{{ $value->productQuantity }}</td>
             </tr>
-            <tr>
-              <th class="pl-0 w-25" scope="row"><strong>Warna</strong></th>
-              <td>Hitam</td>
-            </tr>
+         
             <tr>
               <th class="pl-0 w-25" scope="row"><strong>Kondisi</strong></th>
-              <td></td>
+              <td>{{$value->namaKondisi}}</td>
             </tr>
-            <tr>
-              <th class="pl-0 w-25" scope="row"><strong>Tahun Pembuatan</strong></th>
-              <td></td>
-            </tr>
+          
           </tbody>
         </table>
       </div>
