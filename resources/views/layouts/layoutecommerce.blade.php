@@ -153,7 +153,9 @@
                             @endif --}}
                         @else
                         <li class="nav-item">
-                                <a class="nav-link" href="/ecom/cart">cart</a>
+                                <a class="nav-link" href="/ecom/cart">CART
+                                <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->totalQty: ''}}</span>
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

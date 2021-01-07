@@ -61,4 +61,5 @@ Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 
 Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
-Route::get('/ecom/cart','CartController@index')->middleware('auth');
+Route::get('/ecom/cart','CartController@index')->middleware('member');
+Route::delete('/ecom/cart/{productID}', 'CartController@destroy')->name('cart.destroy');
