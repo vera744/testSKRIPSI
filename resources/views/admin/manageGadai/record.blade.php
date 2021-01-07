@@ -26,22 +26,34 @@
   </tr>
 </table>
 
-<tbody>
-  @if (count($mortgages)> 0 )
+@if (count($mortgages)> 0 )
 
 <div class="table-responsive">
   <table class="table">
     <tr>
       <th>Nama Transaksi</th>
       <th>Status</th>
-      <th></th>
+      <th>Sisa Hari</th>
+      <th>Detail</th>
     </tr>
     @foreach($mortgages as $value)
     
-
+    
+    <tbody id="myTable">
     <tr>
-    <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
-    <td>{{$value->status}}</td>
+      <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
+      <td>{{$value->status}}</td>
+      @php
+    $date1=date_create(date('Y-m-d'));
+    $date2=date_create($value->endDate);
+    $diff=date_diff($date1,$date2); 
+    @endphp
+    @if ($diff->format("%a"))
+    <td>{{$diff->format("%a")}} hari</td>
+    @else
+    <td>-</td>
+    @endif
+
     <td><div class="dropdown">
       <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
       </a>
@@ -132,31 +144,5 @@
 @endsection
 
 <script>
-  $(document).ready(function () {
-  $('.showQuickInfo').click(function () {
-    $('#QuickInfo').toggleClass('is-active'); // MODAL
-
-    var $entry = this.getAttribute('data-entry');
-    getEntryData($entry);
-  });
-}
-
-function getEntryData(entryId) {
-  $.ajax({
-    url: '/entries/getEntryDataForAjax/' + entryId,
-    type: 'get',
-    dataType: 'json',
-    success: function (response) {
-      if (response.length == 0) {
-        console.log( "Datensatz-ID nicht gefunden.");
-      } else { 
-        // set values
-        $('#mortgageID').val( response[0].mortgageID );         
-        $('#status').val( response[0].status);
-        // and so on
-      }
-    }
-  });
-}
-src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js">
+  
 </script>
