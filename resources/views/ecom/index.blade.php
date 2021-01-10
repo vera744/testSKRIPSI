@@ -10,7 +10,7 @@
 
 <div class="content d-flex justify-content-center mt-3">
     <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">
-        <ol class="carousel-indicators">
+         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
@@ -22,19 +22,20 @@
                         
             <div class="carousel-item">
                 <img src="images/sale (1).png" class="d-block w-100" alt="second slide">
-        </div>              
+            </div>        
+        </div>
+        
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-    </a>
 </div>
-
 
 <br>
 <br>
@@ -50,16 +51,17 @@
                 <div class="card-body">
                     <nav class="navbar navbar-light bg-light">
                         <a class="navbar-brand" href="/produkkategoriHP">Handphone
-                            <!-- <img src="kategori/phone.png" width="30" height="30" alt="">Handphone -->
+                        <!-- <img src="kategori/phone.png" width="30" height="30" alt="">Handphone -->
                         </a>
 
                         <a class="navbar-brand" href="/produkkategoriLaptop">Laptop</a>
+
                         <a class="navbar-brand" href="/produkkategoriElektronik">Elektronik</a>
-                    </nav> 
+                    </nav>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-9">
             <div class="card" width="100" height="100">
                 <div class="card-header">
@@ -81,7 +83,7 @@
                                             {{ $value->merekProduk }}
                                             {{ $value->productName }}
                                         </h6>
-                                        
+
                                         <h6>
                                             Rp. {{ number_format($value->loan) }}
                                         </h6>
