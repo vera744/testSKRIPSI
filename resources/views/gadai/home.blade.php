@@ -122,7 +122,7 @@
 </div>
 
 <div class="row justify-content-center">
-  {{ $mortgages->onEachSide(5)->links() }}
+{{ $mortgages->onEachSide(5)->links() }}
 </div>
   
 

@@ -56,7 +56,7 @@ class GadaiController extends Controller
         ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak', 'gagal'])
-        ->get();
+        ->paginate(5);
         
         return view('gadai.record')->with('mortgages', $mortgagesRecord);
     }
