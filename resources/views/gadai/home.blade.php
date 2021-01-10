@@ -85,10 +85,12 @@
 
               @if ($diff->format("%a")<7)
               <br>
-              <button class="btn style1">Perpanjang</button>
+              <form action="/manage/append/{{$value->mortgageID}}">
+                <button class="btn style1">Perpanjang</button>
+              </form>
               @endif
-
-              <button class="btn style1">Bayar</button>
+              <br>
+              <a href="/manage/complete/{{$value->mortgageID}}" class="btn style1">Bayar</a>
             @endif
           </div>
           <div class="modal-footer">

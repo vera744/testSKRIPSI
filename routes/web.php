@@ -37,8 +37,10 @@ Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin')
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
 
-Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');
 
+Route::get('/manage/append/{id}','manageGadaiController@append');
+Route::get('/manage/complete/{id}','manageGadaiController@compelete');
 
 
 Route::get('/profile', 'ProfileController@index');
