@@ -96,7 +96,7 @@
                     <label for="">End Datenya : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
                   @endif
 
-                  <br>
+                  <hr>
                   
                   <form action="/manage/input_transaction/{{$value->mortgageID}}">
                     @if ($value->startDate!=null)

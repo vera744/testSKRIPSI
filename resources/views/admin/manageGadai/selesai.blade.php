@@ -84,7 +84,7 @@
                     <br>
                   @endif
 
-                  <br>
+                  <hr>
                 </div>
             
                 <div class="modal-footer">
