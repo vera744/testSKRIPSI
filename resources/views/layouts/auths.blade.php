@@ -93,7 +93,7 @@
                 color: #19365C;
             }
 
-            #paymentBox {
+            /* #paymentBox {
         
             background-color: #19365C;
             border: 1px solid  #19365C;
@@ -103,12 +103,8 @@
             margin-left: 100px;
             margin-right: 100px;
             color: white;
-            }
+            } */
 
-            #paymentBox p{
-                color: white;
-                font-size: 12pt;
-            }
 
 </style>
 <body>

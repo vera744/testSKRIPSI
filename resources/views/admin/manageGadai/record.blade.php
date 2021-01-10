@@ -44,14 +44,22 @@
       <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
       <td>{{$value->status}}</td>
       @php
-    $date1=date_create(date('Y-m-d'));
-    $date2=date_create($value->endDate);
-    $diff=date_diff($date1,$date2); 
+      $date1=date_create(date('Y-m-d'));
+      $date2=date_create($value->endDate);
+
+      if($date2>$date1){
+        $diff=date_diff($date1,$date2); 
+      }
+
+      else {
+        $diff=date_diff($date2,$date2);
+      }
     @endphp
-    @if ($diff->format("%a"))
-    <td>{{$diff->format("%a")}} hari</td>
-    @else
+
+    @if ($diff->format("%a")==0)
     <td>-</td>
+    @else
+    <td>{{$diff->format("%a")}} hari</td>
     @endif
 
     <td><div class="dropdown">
