@@ -114,4 +114,21 @@ class GadaiController extends Controller
         return redirect('/gadai');
         
     }
+
+    public function indexPayment($id){
+
+        $mortgages = DB::table('mortgages')
+        ->join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->where('mortgages.mortgageID', "=", $id)
+        ->get();
+        
+        
+        return view('payment')->with('mortgages', $mortgages);;
+    }
 }

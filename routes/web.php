@@ -64,3 +64,5 @@ Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
+
+Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');

@@ -90,7 +90,7 @@
               </form>
               @endif
               <br>
-              <a href="/manage/complete/{{$value->mortgageID}}" class="btn style1">Bayar</a>
+              <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar</a>
             @endif
           </div>
           <div class="modal-footer">

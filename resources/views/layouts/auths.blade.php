@@ -93,6 +93,23 @@
                 color: #19365C;
             }
 
+            #paymentBox {
+        
+            background-color: #19365C;
+            border: 1px solid  #19365C;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 5px 10px gray;
+            margin-left: 100px;
+            margin-right: 100px;
+            color: white;
+            }
+
+            #paymentBox p{
+                color: white;
+                font-size: 12pt;
+            }
+
 </style>
 <body>
     <div id="app">
