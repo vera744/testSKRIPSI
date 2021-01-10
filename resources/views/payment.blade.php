@@ -17,20 +17,20 @@
         <h2>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h3>
         <label>Durasi Pinjaman : </label>
         @php
-            $date1=date_create(date('Y-m-d'));
-        $date2=date_create($value->startDate);
+            $today=date_create(date('Y-m-d'));
+        $start=date_create($value->startDate);
 
-      if($date2<$date1){
-        $diff=date_diff($date2,$date1); 
+      if($start<$today){
+        $diff=date_diff($start,$today); 
         $div=$diff->format("%a")/30;
         $rounded = round($div);
+
+        if($div <1){
+            $rounded=1;
+        }
       }
 
-      else {
-        $diff=date_diff($date1,$date1);
-        $div=$diff->format("%a")/30;
-        $rounded = round($div);
-      }
+
       
       echo ($rounded);
       echo (" bulan");
