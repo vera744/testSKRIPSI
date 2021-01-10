@@ -16,7 +16,7 @@ use App\kategoriProduk;
 use App\Kondisi;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\GadaiEmail;
+use App\Mail\RequestGadaiEmail;
 
 class GadaiController extends Controller
 {
@@ -27,7 +27,7 @@ class GadaiController extends Controller
     
     public function index(){
         $userLogin = auth()->User()->id;
-        $mortgage = Mortgage::
+        $mortgages = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
         ->join('products',"mortgages.productID", "=", "products.productID")
@@ -37,10 +37,10 @@ class GadaiController extends Controller
         ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
-        ->get();
+        ->paginate(5);
 
 
-        return view('gadai.home')->with('mortgages', $mortgage);
+        return view('gadai.home',compact('mortgages'));
 
     }
 
@@ -113,9 +113,9 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
-        Mail::to(auth()->User()->email)->send(new GadaiEmail());
+        Mail::to(auth()->User()->email)->send(new RequestGadaiEmail());
         
-        return redirect('/gadai');
+        return redirect('/gadai')->with(['success' => 'Request gadai berhasil diajukan!']);
         
     }
 }

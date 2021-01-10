@@ -61,60 +61,10 @@ class ProfileController extends Controller
           'password'=>bcrypt($request->password)
         ]);
 
-        // $validation = $request->validated();
-
-        // foreach($validation as $value){
-          
-        // }
-
-        // $validator = Validator::make($request->all(), $validation);
-
-        // if ($validator->fails())
-        // {
-        //     return redirect()->route('user.password.edit')->withInput()->withErrors($validator);
-        // } 
-
         $request->user()->update([
         'password' => Hash::make($request->get('password'))
         ]);
         
         return redirect()->route('user.password.edit')->with(['success' => 'Password berhasil diubah!']);
       }
-
-      
-  //   public function postChangePassword(Request $request, $ids2){
-
-  //     $userLogin = auth()->User()->id;
-
-  //     $validatedData = $request->validate([
-  //       'current-password' => 'required',
-  //       'new-password' => 'required|string|confirmed',
-  //       'konfirmasi-password' => 'required|string|confirmed',
-  //   ]);
-
-
-  //     if (!(Hash::check($request->get('current-password'), $ids2->password)))
-  //     {
-  //         return redirect()->back()->with("error","Password lama anda salah");
-  //     }
-
-  //     if(strcmp($request->get('current-password'), $request->get('new-password')) == 0)
-  //     {
-  //         return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
-  //     }
-
-  //     if(strcmp($request->get('new-password'), $request->get('konfirm-password')) != 0)
-  //     {
-  //         return redirect()->back()->with("error","Password baru anda sama dengan password lama, harap gunakan password lain");
-  //     }
-
-  
-     
-  //     $ids2->password = bcrypt($request->get('new-password'));
-  //     $user->save();
-
-  //     return redirect()->back()->with("success","Password berhasil diubah");
-  // }
-
-
 }

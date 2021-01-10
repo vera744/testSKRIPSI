@@ -50,7 +50,6 @@ Route::get('changepassword', 'ProfileController@changepassword')->name('user.pas
     Route::patch('changepassword', 'ProfileController@updatepassword')->name('user.password.update');
 });
 
-
 //ECOM
 Route::get('/ecom', 'EcomController@index')->middleware('member');
 Route::get('/ecom/detailproduct/{productID}', 'EcomController@productdetail')->middleware('member');
