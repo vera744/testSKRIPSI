@@ -62,3 +62,6 @@ Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
+
+//EMAIL
+Route::get('/kirimemail','EmailController@index');

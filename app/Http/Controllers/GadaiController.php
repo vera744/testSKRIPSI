@@ -15,6 +15,9 @@ use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\GadaiEmail;
+
 class GadaiController extends Controller
 {
 
@@ -110,6 +113,7 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
+        Mail::to(auth()->User()->email)->send(new GadaiEmail());
         
         return redirect('/gadai');
         
