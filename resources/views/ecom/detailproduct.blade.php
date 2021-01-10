@@ -6,6 +6,9 @@
 @section('content')
 
 @foreach($products as $value)
+<form method="POST" action="/ecom/add-to-cart/{{$value->productID}}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{method_field('POST')}}
 
 <!--Section: Block Content-->
 <section class="mb-5">
@@ -30,10 +33,10 @@
     </div>
     <div class="col-md-6">
 
-      <h5 name="name" id="name">{{ $value->merekProduk }} {{ $value->productName }}</h5>
-      <p class="mb-2 text-muted text-uppercase small">{{ $value->namaKategori }}</p>
+      <h5 name="name" id="merekProduk">{{ $value->merekProduk }} {{ $value->productName }}</h5>
+      <p class="mb-2 text-muted text-uppercase small" name="namaKategori">{{ $value->namaKategori }}</p>
      
-      <p><span class="mr-1" name="price" id="price"><strong> Rp. {{ number_format($value->loan) }}</strong></span></p>
+      <p><span class="mr-1" name="productPrice" id="productPrice"><strong> Rp. {{ number_format($value->productPrice) }}</strong></span></p>
 
      
       <div class="table-responsive">
@@ -41,12 +44,12 @@
           <tbody>
             <tr>
               <th class="pl-0 w-25" scope="row" name="quantity" id="quantity"><strong>Kuantitas</strong></th>
-              <td>{{ $value->productQuantity }}</td>
+              <td name="productQuantity">{{ $value->productQuantity }}</td>
             </tr>
          
             <tr>
               <th class="pl-0 w-25" scope="row"><strong>Kondisi</strong></th>
-              <td>{{$value->namaKondisi}}</td>
+              <td name="namaKondisi">{{$value->namaKondisi}}</td>
             </tr>
           
           </tbody>
@@ -54,19 +57,17 @@
       </div>
       <hr>
     
-      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Beli Sekarang</button>
+      <!-- <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Beli Sekarang</button> -->
+  
+    <button type="submit" class="btn btn-light btn-md mr-1 mb-2">Masukkan Keranjang</button>
       
-        <a href="/ecom/add-to-cart/{{$value->productID}}">
-        <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
-          class="fas fa-shopping-cart pr-2"></i>Masukkan Keranjang</button>
-        </a>
     </div>
   </div>
 
 </section>
 <!--Section: Block Content-->
 
-
+</form>
 @endforeach
 
 @endsection

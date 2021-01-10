@@ -8,68 +8,75 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Cart;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 
 
 class CartController extends Controller
 {
-    public function add(Request $request, $id){
-        
-        $products = Product::
-        select('productID', 'productName', 'productPrice', 'fotoProduk', 'productPrice','productQuantity')
-        ->where('productID', "=", $id)
-        ->first();
+    public function add(Request $req, $id){
+        $userLogin = auth()->User()->id;
+        $cartsekarang = Cart::where('IDProduct', '=', $id)->where('customerID', '=', $userLogin)->first();
+        $stocklama = Product::where('productID', '=', $id)->first()->productQuantity;
+        $stocknew = $stocklama - 1;
+        $reqproductid = $id;
+        $price= Product::where('productID','=',$id)->first()->productPrice;
 
-        
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($products,  $products->$id, $products->productName, $products->productPrice);
+        if ($cartsekarang != null){
+            Session::flash('dataada','Produk ini sudah mencapai batas pembeliaan produk');
+        }
+        else{
+            $cart = new Cart();
+            $userID = auth()->User()->id;
+            $user = User::where('id', '=', $userID);
+            $qty = 1;
+            $totalPrice = $qty * $price;
+            $cart->IDProduct = $id;
+            $cart->quantity = 1;
+            $cart->total_price = $totalPrice;
+            $cart->customerID = $userID;
+            $cart->save();
+        }
 
-        $request->session()->put('cart', $cart);
-        // dd($request->session()->get('cart'));
-        return back();
+        return redirect('ecom');
 
-        // Cart::session(auth()->id())->add(array(
-        //     'id' => $product->id,
-        //     'name' => $product->name,
-        //     'price' => $product->price,
-        //     'quantity' => 1,
-        //     'attributes' => array(),
-        //     'associatedModel' => $product
-
-        // ));
-
-        // return back();
     }
 
     public function index()
     {
-        $products = Product::
-        select('productID', 'productName', 'productPrice', 'fotoProduk', 'productPrice','productQuantity')
-        ->first();
+        $userLogin = auth()->User()->id;
+        $cart = Cart::
+        join('products', 'products.productID', '=', 'carts.IDProduct')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk')
+         ->where('customerID', '=', $userLogin)
+        ->get();
 
-        if (!Session::has('cart')){
-            return view('ecom.cart');
+        $total_price = 0;
+        $totalqty = 0;
 
-        }
-        $mightAlsoLike = Product::inRandomOrder()->take(4)->get();
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        foreach ($cart as $c) {
+            $total_price += $c->total_price;
+            $totalqty += 1;
         
-        return view('ecom.cart')->with([
-            'products'=> $cart->items, 
-            'totalPrice'=>$cart->totalPrice,
-            'mightAlsoLike' => $mightAlsoLike,
-            'products' => $products,
-        ]);
+        }
+         return view('/ecom/cart', compact('cart', 'total_price'));
     }
 
-    public function destroy($id){
-        $product = session::forget('cart', $id);
-        if(empty($product)) {
-            return back();
-        }
-        $product->destroy($id);
+    public function destroy(Request $req){
+         $findcartid = $req->cartid;
+         $findcart = Cart::find($findcartid)->first();
+         //$product = Product::where('productID', '=', $req->productID)->first();
+
+        // $product = session::forget('cart', $id);
+        // if(empty($product)) {
+        //     return back();
+        // }
+        $findcart->delete();
         return back()->with('success_message', 'Item has been removed');
+    }
+
+    public function checkout(Request $req){
+        $cart = Cart::all();
+        
     }
 }

@@ -5,9 +5,13 @@
 
 @section('title', "E-Commerce")
 
-
 @section('content')
-
+@if ($message = Session::get('dataada'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <strong>{{ $message }}</strong>
+  </div>
+@endif
 <div class="content d-flex justify-content-center mt-3">
                 <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">
 
