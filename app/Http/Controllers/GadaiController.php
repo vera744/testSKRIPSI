@@ -10,7 +10,7 @@ use App\temp;
 use App\product;
 use App\mortgage_detail;
 use App\Mortgage;
-
+use DateTime;
 use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
@@ -23,6 +23,10 @@ class GadaiController extends Controller
     }
     
     public function index(){
+        $date1=date_create(date('Y-m-d'));
+     
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
+       
         $userLogin = auth()->User()->id;
         $mortgage = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
@@ -146,6 +150,6 @@ class GadaiController extends Controller
         ->get();
         
         
-        return view('append')->with('mortgages', $mortgages);;
+        return view('appendP')->with('mortgages', $mortgages);;
     }
 }

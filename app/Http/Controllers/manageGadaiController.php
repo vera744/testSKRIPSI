@@ -47,6 +47,9 @@ class manageGadaiController extends Controller
     }
 
     public function record(){
+
+        $date1=date_create(date('Y-m-d'));
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
         $mortgagesRecord = DB::table('mortgages')
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
