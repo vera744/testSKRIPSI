@@ -100,6 +100,9 @@
 
     </table>
   </div>
+  <div class="row justify-content-center">
+    {{ $mortgages->onEachSide(5)->links() }}
+  </div>
 
   @else
     <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>

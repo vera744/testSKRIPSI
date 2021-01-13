@@ -6,6 +6,13 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
+
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
@@ -93,7 +100,12 @@
             </td>
           </tr>
         @endforeach
+        
       </table>
+      
+      <div class="row justify-content-center">
+        {{ $temp->onEachSide(5)->links() }}
+      </div>
       
       <div class="d-flex justify-content-center">
           {{-- {{ $temp->links()}} --}}

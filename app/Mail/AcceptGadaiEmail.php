@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RequestGadaiEmail extends Mailable
+class AcceptGadaiEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,12 @@ class RequestGadaiEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $custName;
+
+    public function __construct($request)
     {
-        //
+        $this->custName = $request;
+        
     }
 
     /**
@@ -29,10 +32,6 @@ class RequestGadaiEmail extends Mailable
     public function build()
     {
         return $this->from('luisalexsander@gmail.com')
-                   ->markdown('emails.requestemail')
-                   ->with(
-                    [
-                        'nama' => auth()->User()->name,
-                    ]);
+                   ->markdown('emails.acceptemail');
     }
 }
