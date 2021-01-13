@@ -85,7 +85,7 @@
 
               @if ($diff->format("%a")<7)
               <br>
-              <form action="/manage/append/{{$value->mortgageID}}">
+              <form action="/gadai/append/{{$value->mortgageID}}">
                 <button class="btn style1">Perpanjang</button>
               </form>
               @endif

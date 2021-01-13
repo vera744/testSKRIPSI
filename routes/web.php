@@ -66,3 +66,4 @@ Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('me
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
 
 Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
+Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');

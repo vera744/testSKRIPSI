@@ -43,17 +43,16 @@
         $bunga = $raterate * $value->loan * $rounded;
         @endphp
         <label>Bunga Pinjaman : Rp. {{number_format($bunga)}}</label> <br>
-        <label>Total Pembayaran : Rp. </label>
-        @php
-        echo number_format($bunga+$value->loan);
-        @endphp
+        <label>Total Pembayaran : Rp. {{number_format($bunga)}}</label>
+        <label>Silahkan melakukan pembayaran bunga pinjaman terlebih dahulu</label>
+       
 
      </div>
     </div>
 
     <div class="d-flex justify-content-center">
 
-        <a href="/manage/complete/{{$value->mortgageID}}" class="btn style1">Bayar</a>
+        <a href="/manage/append/{{$value->mortgageID}}" class="btn style1">Bayar</a>
     </div>
 
 </div>
