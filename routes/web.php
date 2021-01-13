@@ -64,3 +64,11 @@ Route::post('/ecom/add-to-cart/{productID}','CartController@add')->middleware('m
 Route::get('/ecom/cart','CartController@index')->middleware('member');
 Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
 Route::post('/checkout', 'CartController@checkout')->middleware('member');
+Route::post('/editalamat', 'CartController@editalamat')->middleware('member');
+Route::get('/tambahalamatt', 'CartController@tambahalamat')->middleware('member');
+Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
+Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
+
+Route::get('/checkout', 'CartController@checkoutpage')->middleware('member');
+
+Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');

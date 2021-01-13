@@ -21,11 +21,12 @@
                 @foreach($cart as $value)
                   
                 <tr>
+               
                     <td> 
-                   
+                    <a href="/ecom/detailback/{{$value->IDProduct}}">
                     <img src="/storage/fotoProduk/{{$value->fotoProduk}}"height="150" width="150">
                    
-                    
+                    </a>
                     <td>{{$value->productName}}</td>
                     <td>{{$value->quantity}}</td>
                     <td>{{number_format($value->total_price)}}</td>
@@ -38,6 +39,7 @@
                         <button type="submit" class="btn btn-info" style="float:center;">Delete</button>
                         </form>
                     </td>
+                  
                     </tr>
                 @endforeach
             </tbody>

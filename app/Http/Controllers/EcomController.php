@@ -126,6 +126,20 @@ class EcomController extends Controller
         return view('ecom.produkkategori')->with('products', $products);
     }
 
+    public function back($id){
+        $products = Product::
+        join('mortgages', "products.productID", "=", "mortgages.productID")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->where('products.productID', "=", $id)
+        ->get();
+        
+        return view('ecom.detailproduct')->with('products', $products);
+    }
+
     // public function detail(){
     //     $products = Product::
     //     select('productID', 'productName', 'productPrice', 'namaKondisi', 'fotoProduk')

@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->date('dob');
             $table->string('nomorHP');
-            $table->string("alamat");
+            $table->string("alamat")->default(1);
             $table->string('email')->unique();
             $table->string('nomorKTP');
             $table->string("fotoKTP");
