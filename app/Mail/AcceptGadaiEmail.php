@@ -32,6 +32,6 @@ class AcceptGadaiEmail extends Mailable
     public function build()
     {
         return $this->from('luisalexsander@gmail.com')
-                   ->markdown('emails.acceptemail');
+                   ->markdown('emails.admin.gadai.acceptemail');
     }
 }

@@ -13,6 +13,13 @@
   </div>
 @endif 
 
+@if ($message = Session::get('reject'))
+  <div class="alert alert-warning alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
+
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
