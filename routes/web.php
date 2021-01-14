@@ -63,9 +63,11 @@ Route::post('/ecom/add-to-cart/{productID}','CartController@add')->middleware('m
 
 Route::get('/ecom/cart','CartController@index')->middleware('member');
 Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
-Route::post('/checkout', 'CartController@checkout')->middleware('member')->name('ecom.checkout');
-Route::get('/editalamat', 'CartController@editalamat')->middleware('member');
+Route::post('/checkout', 'CartController@checkout')->name('ecom.checkout')->middleware('member');
+Route::get('/editalamat', 'CartController@editalamat')->name('editalamat')->middleware('member');
 Route::get('/tambahalamatt', 'CartController@tambahalamat')->middleware('member');
+Route::get('/backcheckout', 'CartController@backcheckout')->middleware('member');
+
 // Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
 Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
 Route::post('/destroyalamat', 'CartController@destroyalamat')->name('alamat.destroy');

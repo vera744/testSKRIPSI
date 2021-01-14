@@ -100,7 +100,7 @@ class CartController extends Controller
         }
         $total = $testongkir + $grandtotal;
 
-        $alamat = AlamatPengiriman::select('userID','namaPenerima', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
         ->where('userID', "=", $userLogin)
         ->get();
 
@@ -228,8 +228,12 @@ class CartController extends Controller
         // ->get();
 
         
-        return redirect('ecom.checkout');
+        return redirect()->route('editalamat');
 
+    }
+
+    public function backcheckout(){
+        return redirect()->route('ecom.checkout');
     }
 
     
