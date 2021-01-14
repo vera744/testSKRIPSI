@@ -37,8 +37,10 @@ Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin')
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
 
-Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');
 
+Route::get('/manage/append/{id}','manageGadaiController@append');
+Route::get('/manage/complete/{id}','manageGadaiController@compelete');
 
 
 Route::get('/profile', 'ProfileController@index');
@@ -62,3 +64,6 @@ Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
+
+Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
+Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');

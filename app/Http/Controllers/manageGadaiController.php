@@ -47,6 +47,9 @@ class manageGadaiController extends Controller
     }
 
     public function record(){
+
+        $date1=date_create(date('Y-m-d'));
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
         $mortgagesRecord = DB::table('mortgages')
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
@@ -109,6 +112,27 @@ class manageGadaiController extends Controller
         return redirect ('manageGadai');
 
 
+    }
+
+    public function append($id, Request $req){
+    $date = new DateTime($req->input('endDate'));
+    $day = $date->format('j');
+
+    $date->modify("+3 month");
+    $next_month_day = $date->format('j');
+        
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$date]);
+
+        return redirect ('gadai');
+    }
+
+    public function compelete($id){
+        $todate = new DateTime();
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['status'=>"Selesai"]);
+        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$todate]);
+
+        return redirect ('gadai');
+        
     }
 
 }
