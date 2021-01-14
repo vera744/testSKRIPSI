@@ -10,7 +10,7 @@ use App\temp;
 use App\product;
 use App\mortgage_detail;
 use App\Mortgage;
-
+use DateTime;
 use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
@@ -26,6 +26,10 @@ class GadaiController extends Controller
     }
     
     public function index(){
+        $date1=date_create(date('Y-m-d'));
+     
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
+       
         $userLogin = auth()->User()->id;
         $mortgages = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
@@ -117,5 +121,39 @@ class GadaiController extends Controller
         
         return redirect('/gadai')->with(['success' => 'Request gadai berhasil diajukan!']);
         
+    }
+
+    public function indexPayment($id){
+
+        $mortgages = DB::table('mortgages')
+        ->join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->where('mortgages.mortgageID', "=", $id)
+        ->get();
+        
+        
+        return view('payment')->with('mortgages', $mortgages);;
+    }
+
+    public function indexAppend($id){
+
+        $mortgages = DB::table('mortgages')
+        ->join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('products',"mortgages.productID", "=", "products.productID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->where('mortgages.mortgageID', "=", $id)
+        ->get();
+        
+        
+        return view('appendP')->with('mortgages', $mortgages);;
     }
 }

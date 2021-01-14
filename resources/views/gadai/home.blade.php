@@ -50,6 +50,7 @@
                   </a>
                 </div>
             
+
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -78,29 +79,29 @@
                         <br>
                         <label for="kondisiProduk">Kondisi Produk: {{$value->namaKondisi}}</label>
                         <br>
-                  
-                        @if($value->startDate && $value->endDate)
-                          <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
-                          <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
-                          
-                          @php
-                            $date1=date_create(date('Y-m-d'));
-                            $date2=date_create($value->endDate);
-                            $diff=date_diff($date1,$date2);
-                            echo $diff->format("Sisa Hari : %a hari");   
-                          @endphp
-      
-                          @if ($diff->format("%a")<7)
-                            <br>
-                            <button class="btn style1">Perpanjang</button>
+                          @if($value->startDate && $value->endDate)
+                            <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
+                            <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
+                              @php
+                                $date1=date_create(date('Y-m-d'));
+                                  $date2=date_create($value->endDate);
+                                  $diff=date_diff($date1,$date2);
+                                  echo $diff->format("Sisa Hari : %a hari");
+                              @endphp
+
+                                @if ($diff->format("%a")<7)
+                                <br>
+                                <form action="/gadai/append/{{$value->mortgageID}}">
+                                  <button class="btn style1">Perpanjang</button>
+                                </form>
+                                @endif
+                                 <br>
+                           <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar</a>
                           @endif
-                          
-                          <button class="btn style1">Bayar</button>
-                        @endif
                       </div>
-                      
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                       </div>
                     </div>
                   </div>

@@ -26,7 +26,8 @@ Route::get('/findProductName', 'GadaiController@findProductName')->middleware('m
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
 Route::get('/cart','CartController@index');
-
+Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
+Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');
 
 //ADMIN
 Route::get('/admin', 'AdminController@index');
@@ -37,8 +38,10 @@ Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin')
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
 
-Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');
 
+Route::get('/manage/append/{id}','manageGadaiController@append');
+Route::get('/manage/complete/{id}','manageGadaiController@compelete');
 
 
 Route::get('/profile', 'ProfileController@index');
@@ -49,6 +52,7 @@ Route::group(['middleware'=> 'auth'], function() {
 Route::get('changepassword', 'ProfileController@changepassword')->name('user.password.edit');
     Route::patch('changepassword', 'ProfileController@updatepassword')->name('user.password.update');
 });
+
 
 //ECOM
 Route::get('/ecom', 'EcomController@index')->middleware('member');
@@ -62,5 +66,9 @@ Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('me
 
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
 
+
 //EMAIL
 Route::get('/kirimemail','EmailController@index');
+
+
+
