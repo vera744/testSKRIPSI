@@ -62,9 +62,24 @@ Route::get('/produkkategoriHP', 'EcomController@handphone');
 Route::get('/produkkategoriLaptop', 'EcomController@laptop');
 Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 
-Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
+Route::post('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
-Route::get('/ecom/cart','CartController@index')->middleware('auth');
+Route::get('/ecom/cart','CartController@index')->middleware('member');
+Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
+Route::post('/checkout', 'CartController@checkout')->name('ecom.checkout')->middleware('member');
+Route::get('/editalamat', 'CartController@editalamat')->name('editalamat')->middleware('member');
+Route::get('/tambahalamatt', 'CartController@tambahalamat')->middleware('member');
+Route::get('/backcheckout', 'CartController@backcheckout')->middleware('member');
+
+// Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
+Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
+Route::post('/destroyalamat', 'CartController@destroyalamat')->name('alamat.destroy');
+
+// Route::get('/checkout', 'CartController@checkoutpage')->middleware('member');
+
+Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');
+
+
 
 
 //EMAIL
@@ -72,3 +87,4 @@ Route::get('/kirimemail','EmailController@index');
 
 
 
+>

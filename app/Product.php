@@ -15,4 +15,9 @@ class Product extends Model
      public function mortgages(){
       return $this->hasOne('App\Mortgage', 'productID', 'productID');
     }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart', 'productID', 'id');
+    }
 }
