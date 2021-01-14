@@ -6,6 +6,20 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
+
+@if ($message = Session::get('reject'))
+  <div class="alert alert-warning alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
+
 <br>
     <h3 style="text-align:center"> Gadai</h3>
 <br>
@@ -27,7 +41,6 @@
 <tbody>
   @if (count($temp)> 0 )
     <div class="table-responsive">
-  
       <table class="table">
         <tr>
           <th>No</th>
@@ -57,8 +70,9 @@
                         <span aria-hidden="true">&times;</span>
                        </button>
                     </div>
+
                     <div class="modal-body">
-                    <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
+                      <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
                       <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
                       <label for="status" style="color: blue">
@@ -75,17 +89,16 @@
                       <br>
                       <label for="productPrice">Harga Produk: {{$value->productPrice}}</label>
                       <br> 
-                      
-                       <label for="productQty">Jumlah Produk: {{$value->productQuantity}}</label>
+                      <label for="productQty">Jumlah Produk: {{$value->productQuantity}}</label>
                       <br>
-                
                       <label for="loan">Pinjaman: {{$value->loan}}</label>
                     </div>
+
                     <div class="modal-footer">
                       {{-- <button type="button" class="btn btn-success" data-dismiss="modal">Terima Request</button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button> --}}
-                    <a href="/manage/acc/{{$value->mortgageID}}" class="btn btn-success">Terima Permintaan</a>
-                    <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Permintaan</a>
+                      <a href="/manage/acc/{{$value->mortgageID}}" class="btn btn-success">Terima Permintaan</a>
+                      <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Permintaan</a>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
@@ -93,11 +106,17 @@
               </div>
             </td>
           </tr>
-          @endforeach
-        </table>
-        <div class="d-flex justify-content-center">
+        @endforeach
+        
+      </table>
+      
+      <div class="row justify-content-center">
+        {{ $temp->onEachSide(5)->links() }}
+      </div>
+      
+      <div class="d-flex justify-content-center">
           {{-- {{ $temp->links()}} --}}
-        </div>
+      </div>
     </div>
   @else
     <p class="font-weight-bold" style="text-align:center">Tidak ada transaksi tertunda saat ini</p>
