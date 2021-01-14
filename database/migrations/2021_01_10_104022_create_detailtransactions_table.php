@@ -21,8 +21,6 @@ class CreateDetailtransactionsTable extends Migration
             $table->foreign('transaction_id')->references('id')->on('totaltransactions')->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('total_price');
-            $table->string('pesan');
-            $table->string('paymentID')->references('id')->on('payment_methods');
             $table->timestamps();
         });
     }

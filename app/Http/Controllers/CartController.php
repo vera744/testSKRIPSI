@@ -121,6 +121,9 @@ class CartController extends Controller
 
         $headertransaction = new TotalTransaction();
         $headertransaction->customerID = $userLogin;
+        $headertransaction->pesan = $req->pesan;
+        $headertransaction->paymentID = $req->id;
+        $headertransaction->ongkirID = $req->ongkirID;
         $grandtotal = 0;
 
         foreach($cart as $c){
@@ -129,6 +132,7 @@ class CartController extends Controller
 
         $headertransaction->grandtotal = $grandtotal;
         $headertransaction->save();
+        
 
         if(TotalTransaction::all()->first() != NULL){
             $idheader = TotalTransaction::all()->last();
@@ -141,7 +145,6 @@ class CartController extends Controller
                 $detailtransaction->total_price = $c->total_price;
                 $detailtransaction->quantity = $c->quantity;
                 $detailtransaction->transaction_id = $akhir;
-
                 $detailtransaction->save();
             }
 
@@ -163,22 +166,22 @@ class CartController extends Controller
         return view('/ecom/checkout', compact('user', 'detail'));
     }
 
-    public function checkoutpage(){
-        $userLogin = auth()->User()->id;
+    // public function checkoutpage(){
+    //     $userLogin = auth()->User()->id;
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
-        ->where('id', "=", $userLogin)
-        ->get();
+    //     $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+    //     ->where('id', "=", $userLogin)
+    //     ->get();
 
-        $detail = TotalTransaction::
-        join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
-        ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
-        ->select('transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
-        ->where('grandtotal', '!=', '0')
-        ->get();
-        return view('/ecom/checkout', compact('user', 'detail'));
+    //     $detail = TotalTransaction::
+    //     join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
+    //     ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
+    //     ->select('transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
+    //     ->where('grandtotal', '!=', '0')
+    //     ->get();
+    //     return view('/ecom/checkout', compact('user', 'detail'));
 
-    }
+    // }
 
     public function editalamat(){
         $userLogin = auth()->User()->id;

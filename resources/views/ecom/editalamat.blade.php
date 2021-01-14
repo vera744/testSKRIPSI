@@ -7,7 +7,8 @@
                                         {{ __('Tambah Alamat') }}
     </button>
     </a>
-    <a href="/backcheckout">
+
+    <a href="/backcheckout" method="post">
     <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
                                         {{ __('Kembali') }}
     </button>
