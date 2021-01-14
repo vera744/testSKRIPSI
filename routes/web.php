@@ -26,7 +26,8 @@ Route::get('/findProductName', 'GadaiController@findProductName')->middleware('m
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
 Route::get('/cart','CartController@index');
-
+Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
+Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');
 
 //ADMIN
 Route::get('/admin', 'AdminController@index');
@@ -65,5 +66,9 @@ Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('me
 
 Route::get('/ecom/cart','CartController@index')->middleware('auth');
 
-Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
-Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');
+
+//EMAIL
+Route::get('/kirimemail','EmailController@index');
+
+
+
