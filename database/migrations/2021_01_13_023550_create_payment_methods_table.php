@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlamatpengirimansTable extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateAlamatpengirimansTable extends Migration
      */
     public function up()
     {
-        Schema::create('alamatpengirimans', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('userID')->references('id')->on('users');
-            $table->string('namaPenerima');
-            $table->string('nomorHP');
-            $table->string('alamat');
+            $table->string('namePayment');
+            $table->string('norek');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateAlamatpengirimansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alamatpengirimans');
+        Schema::dropIfExists('payment_methods');
     }
 }

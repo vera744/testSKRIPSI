@@ -22,6 +22,7 @@ class CreateDetailtransactionsTable extends Migration
             $table->integer('quantity');
             $table->integer('total_price');
             $table->string('pesan');
+            $table->string('paymentID')->references('id')->on('payment_methods');
             $table->timestamps();
         });
     }

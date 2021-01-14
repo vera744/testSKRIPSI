@@ -12,6 +12,7 @@ use App\User;
 use App\TotalTransaction;
 use App\DetailTransaction;
 use App\AlamatPengiriman;
+use App\PaymentMethod;
 
 
 class CartController extends Controller
@@ -93,47 +94,19 @@ class CartController extends Controller
         $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
-        
-        // if(AlamatPengiriman::all() == NULL){
-
-            // $alamatpengiriman = new AlamatPengiriman();
-            // $alamatpengiriman->userID = $userLogin;
-            // $alamatpengiriman->nama = $userName;
-            // $alamatpengiriman->nomorHP = $userNomor;
-            // $alamatpengiriman->alamat = $userAlamat;
-    
-            // $alamatpengiriman->save();
-
-        // }
-
-        // else{
-
-        // $alamatcek = AlamatPengiriman::select('userID')->get();
-
-        // foreach($alamatcek as $a){
-        //     if($userLogin == $a->userID){
-        //         $alamatpengiriman = new AlamatPengiriman();
-        //         $alamatpengiriman->userID = $userLogin;
-        //         $alamatpengiriman->nama = $userName;
-        //         $alamatpengiriman->nomorHP = $userNomor;
-        //         $alamatpengiriman->alamat = $userAlamat;
-        
-        //         $alamatpengiriman->save();
-        //     }
-        // }
-
-    //}
       
         foreach($cart as $c){
             $grandtotal += $c->total_price;
         }
         $total = $testongkir + $grandtotal;
 
-        $alamat = AlamatPengiriman::select('userID','nama', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('userID','namaPenerima', 'nomorHP','alamat')
         ->where('userID', "=", $userLogin)
         ->get();
 
-        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'total', 'testongkir', 'alamat'));
+        $metode = PaymentMethod::all();
+        
+        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'total', 'testongkir', 'alamat', 'metode'));
 
     }
 
@@ -210,8 +183,8 @@ class CartController extends Controller
     public function editalamat(){
         $userLogin = auth()->User()->id;
 
-        $alamat = AlamatPengiriman::select('id','nama', 'nomorHP','alamat')
-        ->where('id', "=", $userLogin)
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
+        ->where('userID', "=", $userLogin)
         ->get();
 
         $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
@@ -225,19 +198,43 @@ class CartController extends Controller
         return view('/ecom/checkout');
     }
 
+    public function destroyalamat(Request $req){
+        $findalamatid = $req->id;
+        $findalamat = AlamatPengiriman::find($findalamatid)->delete();
+
+       return back()->with('success_message', 'Alamat has been removed');
+   }
+
     public function tambahalamat()
     {
        
         return view('/ecom/tambahalamat');
     }
 
-    public function tambahalamatbaru()
+    public function tambahalamatbaru(Request $request)
     {
         $userLogin = auth()->User()->id;
+        
+        $alamatpengiriman = new AlamatPengiriman();
+        $alamatpengiriman->userID = $userLogin;
+        $alamatpengiriman->namaPenerima = $request->input('namaPenerima');
+        $alamatpengiriman->nomorHP = $request->input('nomorHP');
+        $alamatpengiriman->alamat = $request->input('alamat');
 
-        return view('/ecom/tambahalamat');
+        $alamatpengiriman->save();
+
+        // $alamat = AlamatPengiriman::select('userID','namaPenerima', 'nomorHP','alamat')
+        // ->where('userID', "=", $userLogin)
+        // ->get();
+
+        
+        return redirect('ecom.checkout');
+
     }
 
+    
+
+  //$list= DB::table('list_produk')->groupby('jenisProduk','id', 'merekProduk', 'created_at', 'updated_at')->get();
 
   
 }

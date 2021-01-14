@@ -1,4 +1,5 @@
 @extends('layouts.layoutEcommerce')
+@section('title', "Checkout")
 
 @section('content')
 <br>
@@ -6,33 +7,34 @@
 <br>
 
 <div class="card">
-
- <form action="{{ url('/editalamat') }}" method="POST">
-                        {{ csrf_field() }} 
-@if(count($alamat) > 0 )
-
-
-  @foreach($alamat as $alamat)
-  <div class="card-body">
-    <h3>Alamat Pengiriman</h3> <br>
-    <h5 class="card-title">Nama : {{$alamat->nama}}</h5>
-    <h5 class="card-title">Nomor Handphone : {{$alamat->nomorHP}}</h5>
-    <h5 class="card-title">Alamat : {{$alamat->alamat}}</h5>
-
-    <button id="btnEdit" class="btn btn-info" style="float:center;" value="editdata">
-                                    {{ __('Edit') }}
-    </button>
-
-  </div>
-@endforeach
-@else
-<div class="card-body">
-<button id="btnEdit" class="btn btn-info" style="float:center;" value="editdata">
-                                    {{ __('Tambah Alamat') }}
-    </button>
+    <div class="card-body">
+        <div class="form-group" >
+            <select class="form-control input-sm" name="alamatpengiriman" id="kondisiProduk_id">
+                <option value="0" disabled="true" selected="true">Alamat Pengiriman</option>
+                @foreach($user as $value)
+                    <option value="{{$value->id}}">{{$value->name}} |
+                    {{$value->nomorHP}} |
+                    {{$value->alamat}}
+                    </option> 
+                    @endforeach
+                 @foreach($alamat as $value)
+                    <option value="{{$value->id}}">{{$value->namaPenerima}} |
+                    {{$value->nomorHP}} |
+                    {{$value->alamat}}
+                    </option> 
+                    @endforeach
+                </select>
 </div>
-</form>
-@endif
+<a href="/editalamat">
+<button id="btnEdit" class="btn btn-info" style="float:center;" value="editdata">
+                                    {{ __('Edit Alamat') }}
+</button>
+</a>
+
+
+
+    </div>
+
 </div>
 <br>
 <div class="card">
@@ -113,7 +115,15 @@
             <tbody>
             <tr>
                 <td>Metode Pembayaran
-                <button>Test</button>
+                <div class="form-group">
+                <select class="form-control input-sm" name="kondisiProduk" id="kondisiProduk_id">
+                <option value="0" disabled="true" selected="true">Metode Pembayaran</option>
+                @foreach($metode as $value)
+                    
+                    <option value="{{$value->id}}">{{$value->namePayment}}</option> 
+                    @endforeach
+                </select>
+            </div>
                 </td>
                
            

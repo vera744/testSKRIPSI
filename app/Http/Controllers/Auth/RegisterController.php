@@ -94,7 +94,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'dob' => $data['dob'],
             'nomorHP' => $data['nomorHP'],
-            
+            'alamat' => $data['alamat'],
             'email' => $data['email'],
             'nomorKTP' => $data['nomorKTP'],
             'fotoKTP' => $image,
@@ -102,10 +102,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => 'member'
         ]);
-        
-        return AlamatPengiriman::create([
-            'alamat' => $data['alamat'],
-        ]);
+
         // $userLogin = auth()->User()->id;
         // $userName = auth()->User()->name;
         // $userNomor = auth()->User()->nomorHP;

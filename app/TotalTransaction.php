@@ -22,4 +22,6 @@ class TotalTransaction extends Model
     {
         return $this->belongsTo('App\DetailTransaction', 'transaction_id', 'id');
     }
+
+    
 }
