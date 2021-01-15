@@ -79,12 +79,5 @@ Route::post('/destroyalamat', 'CartController@destroyalamat')->name('alamat.dest
 
 Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');
 
-
-
-
 //EMAIL
 Route::get('/kirimemail','EmailController@index');
-
-
-
->

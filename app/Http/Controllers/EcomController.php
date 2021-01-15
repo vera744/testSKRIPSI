@@ -15,7 +15,7 @@ class EcomController extends Controller
     }
 
     public function index(){
-
+    
        $products = Product::
            join('mortgages', "products.productID", "=", "mortgages.productID")
            ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
