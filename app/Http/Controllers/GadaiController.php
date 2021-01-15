@@ -101,6 +101,7 @@ class GadaiController extends Controller
         $product = new product();
         $product->productName = $request->input('namaProduk');
         $product->productPrice = $request->input('nilaiPinjaman');
+        $product->productWeight = $request->input('beratProduk');
         $product->productCategory = $request->get('jenisProduk');
         $product->productBrand = $request->get('merekProduk');
         $product->productCondition = $request->get('kondisiProduk');
