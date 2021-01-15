@@ -151,9 +151,9 @@ class manageGadaiController extends Controller
     }
 
     public function compelete($id){
-        $todate = new DateTime();
+        //$todate = new DateTime();
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['status'=>"Selesai"]);
-        DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$todate]);
+        //DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$todate]);
 
         return redirect ('gadai');
         

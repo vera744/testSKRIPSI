@@ -235,10 +235,7 @@ class CartController extends Controller
 
     }
 
-    public function backcheckout(){
-        return redirect()->route('ecom.checkout');
-    }
-
+  
     
 
   //$list= DB::table('list_produk')->groupby('jenisProduk','id', 'merekProduk', 'created_at', 'updated_at')->get();

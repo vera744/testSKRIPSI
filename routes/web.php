@@ -69,7 +69,6 @@ Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
 Route::post('/checkout', 'CartController@checkout')->name('ecom.checkout')->middleware('member');
 Route::get('/editalamat', 'CartController@editalamat')->name('editalamat')->middleware('member');
 Route::get('/tambahalamatt', 'CartController@tambahalamat')->middleware('member');
-Route::get('/backcheckout', 'CartController@backcheckout')->middleware('member');
 
 // Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
 Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
