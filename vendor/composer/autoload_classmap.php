@@ -6,7 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\AlamatPengiriman' => $baseDir . '/app/AlamatPengiriman.php',
+    'App\\Cart' => $baseDir . '/app/Cart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\DetailTransaction' => $baseDir . '/app/DetailTransaction.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -14,6 +17,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+    'App\\Http\\Controllers\\CartController' => $baseDir . '/app/Http/Controllers/CartController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\EcomController' => $baseDir . '/app/Http/Controllers/EcomController.php',
     'App\\Http\\Controllers\\GadaiController' => $baseDir . '/app/Http/Controllers/GadaiController.php',
@@ -33,6 +37,7 @@ return array(
     'App\\Http\\Requests\\UpdatePasswordRequest' => $baseDir . '/app/Http/Requests/UpdatePasswordRequest.php',
     'App\\Kondisi' => $baseDir . '/app/Kondisi.php',
     'App\\Mortgage' => $baseDir . '/app/Mortgage.php',
+    'App\\PaymentMethod' => $baseDir . '/app/PaymentMethod.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -40,6 +45,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Rules\\CurrentPassword' => $baseDir . '/app/Rules/CurrentPassword.php',
+    'App\\TotalTransaction' => $baseDir . '/app/TotalTransaction.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\kategoriProduk' => $baseDir . '/app/kategoriProduk.php',
     'App\\listProduk' => $baseDir . '/app/listProduk.php',
@@ -2470,6 +2476,7 @@ return array(
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'Parsedown' => $vendorDir . '/erusev/parsedown/Parsedown.php',
+    'PaymentSeeder' => $baseDir . '/database/seeds/PaymentSeeder.php',
     'PharIo\\Manifest\\Application' => $vendorDir . '/phar-io/manifest/src/values/Application.php',
     'PharIo\\Manifest\\ApplicationName' => $vendorDir . '/phar-io/manifest/src/values/ApplicationName.php',
     'PharIo\\Manifest\\Author' => $vendorDir . '/phar-io/manifest/src/values/Author.php',

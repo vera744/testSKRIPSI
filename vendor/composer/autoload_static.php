@@ -440,7 +440,10 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
     );
 
     public static $classMap = array (
+        'App\\AlamatPengiriman' => __DIR__ . '/../..' . '/app/AlamatPengiriman.php',
+        'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\DetailTransaction' => __DIR__ . '/../..' . '/app/DetailTransaction.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -448,6 +451,7 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EcomController' => __DIR__ . '/../..' . '/app/Http/Controllers/EcomController.php',
         'App\\Http\\Controllers\\GadaiController' => __DIR__ . '/../..' . '/app/Http/Controllers/GadaiController.php',
@@ -467,6 +471,7 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Http\\Requests\\UpdatePasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePasswordRequest.php',
         'App\\Kondisi' => __DIR__ . '/../..' . '/app/Kondisi.php',
         'App\\Mortgage' => __DIR__ . '/../..' . '/app/Mortgage.php',
+        'App\\PaymentMethod' => __DIR__ . '/../..' . '/app/PaymentMethod.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -474,6 +479,7 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rules\\CurrentPassword' => __DIR__ . '/../..' . '/app/Rules/CurrentPassword.php',
+        'App\\TotalTransaction' => __DIR__ . '/../..' . '/app/TotalTransaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\kategoriProduk' => __DIR__ . '/../..' . '/app/kategoriProduk.php',
         'App\\listProduk' => __DIR__ . '/../..' . '/app/listProduk.php',
@@ -2904,6 +2910,7 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
+        'PaymentSeeder' => __DIR__ . '/../..' . '/database/seeds/PaymentSeeder.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
