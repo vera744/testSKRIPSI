@@ -17,7 +17,9 @@ class CreateCitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('province_id');
             $table->unsignedInteger('city_id');
+            $table->string('type');
             $table->string('title');
+            $table->string('postal_code',5);
             $table->timestamps();
         });
     }

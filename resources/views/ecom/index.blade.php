@@ -89,7 +89,7 @@
                                         </h6>
 
                                         <h6>
-                                            Rp. {{ number_format($value->loan) }}
+                                            Rp. {{ number_format($value->loan) }},-
                                         </h6>
                                     </div>
                                 </div>

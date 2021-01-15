@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KondisiSeeder::class);
         $this->call(KategoriSeeder::class);
         $this->call(ListProdukSeeder::class);
+        $this->call(ProvinceSeeder::class);
+        $this->call(CitySeeder::class);
     }
 }
