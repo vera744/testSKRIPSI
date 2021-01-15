@@ -86,5 +86,3 @@ Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('m
 Route::get('/kirimemail','EmailController@index');
 
 
-
->
