@@ -2,17 +2,18 @@
 
 @section('content')
 
-<a href="/tambahalamatt">
-    <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
-                                        {{ __('Tambah Alamat') }}
-    </button>
+    <a href="/tambahalamatt">
+        <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
+                                            {{ __('Tambah Alamat') }}
+        </button>
     </a>
 
-    <a href="/backcheckout" method="post">
-    <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
-                                        {{ __('Kembali') }}
-    </button>
-    </a>
+    <form action="{{ url('/checkout') }}" method="POST">
+        {{ csrf_field() }}
+        <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
+                    {{ __('Kembali') }}
+        </button>
+        </form>
     <br>
     <br>
 
