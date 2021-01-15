@@ -94,14 +94,17 @@
             }
 
             .bordered-center {
-        
-            background-color: #19365C;
-            border: 1px solid  #19365C;
+            border: 1px none #19365C;
             border-radius: 10px;
             padding: 10px;
-            box-shadow: 5px 10px gray;
+           
             color: white;
-            } */
+            margin: 10px;
+            margin-left: 5%;
+            text-align: center;
+            height: 150px;
+            width: 250px;
+            }
 
 
 </style>
