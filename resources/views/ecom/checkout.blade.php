@@ -14,13 +14,17 @@
                 @foreach($user as $value)
                     <option value="{{$value->id}}">{{$value->name}} |
                     {{$value->nomorHP}} |
-                    {{$value->alamat}}
+                    {{$value->alamat}} |
+                    {{$value->provinsi}} |
+                    {{$value->kota}} 
                     </option> 
                     @endforeach
                  @foreach($alamat as $value)
                     <option value="{{$value->id}}">{{$value->namaPenerima}} |
                     {{$value->nomorHP}} |
-                    {{$value->alamat}}
+                    {{$value->alamat}} |
+                    {{$value->kota}} |
+                    {{$value->provinsi}}
                     </option> 
                     @endforeach
                 </select>

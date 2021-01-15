@@ -91,7 +91,7 @@ class CartController extends Controller
         ->where('customerID', '=', $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota','email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
       
@@ -100,7 +100,7 @@ class CartController extends Controller
         }
         $total = $testongkir + $grandtotal;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota',)
         ->where('userID', "=", $userLogin)
         ->get();
 
@@ -152,7 +152,7 @@ class CartController extends Controller
 
         Cart::truncate();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi', 'kota', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
 
@@ -186,11 +186,11 @@ class CartController extends Controller
     public function editalamat(){
         $userLogin = auth()->User()->id;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota')
         ->where('userID', "=", $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
 
@@ -223,6 +223,8 @@ class CartController extends Controller
         $alamatpengiriman->namaPenerima = $request->input('namaPenerima');
         $alamatpengiriman->nomorHP = $request->input('nomorHP');
         $alamatpengiriman->alamat = $request->input('alamat');
+        $alamatpengiriman->provinsi = $request->input('provinsi');
+        $alamatpengiriman->kota = $request->input('kota');
 
         $alamatpengiriman->save();
 
