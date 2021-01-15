@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\listProduk;
 
 class ListProdukSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class ListProdukSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('list_produk')->insert([
+        $data = [
             [
             'kategori_id' => '1',
             'merekProduk' => 'Asus'
@@ -48,6 +49,7 @@ class ListProdukSeeder extends Seeder
             'kategori_id' => '3',
             'merekProduk' => 'Panasonic'
             ]
-        ]);
+        ];
+        listProduk::insert($data);
     }
 }

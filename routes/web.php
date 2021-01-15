@@ -26,7 +26,8 @@ Route::get('/findProductName', 'GadaiController@findProductName')->middleware('m
 Route::post('/gadai/create','GadaiController@create')->middleware('member');
 Route::post('/gadai/store','GadaiController@store')->middleware('member');
 Route::get('/cart','CartController@index');
-
+Route::get('/gadai/payment/{id}', 'GadaiController@indexPayment');
+Route::get('/gadai/append/{id}', 'GadaiController@indexAppend');
 
 //ADMIN
 Route::get('/admin', 'AdminController@index');
@@ -37,8 +38,10 @@ Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin')
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
 
-Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');;
+Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');
 
+Route::get('/manage/append/{id}','manageGadaiController@append');
+Route::get('/manage/complete/{id}','manageGadaiController@compelete');
 
 
 Route::get('/profile', 'ProfileController@index');
@@ -59,6 +62,29 @@ Route::get('/produkkategoriHP', 'EcomController@handphone');
 Route::get('/produkkategoriLaptop', 'EcomController@laptop');
 Route::get('/produkkategoriElektronik', 'EcomController@elektronik');
 
-Route::get('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
+Route::post('/ecom/add-to-cart/{productID}','CartController@add')->middleware('member');
 
-Route::get('/ecom/cart','CartController@index')->middleware('auth');
+Route::get('/ecom/cart','CartController@index')->middleware('member');
+Route::post('/destroy', 'CartController@destroy')->name('cart.destroy');
+Route::post('/checkout', 'CartController@checkout')->name('ecom.checkout')->middleware('member');
+Route::get('/editalamat', 'CartController@editalamat')->name('editalamat')->middleware('member');
+Route::get('/tambahalamatt', 'CartController@tambahalamat')->middleware('member');
+Route::get('/backcheckout', 'CartController@backcheckout')->middleware('member');
+
+// Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
+Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
+Route::post('/destroyalamat', 'CartController@destroyalamat')->name('alamat.destroy');
+Route::post('/pesan', 'CartController@pesan')->middleware('member');
+// Route::get('/checkout', 'CartController@checkoutpage')->middleware('member');
+
+Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');
+
+
+
+
+//EMAIL
+Route::get('/kirimemail','EmailController@index');
+
+
+
+>
