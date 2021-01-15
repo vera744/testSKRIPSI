@@ -17,12 +17,19 @@
     <br>
 
 @foreach($user as $user)
-
-<div class="card">
-    <div class="card-body">
-    <h5 class="card-title">Nama : {{$user->name}}</h5>
-    <h5 class="card-title">Nomor Handphone : {{$user->nomorHP}}</h5>
-    <h5 class="card-title">Alamat : {{$user->alamat}}</h5>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Nama : {{$user->name}}</h5>
+                <h5 class="card-title">Nomor Handphone : {{$user->nomorHP}}</h5>
+                <h5 class="card-title">Alamat : {{$user->alamat}}</h5>
+                <h5 class="card-title">Provinsi : {{$user->alamat}}</h5>
+                <h5 class="card-title">Kota : {{$user->alamat}}</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <br>
