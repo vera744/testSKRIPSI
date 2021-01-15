@@ -17,10 +17,11 @@ class CreateTotaltransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedbigInteger('customerID');
             $table->foreign('customerID')->references('id')->on('users');
-            $table->string('pesan');
             $table->string('paymentID')->references('id')->on('payment_methods');
             $table->string('ongkirID');
+            $table->string('pesan')->nullable();
             $table->integer('grandtotal');
+            $table->integer('total');
             $table->timestamps();
         });
     }
