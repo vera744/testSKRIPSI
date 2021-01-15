@@ -109,9 +109,10 @@ class CartController extends Controller
         return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'total', 'testongkir', 'alamat', 'metode'));
 
     }
-
     public function pesan(Request $req){
         $userLogin = auth()->User()->id;
+        $testongkir = 10000;
+        $namaOngkir = "JNE";
 
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
@@ -122,15 +123,16 @@ class CartController extends Controller
         $headertransaction = new TotalTransaction();
         $headertransaction->customerID = $userLogin;
         $headertransaction->pesan = $req->pesan;
-        $headertransaction->paymentID = $req->id;
-        $headertransaction->ongkirID = $req->ongkirID;
+        $headertransaction->paymentID = $req->get("payID");
+        $headertransaction->ongkirID = $namaOngkir;
         $grandtotal = 0;
 
         foreach($cart as $c){
             $grandtotal += $c->total_price;
         }
-
+        $total = $testongkir + $grandtotal;
         $headertransaction->grandtotal = $grandtotal;
+        $headertransaction->total = $total;
         $headertransaction->save();
         
 
@@ -140,7 +142,6 @@ class CartController extends Controller
 
             foreach($cart as $c){
                 $detailtransaction = new DetailTransaction();
-
                 $detailtransaction->IDProduct = $c->IDProduct;
                 $detailtransaction->total_price = $c->total_price;
                 $detailtransaction->quantity = $c->quantity;
@@ -159,13 +160,12 @@ class CartController extends Controller
          $detail = TotalTransaction::
         join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
         ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
-        ->select('transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
+        ->select('customerID','transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
         ->where('grandtotal', '!=', '0')
         ->get();
 
-        return view('/ecom/checkout', compact('user', 'detail'));
+        return view('/ecom/pesan', compact('user', 'detail'));
     }
-
     // public function checkoutpage(){
     //     $userLogin = auth()->User()->id;
 
