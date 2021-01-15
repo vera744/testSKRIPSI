@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-// use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Http;
 use App\Province;
-use GuzzleHttp\Client;
-
 
 class ProvinceSeeder extends Seeder
 {
@@ -15,8 +13,7 @@ class ProvinceSeeder extends Seeder
      */
     public function run()
     {
-        $client = new \GuzzleHttp\Client();
-        $response = $client::withHeader([
+        $response = Http::withHeader([
             'key' => 'b2685bfdc389138af911b61ac0957e88',
             
         ])->get('https://api.rajaongkir.com/starter/province');
