@@ -13,7 +13,7 @@ class ProvinceSeeder extends Seeder
      */
     public function run()
     {
-        $response = Http::withHeader([
+        $response = Http::withHeaders([
             'key' => 'b2685bfdc389138af911b61ac0957e88',
             
         ])->get('https://api.rajaongkir.com/starter/province');

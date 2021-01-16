@@ -29,7 +29,7 @@
       <h5 name="name" id="merekProduk">{{ $value->merekProduk }} {{ $value->productName }}</h5>
       <p class="mb-2 text-muted text-uppercase small" name="namaKategori">{{ $value->namaKategori }}</p>
      
-      <p><span class="mr-1" name="productPrice" id="productPrice"><strong> Rp. {{ number_format($value->productPrice) }},-</strong></span></p>
+      <h3><span class="mr-1" name="productPrice" id="productPrice"><strong> Rp. {{ number_format($value->productPrice) }},-</strong></span></h3>
         
       <hr>
 
@@ -73,7 +73,7 @@
 
         <div class="col-md-6">
             <select name="kotaAsal" id="kotaAsal" class="form-control" >
-                <option value="55">{{$value[city]}}</option> 
+                <option value="55"></option> 
             </select>
         </div>
       </div>
