@@ -113,12 +113,17 @@ class CartController extends Controller
         $userLogin = auth()->User()->id;
         $testongkir = 10000;
         $namaOngkir = "JNE";
+        $date1=date_create(date('Y-m-d'));
+
 
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'products.productQuantity')
         ->where('customerID', '=', $userLogin)
         ->get();
+
+        $idproduct = $cart->get('IDProduct');
+        $qty = $cart->get('productQuantity');
 
         $headertransaction = new TotalTransaction();
         $headertransaction->customerID = $userLogin;
@@ -133,6 +138,7 @@ class CartController extends Controller
         $total = $testongkir + $grandtotal;
         $headertransaction->grandtotal = $grandtotal;
         $headertransaction->total = $total;
+        $headertransaction->tglCO = $date1;
         $headertransaction->save();
         
 
@@ -151,18 +157,34 @@ class CartController extends Controller
 
         }
 
-        Cart::truncate();
+        // Cart::truncate();
 
+        DB::table('detailtransactions')
+        ->join('products', 'products.productID', '=', 'detailtransactions.IDProduct')
+        ->join('totaltransactions', 'totaltransactions.id',"=","detailtransactions.transaction_id")
+        ->where('statusPayment', "=", "Belum Dibayar")
+        ->update(['products.productQuantity'=>0]);
+
+        DB::table('carts')
+        ->join('detailtransactions', 'carts.IDProduct', '=', 'detailtransactions.IDProduct')
+        ->delete();
+      
         $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
 
+
+
          $detail = TotalTransaction::
         join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
         ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
-        ->select('customerID','transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
+        ->join('payment_methods', 'payment_methods.id', "=", 'paymentID')
+        ->select('customerID','transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName', 'total', 'namePayment', 'norek', 'tglCO')
         ->where('grandtotal', '!=', '0')
+        ->where('statusPayment', "=", "Belum Dibayar")
+        ->where('customerID','=', $userLogin)
         ->get();
+
 
         return view('/ecom/pesan', compact('user', 'detail'));
     }

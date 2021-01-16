@@ -22,6 +22,8 @@ class CreateTotaltransactionsTable extends Migration
             $table->string('pesan')->nullable();
             $table->integer('grandtotal');
             $table->integer('total');
+            $table->date('tglCO');
+            $table->string('statusPayment')->default("Belum Dibayar");
             $table->timestamps();
         });
     }
