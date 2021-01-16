@@ -4,7 +4,7 @@
 @section('content')
 
 @if(Auth::user()->role=="member" )
-<h3>HELLO MEMBER</h3>
+<h3>HELLO GAISS</h3>
 @endif
 
 @if(Auth::user()->role=="admin" )
