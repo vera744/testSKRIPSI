@@ -86,7 +86,7 @@ Route::get('/kirimemail','EmailController@index');
 //TEST
 Route::get('province','CartController@get_province')->name('province');
 Route::get('/kota/{id}','CartController@get_city');
-Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}','CartController@get_ongkir');
+Route::get('/origin/{origin}/{destination}/{weight}/{courier}','EcomController@get_ongkir');
 
 //TEST API
 Route::get('/api','getApi@index');

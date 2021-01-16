@@ -68,38 +68,75 @@
       
       <br>
 
-      <div class="form-group row">
-        <label for="kotaAsal" class="col-md-4 col-form-label text-md-left">{{ __('kota Asal') }}</label>
+      
+        
+          <div class="form-group row">
+            <label for="" class="col-md-6 col-form-label text-md-left">{{ __('Provinsi Asal') }}</label>
+    
+            <div class="col-md-6">
+            <input type="text" value="6" class="form-control" name="province_origin">
+              {{-- @foreach($provinsiAsal as $value)
+                <select name="provinsiAsal" id="provinsiAsal" class="form-control" disabled >
+                  <option value="{{$value->province_id}}">{{$value->title}}</option>
+                </select> --}}
+                {{-- <input type="text" name="provinsiAsal" id="provinsiAsal" placeholder="{{$value->title}}" value="{{$value->province_id}}" class="form-control" disabled>         --}}
+              {{-- @endforeach --}}
+                
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label for="" class="col-md-6 col-form-label text-md-left">{{ __('Kota Asal') }}</label>
+    
+            <div class="col-md-6">
+              <input type="text" value="40" class="form-control" id="city_origin" name="city_origin">
+              {{-- @foreach($kotaAsal as $value)
+              <select name="kotaAsal" id="kotaAsal" class="form-control" disabled >
+                <option value="{{$value->city_id}}">{{$value->title}}</option>
+              </select>
+              @endforeach --}}
+              {{-- <input type="text" name="kotaAsal" id="kotaAsal" placeholder="{{$value->title}}" value="{{$value->city_id}}" class="form-control" disabled>         --}}
+            </div>
+          </div>
+        
 
-        <div class="col-md-6">
-            <select name="kotaAsal" id="kotaAsal" class="form-control" >
-                <option value="55"></option> 
-            </select>
-        </div>
+        
+          <div class="form-group row">
+            <label for="provinsi" class="col-md-6 col-form-label text-md-left">{{ __('Provinsi Tujuan ') }}</label>
+                
+            <div class="col-md-12">
+              <select name="provinsi" id="provinsi" class="form-control" >
+                <option value="">Pilih Provinsi</option>
+                  @foreach($provinsi as $value)
+                    <option value="{{$value['province_id']}}" namaprovinsi="{{$value['province']}}">{{$value['province']}}</option>
+                  @endforeach
+              </select>   
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <label for="kota" class="col-md-6 col-form-label text-md-left">{{ __('Kota Tujuan') }}</label>
+    
+            <div class="col-md-12">
+                <select name="kota" id="kota" class="form-control" >
+                    <option value="">Pilih Kota</option>
+                </select>
+            </div>
+          </div>
+        
+      
+
+      <br>
+
+    <div class="form-group row">
+      <label for="beratProduk" class="col-md-4 col-form-label text-md-left">{{ __('Berat Produk') }}</label>
+
+      <div class="col-md-6">
+          <input type="text" name="beratProduk" id="beratProduk" class="form-control" value="200" placeholder="Masukkan Berat (Gram)">
+          <small>Dalam gram, contoh = 1700 / 1,7kg</small>
+    
       </div>
-
-      <div class="form-group row">
-        <label for="provinsi" class="col-md-4 col-form-label text-md-left">{{ __('Provinsi Tujuan ') }}</label>
-            
-        <div class="col-md-6">
-          <select name="provinsi" id="provinsi" class="form-control" >
-            <option value="">Pilih Provinsi</option>
-              @foreach($provinsi as $value)
-                <option value="{{$value['province_id']}}" namaprovinsi="{{$value['province']}}">{{$value['province']}}</option>
-              @endforeach
-          </select>   
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="kota" class="col-md-4 col-form-label text-md-left">{{ __('Kota Tujuan') }}</label>
-
-        <div class="col-md-6">
-            <select name="kota" id="kota" class="form-control" >
-                <option value="">Pilih Kota</option>
-            </select>
-        </div>
-    </div>
+  </div>
 
     <div class="form-group row">
       <label class="col-md-4 col-form-label text-md-left">
@@ -132,10 +169,10 @@
       <label for="ongkir" class="col-md-4 col-form-label text-md-left">{{ __('Ongkir') }}</label>
 
       <div class="col-md-6">
-          <input id="ongkir" type="text" placeholder="Nilai Ongkir" class="form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+          <input id="ongkir" type="text" disabled placeholder="9000" class="form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
       </div>
   </div>
-    
+  
       <!-- <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Beli Sekarang</button> -->
     <br>
 
@@ -160,6 +197,57 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+{{-- SCRIPT ONGKIR --}}
+{{-- <script>
+  $(document).ready(function(){
+      
+      //ini ketika provinsi tujuan di klik maka akan eksekusi perintah yg kita mau
+      //name select nama nya "provinve_id" kalian bisa sesuaikan dengan form select kalian
+      $('select[name="provinsiAsal"]').on('change', function(){
+
+          // kita buat variable provincedid untk menampung data id select province
+          let provinceid = $(this).val();
+  
+          //kita cek jika id di dpatkan maka apa yg akan kita eksekusi
+          if(provinceid){
+
+              // jika di temukan id nya kita buat eksekusi ajax GET
+              jQuery.ajax({
+
+              // url yg di root yang kita buat tadi
+                  url:"/kota/"+provinceid,
+
+                  // aksion GET, karena kita mau mengambil data
+                  type:'GET',
+
+                  // type data json
+                  dataType:'json',
+
+                  // jika data berhasil di dapat maka kita mau apain nih
+                  success:function(data){
+
+                      // jika tidak ada select dr provinsi maka select kota kosong / empty
+                      $('select[name="kotaAsal"]').empty();
+
+                      // jika ada kita looping dengan each
+                      $.each(data, function(key, value){
+
+                          // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
+                          $('select[name="kotaAsal"]').append('<option value="'+ value.city_id +'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
+                      });
+                  }
+              });
+          }else {
+              $('select[name="kotaAsal"]').empty();
+          }
+      });
+  });
+</script> --}}
 
 <script>
     $(document).ready(function(){
@@ -204,5 +292,43 @@ crossorigin="anonymous"></script>
                 $('select[name="kota"]').empty();
             }
         });
+ 
+
+    $('select[name="kurir"]').on('change', function(){
+
+      // kita buat variable untuk menampung data data dari  inputan
+      // name city_origin di dapat dari input text name city_origin
+
+      let origin = $("input[name=city_origin]").val();
+      // name kota_id di dapat dari select text name kota_id
+      let destination = $("select[name=kota]").val();
+      // name kurir di dapat dari select text name kurir
+      let courier = $("select[name=kurir]").val();
+      // name weight di dapat dari select text name weight
+      let weight = $("input[name=beratProduk]").val();
+      // alert(courier);
+      if(courier){
+        console.log(origin + destination + weight);
+
+        jQuery.ajax({
+          url:"/origin/"+origin+"/"+destination+"/"+weight+"/"+courier,
+          type:'GET',
+          dataType:'json',
+
+          success:function(data){
+            console.log("asik")
+            // jika tidak ada select dr provinsi maka select kota kososng / empty
+            $('input[name="ongkir"]').empty();
+            // jika ada kita looping dengan each
+            $.each(data, function(key, value){
+            // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
+            $('input[name="ongkir"]').attr("value", value.value);
+ 
+            });
+            },
+        });
+      }
     });
+  });
 </script>
+

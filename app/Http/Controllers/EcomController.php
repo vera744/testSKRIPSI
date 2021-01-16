@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\product;
 use App\listProduk;
 use App\kategoriProduk;
+use App\Province;
+use App\City;
 
 class EcomController extends Controller
 {
@@ -79,8 +81,9 @@ class EcomController extends Controller
     }
 
     public function get_ongkir($origin, $destination, $weight, $courier){
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
+        
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -90,23 +93,21 @@ class EcomController extends Controller
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => "origin=$origin&destination=$destination&weight=$weight&courier=$courier",
             CURLOPT_HTTPHEADER => array(
-                "content-type: application/x-www-form-urlencoded",
-                "key: b2685bfdc389138af911b61ac0957e88"
+            "content-type: application/x-www-form-urlencoded",
+            "key: b2685bfdc389138af911b61ac0957e88"
             ),
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
-        
-        if ($err) {
+            ));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
             echo "cURL Error #:" . $err;
-        } else {
-            $response=json_decode($response,true);
-            $data_ongkir = $response['rajaongkir']['results'];
-            return json_encode($data_ongkir);
-        }
+            } else {
+                $response=json_decode($response,true);
+                $data_ongkir = $response['rajaongkir']['results'][0]['costs'][0]['cost'];
+                return json_encode($data_ongkir);
+            }
+            
     }
 
     public function index(){
@@ -128,6 +129,13 @@ class EcomController extends Controller
     public function productdetail($id){
         $provinsi = $this->get_province();
 
+        $provinsiAsal = Province::select('province_id','title')
+        ->where('province_id', "=", 6)->get();
+        
+        $kotaAsal = City::select('city_id','title')
+        ->where('city_id', "=", 151)->get();
+
+
         $products = Product::
         join('mortgages', "products.productID", "=", "mortgages.productID")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
@@ -138,7 +146,7 @@ class EcomController extends Controller
         ->where('products.productID', "=", $id)
         ->get();
         
-        return view('ecom.detailproduct', compact('products','provinsi'));
+        return view('ecom.detailproduct', compact('products','provinsi','provinsiAsal','kotaAsal'));
     }
 
     public function search(Request $request)
