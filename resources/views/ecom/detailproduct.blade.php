@@ -25,7 +25,7 @@
           </div>
       
           <div class="row justify-content-center">
-            LALALALa
+            
           </div>
         </div>
     
@@ -53,7 +53,7 @@
 
                 <tr>
                   <th class="pl-0 w-25" scope="row"><strong>Berat Produk</strong></th>
-                  <td name="beratProduk">{{$value->productWeight}} gram</td>
+                  <td name="beratProduk">{{$value->productWeight}} Gram</td>
                 </tr>
               </tbody>
             </table>
@@ -74,13 +74,69 @@
           <br>
           <br>
 
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group row">
+                <label for="" class="col-md-6 col-form-label text-md-left">{{ __('Provinsi Asal') }}</label>
+        
+                <div class="col-md-12">
+                  <input type="text" value="DKI Jakarta" class="form-control" id="" name="" disabled>
+                  <input type="hidden" value="6" class="form-control" id="province_origin" name="province_origin">
+                </div>
+              </div>
+            
+              <div class="form-group row">
+                <label for="" class="col-md-6 col-form-label text-md-left">{{ __('Kota Asal') }}</label>
+            
+                <div class="col-md-12">
+                  <input type="text" value="Jakarta Barat" class="form-control" id="" name="" disabled>
+                  <input type="hidden" value="151" class="form-control" id="city_origin" name="city_origin">
+                      {{-- @foreach($kotaAsal as $value)
+                        <select name="kotaAsal" id="kotaAsal" class="form-control" disabled >
+                          <option value="{{$value->city_id}}">{{$value->title}}</option>
+                        </select>
+                      @endforeach --}}
+                </div>
+              </div>    
+            </div>  
+    
+            <div class="col-6">
+              <div class="form-group row">
+                <label for="provinsi" class="col-md-7 col-form-label text-md-left">{{ __('Provinsi Tujuan ') }}</label>
+                    
+                <div class="col-md-12">
+                  <select name="provinsi" id="provinsi" class="form-control" >
+                    <option value="">Pilih Provinsi</option>
+                      @foreach($provinsi as $value)
+                        <option value="{{$value['province_id']}}" namaprovinsi="{{$value['province']}}">{{$value['province']}}</option>
+                      @endforeach
+                  </select>   
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="kota" class="col-md-6 col-form-label text-md-left">{{ __('Kota Tujuan') }}</label>
+        
+                <div class="col-md-12">
+                  <select name="kota" id="kota" class="form-control" >
+                    <option value="">Pilih Kota</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
           <div class="form-group row">
             <label for="beratProduk" class="col-md-4 col-form-label text-md-left">{{ __('Berat Produk') }}</label>
 
-            <div class="col-md-6">
-              <input type="text" name="beratProduk" id="beratProduk" class="form-control" value="200" placeholder="Masukkan Berat (Gram)">
-              <small>Dalam gram, contoh = 1700 / 1,7kg</small>
-            </div>
+            @foreach ($products as $value)
+              <div class="col-md-6">
+                <input type="text" disabled name="beratProduk" id="beratProduk" class="form-control" value="{{$value->productWeight}}" placeholder="Masukkan Berat (Gram)">
+                <small>Dalam gram, contoh = 1700 / 1,7kg</small>
+              </div>    
+            @endforeach
           </div>
 
           <div class="form-group row">
