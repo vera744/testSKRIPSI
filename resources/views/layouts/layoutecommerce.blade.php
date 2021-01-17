@@ -165,8 +165,8 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile">Profile</a>
                                     <a class="dropdown-item" href="/changepassword">Change Password</a>   
-                                    <a class="dropdown-item" href="/checkout">Pesanan Saya</a>    
- 
+                                    <a class="dropdown-item" method ="post" href="/pesan">Pesanan Saya</a>    
+                                
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

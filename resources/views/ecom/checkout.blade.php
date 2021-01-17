@@ -5,7 +5,8 @@
 <br>
     <h3 style="text-align:center">Checkout</h3>
 <br>
-
+<form action="{{ url('/pesan') }}" method="POST">
+                        {{ csrf_field() }}
 <div class="card">
     <div class="card-body">
         <div class="form-group" >
@@ -29,18 +30,14 @@
                     @endforeach
                 </select>
 </div>
-<a href="/editalamat">
-<button id="btnEdit" class="btn btn-info" style="float:center;" value="editdata">
-                                    {{ __('Edit Alamat') }}
-</button>
+<a href="/editalamat" class="btn style1">
+    {{ __('Edit Alamat') }}
 </a>
-
-
-
-    </div>
+</div>
 
 </div>
 <br>
+
 <div class="card">
     <div class="card-body">
         <table class="table">
@@ -138,11 +135,11 @@
             <tr>
                 <td>Metode Pembayaran
                 <div class="form-group">
-                <select class="form-control input-sm" name="kondisiProduk" id="kondisiProduk_id">
+                <select class="form-control input-sm" name="payID" id="payID">
                 <option value="0" disabled="true" selected="true">Metode Pembayaran</option>
                 @foreach($metode as $value)
                     
-                    <option value="{{$value->id}}">{{$value->namePayment}}</option> 
+                    <option value="{{$value->id}}" name="payID" id="payID">{{$value->namePayment}}</option> 
                     @endforeach
                 </select>
             </div>
@@ -193,5 +190,6 @@
             </tr>
   </div>
 </div>
+</form>
 
 @endsection

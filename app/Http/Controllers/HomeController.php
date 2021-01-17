@@ -9,6 +9,7 @@ use App\product;
 use App\mortgage_detail;
 use App\Mortgage;
 
+use App\User;
 use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
@@ -34,12 +35,23 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->User()){
+            
             $ditinjau = mortgage_detail::
             select('status')
             ->whereIn('status', ['sedang ditinjau'])
             ->get();
+
+            $gagal = mortgage_detail::
+            select('status')
+            ->whereIn('status', ['Gagal'])
+            ->get();
             
-            return view('home')->with('ditinjau', $ditinjau);
+            $registered = User::
+            select('id')
+            ->get();
+
+        
+            return view('home',compact('ditinjau','registered','gagal'));
         }
         else{
             return view('welcome');

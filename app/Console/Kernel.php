@@ -4,7 +4,16 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\temp;
+use App\product;
+use App\mortgage_detail;
+use App\Mortgage;
+use DateTime;
+use App\listProduk;
+use App\kategoriProduk;
+use App\Kondisi;
 
+use Illuminate\Support\Facades\DB;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -13,6 +22,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        
         //
     ];
 
@@ -24,8 +34,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+       $schedule->command('command:checkEndDate')->daily();
     }
 
     /**

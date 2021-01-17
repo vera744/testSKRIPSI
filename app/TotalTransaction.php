@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TotalTransaction extends Model
 {
     protected $fillable = [
-        'customerID', 'grandtotal'
+        'customerID', 'grandtotal', 'total', 'pesan', 'paymentID', 'ongkirID', 'grandtotal', 'tglCO', 'statusPayment'
     ];
 
     protected $table = 'totaltransactions';

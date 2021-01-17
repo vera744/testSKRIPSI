@@ -76,13 +76,14 @@ Route::get('/backcheckout', 'CartController@backcheckout')->middleware('member')
 // Route::post('/editalamat{userID}', 'CartController@editalamatID')->middleware('member');
 Route::post('/alamat/tambahbaru', 'CartController@tambahalamatbaru')->middleware('member');
 Route::post('/destroyalamat', 'CartController@destroyalamat')->name('alamat.destroy');
-
+Route::post('/pesan', 'CartController@pesan')->middleware('member');
 // Route::get('/checkout', 'CartController@checkoutpage')->middleware('member');
 
 Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');
 
 //EMAIL
 Route::get('/kirimemail','EmailController@index');
+
 
 
 //TEST
@@ -92,3 +93,4 @@ Route::get('/origin/{origin}/{destination}/{weight}/{courier}','EcomController@g
 
 //TEST API
 Route::get('/api','getApi@index');
+
