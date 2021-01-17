@@ -13,26 +13,14 @@
 <div class="card">
     <div class="card-body">
         <div class="form-group" >
-            <select class="form-control input-sm" name="alamatpengiriman" id="kondisiProduk_id">
-                <option value="0" disabled="true" selected="true">Alamat Pengiriman</option>
-                @foreach($user as $value)
-                    <option value="{{$value->id}}">{{$value->name}} |
-                    {{$value->nomorHP}} |
-                    {{$value->alamat}} |
-                    {{$value->namaKota}} |
-                    {{$value->namaProvinsi}}
-                    @endforeach
-                 @foreach($alamat as $value)
-                    <option value="{{$value->id}}">{{$value->namaPenerima}} |
-                    {{$value->nomorHP}} |
-                    {{$value->alamat}} |
-                    {{$value->namaKota}} |
-                    {{$value->namaProvinsi}}
-                    </option> 
-                    @endforeach
-                </select>
-            </div>
-            
+
+                @foreach($alamat as $value)
+                <label for="">Nama : {{$value->namaPenerima}}</label> <br>
+                <label for="">Nomor : {{$value->nomorHP}}</label> <br>
+                <label for="">Alamat : {{$value->alamat}}, {{$value->kota}}, {{$value->provinsi}}</label>
+                @endforeach
+                
+                 
             <input type="hidden" value="6" class="form-control" id="province_origin" name="province_origin">
                 
             <input type="hidden" value="151" class="form-control" id="city_origin" name="city_origin">
@@ -43,6 +31,9 @@
                 <input type="hidden" value="{{$value->idKota}}}}" class="form-control" id="kota" name="kota">
             @endforeach
 
+
+            
+</div>
 
 <a href="/editalamat" class="btn style1">
     {{ __('Edit Alamat') }}

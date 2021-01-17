@@ -1,16 +1,19 @@
+
 @extends('layouts.layoutEcommerce')
 @section('title', "Pesan")
 
 @section('content')
-@if ($message = Session::get('sukses'))
-  <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button> 
-    <strong>{{ $message }}</strong>
-  </div>
-@endif
-@foreach($detail as $value)
+<a href="/pesanview">
+<button class="btn btn-info" style="float:center;" value="editdata">Perlu Dibayar</button>
+</a>
+<a href="/recordtransaksi">
+<button class="btn btn-info" style="float:center;" value="editdata">Record Transaksi</button>
+</a>
+<br>
+<br>
+@if (count($sudahbayar)> 0 )
 
-                    
+@foreach($sudahbayar as $value)
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Total Pembayaran : Rp. {{number_format($value->total)}}</h5>
@@ -21,18 +24,12 @@
         Batas Pembayaran :
         Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 25:39 WIB
 
-
         <br>
-        <br>
-        <a href="/pesanview">
-        <button class="btn btn-info" style="float:center;" value="editdata">Bayar Sekarang</button>
-
-        </a>
     </div>
 </div>
-
 <br>
 @endforeach
-
-
+@else
+<h3>Anda belum pernah melakukan transaksi</h3>
+@endif
 @endsection
