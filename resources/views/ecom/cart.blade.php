@@ -23,7 +23,7 @@
                 <tr>
                
                     <td> 
-                    <a href="/ecom/detailback/{{$value->IDProduct}}">
+                    <a href="/ecom/detailproduct/{{$value->IDProduct}}">
                     <img src="/storage/fotoProduk/{{$value->fotoProduk}}"height="150" width="150">
                    
                     </a>
