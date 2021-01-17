@@ -85,7 +85,7 @@
                     success:function(data){
                         // console.log('success');
 
-                        // console.log(data);
+                        console.log(data);
                         // console.log(data.length);
 
                         op+='<option value="0" selected disabled>Merek Produk</option>';

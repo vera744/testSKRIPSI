@@ -16,7 +16,9 @@ use App\Http\Controllers\GadaiController;
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
+//REGISTER
+Auth::routes(['verify' => true]);
+Route::get('/findCityName', 'HomeController@findCityName');
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index')->middleware('member');

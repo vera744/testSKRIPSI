@@ -12,6 +12,7 @@ use App\Mortgage;
 use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
+use App\City;
 
 class HomeController extends Controller
 {
@@ -43,5 +44,12 @@ class HomeController extends Controller
         else{
             return view('welcome');
         }
+    }
+
+    public function findCityName(Request $request){
+      
+        $list= City::select('title','city_id','type')->where('province_id', $request->id)->take(100)->get();
+
+        return response()->json($list);
     }
 }
