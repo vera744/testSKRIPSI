@@ -67,11 +67,13 @@
                           <br>
                           <label for="productName">Nama Produk: {{$value->productName}}</label>
                           <br>
+                          <label for="productName">Berat Produk: {{$value->productWeight}} Gram</label>
+                          <br>
                           <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}}</label>
                           <br>
                           <label for="status">Status: {{$value->status}}</label>
                           <br>
-                          <label for="loan">Pinjaman: {{$value->loan}}</label>
+                          <label for="loan">Harga Pasar: {{$value->loan}}</label>
                         </div>
                       
                         <div class="modal-footer">

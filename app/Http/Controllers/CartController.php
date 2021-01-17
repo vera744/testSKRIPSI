@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +20,103 @@ use App\PaymentMethod;
 
 class CartController extends Controller
 {
+
+    public function get_province(){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+            "key: b2685bfdc389138af911b61ac0957e88"
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+        echo "cURL Error #:" . $err;
+        } else {
+            //ini kita decode data nya terlebih dahulu
+            $response=json_decode($response,true);
+
+            //ini untuk mengambil data provinsi yang ada di dalam rajaongkir result
+            $data_pengirim = $response['rajaongkir']['results'];
+
+            return $data_pengirim;
+        }
+    }
+
+    public function get_city($id){
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.rajaongkir.com/starter/city?&province=$id",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+              "key: b2685bfdc389138af911b61ac0957e88"
+            ),
+          ));
+          
+          $response = curl_exec($curl);
+          $err = curl_error($curl);
+          
+          curl_close($curl);
+          
+          if ($err) {
+            echo "cURL Error #:" . $err;
+          } else {
+            $response=json_decode($response,true);
+            $data_kota = $response['rajaongkir']['results'];
+            return json_encode($data_kota);
+          }
+    }
+
+    public function get_ongkir($origin, $destination, $weight, $courier){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "origin=$origin&destination=$destination&weight=$weight&courier=$courier",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded",
+                "key: b2685bfdc389138af911b61ac0957e88"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $response=json_decode($response,true);
+            $data_ongkir = $response['rajaongkir']['results'];
+            return json_encode($data_ongkir);
+        }
+    }
+        
+
     public function add(Request $req, $id){
         $userLogin = auth()->User()->id;
         $cartsekarang = Cart::where('IDProduct', '=', $id)->where('customerID', '=', $userLogin)->first();
@@ -41,8 +141,6 @@ class CartController extends Controller
             $cart->customerID = $userID;
             $cart->save();
         }
-        
-
         return redirect('ecom');
 
     }
@@ -76,12 +174,13 @@ class CartController extends Controller
     }
 
     public function checkout(Request $req){
+        $provinsi = $this->get_province();
+
         $userLogin = auth()->User()->id;
         $userName = auth()->User()->name;
         $userNomor = auth()->User()->nomorHP;
         $userAlamat = auth()->User()->alamat;
      
-
         $grandtotal = 0;
         $testongkir = 10000;
         $total = 0;
@@ -91,7 +190,7 @@ class CartController extends Controller
         ->where('customerID', '=', $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota','email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
       
@@ -100,9 +199,15 @@ class CartController extends Controller
         }
         $total = $testongkir + $grandtotal;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota',)
         ->where('userID', "=", $userLogin)
         ->get();
+
+        $alamatUpdate = DB::table('users')->pluck('provinsi', 'kota');
+
+        foreach($alamatUpdate as $kota => $value){
+    
+        }
 
         $metode = PaymentMethod::all();
         
@@ -154,7 +259,6 @@ class CartController extends Controller
                 $detailtransaction->transaction_id = $akhir;
                 $detailtransaction->save();
             }
-
         }
 
         // Cart::truncate();
@@ -164,6 +268,7 @@ class CartController extends Controller
         ->join('totaltransactions', 'totaltransactions.id',"=","detailtransactions.transaction_id")
         ->where('statusPayment', "=", "Belum Dibayar")
         ->update(['products.productQuantity'=>0]);
+
 
         DB::table('carts')
         ->join('detailtransactions', 'carts.IDProduct', '=', 'detailtransactions.IDProduct')
@@ -176,6 +281,7 @@ class CartController extends Controller
 
 
          $detail = TotalTransaction::
+
         join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
         ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
         ->join('payment_methods', 'payment_methods.id', "=", 'paymentID')
@@ -208,11 +314,11 @@ class CartController extends Controller
     public function editalamat(){
         $userLogin = auth()->User()->id;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat')
+        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota')
         ->where('userID', "=", $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
 
@@ -232,8 +338,9 @@ class CartController extends Controller
 
     public function tambahalamat()
     {
-       
-        return view('/ecom/tambahalamat');
+        $provinsi = $this->get_province();
+
+        return view('/ecom/tambahalamat', compact('provinsi'));
     }
 
     public function tambahalamatbaru(Request $request)
@@ -245,6 +352,8 @@ class CartController extends Controller
         $alamatpengiriman->namaPenerima = $request->input('namaPenerima');
         $alamatpengiriman->nomorHP = $request->input('nomorHP');
         $alamatpengiriman->alamat = $request->input('alamat');
+        $alamatpengiriman->provinsi = $request->input('provinsi');
+        $alamatpengiriman->kota = $request->input('kota');
 
         $alamatpengiriman->save();
 

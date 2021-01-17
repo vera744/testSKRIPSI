@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -38,7 +37,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
         ->paginate(5);
@@ -57,7 +56,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak', 'gagal'])
         ->paginate(5);
@@ -101,6 +100,7 @@ class GadaiController extends Controller
         $product = new product();
         $product->productName = $request->input('namaProduk');
         $product->productPrice = $request->input('nilaiPinjaman');
+        $product->productWeight = $request->input('beratProduk');
         $product->productCategory = $request->get('jenisProduk');
         $product->productBrand = $request->get('merekProduk');
         $product->productCondition = $request->get('kondisiProduk');
@@ -132,7 +132,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('mortgages.mortgageID', "=", $id)
         ->get();
         
@@ -149,7 +149,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('mortgages.mortgageID', "=", $id)
         ->get();
         

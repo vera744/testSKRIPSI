@@ -18,8 +18,10 @@ class CreateTotaltransactionsTable extends Migration
             $table->unsignedbigInteger('customerID');
             $table->foreign('customerID')->references('id')->on('users');
             $table->string('paymentID')->references('id')->on('payment_methods');
+
             $table->string('ongkirID');
             $table->string('pesan')->nullable();
+
             $table->integer('grandtotal');
             $table->integer('total');
             $table->date('tglCO');

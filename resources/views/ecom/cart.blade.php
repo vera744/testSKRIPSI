@@ -29,7 +29,7 @@
                     </a>
                     <td>{{$value->productName}}</td>
                     <td>{{$value->quantity}}</td>
-                    <td>{{number_format($value->total_price)}}</td>
+                    <td>{{number_format($value->total_price)}},-</td>
                     <td>
                     <form action="{{ url('/destroy') }}" method="post"><br>
                         {{ csrf_field() }}
@@ -56,7 +56,7 @@
                                             </th>
 
                                             <th>
-                                            <h4> Rp. {{number_format($total_price)}} </h4>
+                                            <h4> Rp. {{number_format($total_price)}},- </h4>
                                             </th>
                                         </tr>
                                         <tr>

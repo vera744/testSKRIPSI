@@ -36,8 +36,11 @@
             <label for="">Nama Produk</label> <br>
             <input class="col-md-6" type="text" name="namaProduk" required="required"> <br> <br>
         
-            <label for="">Nilai Pinjaman</label> <br>
+            <label for="">Harga Jual Pasar (Barang Bekas Pakai)</label> <br>
             <input class="col-md-6" type="number" name="nilaiPinjaman" required="required"> <br> <br>
+            
+            <label for="">Berat Produk (Dalam Gram)</label> <br>
+            <input class="col-md-6" type="number" name="beratProduk" required="required"> <br> <br>
 
             <div class="form-group">
                 <label for="">Kondisi Produk</label>
@@ -82,7 +85,7 @@
                     success:function(data){
                         // console.log('success');
 
-                        // console.log(data);
+                        console.log(data);
                         // console.log(data.length);
 
                         op+='<option value="0" selected disabled>Merek Produk</option>';

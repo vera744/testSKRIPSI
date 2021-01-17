@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class DetailTransaction extends Model
 {
     protected $fillable = [
-        'IDProduct', 'quantity', 'total_price'
+
+        'IDProduct', 'quantity','productWeight', 'total_price', 'pesan',
+
     ];
 
     protected $table = 'detailtransactions';

@@ -64,6 +64,20 @@
     </div>
 
     <div class="form-group row">
+      <label for="provinsi" class="col-md-4 col-form-label text-md-right">Provinsi  :</label>
+      <div class="col-md-6">
+      <input type="text" id="provinsi" name="provinsi" class="form-control" value="{{$value->provinsi}}" disabled required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="kota" class="col-md-4 col-form-label text-md-right">Kota  :</label>
+      <div class="col-md-6">
+      <input type="text" id="kota" name="kota" class="form-control" value="{{$value->kota}}" disabled required>
+      </div>
+    </div>
+
+    <div class="form-group row">
       <label for="email" class="col-md-4 col-form-label text-md-right">Email  :</label>
       <div class="col-md-6">
       <input type="text" id="email"  name="email" class="form-control" value="{{$value->email}}" disabled required>
@@ -91,6 +105,8 @@
   function myFunc(){
     document.getElementById("nomorHP").disabled=false;
     document.getElementById("alamat").disabled=false;
+    document.getElementById("provinsi").disabled=false;
+    document.getElementById("kota").disabled=false;
     document.getElementById("email").disabled=false;
     document.getElementById("btnSubmit").disabled=false;
     document.getElementById("btnEdit").disabled=true;

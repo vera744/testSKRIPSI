@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\AlamatPengiriman;
+use App\City;
 
 class RegisterController extends Controller
 {
@@ -55,6 +57,8 @@ class RegisterController extends Controller
             'dob' => 'required',
             'nomorHP' => 'required|numeric|min:11',
             'alamat' => 'required|min:10',
+            'provinsi' => 'required',
+            'kota' => 'required',
             'email' => 'required|email|unique:users',
             'nomorKTP' => 'required|numeric',
             'fotoKTP' => 'required|mimes:jpeg,jpg,png',
@@ -95,6 +99,8 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'nomorHP' => $data['nomorHP'],
             'alamat' => $data['alamat'],
+            'provinsi' => $data['provinsi'],
+            'kota' => $data['kota'],
             'email' => $data['email'],
             'nomorKTP' => $data['nomorKTP'],
             'fotoKTP' => $image,
@@ -117,5 +123,8 @@ class RegisterController extends Controller
         //     $alamatpengiriman->save();
     
 
-        }       
+        }
+        
+        
+        
 }

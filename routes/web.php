@@ -16,7 +16,9 @@ use App\Http\Controllers\GadaiController;
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
+//REGISTER
+Auth::routes(['verify' => true]);
+Route::get('/findCityName', 'HomeController@findCityName');
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index')->middleware('member');
@@ -79,10 +81,16 @@ Route::post('/pesan', 'CartController@pesan')->middleware('member');
 
 Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('member');
 
-
-
-
 //EMAIL
 Route::get('/kirimemail','EmailController@index');
 
+
+
+//TEST
+Route::get('province','CartController@get_province')->name('province');
+Route::get('/kota/{id}','CartController@get_city');
+Route::get('/origin/{origin}/{destination}/{weight}/{courier}','EcomController@get_ongkir');
+
+//TEST API
+Route::get('/api','getApi@index');
 

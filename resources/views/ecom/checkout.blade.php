@@ -15,13 +15,17 @@
                 @foreach($user as $value)
                     <option value="{{$value->id}}">{{$value->name}} |
                     {{$value->nomorHP}} |
-                    {{$value->alamat}}
+                    {{$value->alamat}} |
+                    {{$value->provinsi}} |
+                    {{$value->kota}} 
                     </option> 
                     @endforeach
                  @foreach($alamat as $value)
                     <option value="{{$value->id}}">{{$value->namaPenerima}} |
                     {{$value->nomorHP}} |
-                    {{$value->alamat}}
+                    {{$value->alamat}} |
+                    {{$value->kota}} |
+                    {{$value->provinsi}}
                     </option> 
                     @endforeach
                 </select>
@@ -80,13 +84,31 @@
             <th class="column-spacer"></th>
             
             <td>
-                <label for="">JNE</label>
-                <button id="btnEdit"  class="btn btn-info" style="float:center;" value="editdata">
-                                    {{ __('Edit') }}
-                </button>
-               
+                
+                <div class="form-group col-md-8">
+                    <label>
+                        Pilih Ekspedisi<span>*</span>
+                    </label>
+
+                    <select name="kurir" id="kurir" class="form-control">
+                        <option value="">Pilih kurir</option>
+                        <option value="jne">JNE</option>
+                        <option value="tiki">TIKI</option>
+                        <option value="pos">POS INDONESIA</option>
+                    </select>
+                </div>
+                
+                <div class="form-group col-md-8">
+                    <label>
+                        Pilih Layanan<span>*</span>
+                    </label>
+                    <select name="layanan" id="layanan" class="form-control">
+                        <option value="">Pilih layanan</option>
+                    </select>
+                </div>
             </td>
             <td>   Rp.{{number_format($testongkir)}}</td>
+
         
         </tr>
             <tr>

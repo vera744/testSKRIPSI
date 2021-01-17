@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function index()
     {
         $userLogin = auth()->User()->id;
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
+        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
 
@@ -37,6 +37,8 @@ class ProfileController extends Controller
 
     public function update(request $request, $ids) {
           DB::table('users')->where('id',"=",$ids)->update(['alamat'=> $request->input('alamat')]);
+          DB::table('users')->where('id',"=",$ids)->update(['provinsi'=> $request->input('provinsi')]);
+          DB::table('users')->where('id',"=",$ids)->update(['kota'=> $request->input('kota')]);
           DB::table('users')->where('id',"=",$ids)->update(['nomorHP'=> $request->input('nomorHP')]);
           DB::table('users')->where('id',"=",$ids)->update(['email'=> $request->input('email')]);
 
