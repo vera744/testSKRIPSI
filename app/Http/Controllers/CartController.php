@@ -186,12 +186,14 @@ class CartController extends Controller
         $total = 0;
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName','productWeight', 'customerID', 'fotoProduk')
         ->where('customerID', '=', $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota','email', 'password')
-        ->where('id', "=", $userLogin)
+        $user = User::join('provinces', 'provinces.province_id', '=', 'users.provinsi')
+        ->join('cities', 'cities.city_id','=', 'users.kota')
+        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.province_id as idProvinsi','provinces.province_id as idProvinsi','cities.city_id as idKota','cities.title as namaKota','email', 'password')
+        ->where('users.id', "=", $userLogin)
         ->get();
       
         foreach($cart as $c){
@@ -199,15 +201,12 @@ class CartController extends Controller
         }
         $total = $testongkir + $grandtotal;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota',)
+        $alamat = AlamatPengiriman::
+        join('provinces', 'alamatpengirimans.provinsi','=', 'provinces.province_id')
+        ->join('cities', 'alamatpengirimans.kota','=', 'cities.city_id')
+        ->select('alamatpengirimans.id', 'userID','namaPenerima', 'nomorHP','alamat','provinces.title as namaProvinsi','cities.title as namaKota')
         ->where('userID', "=", $userLogin)
         ->get();
-
-        $alamatUpdate = DB::table('users')->pluck('provinsi', 'kota');
-
-        foreach($alamatUpdate as $kota => $value){
-    
-        }
 
         $metode = PaymentMethod::all();
         
@@ -217,7 +216,7 @@ class CartController extends Controller
     public function pesan(Request $req){
         $userLogin = auth()->User()->id;
         $testongkir = 10000;
-        $namaOngkir = "JNE";
+        $namaOngkir = 1;
         $date1=date_create(date('Y-m-d'));
 
 
@@ -277,11 +276,8 @@ class CartController extends Controller
         $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
         ->where('id', "=", $userLogin)
         ->get();
-
-
-
-         $detail = TotalTransaction::
-
+        
+        $detail = TotalTransaction::
         join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
         ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
         ->join('payment_methods', 'payment_methods.id', "=", 'paymentID')
@@ -294,32 +290,20 @@ class CartController extends Controller
 
         return view('/ecom/pesan', compact('user', 'detail'));
     }
-    // public function checkoutpage(){
-    //     $userLogin = auth()->User()->id;
-
-    //     $user = User::select('id','name', 'dob', 'nomorHP','alamat', 'email', 'password')
-    //     ->where('id', "=", $userLogin)
-    //     ->get();
-
-    //     $detail = TotalTransaction::
-    //     join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
-    //     ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
-    //     ->select('transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName')
-    //     ->where('grandtotal', '!=', '0')
-    //     ->get();
-    //     return view('/ecom/checkout', compact('user', 'detail'));
-
-    // }
 
     public function editalamat(){
         $userLogin = auth()->User()->id;
 
-        $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota')
+        $alamat = AlamatPengiriman::join('provinces', 'provinces.province_id', '=', 'alamatpengirimans.provinsi')
+        ->join('cities', 'cities.city_id','=', 'alamatpengirimans.kota')
+        ->select('alamatpengirimans.id', 'userID','namaPenerima', 'nomorHP','alamat','provinces.title as namaProvinsi','cities.title as namaKota')
         ->where('userID', "=", $userLogin)
         ->get();
 
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota', 'email', 'password')
-        ->where('id', "=", $userLogin)
+        $user = User::join('provinces', 'provinces.province_id', '=', 'users.provinsi')
+        ->join('cities', 'cities.city_id','=', 'users.kota')
+        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.title as namaProvinsi','cities.title as namaKota', 'email', 'password')
+        ->where('users.id', "=", $userLogin)
         ->get();
 
         return view('/ecom/editalamat', compact('alamat', 'user'));

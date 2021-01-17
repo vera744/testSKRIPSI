@@ -246,7 +246,7 @@ crossorigin="anonymous"></script>
       let weight = $("input[name=beratProduk]").val();
       // alert(courier);
       if(courier){
-        console.log(origin + destination + weight);
+        // console.log(origin + destination + weight);
 
         jQuery.ajax({
           url:"/origin/"+origin+"/"+destination+"/"+weight+"/"+courier,
@@ -254,7 +254,7 @@ crossorigin="anonymous"></script>
           dataType:'json',
 
           success:function(data){
-            console.log("asik")
+            // console.log("asik")
             // jika tidak ada select dr provinsi maka select kota kososng / empty
             $('input[name="ongkir"]').empty();
             // jika ada kita looping dengan each

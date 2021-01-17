@@ -66,18 +66,6 @@ class RegisterController extends Controller
             'password' => 'required|min:8|alpha_num',
             'password_confirmation' => 'required|same:password'
             ]);
-        
-       
-        // $fotoKTP = $request->fotoKTP;
-        // $image = Image::make($fotoKTP);
-        // Response::make()$image->encode('jpg');
-
-        // $form_data = array(
-        //     'fotoKTP' => $image
-        // );
-
-        // Images::create($form_data);
-
             
     }
 
@@ -107,24 +95,6 @@ class RegisterController extends Controller
             'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
             'role' => 'member'
-        ]);
-
-        // $userLogin = auth()->User()->id;
-        // $userName = auth()->User()->name;
-        // $userNomor = auth()->User()->nomorHP;
-        // $userAlamat = auth()->User()->alamat;
-            
-        //     $alamatpengiriman = new AlamatPengiriman();
-        //     $alamatpengiriman->userID = $userLogin;
-        //     $alamatpengiriman->nama = $userName;
-        //     $alamatpengiriman->nomorHP = $userNomor;
-        //     $alamatpengiriman->alamat = $userAlamat;
-    
-        //     $alamatpengiriman->save();
-    
-
-        }
-        
-        
-        
+        ]);   
+    }  
 }

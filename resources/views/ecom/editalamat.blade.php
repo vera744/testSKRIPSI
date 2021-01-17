@@ -26,8 +26,8 @@
                             <h5 class="card-title">Nama : {{$user->name}}</h5>
                             <h5 class="card-title">Nomor Handphone : {{$user->nomorHP}}</h5>
                             <h5 class="card-title">Alamat : {{$user->alamat}}</h5>
-                            <h5 class="card-title">Provinsi : {{$user->provinsi}}</h5>
-                            <h5 class="card-title">Kota : {{$user->kota}}</h5>
+                            <h5 class="card-title">Kota : {{$user->namaKota}}</h5>
+                            <h5 class="card-title">Provinsi : {{$user->namaProvinsi}}</h5>
                         @endforeach
                     </div>
                 </div>
@@ -41,8 +41,8 @@
                             <h5 class="card-title">Nama : {{$alamat->namaPenerima}}</h5>
                             <h5 class="card-title">Nomor Handphone : {{$alamat->nomorHP}}</h5>
                             <h5 class="card-title">Alamat : {{$alamat->alamat}}</h5>
-                            <h5 class="card-title">Provinsi : {{$alamat->provinsi}}</h5>
-                            <h5 class="card-title">Kota : {{$alamat->kota}}</h5>
+                            <h5 class="card-title">Kota : {{$alamat->namaKota}}</h5>
+                            <h5 class="card-title">Provinsi : {{$alamat->namaProvinsi}}</h5>
 
                             <form action="{{ url('/destroyalamat') }}" method="post"><br>
                                 {{ csrf_field() }}
