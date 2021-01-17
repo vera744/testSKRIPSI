@@ -21,6 +21,7 @@ class CreateAlamatpengirimansTable extends Migration
             $table->string('alamat');
             $table->string('provinsi');
             $table->string('kota');
+            $table->string('statusAlamat')->nullable();
             $table->timestamps();
         });
     }

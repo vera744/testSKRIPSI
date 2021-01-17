@@ -10,25 +10,13 @@
 <div class="card">
     <div class="card-body">
         <div class="form-group" >
-            <select class="form-control input-sm" name="alamatpengiriman" id="kondisiProduk_id">
-                <option value="0" disabled="true" selected="true">Alamat Pengiriman</option>
-                @foreach($user as $value)
-                    <option value="{{$value->id}}">{{$value->name}} |
-                    {{$value->nomorHP}} |
-                    {{$value->alamat}} |
-                    {{$value->provinsi}} |
-                    {{$value->kota}} 
-                    </option> 
-                    @endforeach
-                 @foreach($alamat as $value)
-                    <option value="{{$value->id}}">{{$value->namaPenerima}} |
-                    {{$value->nomorHP}} |
-                    {{$value->alamat}} |
-                    {{$value->kota}} |
-                    {{$value->provinsi}}
-                    </option> 
-                    @endforeach
-                </select>
+                @foreach($alamat as $value)
+                <label for="">Nama : {{$value->namaPenerima}}</label> <br>
+                <label for="">Nomor : {{$value->nomorHP}}</label> <br>
+                <label for="">Alamat : {{$value->alamat}}, {{$value->kota}}, {{$value->provinsi}}</label>
+                @endforeach
+
+            
 </div>
 <a href="/editalamat" class="btn style1">
     {{ __('Edit Alamat') }}

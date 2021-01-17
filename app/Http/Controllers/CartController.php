@@ -186,7 +186,7 @@ class CartController extends Controller
         $total = 0;
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'productWeight')
         ->where('customerID', '=', $userLogin)
         ->get();
 
@@ -201,6 +201,7 @@ class CartController extends Controller
 
         $alamat = AlamatPengiriman::select('id', 'userID','namaPenerima', 'nomorHP','alamat','provinsi','kota',)
         ->where('userID', "=", $userLogin)
+        ->where('statusAlamat', "=", "Alamat Dipilih")
         ->get();
 
         $alamatUpdate = DB::table('users')->pluck('provinsi', 'kota');
@@ -223,18 +224,20 @@ class CartController extends Controller
 
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'products.productQuantity')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'products.productQuantity', 'productWeight')
         ->where('customerID', '=', $userLogin)
         ->get();
 
         $idproduct = $cart->get('IDProduct');
         $qty = $cart->get('productQuantity');
+        $productWeight = $cart->get('productWeight');
 
         $headertransaction = new TotalTransaction();
         $headertransaction->customerID = $userLogin;
         $headertransaction->pesan = $req->pesan;
         $headertransaction->paymentID = $req->get("payID");
         $headertransaction->ongkirID = $namaOngkir;
+        
         $grandtotal = 0;
 
         foreach($cart as $c){
@@ -254,6 +257,7 @@ class CartController extends Controller
             foreach($cart as $c){
                 $detailtransaction = new DetailTransaction();
                 $detailtransaction->IDProduct = $c->IDProduct;
+                $detailtransaction->productWeight = $c->productWeight;
                 $detailtransaction->total_price = $c->total_price;
                 $detailtransaction->quantity = $c->quantity;
                 $detailtransaction->transaction_id = $akhir;
@@ -279,13 +283,9 @@ class CartController extends Controller
         ->get();
 
 
-
          $detail = TotalTransaction::
-
-        join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
-        ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
-        ->join('payment_methods', 'payment_methods.id', "=", 'paymentID')
-        ->select('customerID','transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'productName', 'total', 'namePayment', 'norek', 'tglCO')
+       join('payment_methods', 'payment_methods.id', "=", 'paymentID')
+        ->select('totaltransactions.id','customerID','grandtotal', 'total', 'namePayment', 'norek', 'tglCO')
         ->where('grandtotal', '!=', '0')
         ->where('statusPayment', "=", "Belum Dibayar")
         ->where('customerID','=', $userLogin)
@@ -332,8 +332,20 @@ class CartController extends Controller
     public function destroyalamat(Request $req){
         $findalamatid = $req->id;
         $findalamat = AlamatPengiriman::find($findalamatid)->delete();
+        Session::flash('delete','Alamat telah dihapus!');
 
-       return back()->with('success_message', 'Alamat has been removed');
+       return back();
+   }
+
+   public function pilihalamat(Request $req){
+   
+    DB::table('alamatpengirimans')->where('alamatpengirimans.statusAlamat', '=', 'Alamat Dipilih')->update(['alamatpengirimans.statusAlamat'=>'null']);
+
+    DB::table('alamatpengirimans')->where('id',"=",$req->id)->update(['alamatpengirimans.statusAlamat'=>'Alamat Dipilih']);
+    Session::flash('pilih','Alamat telah dipilih!');
+
+    return back();
+
    }
 
     public function tambahalamat()
@@ -366,8 +378,50 @@ class CartController extends Controller
 
     }
 
-    public function backcheckout(){
-        return redirect()->route('ecom.checkout');
+    public function bayar($id){
+        $userLogin = auth()->User()->id;
+        $detail = TotalTransaction::
+       join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
+       ->join('products', 'detailtransactions.IDProduct', '=', 'products.productID')
+       ->join('payment_methods', 'payment_methods.id', "=", 'paymentID')
+       ->select('customerID','transaction_id', 'detailtransactions.quantity', 'fotoProduk', 'total_price', 'grandtotal', 'IDProduct', 'productName', 'total', 'namePayment', 'norek', 'tglCO')
+       ->where('grandtotal', '!=', '0')
+       ->where('statusPayment', "=", "Belum Dibayar")
+       ->where('customerID','=', $userLogin)
+       ->where('totaltransactions.id', '=', $id)
+       ->update(['totaltransactions.statusPayment'=>'Sudah Dibayar']);
+       Session::flash('sukses','Pembayaran Berhasil!');
+
+       return back();
+
+    }
+
+    public function pesanview(){
+        $userLogin = auth()->User()->id;
+         $belumbayar = TotalTransaction::
+        join('payment_methods', 'payment_methods.id', "=", 'paymentID')
+        ->select('totaltransactions.id','customerID','grandtotal', 'total', 'namePayment', 'norek', 'tglCO')
+        ->where('grandtotal', '!=', '0')
+        ->where('statusPayment', "=", "Belum Dibayar")
+        ->where('customerID','=', $userLogin)
+        ->get();
+
+        return view('/ecom/pesanview', compact('belumbayar'));
+    }
+
+    
+    public function recordtransaksi(){
+        $userLogin = auth()->User()->id;
+
+        $sudahbayar = TotalTransaction::
+        join('payment_methods', 'payment_methods.id', "=", 'paymentID')
+        ->select('totaltransactions.id','customerID','grandtotal', 'total', 'namePayment', 'norek', 'tglCO')
+        ->where('grandtotal', '!=', '0')
+        ->where('statusPayment', "=", "Sudah Dibayar")
+        ->where('customerID','=', $userLogin)
+        ->get();
+
+        return view('/ecom/recordtransaksi', compact('sudahbayar'));
     }
 
     
