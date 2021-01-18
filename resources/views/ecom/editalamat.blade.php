@@ -6,13 +6,14 @@
     <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
                                         {{ __('Tambah Alamat') }}
     </button>
-    </a>
-
-    <a href="/backcheckout" method="post">
-    <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
+</a>
+    <form action="{{ url('/checkout') }}" method="post">
+                        {{ csrf_field() }}
+                <button id="btnAdd" class="btn btn-info" style="float:center;" value="back">
                                         {{ __('Kembali') }}
-    </button>
-    </a>
+                </button>
+    </form>
+
     <br>
     <br>
 

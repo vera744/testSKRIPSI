@@ -14,7 +14,8 @@ use DateTime;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AcceptGadaiEmail;
 use App\Mail\RejectGadaiEmail;
-
+use App\TotalTransaction;
+use App\DetailTransaction;
 class manageGadaiController extends Controller
 {
     public function __construct(){
@@ -23,8 +24,16 @@ class manageGadaiController extends Controller
     
     public function index(){
         $date1=date_create(date('Y-m-d'));
+
         DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
-        
+
+       //buat cek si pembayaran
+       DB::table('totaltransactions')->join('detailtransactions','totaltransactions.id',"=","detailtransactions.transaction_id")->join('products','detailtransactions.IDProduct',"=",'products.productID')->where('tglCO',"!=",$date1)->where('statusPayment',"=","Belum Dibayar")->update(['totaltransactions.statusPayment'=>'Gagal']);
+
+       DB::table('totaltransactions')->join('detailtransactions','totaltransactions.id',"=","detailtransactions.transaction_id")->join('products','detailtransactions.IDProduct',"=",'products.productID')->where('tglCO',"!=",$date1)->where('statusPayment',"=","Gagal")->update(['products.productQuantity'=>1]);
+
+       //cek pembayaran
+
         $temp = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
