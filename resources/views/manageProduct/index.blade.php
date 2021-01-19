@@ -12,9 +12,10 @@
     <div class="col-12">
         <p class="font-weight-bold" style="font-size: 25pt">Produk Baru</p>
         @if (count($unreviewed)<1)
-        <p class="font-weight-bold">Belum ada produk baru untuk saat ini</p>
+        <button type="button" class="btn style1" data-toggle="collapse" data-target="#nodata">Belum ada produk baru untuk saat ini</button>
+        <div id="nodata" class="collapse">
           <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
-       
+        </div>
         @endif
         @if (count($unreviewed)>0)
         <button type="button" class="btn style1" data-toggle="collapse" data-target="#demo">Tinjau Sekarang</button>
@@ -53,16 +54,15 @@
             @endif
         </div>
     </div>  
-</div>
 
-<div class="reviewed">
-    <div class="col-8">
+<div class="reviewed" style="margin-top: 10px">
+     <div class="col-12">
         <p class="font-weight-bold" style="font-size: 25pt">Data Produk</p>
         
         <div class="card-body">
             <div class="row">
                 @foreach($product as $value)
-                <div class="col-md-4">
+                <div class="col-md-2.5 mb-3" style="margin: 10px">
                     
                         <div class="card" style="width: 250px; height: 400px;">
                             <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="250" width="250">

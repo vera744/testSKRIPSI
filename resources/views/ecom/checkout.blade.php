@@ -17,7 +17,7 @@
                 @foreach($alamat as $value)
                 <label for="">Nama : {{$value->namaPenerima}}</label> <br>
                 <label for="">Nomor : {{$value->nomorHP}}</label> <br>
-                <label for="">Alamat : {{$value->alamat}}, {{$value->kota}}, {{$value->provinsi}}</label>
+                <label for="">Alamat : {{$value->alamat}}, {{$value->cityTitle}}, {{$value->title}}</label>
                 @endforeach
                 
                  
