@@ -213,7 +213,9 @@ class manageGadaiController extends Controller
             $file=$request->fotoProduk;
             $image = $file->getClientOriginalName();
             $request->file('fotoProduk')->move('storage/fotoProduk',$image);
-            DB::table('products')->where('productID',"=",$id)->update(['fotoProduk'=>$image]);
+
+            product::where('productID', $id)
+                    ->update(['fotoProduk' => $image]);
         }
         
 

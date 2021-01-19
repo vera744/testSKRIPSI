@@ -7,7 +7,8 @@
 
 @foreach($product as $value)
 
-<form action="/manageProduct/update/{{$value->productID}}" enctype="multipart/form-data">
+<form action="/manageProduct/update/{{$value->productID}}" enctype="multipart/form-data" method="POST">
+  @csrf
     <section class="mb-5">
       <div class="row">
         <div class="col-md-6 mb-4 mb-md-0">
@@ -29,7 +30,7 @@
     
         <div class="col-md-6">
             <h3>Ganti Foto Produk</h3>
-            <input id="fotoProduk" type="file" value="Pilih Foto" name="fotoProduk" value="{{ old('fotoProduk') }}" required autocomplete="fotoProduk" autofocus accept="image/jpeg, image/jpg, image/png"> <br> <br>
+            <input id="fotoProduk" type="file" value="Pilih Foto" name="fotoProduk" value="{{ old('fotoProduk') }}" autocomplete="fotoProduk" autofocus accept="image/jpeg, image/jpg, image/png"> <br> <br>
             <br>
             <hr>
           <div class="table-responsive">

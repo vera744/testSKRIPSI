@@ -12,7 +12,7 @@
   <div class="bordered-center col-3" style="background-color:#7C69EF">
     <h2>{{count($registered)}}<br>pengguna
       telah bergabung</h2>
-      <img src="{{asset('images/user.png')}}" width="40">
+      <img src="{{asset('images/user.png')}}" width="30">
   </div>
   <div class="bordered-center col-3" style="background-color: #42BA96">
     @if (count($ditinjau)<1)
@@ -22,7 +22,7 @@
     <h2>Anda memiliki <br> {{count($ditinjau)}} <br> transaksi baru.</h2>
     <a href="manageGadai" style="color: white">Tinjau sekarang</a>
     @endif
-    <img src="{{asset('images/trans.png')}}" width="40">
+    <img src="{{asset('images/trans.png')}}" width="30">
   </div>
   <div class="bordered-center col-3" style="background-color: #FFC107">
     <h2>Terdapat <br>{{count($gagal)}} <br> produk baru<br>    <a href="manageProduct" style="color: white">Tinjau sekarang</a>
