@@ -10,9 +10,12 @@
 @if(Auth::user()->role=="admin" )
 <div class="row admin">
   <div class="col-4">'
-    <div class="bordered-center" style="background-color:#7C69EF"data-toggle="collapse" data-target="#ungu">
+    <div class="bordered-center ungu" style="background-color:#7C69EF"data-toggle="collapse" data-target="#ungu" id="colungu">
       <h2>{{count($registered)}}</h2>
+      <a href="#">
         <img src="{{asset('images/user.png')}}" width="100">
+      </a>
+        
     </div>
     <div class="bordered-center" style="background-color: #42BA96"data-toggle="collapse" data-target="#hijau">
       {{-- @if (count($ditinjau)<1)
@@ -23,10 +26,12 @@
       <a href="manageGadai" style="color: white">Tinjau sekarang</a>
       @endif --}}
       <h2>{{count($ditinjau)}}</h2>
-      <img src="{{asset('images/trans.png')}}" width="100">
+      <a href="#">
+        <img src="{{asset('images/trans.png')}}" width="100">
+      </a>
     </div>
   
-    <div class="bordered-center" style="background-color: #FFC107" data-toggle="collapse" data-target="#kuning">
+    <div class="bordered-center" style="background-color: #FFC107" data-toggle="collapse" data-target="#kuning" >
     {{-- @if(count($gagal)<1)
       <br>
       <h2>Belum ada <br> produk baru <br> untuk saat ini<br>
@@ -41,7 +46,9 @@
       </h2>
       @endif --}}
       <h2>{{count($gagal)}}</h2>
-      <img src="{{asset('images/prods.png')}}" width="100">
+      <a href="#">
+        <img src="{{asset('images/prods.png')}}" width="100">
+      </a>
     </div>    
   
   @endif
@@ -52,6 +59,12 @@
 
   {{-- batas --}}
   <div class="col-8 admin" style="margin-top: 10px">
+    <h1>ADMIN DASHBOARD</h1>
+    <h2>@php
+        date_default_timezone_set("Asia/Bangkok");
+      echo date("d M y, H:i");
+    @endphp</h2>
+    <hr>
     <div id="ungu" class="collapse">
       <h1>Pengguna</h1>
      <h2> Sebanyak {{count($registered)}} orang telah bergabung dengan layanan.</h2>
@@ -59,14 +72,32 @@
     </div>
 
     <div id="hijau" class="collapse">
+      <h1>Transaksi</h1>
        @if (count($ditinjau)<1)
-       <h1>Transaksi</h1>
       <h2>Semua transaksi telah anda tinjau. <br> Sejauh ini belum ada transaksi terbaru.</h2>
       
       @endif
       @if (count($ditinjau)>0)
-      <h2>Anda memiliki <br> {{count($ditinjau)}} <br> transaksi baru.</h2>
-      <a href="manageGadai" style="color: white">Tinjau sekarang</a>
+      <h2>Anda memiliki {{count($ditinjau)}} transaksi baru.</h2>
+      {{-- <a href="manageGadai" class="btn style1">Tinjau sekarang</a> --}}
+       {{-- ..... --}}
+
+       @foreach($mortgage as $value)
+      
+             
+     
+          <div class="row">
+            <div class="col-4">
+              <br>
+             <h2>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h2>
+             <h5>{{$value->productName}}</h5>
+             <br>
+            </div>
+          </div>
+          @endforeach
+          <a class="btn style1" href="manageGadai">Tinjau sekarang</a>
+          
+       {{-- ..... --}}
       @endif
       <hr>
     </div>
@@ -85,8 +116,15 @@
       @endif
       <hr>
     </div>
+
+    <img src="{{asset('images/dash.png')}}" width="max">
+
   </div>
 </div>
   
+<script>
+
+</script>
 @endsection
+
 
