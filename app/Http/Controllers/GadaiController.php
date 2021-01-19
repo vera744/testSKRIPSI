@@ -154,6 +154,6 @@ class GadaiController extends Controller
         ->get();
         
         
-        return view('appendP')->with('mortgages', $mortgages);;
+        return view('append')->with('mortgages', $mortgages);;
     }
 }
