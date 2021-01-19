@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -22,6 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <style>
+
    html, body {
             background-color: rgb(232,241,255);
             color: black;
@@ -106,50 +107,52 @@
             width: 250px;
             }
 
+            .row.admin h2{
+                font-size: 17pt;
+            }
+
+            .col-8.admin h1{
+                color: #19365C;
+            }
+         #ungu:hover{
+        background-color: antiquewhite;
+        }
+                
+
 
 </style>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md ">
-            <div class="container">
-                
+    {{-- <div id="app"> --}}
+        <nav class="navbar">
                 <a class="navbar-brand" href="/">
-                    <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
+                <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
-               
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar">
                         @if(Auth::User()->role == 'admin')
-                        <div class="flex-center position-ref height-header">
+                       
                             <div class="top-left links">
                             
                                 <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
                                 <a href="{{ url('') }}">Blablabla</a>
-                                </div>
+                            </div>
                                 
                     @else
-                        <div class="flex-center position-ref height-header">
+                       
                             <div class="top-left links">
                              <a href="/gadai">GADAI</a>
-                                <a href="/ecom" >E-COMMERCE</a>
-                             
-                                </div>
-                                </div>
-                                @yield('searchBtn')
-                            </div>     
-                        </div>
+                            <a href="/ecom" >E-COMMERCE</a>
+                            </div>
+                               
+                       
                 
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar">
                         <!-- Authentication Links -->
                         @guest
                             {{-- <li class="nav-item">
@@ -161,7 +164,7 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item dropdown">
+                            
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    Hello, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -171,7 +174,7 @@
                                     <a class="dropdown-item" href="/changepassword">Change Password</a>    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
@@ -179,16 +182,16 @@
                                             @csrf
                                         </form>
                                 </div>
-                            </li>
+                            
                         @endguest
                     </ul>
-                </div>
-            </div>
+                
+            
         </nav>
 
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    {{-- </div> --}}
 </body>
 </html>

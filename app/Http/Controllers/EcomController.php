@@ -119,7 +119,7 @@ class EcomController extends Controller
            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
            ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
            ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-           ->whereIn('status', ['sedang berlangsung', 'gagal'])
+           ->whereIn('status', ['sedang berlangsung', 'gagal','ecom'])
            ->where('productQuantity', "=", "1")
            ->get();
    
@@ -164,7 +164,7 @@ class EcomController extends Controller
            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
            ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
            ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-           ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
+           ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal','ecom'])
            ->where('productQuantity', "=", "1")
            ->where('productName', 'like', "%$query%")
            ->get();
@@ -185,7 +185,7 @@ class EcomController extends Controller
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
         ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
+        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal','ecom'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "handphone")
         ->get();
@@ -203,7 +203,7 @@ class EcomController extends Controller
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
         ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
+        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal','ecom'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "laptop")
         ->get();
@@ -222,7 +222,7 @@ class EcomController extends Controller
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
         ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
-        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal'])
+        ->whereIn('status', ['sedang berlangsung', 'diterima', 'gagal','ecom'])
         ->where('productQuantity', "=", "1")
         ->where('namakategori', "=", "elektronik")
         ->get();

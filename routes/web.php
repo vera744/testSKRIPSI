@@ -39,7 +39,9 @@ Route::get('/tinjauanSelesai','manageGadaiController@done')->middleware('admin')
 Route::post('/acceptGadai', 'manageGadaiController@update')->middleware('admin');
 Route::get('/manage/acc/{id}','manageGadaiController@acc')->middleware('admin');
 Route::get('/manage/reject/{id}','manageGadaiController@reject')->middleware('admin');
-
+Route::get('/manageProduct', 'manageGadaiController@indexProduct')->middleware('admin');
+Route::get('/manageProduct/edit/{id}', 'manageGadaiController@editProduct')->middleware('admin');
+Route::POST('manageProduct/update/{id}','manageGadaiController@updateProduct')->middleware('admin');
 Route::get('/manage/input_transaction/{id}','manageGadaiController@skejul')->middleware('admin');
 
 Route::get('/manage/append/{id}','manageGadaiController@append');

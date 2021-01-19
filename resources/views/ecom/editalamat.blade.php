@@ -53,7 +53,7 @@
                             <tr>
                             <td> <br> {{$alamat->namaPenerima}}</td>
                             <td> <br>{{$alamat->nomorHP}}</td>
-                            <td> <br>{{$alamat->alamat}}, {{$alamat->provinsi}}, {{$alamat->kota}}</td>
+                            <td> <br>{{$alamat->alamat}}, {{$alamat->title}}, {{$alamat->cityTitle}}</td>
                             <td>
                             <form action="{{ url('/destroyalamat') }}" method="post"><br>
                                 {{ csrf_field() }}
@@ -62,8 +62,8 @@
                                 <input type="hidden" name="namaPengiriman" value="{{$alamat->namaPenerima}}">
                                 <input type="hidden" name="nomorHP" value="{{$alamat->nomorHP}}">
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
-                                <input type="hidden" name="provinsi" value="{{$alamat->provinsi}}">
-                                <input type="hidden" name="kota" value="{{$alamat->kota}}">
+                                <input type="hidden" name="provinsi" value="{{$alamat->title}}">
+                                <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
                                 <button type="submit" class="btn btn-info" style="float:center;">Delete</button>
                             </form>
                             <td>
@@ -74,8 +74,8 @@
                                 <input type="hidden" name="namaPengiriman" value="{{$alamat->namaPenerima}}">
                                 <input type="hidden" name="nomorHP" value="{{$alamat->nomorHP}}">
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
-                                <input type="hidden" name="provinsi" value="{{$alamat->provinsi}}">
-                                <input type="hidden" name="kota" value="{{$alamat->kota}}">
+                                <input type="hidden" name="provinsi" value="{{$alamat->title}}">
+                                <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
                                 <button type="submit" class="btn btn-info" style="float:center;">Pilih Alamat</button>
                             </form>
                             </td>
