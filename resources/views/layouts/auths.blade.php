@@ -109,15 +109,25 @@
 
             .row.admin h2{
                 font-size: 17pt;
+                color: aliceblue;
             }
+            .row.admin h5{
+                font-size: 17pt;
+                color: aliceblue;
+            }
+           
+
 
             .col-8.admin h1{
-                color: #19365C;
+                color: white;
             }
-         #ungu:hover{
-        background-color: antiquewhite;
-        }
-                
+            
+            .col-8.admin{
+                border: 3px;
+                background-color: #2981c9a4;
+                border-radius: 10px;
+            }
+        
 
 
 </style>
@@ -189,7 +199,7 @@
             
         </nav>
 
-        <main class="py-4">
+        <main class="col-12">
             @yield('content')
         </main>
     {{-- </div> --}}
