@@ -168,4 +168,71 @@ class manageGadaiController extends Controller
         
     }
 
+//MANAGE PRODUCT
+    public function indexProduct(){
+        $unreviewed = Product::
+        join('mortgages', "products.productID", "=", "mortgages.productID")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->where('status', ['gagal'])
+        ->where('productQuantity', "=", "1")
+        ->get();
+
+        $product = Product::
+        join('mortgages', "products.productID", "=", "mortgages.productID")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->select('products.productID', 'productName', 'productPrice','productWeight','fotoProduk')
+        ->where('status', ['ecom'])
+        ->where('productQuantity', "=", "1")
+        ->get();
+
+        return view('manageProduct.index',compact('unreviewed','product'));
+    }
+
+    public function editProduct($id){
+        $product = Product::
+        join('mortgages', "products.productID", "=", "mortgages.productID")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->where('products.productID', "=", $id)->get();
+     
+        
+        
+        return view('manageProduct.edit',compact('product'));
+    }
+
+    public function updateProduct($id, Request $request){
+
+        if($request->hasFile('fotoProduk')){
+            $file=$request->fotoProduk;
+            $image = $file->getClientOriginalName();
+            $request->file('fotoProduk')->move('storage/fotoProduk',$image);
+            DB::table('products')->where('productID',"=",$id)->update(['fotoProduk'=>$image]);
+        }
+        
+
+        $name = $request->input('name');
+        $price=$request->input('price');
+        $berat=$request->input('berat');
+        DB::table('products')->where('productID',"=",$id)->update(['productName'=>$name]);
+        DB::table('products')->where('productID',"=",$id)->update(['productPrice'=>$price]);
+        DB::table('products')->where('productID',"=",$id)->update(['productWeight'=>$berat]);
+        
+        DB::table('products')->
+        join('mortgages', "products.productID", "=", "mortgages.productID")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+        ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+        ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+        ->where('products.productID', "=", $id)->update(['status'=>'Ecom']);
+
+        ;
+        return redirect ('manageProduct');
+    }
 }

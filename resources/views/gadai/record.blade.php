@@ -39,7 +39,16 @@
             @foreach($mortgages as $value)
               <tr>
                 <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
+               
+                @if ($value->status == "Ecom")
+                <td>Gagal</td>
+                
+                @endif
+                
+                @if($value->status!="Ecom")
                 <td>{{$value->status}}</td>
+                 @endif
+                
                 <td>
                   <div class="dropdown">
                     <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false"></a>
@@ -71,9 +80,15 @@
                           <br>
                           <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}}</label>
                           <br>
+                          @if ($value->status == "Ecom")
+                          <label for="status">Status: Gagal</label>
+                          <br>
+                          @endif
+                          @if($value->status !="Ecom")
                           <label for="status">Status: {{$value->status}}</label>
                           <br>
-                          <label for="loan">Harga Pasar: {{$value->loan}}</label>
+                          @endif
+                          {{-- <label for="loan">Harga Pasar: {{$value->loan}}</label> --}}
                         </div>
                       
                         <div class="modal-footer">
