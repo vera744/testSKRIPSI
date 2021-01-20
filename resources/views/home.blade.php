@@ -51,7 +51,7 @@
       </a>
     </div>    
   
-  @endif
+{{-- @endif --}}
   
   
   </div>
@@ -108,7 +108,7 @@
       <h1>Atur Produk</h1>
       <h2>Belum ada produk baru untuk saat ini</h2>
       <a href="manageProduct" class="btn style1">Tinjau data produk yang tersedia.</a>
-    @endif
+     @endif
   
     @if(count($gagal)>0)
       <h2>Terdapat {{count($gagal)}} produk baru</h2>   
@@ -121,7 +121,7 @@
 
   </div>
 </div>
-  
+@endif 
 <script>
 
 </script>
