@@ -78,7 +78,7 @@
                           <br>
                           <label for="productName">Berat Produk: {{$value->productWeight}} Gram</label>
                           <br>
-                          <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}}</label>
+                          <label for="productCondition">Kondisi Produk: {{$value->namaKondisi}} {{$value->keterangan_kondisi}}</label>
                           <br>
                           @if ($value->status == "Ecom")
                           <label for="status">Status: Gagal</label>

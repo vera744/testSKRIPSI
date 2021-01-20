@@ -20,6 +20,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <style>
    html, body {
@@ -141,8 +144,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            {{-- 
-                             
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -152,8 +154,8 @@
                                 </li>
                             @endif --}}
                         @else
-                        <li class="nav-item">
-                                <a class="nav-link" href="/ecom/cart">CART
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
                                 <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>
                                 </a>
                             </li>

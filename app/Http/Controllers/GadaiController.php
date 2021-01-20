@@ -37,7 +37,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'keterangan_kondisi','fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['sedang ditinjau', 'sedang berlangsung','sudah ditinjau'])
         ->paginate(5);
@@ -56,7 +56,7 @@ class GadaiController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
+        ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName','productWeight', 'namaKondisi','keterangan_kondisi', 'fotoProduk', 'startDate','endDate', 'namaKategori', 'merekProduk')
         ->where('customerID', "=", $userLogin)
         ->whereIn('status', ['selesai', 'ditolak', 'gagal','ecom'])
         ->paginate(5);

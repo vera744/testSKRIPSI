@@ -218,7 +218,7 @@
             // console.log("yeay berubah");
 
             var cat_id=$(this).val();
-            // console.log(cat_id);
+                
             
             var div=$(this).parent().parent().parent().parent();
 
@@ -237,7 +237,7 @@
 
                     op+='<option value="0" selected disabled>Kota Sesuai KTP</option>';
                     for(var i=0;i<data.length;i++){
-                        op+='<option value="'+data[i].city_id+'">'+data[i].type+''+" "+''+data[i].title+'</option>';
+                        op+='<option value="'+data[i].city_id+'">'+data[i].type+''+" "+''+data[i].cityTitle+'</option>';
                     }
                     
                     div.find('.kota').html(" ");

@@ -1,11 +1,11 @@
 @extends('layouts.layoutEcommerce')
+
 @section('title', "Checkout")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 @section('content')
 <br>
     <h3 style="text-align:center">Checkout</h3>
-    
-
 <br>
 
 <form action="{{ url('/pesan') }}" method="POST">
@@ -25,7 +25,7 @@
                 
             <input type="hidden" value="151" class="form-control" id="city_origin" name="city_origin">
     
-            @foreach ($user as $value)
+            @foreach ($alamat as $value)
                 <input type="hidden" value="{{$value->idProvinsi}}" class="form-control" id="provinsi" name="provinsi">
                     
                 <input type="hidden" value="{{$value->idKota}}}}" class="form-control" id="kota" name="kota">
@@ -121,7 +121,7 @@
                 <div class="form-group col-md-6">
                     <label>Ongkir</label>
                         
-                    <input id="ongkir" type="text" disabled placeholder="Rp.{{number_format(9000)}}" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+                    <input id="ongkir" type="text" disabled placeholder="Rp.{{number_format(0)}}" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
                 </div>
             </td>
         </tr>
@@ -134,9 +134,6 @@
             </tr>
            
     </table>
-   
-
-   
 </div>
 </div>
 
@@ -180,7 +177,13 @@
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
             <td>Total Ongkos Kirim: </td>
-            <td>Rp. {{number_format($testongkir)}}</td>
+            <td>
+                <div class="row">
+                    <div class="col-6 mr-2">
+                    <input id="ongkir" type="text" disabled placeholder="Rp.{{number_format(0)}}" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+                    </div>
+                </div>
+            </td>
 
             <tr>
             <th class="column-spacer"></th>

@@ -184,6 +184,7 @@ class CartController extends Controller
         $grandtotal = 0;
         $testongkir = 10000;
         $total = 0;
+        
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
 
@@ -194,7 +195,7 @@ class CartController extends Controller
 
         $user = User::join('provinces', 'provinces.province_id', '=', 'users.provinsi')
         ->join('cities', 'cities.city_id','=', 'users.kota')
-        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.province_id as idProvinsi','provinces.province_id as idProvinsi','cities.city_id as idKota','cities.cityTitle as namaKota','email', 'password')
+        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.province_id as idProvinsi','cities.city_id as idKota','cities.cityTitle as namaKota','email', 'password')
         ->where('users.id', "=", $userLogin)
         ->get();
       
@@ -206,7 +207,7 @@ class CartController extends Controller
         $alamat = AlamatPengiriman::
         join('provinces', 'alamatpengirimans.provinsi','=', 'provinces.province_id')
         ->join('cities', 'alamatpengirimans.kota','=', 'cities.city_id')
-        ->select('alamatpengirimans.id', 'userID','namaPenerima', 'nomorHP','alamat','provinces.title','cities.cityTitle')
+        ->select('alamatpengirimans.id', 'userID','namaPenerima', 'nomorHP','alamat','provinces.title','cities.cityTitle','provinces.province_id as idProvinsi','cities.city_id as idKota')
         ->where('userID', "=", $userLogin)
         ->where('statusAlamat', "=", "Alamat Dipilih")
         ->get();

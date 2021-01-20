@@ -132,7 +132,7 @@ class EcomController extends Controller
         $provinsiAsal = Province::select('province_id','title')
         ->where('province_id', "=", 6)->get();
         
-        $kotaAsal = City::select('city_id','title')
+        $kotaAsal = City::select('city_id','cityTitle')
         ->where('city_id', "=", 151)->get();
 
 
@@ -142,7 +142,7 @@ class EcomController extends Controller
         ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
-        ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
+        ->select('products.productID', 'productName', 'productPrice','productWeight', 'namaKondisi','keterangan_kondisi', 'fotoProduk', 'mortgage_details.status', 'namaKategori', 'merekProduk', 'loan', 'productQuantity')
         ->where('products.productID', "=", $id)
         ->get();
         
