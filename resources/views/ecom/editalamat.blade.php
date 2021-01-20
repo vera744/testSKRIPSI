@@ -1,5 +1,8 @@
 @extends('layouts.layoutEcommerce')
 
+@section('title', "Alamat")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
 @section('content')
 
 @if ($message = Session::get('delete'))
@@ -14,17 +17,24 @@
   </div>
 @endif
 
-<a href="/tambahalamatt">
-    <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
-                                        {{ __('Tambah Alamat') }}
-    </button>
-</a>
-    <form action="{{ url('/checkout') }}" method="post">
-                        {{ csrf_field() }}
-                <button id="btnAdd" class="btn btn-info" style="float:center;" value="back">
-                                        {{ __('Kembali') }}
-                </button>
-    </form>
+<div class="row">
+
+    <div class="col-1 px-4">
+        <form action="{{ url('/checkout') }}" method="post">
+                            {{ csrf_field() }}
+                    <button id="btnAdd" class="btn btn-info" style="float:center;" value="back">
+                                            {{ __('Kembali') }}
+                    </button>
+        </form>
+    </div>
+    <div class="col-2">
+        <a href="/tambahalamatt">
+            <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
+                                                {{ __('Tambah Alamat') }}
+            </button>
+        </a>
+    </div>
+</div>
 
     <br>
     <br>

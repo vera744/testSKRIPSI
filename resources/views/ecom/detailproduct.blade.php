@@ -48,7 +48,7 @@
          
                 <tr>
                   <th class="pl-0 w-25" scope="row"><strong>Kondisi</strong></th>
-                  <td name="namaKondisi">{{$value->namaKondisi}}</td>
+                  <td name="namaKondisi">{{$value->namaKondisi}} {{$value->keterangan_kondisi}}</td>
                 </tr>
 
                 <tr>
@@ -93,7 +93,7 @@
                   <input type="hidden" value="151" class="form-control" id="city_origin" name="city_origin">
                       {{-- @foreach($kotaAsal as $value)
                         <select name="kotaAsal" id="kotaAsal" class="form-control" disabled >
-                          <option value="{{$value->city_id}}">{{$value->title}}</option>
+                          <option value="{{$value->city_id}}">{{$value->citytTitle}}</option>
                         </select>
                       @endforeach --}}
                 </div>
