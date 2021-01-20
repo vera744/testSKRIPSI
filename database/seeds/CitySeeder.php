@@ -27,7 +27,7 @@ class CitySeeder extends Seeder
                 'province_id' => $value['province_id'],
                 'city_id' => $value['city_id'],
                 'type' => $value['type'],
-                'title' => $value['city_name'],
+                'cityTitle' => $value['city_name'],
                 'postal_code' => $value['postal_code'],
 
             ];
