@@ -79,7 +79,7 @@
                         <br>
                         <label for="loan">Harga Pasar: {{$value->loan}}</label>
                         <br>
-                        <label for="kondisiProduk">Kondisi Produk: {{$value->namaKondisi}}</label>
+                        <label for="kondisiProduk">Kondisi Produk: {{$value->namaKondisi}} {{$value->keterangan_kondisi}}</label>
                         <br>
                           @if($value->startDate && $value->endDate)
                             <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>

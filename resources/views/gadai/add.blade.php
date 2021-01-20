@@ -49,7 +49,7 @@
                     <option value="0" disabled="true" selected="true">Kondisi Produk</option>
                     @foreach($kondisi as $value)
                     
-                    <option value="{{$value->kondisi_id}}">{{$value->namaKondisi}}</option> 
+                    <option value="{{$value->kondisi_id}}">{{$value->namaKondisi}} {{$value->keterangan_kondisi}}</option> 
                     @endforeach
                 </select>
             </div>

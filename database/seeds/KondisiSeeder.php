@@ -14,23 +14,23 @@ class KondisiSeeder extends Seeder
         DB::table('kondisi')->insert([
             [
             'kondisi_id' => '1',
-            'namaKondisi' => 'Keren Banget'
+            'namaKondisi' => '96% - 100%',
+            'keterangan_kondisi' => '(Pembelian dalam sebulan terakhir; tanpa goresan; ada box dan garansi; functional)'
             ],
             [
             'kondisi_id' => '2',
-            'namaKondisi' => 'Keren Aja'
+            'namaKondisi' => '91% - 95%',
+            'keterangan_kondisi' => '(Maksimal 3 goresan kecil; ada box/garansi atau keduanya; functional)'
             ],
             [
             'kondisi_id' => '3',
-            'namaKondisi' => 'Hampir Keren'
+            'namaKondisi' => '81% - 90%',
+            'keterangan_kondisi' => '(Maksimal 5 goresan kecil; functional)'
             ],
             [
             'kondisi_id' => '4',
-            'namaKondisi' => 'Kurang Keren'
-            ],
-            [
-            'kondisi_id' => '5',
-            'namaKondisi' => '70%-79%, Fungsional'
+            'namaKondisi' => '71% - 80%',
+            'keterangan_kondisi' => '(Maksimal > 5 goresan kecil/besar; functional)'
             ]
         ]);
     }

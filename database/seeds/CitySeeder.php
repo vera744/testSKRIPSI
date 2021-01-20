@@ -29,7 +29,6 @@ class CitySeeder extends Seeder
                 'type' => $value['type'],
                 'cityTitle' => $value['city_name'],
                 'postal_code' => $value['postal_code'],
-
             ];
         }
 

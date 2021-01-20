@@ -17,6 +17,7 @@ class CreateKondisiTable extends Migration
             $table->bigIncrements('id');
             $table->string('kondisi_id');
             $table->string('namaKondisi');
+            $table->string('keterangan_kondisi');
             $table->timestamps();
         });
     }
