@@ -101,7 +101,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md ">
             <div class="container">
-                
                 <a class="navbar-brand" href="/">
                     <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
@@ -125,11 +124,11 @@
                     @else
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
-                             <a href="/gadai">GADAI</a>
+                                <a href="/gadai">GADAI</a>
                                 <a href="/ecom" >E-COMMERCE</a>
-                                </div>
+                            </div>
                               
-                                </div>
+                            </div>
                                 <form action="{{route('search')}}" method="GET" class="form-inline my-2 my-lg-0">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" value="{{request()->input('query')}}">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

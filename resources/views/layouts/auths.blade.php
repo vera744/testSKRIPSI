@@ -74,7 +74,6 @@
               border-radius: 15px;
               padding: 14px;
               color: white;
-             
             }
             tr{
                 border: 5px solid #E8F1FF  }
@@ -135,37 +134,40 @@
 
 </style>
 <body>
-    {{-- <div id="app"> --}}
-        <nav class="navbar">
+    <div id="app">
+        <nav class="navbar navbar-expand-md">
+            <div class="container col-12">
                 <a class="navbar-brand" href="/">
-                <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
+                    <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
                 
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar">
                         @if(Auth::User()->role == 'admin')
-                       
+                        <div class="flex-center position-ref height-header">
                             <div class="top-left links">
                             
                                 <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
                                 <a href="{{ url('') }}">Blablabla</a>
                             </div>
                                 
-                    @else
-                       
-                            <div class="top-left links">
-                             <a href="/gadai">GADAI</a>
-                            <a href="/ecom" >E-COMMERCE</a>
-                            </div>
-                               
-                       
-                
+                        @else
+                            <div class="flex-center position-ref height-header">
+                                <div class="top-left links">
+                                    <a href="/gadai">GADAI</a>
+                                    <a href="/ecom" >E-COMMERCE</a>
+                                </div>
+                            </div>  
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -175,9 +177,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif --}}
+                            @endif 
                         @else
-                            
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    Hello, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -198,13 +199,13 @@
                             
                         @endguest
                     </ul>
-                
-            
+                </div>
+            </div>
         </nav>
 
-        <main class="col-12">
+        <main class="py-4 container">
             @yield('content')
         </main>
-    {{-- </div> --}}
+    </div>
 </body>
 </html>

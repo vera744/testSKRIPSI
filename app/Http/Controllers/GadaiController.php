@@ -117,9 +117,16 @@ class GadaiController extends Controller
         $mortgageDetails->loan = $request->input('nilaiPinjaman');
         $mortgageDetails->save();
 
+        $email = auth()->User()->email;
+
         Mail::to(auth()->User()->email)->send(new RequestGadaiEmail());
         
-        return redirect('/gadai')->with(['success' => 'Request gadai berhasil diajukan!']);
+        return redirect('/gadai')->with(
+            ['requestEmail' => 'Silahkan cek email anda di ' . $email . '. Jika belum menerima email dari kami dalam 1-3 hari kerja, harap menghubungi kami di luisalexsander10@gmail.com'
+            ,
+            'success' => 'Request gadai berhasil diajukan!'],
+        
+        );
         
     }
 
