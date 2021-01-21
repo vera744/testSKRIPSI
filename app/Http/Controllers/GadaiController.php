@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth;
+use App\User;
 use App\temp;
 use App\product;
 use App\mortgage_detail;
@@ -14,8 +19,11 @@ use App\listProduk;
 use App\kategoriProduk;
 use App\Kondisi;
 
+
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RequestGadaiEmail;
+
+use App\Notifications\NewRequest;
 
 class GadaiController extends Controller
 {
@@ -120,12 +128,23 @@ class GadaiController extends Controller
         $email = auth()->User()->email;
 
         Mail::to(auth()->User()->email)->send(new RequestGadaiEmail());
-        
+
+        $admin = User::select('id')
+        ->where('role',"=",'admin')
+        ->get();
+
+        $userAuth = auth()->User();
+
+        foreach($admin as $value){
+            $adminAuth = User::find($value->id);
+    
+            $adminAuth->notify(new NewRequest($userAuth));
+        }
+
         return redirect('/gadai')->with(
-            ['requestEmail' => 'Silahkan cek email anda di ' . $email . '. Jika belum menerima email dari kami dalam 1-3 hari kerja, harap menghubungi kami di luisalexsander10@gmail.com'
+            ['requestEmail' => 'Silahkan cek email anda di ' . $email . '. Jika belum menerima email dari kami dalam 1-3 hari kerja, harap menghubungi kami melalui email : luisalexsander10@gmail.com'
             ,
             'success' => 'Request gadai berhasil diajukan!'],
-        
         );
         
     }

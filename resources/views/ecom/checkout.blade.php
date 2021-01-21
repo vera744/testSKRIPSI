@@ -234,7 +234,7 @@ crossorigin="anonymous"></script>
             let weight = $("input[name=beratProduk]").val();
             // alert(courier);
             if(courier){
-            console.log(origin + destination + weight);
+            // console.log(origin + destination + weight);
 
                 jQuery.ajax({
                     url:"/origin/"+origin+"/"+destination+"/"+weight+"/"+courier,

@@ -153,6 +153,21 @@
                                 </li>
                             @endif --}}
                         @else
+                            <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li class="dropdown-item">
+                                        @forelse(auth()->user()->unreadNotifications as $notification)
+                                            @include('notifications.'.snake_case(class_basename($notification->type)))
+                                            @empty
+                                            <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
+                                        @endforelse
+                                        </li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
                                 <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>

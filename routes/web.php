@@ -94,6 +94,10 @@ Route::get('/ecom/detailback/{productID}', 'EcomController@back')->middleware('m
 //EMAIL
 Route::get('/kirimemail','EmailController@index');
 
+//NOTIFICATION
+Route::get('/markAsRead', function(){
+    auth()->user()->unreadNotifications->markAsRead();
+});
 
 
 //TEST
