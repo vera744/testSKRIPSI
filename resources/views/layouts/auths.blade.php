@@ -77,11 +77,11 @@
               padding: 14px;
               color: white;
             }
-            tr{
+            /* tr{
                 border: 5px solid #E8F1FF  }
             th{
                 
-            }
+            } */
 
             th.active{
                 background-color: #19365C;

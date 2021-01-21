@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/dropdown.js') }}" defer></script>
 
     <!-- ICON -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -75,11 +76,11 @@
               color: white;
              
             }
-            tr{
+            /* tr{
                 border: 5px solid #E8F1FF  }
             th{
                 
-            }
+            } */
 
             th.active{
                 background-color: #19365C;

@@ -69,11 +69,11 @@
                         </button>
                       </div>
                       
-                      <div class="modal-body" style="background-color: rgb(232,241,255)">
+                      <div class="modal-body bg-dark">
                         <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="100px" style="border: 2px solid #275996" alt="">
                         <div class="row">
                           <div class="table-responsive">
-                            <table class="table-light table-borderless col-12">
+                            <table class="table-dark table-borderless col-12">
                               <tr>
                                 <td>
                                   Gadai ID
