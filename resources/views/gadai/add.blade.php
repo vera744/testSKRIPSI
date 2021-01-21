@@ -59,7 +59,7 @@
             <input id="fotoProduk" type="file" value="Pilih Foto" name="fotoProduk" value="{{ old('fotoProduk') }}" required autocomplete="fotoProduk" autofocus accept="image/jpeg, image/jpg, image/png"> <br> <br>
             <br>
             
-            <input type="submit" value="input data" class="btn btn-primary">
+            <input type="submit" value="Input Transaksi" class="btn btn-primary">
         </form>
     </div>
 
