@@ -11,7 +11,7 @@
 <br>
 
 
-<div class="row justify-content center">
+<div class="row justify-content center"style="height: 500px">
   <div class="col-12">
     <table class="table" style="text-align:center">
        <tr>

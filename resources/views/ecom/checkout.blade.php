@@ -191,7 +191,10 @@
                 <th class="column-spacer"></th>
                 <th class="column-spacer"></th>
                 <td style="font-size: 20px" class="align-middle"><strong>Total Pembayaran:</strong></td>
-                <td style="font-size: 20px" class="align-middle"><strong>Rp. {{number_format($total)}}</strong></td>
+                <td>
+                        <input name="totial" id="totial" value="" disabled>                
+                </td>
+                <td><input id="total2" name="total2" value="{{$grandtotal}}" hidden></td>
             </tr>
             
             <tr>
@@ -234,6 +237,8 @@ crossorigin="anonymous"></script>
             let courier = $("select[name=kurir]").val();
             // name weight di dapat dari select text name weight
             let weight = $("input[name=beratProduk]").val();
+
+            let grandtot =parseInt($("input[name=total2]").val());;
             // alert(courier);
             if(courier){
             // console.log(origin + destination + weight);
@@ -250,12 +255,15 @@ crossorigin="anonymous"></script>
                         // jika ada kita looping dengan each
                         $.each(data, function(key, value){
                             // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
+
                             $('input[name="ongkir"]').attr("value", value.value);
+                            $('input[name="totial"]').attr("value", value.value+grandtot);
 
                         });
                     }
                 });
             }
+
         });
     });
 </script>

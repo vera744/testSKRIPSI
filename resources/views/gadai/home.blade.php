@@ -21,7 +21,7 @@
     <h3 style="text-align:center"> Gadai</h3>
 <br>
 
-<div class="row justify-content-md-center">
+<div class="row justify-content-md-center" style="height: 500px">
   <div class="col-12">
     <table class="table" style="text-align:center">
       <tr>
