@@ -46,7 +46,7 @@ class HomeController extends Controller
             ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
             ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'keterangan_kondisi','fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
             ->where('customerID', "=", $userLogin)
-            ->whereIn('status', ['sedang ditinjau'])->get();
+            ->whereIn('status', ['sedang ditinjau','sedang berlangsung'])->get();
 
             $ditinjau = mortgage_detail::
             select('status')
