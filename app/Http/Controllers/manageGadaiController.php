@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+
+use App\User;
 use App\temp;
 use App\product;
 use App\Mortgage;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Mortgage_Detail;
 use DateTime;
 
@@ -16,6 +19,9 @@ use App\Mail\AcceptGadaiEmail;
 use App\Mail\RejectGadaiEmail;
 use App\TotalTransaction;
 use App\DetailTransaction;
+
+use App\Notifications\AcceptRequest;
+
 class manageGadaiController extends Controller
 {
     public function __construct(){
@@ -53,13 +59,17 @@ class manageGadaiController extends Controller
         $data =  Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
-        ->select('users.name', 'users.email as custEmail')
+        ->select('users.id','users.name', 'users.email as custEmail')
         ->where('mortgages.mortgageID',"=",$id)
         ->get();
         
         foreach($data as $value){
+            $user = User::find($value->id);
+
             Mail::to($value->custEmail)->send(new AcceptGadaiEmail($value->name));
-    
+            
+            $user->notify(new AcceptRequest());
+
             return redirect ('manageGadai')->with(['success' => 'Request gadai dari ' .$value->name. ' berhasil diterima!']);
         }
 

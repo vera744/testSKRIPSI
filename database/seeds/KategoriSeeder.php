@@ -19,9 +19,11 @@ class KategoriSeeder extends Seeder
                 'namaKategori' => 'Handphone'
             ],
             [
-                'namaKategori' => 'Elektronik'
+                'namaKategori' => 'LCD/LED TV'
             ],
-           
+            [
+                'namaKategori' => 'Kamera DSLR'
+            ]
         ]);
     }
 }

@@ -12,10 +12,10 @@
 
     <table class="table">
         <thead class="thead-dark">
-            <tr>
+            <tr class="">
                 <th class="table-image"></th>
                 <th scope="col">Produk</th>
-                <th scope="col">Jumlah</th>
+                <th scope="col" class="">Jumlah</th>
                 <th scope="col">Harga</th>
                 <th class="column-spacer"></th>
                 <th></th>
@@ -24,17 +24,16 @@
             <tbody>
                 @foreach($cart as $value)
                   
-                <tr>
-               
+                <tr class="">
                     <td> 
                     <a href="/ecom/detailproduct/{{$value->IDProduct}}">
                     <img src="/storage/fotoProduk/{{$value->fotoProduk}}"height="150" width="150">
                    
                     </a>
-                    <td>{{$value->productName}}</td>
-                    <td>{{$value->quantity}}</td>
-                    <td>{{number_format($value->total_price)}},-</td>
-                    <td>
+                    <td class="align-middle"><strong>{{$value->productName}}</strong></td>
+                    <td class="align-middle ">{{$value->quantity}}</td>
+                    <td class="align-middle">Rp. {{number_format($value->total_price)}},-</td>
+                    <td class="align-middle">
                     <form action="{{ url('/destroy') }}" method="post"><br>
                         {{ csrf_field() }}
                         <input type="hidden" name="cartid" value="{{$value->id}}">
@@ -54,23 +53,19 @@
                         <div class="form-group row">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>
+                                        <tr class="">
+                                            <th class="text-right">
                                             <h4>Total Price :</h4>
                                             </th>
-
-                                            <th>
+                                            
+                                            <th class="text-right">
                                             <h4> Rp. {{number_format($total_price)}},- </h4>
                                             </th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                
+                                            <th class="text-center">
                                                 <button type="submit" class="btn btn-success">
                                                     {{ __('Checkout') }}
-                                                    </th>
+                                            </th>
                                         </tr>
-
                                     </thead>
 
                                 </table>

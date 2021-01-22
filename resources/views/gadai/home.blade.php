@@ -10,6 +10,12 @@
     <strong>{{ $message }}</strong>
   </div>
 @endif 
+@if ($message = Session::get('requestEmail'))
+  <div class="alert alert-warning alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
 
 <br>
     <h3 style="text-align:center"> Gadai</h3>
@@ -42,7 +48,8 @@
             @foreach($mortgages as $value)
       
             <tr>
-              <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
+              <td>
+                Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
               <td>{{$value->status}}</td>
               <td>
                 <div class="dropdown">
@@ -62,44 +69,147 @@
                         </button>
                       </div>
                       
-                      <div class="modal-body">
-                        <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
-                      
-                        <label for="mortgageID">Gadai ID: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
+                      <div class="modal-body bg-dark">
+                        <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="100px" style="border: 2px solid #275996" alt="">
+                        <div class="row">
+                          <div class="table-responsive">
+                            <table class="table-dark table-borderless col-12">
+                              <tr>
+                                <td>
+                                  Gadai ID
+                                </td>
+                                <td>
+                                  <strong>
+                                    Transaksi M{{sprintf("%03d",$value->mortgageID)}}
+                                  </strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Kategori Produk
+                                </td>
+                                <td>
+                                    {{$value->namaKategori}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Merek Produk
+                                </td>
+                                <td>
+                                    {{$value->merekProduk}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Nama Produk
+                                </td>
+                                <td>
+                                    {{$value->productName}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Berat Produk
+                                </td>
+                                <td>
+                                    {{number_format($value->productWeight)}} Gram
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Status
+                                </td>
+                                <td>
+                                  <strong>
+                                    {{$value->status}}
+                                  </strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  @if($value->status == "Sedang Ditinjau")
+                                    Harga Pasar
+                                  @else
+                                    Jumlah Pinjaman
+                                  @endif
+                                </td>
+                                <td>
+                                    Rp. {{number_format($value->loan)}},-
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Kondisi Produk
+                                </td>
+                                <td>
+                                    {{$value->namaKondisi}}
+                                </td>
+                              </tr>
+                              @if($value->startDate && $value->endDate)
+                                <tr>
+                                  <td>
+                                    Tanggal Mulai Pinjaman
+                                  </td>
+                                  <td>
+                                    <strong>
+                                      {{date('d-m-Y', strtotime($value->startDate))}}
+                                    </strong>
+                                  </td>
+                                </tr>  
+                                <tr>
+                                  <td>
+                                    Tanggal Akhir Pinjaman
+                                  </td>
+                                  <td style="color: rgb(255, 42, 42)">
+                                    <strong>
+                                      {{date('d-m-Y', strtotime($value->endDate))}}
+                                    </strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  
+                                   
+                                  <td>
+                                    Sisa Hari
+                                  </td>
+                                  @php
+                                    $date1=date_create(date('Y-m-d'));
+                                    $date2=date_create($value->endDate);
+                                    $diff=date_diff($date1,$date2);
+                                  @endphp
+                                  
+                                  @if($diff->format("%a")>6)
+                                  <td style="color: rgb(62, 201, 115)">
+                                  @else
+                                  <td style="color: rgb(255, 42, 42)">
+                                  @endif
+                                    <strong>
+                                      @php
+                                        $date1=date_create(date('Y-m-d'));
+                                        $date2=date_create($value->endDate);
+                                        $diff=date_diff($date1,$date2);
+                                        echo $diff->format("%a hari");
+                                      @endphp
+                                    </strong>
+                                  </td>
+                                </tr>
+                                  <td class="row justify-content-center">
+                                    @if ($diff->format("%a")<7)
+                                    
+                                      <form action="/gadai/append/{{$value->mortgageID}}">
+                                        <button class="btn style1">Perpanjang</button>
+                                      </form>
+                                    @endif
+                                  </td>
+                                  <td class="px-5">
+                                    <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar sekarang</a>
+                                  </td>
+                              @endif
+                            </table>
+                          </div>
+                        </div>
                         <br>
-                        <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
-                        <br>
-                        <label for="productMerk">Merek Produk: {{$value->merekProduk}}</label>
-                        <br>
-                        <label for="productName">Nama Produk: {{$value->productName}}</label>
-                        <br>
-                        <label for="productName">Berat Produk: {{$value->productWeight}} Gram</label>
-                        <br>
-                        <label for="status">Status: {{$value->status}}</label>
-                        <br>
-                        <label for="loan">Harga Pasar: {{$value->loan}}</label>
-                        <br>
-                        <label for="kondisiProduk">Kondisi Produk: {{$value->namaKondisi}} {{$value->keterangan_kondisi}}</label>
-                        <br>
-                          @if($value->startDate && $value->endDate)
-                            <label for="">Tanggal Mulai Pinjaman : {{date('d-m-Y', strtotime($value->startDate))}}</label> <br>
-                            <label for="">Tanggal Akhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
-                              @php
-                                $date1=date_create(date('Y-m-d'));
-                                  $date2=date_create($value->endDate);
-                                  $diff=date_diff($date1,$date2);
-                                  echo $diff->format("Sisa Hari : %a hari");
-                              @endphp
-
-                                @if ($diff->format("%a")<7)
-                                <br>
-                                <form action="/gadai/append/{{$value->mortgageID}}">
-                                  <button class="btn style1">Perpanjang</button>
-                                </form>
-                                @endif
-                                 <br>
-                           <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar</a>
-                          @endif
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

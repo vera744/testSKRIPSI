@@ -13,6 +13,7 @@
   
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/dropdown.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,6 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- ICON -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <style>
@@ -74,13 +76,12 @@
               border-radius: 15px;
               padding: 14px;
               color: white;
-             
             }
-            tr{
+            /* tr{
                 border: 5px solid #E8F1FF  }
             th{
                 
-            }
+            } */
 
             th.active{
                 background-color: #19365C;
@@ -135,37 +136,42 @@
 
 </style>
 <body>
-    {{-- <div id="app"> --}}
-        <nav class="navbar">
+    <div id="app">
+        <nav class="navbar navbar-expand-md">
+            <div class="container col-12">
                 <a class="navbar-brand" href="/">
-                <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
+                    <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
                 
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar">
                         @if(Auth::User()->role == 'admin')
-                       
+                        <div class="flex-center position-ref height-header">
                             <div class="top-left links">
+
                             
                                 <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
                                 <a href="{{ url('manageProduct') }}">Manage Produk</a>
+
                             </div>
                                 
-                    @else
-                       
-                            <div class="top-left links">
-                             <a href="/gadai">GADAI</a>
-                            <a href="/ecom" >E-COMMERCE</a>
-                            </div>
-                               
-                       
-                
+                        @else
+                            <div class="flex-center position-ref height-header">
+                                <div class="top-left links">
+                                    <a href="/gadai">GADAI</a>
+                                    <a href="/ecom" >E-COMMERCE</a>
+                                </div>
+                            </div>  
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -175,36 +181,55 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif --}}
+                            @endif 
                         @else
-                            
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   Hello, {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/profile">Profile</a>
-                                    <a class="dropdown-item" href="/changepassword">Ubah Kata Sandi</a>    
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                                <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                    </a>
+    
+                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <li class="dropdown-item">
+                                            @forelse(auth()->user()->unreadNotifications as $notification)
+                                                @include('notifications.'.snake_case(class_basename($notification->type)))
+                                                @empty
+                                                <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
+                                            @endforelse
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                       Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        <a class="dropdown-item" href="/changepassword">Change Password</a>    
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                    </div>
+                                </li>
+                                
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                </div>
                             
                         @endguest
                     </ul>
-                
-            
+                </div>
+            </div>
         </nav>
 
-        <main class="col-12">
+        <main class="py-4 container">
             @yield('content')
         </main>
-    {{-- </div> --}}
+    </div>
 </body>
 </html>

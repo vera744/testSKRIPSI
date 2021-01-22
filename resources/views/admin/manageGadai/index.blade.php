@@ -128,31 +128,31 @@
 
 @endsection
 
-<script>
+{{-- <script>
   $(document).ready(function () {
-  $('.showQuickInfo').click(function () {
-    $('#QuickInfo').toggleClass('is-active'); // MODAL
+    $('.showQuickInfo').click(function () {
+      $('#QuickInfo').toggleClass('is-active'); // MODAL
 
-    var $entry = this.getAttribute('data-entry');
-    getEntryData($entry);
-  });
-}
+      var $entry = this.getAttribute('data-entry');
+      getEntryData($entry);
+    });
 
-function getEntryData(entryId) {
-  $.ajax({
-    url: '/entries/getEntryDataForAjax/' + entryId,
-    type: 'get',
-    dataType: 'json',
-    success: function (response) {
-      if (response.length == 0) {
-        console.log( "Datensatz-ID nicht gefunden.");
-      } else { 
-        // set values
-        $('#mortgageID').val( response[0].mortgageID );         
-        $('#status').val( response[0].status);
-        // and so on
+    function getEntryData(entryId) {
+      $.ajax({
+      url: '/entries/getEntryDataForAjax/' + entryId,
+      type: 'get',
+      dataType: 'json',
+      success: function (response) {
+        if (response.length == 0) {
+          console.log( "Datensatz-ID nicht gefunden.");
+        } else { 
+          // set values
+          $('#mortgageID').val( response[0].mortgageID );         
+          $('#status').val( response[0].status);
+          // and so on
+        }
       }
-    }
-  });
-}
-</script>
+    });
+  }
+});
+</script> --}}

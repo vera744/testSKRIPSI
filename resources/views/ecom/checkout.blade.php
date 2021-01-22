@@ -61,15 +61,15 @@
             
                 @foreach($cart as $value)
               
-                <tr>
+                <tr class="">
                
                     <td> 
                     <img src="/storage/fotoProduk/{{$value->fotoProduk}}"height="150" width="150">
-                    <label for="" >  {{$value->productName}}</label>
+                    <label for="" >  <strong>{{$value->productName}}</strong></label>
                     </td>
                 
-                    <td>{{$value->quantity}}</td>
-                    <td>{{number_format($value->total_price)}}</td>
+                    <td class="align-middle">{{$value->quantity}}</td>
+                    <td class="align-middle">{{number_format($value->total_price)}}</td>
                     <th class="column-spacer"></th>
                     <th class="column-spacer"></th>
                     <th class="column-spacer"></th>
@@ -129,8 +129,8 @@
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
 
-                <td>Total Pesanan: </td>
-                <td>Rp. {{number_format($grandtotal)}}</td>
+                <td class="text-center align-middle" style="font-size: 20px" ><strong>Total Pesanan:</strong></td>
+                <td class="align-middle" style="font-size: 20px"><strong>Rp. {{number_format($grandtotal)}}</strong></td>
             </tr>
            
     </table>
@@ -168,7 +168,7 @@
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
-            <td>Subtotal untuk Produk: </td>
+            <td class="align-middle">Subtotal untuk Produk: </td>
             <td>Rp. {{number_format($grandtotal)}}</td>
 
             </tr>
@@ -176,7 +176,7 @@
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
-            <td>Total Ongkos Kirim: </td>
+            <td class="align-middle">Total Ongkos Kirim: </td>
             <td>
                 <div class="row">
                     <div class="col-6 mr-2">
@@ -186,25 +186,27 @@
             </td>
 
             <tr>
-            <th class="column-spacer"></th>
-            <th class="column-spacer"></th>
-            <th class="column-spacer"></th>
-            <th class="column-spacer"></th>
-            <td>Total Pembayaran: </td>
-            <td>Rp. {{number_format($total)}}</td>
-            <tr>
-           
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <td style="font-size: 20px" class="align-middle"><strong>Total Pembayaran:</strong></td>
+                <td style="font-size: 20px" class="align-middle"><strong>Rp. {{number_format($total)}}</strong></td>
             </tr>
             
+            <tr>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <th class="column-spacer"></th>
+                <td class="align-middle">
+                    <button type="submit" class="btn btn-success">{{ __('Buat Pesanan') }}
+                </td>
             </tr>
            
             </tbody>
         </table>
-        <tr>
-
-            <button type="submit" class="btn btn-success">
-                                        {{ __('Buat Pesanan') }}
-            </tr>
   </div>
 </div>
 </form>
@@ -234,7 +236,7 @@ crossorigin="anonymous"></script>
             let weight = $("input[name=beratProduk]").val();
             // alert(courier);
             if(courier){
-            console.log(origin + destination + weight);
+            // console.log(origin + destination + weight);
 
                 jQuery.ajax({
                     url:"/origin/"+origin+"/"+destination+"/"+weight+"/"+courier,

@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/dropdown.js') }}" defer></script>
 
     <!-- ICON -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -75,11 +76,11 @@
               color: white;
              
             }
-            tr{
+            /* tr{
                 border: 5px solid #E8F1FF  }
             th{
                 
-            }
+            } */
 
             th.active{
                 background-color: #19365C;
@@ -101,7 +102,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md ">
             <div class="container">
-                
                 <a class="navbar-brand" href="/">
                     <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
@@ -125,11 +125,11 @@
                     @else
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
-                             <a href="/gadai">GADAI</a>
+                                <a href="/gadai">GADAI</a>
                                 <a href="/ecom" >E-COMMERCE</a>
-                                </div>
+                            </div>
                               
-                                </div>
+                            </div>
                                 <form action="{{route('search')}}" method="GET" class="form-inline my-2 my-lg-0">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" value="{{request()->input('query')}}">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -154,6 +154,21 @@
                                 </li>
                             @endif --}}
                         @else
+                            <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li class="dropdown-item">
+                                        @forelse(auth()->user()->unreadNotifications as $notification)
+                                            @include('notifications.'.snake_case(class_basename($notification->type)))
+                                            @empty
+                                            <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
+                                        @endforelse
+                                        </li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
                                 <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>

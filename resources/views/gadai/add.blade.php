@@ -16,36 +16,41 @@
             <div class="form-group">
                 <label for="">Jenis Produk</label>
 
-                <select class="form-control input-sm jenisProduk" name="jenisProduk" id="jenisProduk_id">
+                <select class="form-control input-sm jenisProduk col-4" name="jenisProduk" id="jenisProduk_id">
                     <option value="0" disabled="true" selected="true">Pilih</option>
                     @foreach($category as $value)
                     
                     <option value="{{$value->id}}">{{$value->namaKategori}}</option> 
                     @endforeach
                 </select>
+                <small>*Untuk jenis produk kamera, kondisi produk harus 
+                    <strong>96%-100%</strong> (tanpa lecet, ada garansi 
+                    <strong>dan</strong> box, kwitansi pembelian barang, fungsional)</small>
             </div>
     
             <div class="form-group"> 
                 <label for="">Merek Produk</label>
 
-                <select class="form-control input-sm productName" name="merekProduk" id="">
+                <select class="form-control input-sm productName col-4" name="merekProduk" id="">
                     <option value="0" disabled="true" selected="true">Merek Produk</option>
                 </select>
             </div>
 
             <label for="">Nama Produk</label> <br>
-            <input class="col-md-6" type="text" name="namaProduk" required="required"> <br> <br>
+            <input class="col-md-4" type="text" name="namaProduk" required="required"> <br> <br>
         
             <label for="">Harga Jual Pasar (Barang Bekas Pakai)</label> <br>
-            <input class="col-md-6" type="number" name="nilaiPinjaman" required="required"> <br> <br>
+            <input class="col-md-4" type="number" name="nilaiPinjaman" required="required"> <br> <br>
             
             <label for="">Berat Produk (Dalam Gram)</label> <br>
-            <input class="col-md-6" type="number" name="beratProduk" required="required"> <br> <br>
+            <input class="col-md-4" type="number" name="beratProduk" required="required"><br> 
+            <small>*Berat produk dalam gram, contoh 1,7 kg = 1700 gram</small> 
+            <br> <br>
 
             <div class="form-group">
                 <label for="">Kondisi Produk</label>
 
-                <select class="form-control input-sm" name="kondisiProduk" id="kondisiProduk_id">
+                <select class="form-control input-sm col-8" name="kondisiProduk" id="kondisiProduk_id">
                     <option value="0" disabled="true" selected="true">Kondisi Produk</option>
                     @foreach($kondisi as $value)
                     
