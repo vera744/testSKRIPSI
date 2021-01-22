@@ -11,6 +11,7 @@
 <h3 style="text-align:center"> Transaksi Gadai</h3>
 <br>
 
+<div style="height: 500px">
 <table class="table" style="text-align:center">
   <tr>
     <th scope="col" >
@@ -111,6 +112,7 @@
     </div>
   @endif
 </tbody>
+</div>
   
 @endsection
 

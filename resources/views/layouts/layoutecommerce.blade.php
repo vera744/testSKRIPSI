@@ -205,5 +205,24 @@
             @yield('content')
         </main>
     </div>
+    
+    <div class="bottom" style="background-color: rgb(25, 54, 92);color:white">
+        <div class="container-fluid text-center text-md-left">
+          <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+              <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
+              <p style="color: white">Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
+            </div>
+      
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col-md-6 mb-md-0 mb-3">
+              <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
+              <p style="color: white">Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright text-center py-3">© 2020
+        </div>
+    </div>
 </body>
 </html>

@@ -24,6 +24,7 @@
     <h3 style="text-align:center"> Gadai</h3>
 <br>
 
+<div style="height: 500px">
 <table class="table" style="text-align:center">
   <tr>
     <th scope="col" class="active">
@@ -125,7 +126,7 @@
     </div>
   @endif
 </tbody>
-
+</div>
 @endsection
 
 {{-- <script>
