@@ -148,8 +148,8 @@
                        
                             <div class="top-left links">
                             
-                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
-                                <a href="{{ url('') }}">Blablabla</a>
+                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
+                                <a href="{{ url('manageProduct') }}">Manage Produk</a>
                             </div>
                                 
                     @else
@@ -184,7 +184,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile">Profile</a>
-                                    <a class="dropdown-item" href="/changepassword">Change Password</a>    
+                                    <a class="dropdown-item" href="/changepassword">Ubah Kata Sandi</a>    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

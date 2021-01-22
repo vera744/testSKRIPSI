@@ -4,9 +4,66 @@
 @section('content')
 
 @if(Auth::user()->role=="member" )
-<h3>HELLO GAISS</h3>
-@endif
+<div class="row admin">
+  <div class="col-4">'
+    <div class="bordered-center ungu" style="background-color:#7C69EF">
+    
+    @if(count($transaksi)<1)
+    <h2>Anda tidak punya transaksi untuk saat ini</h2>
+    <a href="gadai/add">Ingin mulai transaksi?</a>
+    @else
+    <h2> <br> Anda punya {{count($transaksi)}} transaksi saat ini<br><a href="gadai" style="color: cornsilk">Tinjau transaksi anda</a> </h2>
+    @endif
 
+        
+    </div>
+    
+  
+    <div class="bordered-center" style="background-color: #FFC107">
+    
+      <h2><br> Ingin membeli produk? <br> <a href="/ecom" style="color: cornsilk">Cari Disini</a>      </h2>
+     
+    </div>  
+    <div class="bordered-center" style="background-color: #42BA96"data-toggle="collapse" data-target="#hijau">
+      <h2> <br> <br><a href="#" style="color: cornsilk">Syarat & Ketentuan</a></h2>
+    </div>   
+  
+  </div>
+
+  {{-- batas --}}
+  <div class="col-8" style="margin-top: 10px">
+    <h1> Hello, {{ Auth::user()->name }}</h1>
+    <h2 style="color: black">@php
+        date_default_timezone_set("Asia/Bangkok");
+      echo date("d M y, H:i");
+    @endphp</h2>
+    <hr>
+
+
+    <div id="hijau" class="collapse">
+      <h1>Tata Cara Transaksi</h1>
+
+      <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="880px" height="600px">
+      <hr>
+      <h1>Syarat Ketentuan</h1>
+      <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="880px" height="600px">
+      <hr>
+    </div>
+    
+    <div id="kuning" class="collapse">
+     
+      <hr>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+@endif
+{{-- batas user --}}
 @if(Auth::user()->role=="admin" )
 <div class="row admin">
   <div class="col-4">'
@@ -51,7 +108,7 @@
       </a>
     </div>    
   
-  @endif
+{{-- @endif --}}
   
   
   </div>
@@ -108,7 +165,7 @@
       <h1>Atur Produk</h1>
       <h2>Belum ada produk baru untuk saat ini</h2>
       <a href="manageProduct" class="btn style1">Tinjau data produk yang tersedia.</a>
-    @endif
+     @endif
   
     @if(count($gagal)>0)
       <h2>Terdapat {{count($gagal)}} produk baru</h2>   
@@ -121,7 +178,7 @@
 
   </div>
 </div>
-  
+@endif 
 <script>
 
 </script>
