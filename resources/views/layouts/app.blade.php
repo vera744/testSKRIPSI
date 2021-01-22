@@ -61,7 +61,7 @@
             }
 
             body{
-                background-image: URL("images/ttkami.jpg");
+                /* background-image: URL("images/ttkami.jpg"); */
             }
             
 
