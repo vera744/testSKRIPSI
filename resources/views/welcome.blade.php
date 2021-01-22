@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Home | Gadai & E co</title>
+        <title>Home | Gadai & E-Commerce</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -155,6 +155,7 @@
           </a>
 
             <a href="#" id="tatacaraa">Tata Cara</a>
+            <a href="#" id="snk">Syarat Ketentuan</a>
             <a href="#" id="tentangkamii" >Tentang Kami</a>
             </div>
                 @if (Route::has('login'))
@@ -213,10 +214,12 @@
         <div class="row">
           <div class="col-8 col-sm-6">
             <h1 id="scrollTTC">Tata Cara</h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
+            <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="1200px" height="700px">
+            <h1 id="scrollsnk">Syarat & Ketentuan</h1>
+            <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="1200px" height="700px">
           </div>
           <div class="col-4 col-sm-6">
-            <img src="images/ttcara.jpg" class="d-block w-100" alt="second slide">      
+            {{-- <img src="images/ttcara.jpg" class="d-block w-100" alt="second slide">       --}}
           </div>
         </div>
       
@@ -235,7 +238,7 @@
     <div class="col-4 col-sm-6">
       
       <h1 id="scrollTTK">Tentang Kami</h1>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum ullam pariatur fugit, repellat laborum incidunt eveniet reiciendis ut ipsam aut, at a sint esse explicabo, tempora maxime. Doloribus, optio esse?
+      Kami menyediakan layanan pinjaman dana untuk anda. Dengan bunga 3% per bulan dari barang agunan anda. Selain pinjaman dana, anda juga bisa membeli sejumlah produk yang tersedia di website kami. Produk yang kami tawarkan merupakan product secondhand namun dengan kualitas yang masih baik. Bergabunglah hari ini dan rasakan kemudahannya!
     </div>
   </div>
 
@@ -252,17 +255,13 @@
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
         <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-          repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-          harum esse fugiat. Itaque, culpa?</p>
+        <p>Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
       </div>
 
       <hr class="clearfix w-100 d-md-none pb-3">
       <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase font-weight-bold">Gadai & E-Com</h5>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-          commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-          excepturi hic.</p>
+        <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
+        <p>Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
       </div>
     </div>
   </div>

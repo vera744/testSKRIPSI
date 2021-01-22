@@ -153,8 +153,11 @@
                         @if(Auth::User()->role == 'admin')
                         <div class="flex-center position-ref height-header">
                             <div class="top-left links">
-                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
-                                <a href="{{ url('') }}">Blablabla</a>
+
+                            
+                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
+                                <a href="{{ url('manageProduct') }}">Manage Produk</a>
+
                             </div>
                                 
                         @else
@@ -180,6 +183,7 @@
                                 </li>
                             @endif 
                         @else
+
                                 <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
@@ -215,6 +219,7 @@
                                     </div>
                                 </li>
                                 
+
                             
                         @endguest
                     </ul>
