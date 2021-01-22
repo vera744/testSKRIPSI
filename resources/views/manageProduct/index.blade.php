@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="unrev">
-    <div class="col-12">
+    <div class="col-12" >
         <p class="font-weight-bold" style="font-size: 25pt">Produk Baru</p>
         @if (count($unreviewed)<1)
         <button type="button" class="btn style1" data-toggle="collapse" data-target="#nodata">Belum ada produk baru untuk saat ini</button>

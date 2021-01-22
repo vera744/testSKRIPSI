@@ -120,7 +120,7 @@ class manageGadaiController extends Controller
         ->join('list_produk', "products.productBrand", "=", "list_produk.id")
         ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
         ->select('customerID', 'name', 'mortgages.mortgageID', 'status', 'duration', 'loan', 'productName', 'namaKondisi', 'fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
-        ->whereIn('status', ['Ditolak', 'Selesai','Gagal'])
+        ->whereIn('status', ['Ditolak', 'Selesai','Gagal','Ecom'])
         ->paginate(5);
         
         return view('admin.manageGadai.selesai')->with('mortgages', $mortgagesRecord);
