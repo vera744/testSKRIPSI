@@ -21,11 +21,11 @@
   
     <div class="bordered-center" style="background-color: #FFC107">
     
-      <h2><br> Ingin membeli produk? <br> <a href="/ecom" style="color: cornsilk">Cari Disini</a>      </h2>
+      <h2><br> Ingin membeli produk? <br> <a href="/ecom" style="color: floralwhite">Cari Disini</a>      </h2>
      
     </div>  
     <div class="bordered-center" style="background-color: #42BA96"data-toggle="collapse" data-target="#hijau">
-      <h2> <br> <br><a href="#" style="color: cornsilk">Syarat & Ketentuan</a></h2>
+      <h2> <br> <br><a href="#" style="color: floralwhite">Syarat & Ketentuan</a></h2>
     </div>   
   
   </div>
@@ -43,10 +43,10 @@
     <div id="hijau" class="collapse">
       <h1>Tata Cara Transaksi</h1>
 
-      <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="880px" height="600px">
+      <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="800px" height="400px">
       <hr>
       <h1>Syarat Ketentuan</h1>
-      <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="880px" height="600px">
+      <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="800px" height="400px">
       <hr>
     </div>
     

@@ -214,9 +214,9 @@
         <div class="row">
           <div class="col-8 col-sm-6">
             <h1 id="scrollTTC">Tata Cara</h1>
-            <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="1200px" height="700px">
+            <img src="{{asset('images/tatacarah.png')}}" alt="" srcset="" width="1000px" height="600px">
             <h1 id="scrollsnk">Syarat & Ketentuan</h1>
-            <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="1200px" height="700px">
+            <img src="{{asset('images/snk.png')}}" alt="" srcset="" width="1000px" height="600px">
           </div>
           <div class="col-4 col-sm-6">
             {{-- <img src="images/ttcara.jpg" class="d-block w-100" alt="second slide">       --}}
@@ -250,7 +250,7 @@
     </div>
 </div>
 
-<footer class="page-footer font-small teal pt-4 mt-5" style="background-color: rgb(25, 54, 92);color:white">
+<footer class="" style="background-color: rgb(25, 54, 92);color:white">
   <div class="container-fluid text-center text-md-left">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
