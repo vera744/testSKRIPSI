@@ -35,8 +35,8 @@ class GadaiController extends Controller
     public function index(){
         $date1=date_create(date('Y-m-d'));
      
-        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
-       
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->where('status','=',"sedang ditinjau")->update(['status'=>'Gagal']);
+        
         $userLogin = auth()->User()->id;
         $mortgages = Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")

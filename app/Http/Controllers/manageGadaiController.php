@@ -31,7 +31,7 @@ class manageGadaiController extends Controller
     public function index(){
         $date1=date_create(date('Y-m-d'));
 
-        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->where('status','=',"sedang ditinjau")->update(['status'=>'Gagal']);
 
        //buat cek si pembayaran
        DB::table('totaltransactions')->join('detailtransactions','totaltransactions.id',"=","detailtransactions.transaction_id")->join('products','detailtransactions.IDProduct',"=",'products.productID')->where('tglCO',"!=",$date1)->where('statusPayment',"=","Belum Dibayar")->update(['totaltransactions.statusPayment'=>'Gagal']);
@@ -95,8 +95,8 @@ class manageGadaiController extends Controller
     public function record(){
 
         $date1=date_create(date('Y-m-d'));
-        DB::table('mortgage_details')->where('endDate',"=",$date1)->update(['status'=>'Gagal']);
-       
+        DB::table('mortgage_details')->where('endDate',"=",$date1)->where('status','=',"sedang ditinjau")->update(['status'=>'Gagal']);
+        
         $mortgagesRecord = DB::table('mortgages')
         ->join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
