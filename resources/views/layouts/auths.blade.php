@@ -148,8 +148,8 @@
                        
                             <div class="top-left links">
                             
-                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Mortgage Transactions</a>
-                                <a href="{{ url('') }}">Blablabla</a>
+                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
+                                <a href="{{ url('manageProduct') }}">Manage Produk</a>
                             </div>
                                 
                     @else

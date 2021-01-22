@@ -35,7 +35,19 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->User()){
-            
+            $userLogin = auth()->User()->id;
+
+            $transaksi = Mortgage::
+            join('users', 'mortgages.customerID', "=", "users.id")
+            ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+            ->join('products',"mortgages.productID", "=", "products.productID")
+            ->join('kategori_produk', "products.productCategory", "=", "kategori_produk.id")
+            ->join('list_produk', "products.productBrand", "=", "list_produk.id")
+            ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
+            ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'keterangan_kondisi','fotoProduk','startDate','endDate', 'namaKategori', 'merekProduk')
+            ->where('customerID', "=", $userLogin)
+            ->whereIn('status', ['sedang ditinjau'])->get();
+
             $ditinjau = mortgage_detail::
             select('status')
             ->whereIn('status', ['sedang ditinjau'])
@@ -58,7 +70,7 @@ class HomeController extends Controller
             ->join('list_produk', "products.productBrand", "=", "list_produk.id")
             ->join('kondisi',"products.productCondition","=","kondisi.kondisi_id")
             ->select('customerID', 'name', 'mortgages.mortgageID', 'status','duration', 'loan', 'productName','productWeight', 'namaKondisi', 'fotoProduk','startDate','endDate','namaKategori', 'merekProduk')->whereIn('status', ['sedang ditinjau'])->get();
-            return view('home',compact('ditinjau','registered','gagal','mortgage'));
+            return view('home',compact('ditinjau','registered','gagal','mortgage','transaksi'));
         }
         else{
             return view('welcome');
