@@ -10,7 +10,7 @@
     
     @if(count($transaksi)<1)
     <h2>Anda tidak punya transaksi untuk saat ini</h2>
-    <a href="gadai/add">Ingin mulai transaksi?</a>
+    <a href="gadai/add" style="color: floralwhite">Ingin mulai transaksi?</a>
     @else
     <h2> <br> Anda punya {{count($transaksi)}} transaksi saat ini<br><a href="gadai" style="color: cornsilk">Tinjau transaksi anda</a> </h2>
     @endif
@@ -34,9 +34,10 @@
   <div class="col-8" style="margin-top: 10px">
     <h1> Hello, {{ Auth::user()->name }}</h1>
     <h2 style="color: black">@php
-        date_default_timezone_set("Asia/Bangkok");
-      echo date("d M y, H:i");
-    @endphp</h2>
+      date_default_timezone_set("Asia/Bangkok");
+    echo date("d M y");
+  @endphp</h2>  
+    <h2 id="clock" style="color: black"></h2>
     <hr>
 
 
@@ -118,9 +119,11 @@
   <div class="col-8 admin" style="margin-top: 10px">
     <h1>ADMIN DASHBOARD</h1>
     <h2>@php
-        date_default_timezone_set("Asia/Bangkok");
-      echo date("d M y, H:i");
-    @endphp</h2>
+      date_default_timezone_set("Asia/Bangkok");
+    echo date("d M y");
+  @endphp</h2>  
+    <h2 id="clock"></h2>
+      
     <hr>
     <div id="ungu" class="collapse">
       <h1>Pengguna</h1>
@@ -180,6 +183,29 @@
 </div>
 @endif 
 <script>
+
+function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
+  var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+}
+
+function updateTime(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime();
 
 </script>
 @endsection
