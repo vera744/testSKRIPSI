@@ -182,8 +182,6 @@ class CartController extends Controller
         $userAlamat = auth()->User()->alamat;
      
         $grandtotal = 0;
-        $testongkir = 10000;
-        $total = 0;
         
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
@@ -202,7 +200,6 @@ class CartController extends Controller
         foreach($cart as $c){
             $grandtotal += $c->total_price;
         }
-        $total = $testongkir + $grandtotal;
 
         $alamat = AlamatPengiriman::
         join('provinces', 'alamatpengirimans.provinsi','=', 'provinces.province_id')
@@ -214,15 +211,12 @@ class CartController extends Controller
 
         $metode = PaymentMethod::all();
         
-        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'total', 'testongkir', 'alamat', 'metode'));
+        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'alamat', 'metode'));
 
     }
     public function pesan(Request $req){
         $userLogin = auth()->User()->id;
-        $testongkir = 10000;
-        $namaOngkir = 1;
         $date1=date_create(date('Y-m-d'));
-
 
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
@@ -238,16 +232,10 @@ class CartController extends Controller
         $headertransaction->customerID = $userLogin;
         $headertransaction->pesan = $req->pesan;
         $headertransaction->paymentID = $req->get("payID");
-        $headertransaction->ongkirID = $namaOngkir;
-        
-        $grandtotal = 0;
-
-        foreach($cart as $c){
-            $grandtotal += $c->total_price;
-        }
-        $total = $testongkir + $grandtotal;
-        $headertransaction->grandtotal = $grandtotal;
-        $headertransaction->total = $total;
+        $headertransaction->ongkirID = $req->kurir;
+   
+        $headertransaction->grandtotal = $req->total2;
+        $headertransaction->total = $req->input('totalAkhir');
         $headertransaction->tglCO = $date1;
         $headertransaction->save();
         

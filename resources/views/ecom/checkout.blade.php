@@ -121,7 +121,7 @@
                 <div class="form-group col-md-6">
                     <label>Ongkir</label>
                         
-                    <input id="ongkir" type="text" disabled placeholder="Rp.{{number_format(0)}}" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+                    <input id="ongkir" type="text" name="ongkir" value="0" disabled placeholder="Rp.{{number_format(0)}}" class="text-dark font-weight-bold form-control">
                 </div>
             </td>
         </tr>
@@ -144,16 +144,20 @@
         <table class="table">
             <tbody>
             <tr>
-                <td>Metode Pembayaran
-                <div class="form-group">
-                <select class="form-control input-sm" name="payID" id="payID">
-                <option value="0" disabled="true" selected="true">Metode Pembayaran</option>
-                @foreach($metode as $value)
-                    
-                    <option value="{{$value->id}}" name="payID" id="payID">{{$value->namePayment}}</option> 
-                    @endforeach
-                </select>
-            </div>
+                <td class="align-middle">Metode Pembayaran</td>
+                <td class="align-middle">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col mt-3">
+                                <select class="form-control input-sm" name="payID" id="payID">
+                                    <option value="0" disabled="true" selected="true">Metode Pembayaran</option>
+                                    @foreach($metode as $value)
+                                         <option value="{{$value->id}}" name="payID" id="payID">{{$value->namePayment}}</option> 
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </td>
                
            
@@ -169,7 +173,9 @@
             <th class="column-spacer"></th>
             <th class="column-spacer"></th>
             <td class="align-middle">Subtotal untuk Produk: </td>
-            <td>Rp. {{number_format($grandtotal)}}</td>
+            <div class="row">
+                <td>Rp. {{number_format($grandtotal)}}</td>
+            </div>
 
             </tr>
             <th class="column-spacer"></th>
@@ -179,23 +185,34 @@
             <td class="align-middle">Total Ongkos Kirim: </td>
             <td>
                 <div class="row">
-                    <div class="col-6 mr-2">
-                    <input id="ongkir" type="text" disabled placeholder="Rp.{{number_format(0)}}" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+                    <div class="col-6 mr-2 mt-3">
+                        <div class="form-group">
+                            <input id="ongkir" type="text" readonly placeholder="Rp.{{number_format(0)}},-" class="text-dark font-weight-bold  form-control @error('ongkir') is-invalid @enderror" name="ongkir" value=""  autocomplete="ongkir" autofocus>
+                        </div>
                     </div>
                 </div>
             </td>
 
+            <div class="form-group">
             <tr>
                 <th class="column-spacer"></th>
                 <th class="column-spacer"></th>
                 <th class="column-spacer"></th>
                 <th class="column-spacer"></th>
-                <td style="font-size: 20px" class="align-middle"><strong>Total Pembayaran:</strong></td>
-                <td>
-                        <input name="totial" id="totial" value="" disabled>                
-                </td>
-                <td><input id="total2" name="total2" value="{{$grandtotal}}" hidden></td>
-            </tr>
+                
+                    <td style="font-size: 20px" class="align-middle"><strong>Total Pembayaran:</strong></td>
+                        
+                    <td>
+                        <div class="row">
+                            <div class="col-8 mr-2 py-3">
+                                <input type="text" name="totalAkhir" id="totalAkhir" readonly placeholder="Rp. {{number_format($grandtotal)}},-" class="text-dark font-weight-bold form-control @error('ongkir') is-invalid @enderror">                
+                            </div>
+                        </div>
+                    </td> 
+                        
+                    <td><input id="total2" name="total2" value="{{$grandtotal}}" hidden></td>
+                </tr>
+            </div>
             
             <tr>
                 <th class="column-spacer"></th>
@@ -257,7 +274,7 @@ crossorigin="anonymous"></script>
                             // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
 
                             $('input[name="ongkir"]').attr("value", value.value);
-                            $('input[name="totial"]').attr("value", value.value+grandtot);
+                            $('input[name="totalAkhir"]').attr("value", value.value+grandtot);
 
                         });
                     }

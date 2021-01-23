@@ -59,18 +59,20 @@ class manageGadaiController extends Controller
         $data =  Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
-        ->select('users.id','users.name', 'users.email as custEmail')
+        ->select('users.id','users.name', 'users.email as custEmail', 'mortgage_details.mortgageID')
         ->where('mortgages.mortgageID',"=",$id)
         ->get();
         
         foreach($data as $value){
             $user = User::find($value->id);
 
+            $formatTransaksi = sprintf("%03d", $value->mortgageID);
+
             Mail::to($value->custEmail)->send(new AcceptGadaiEmail($value->name));
             
             $user->notify(new AcceptRequest());
 
-            return redirect ('manageGadai')->with(['success' => 'Request gadai dari ' .$value->name. ' berhasil diterima!']);
+            return redirect ('manageGadai')->with(['success' => 'Request gadai dari ' .$value->name. ' dengan nama transaksi "Transaksi M' .$formatTransaksi. '" berhasil diterima!']);
         }
 
     }
@@ -81,14 +83,16 @@ class manageGadaiController extends Controller
         $data =  Mortgage::
         join('users', 'mortgages.customerID', "=", "users.id")
         ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
-        ->select('users.name', 'users.email as custEmail')
+        ->select('users.name', 'users.email as custEmail','mortgage_details.mortgageID')
         ->where('mortgages.mortgageID',"=",$id)
         ->get();
         
         foreach($data as $value){
+            $formatTransaksi = sprintf("%03d", $value->mortgageID);
+ 
             Mail::to($value->custEmail)->send(new RejectGadaiEmail($value->name));
     
-            return redirect ('manageGadai')->with(['reject' => 'Request gadai dari ' .$value->name. ' berhasil ditolak!']);
+            return redirect ('manageGadai')->with(['reject' => 'Request gadai dari ' .$value->name. ' dengan nama transaksi "Transaksi M' .$formatTransaksi. '" telah anda tolak!']);
         }
     }
 
@@ -130,15 +134,12 @@ class manageGadaiController extends Controller
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['loan'=>$req->input('loans')]);
 
         if($req->input('tglstart')){
-
             DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['startDate'=>$req->input('tglstart')]);
         }
         date('d-m-Y', strtotime($req->input('tglstart')));
                
         date('d-m-Y', strtotime($req->input('endDate')));
                     
-        
-        
         $end = $req->input('endDate');
         $start = $req->input('tglstart');
         $datetime1 = new DateTime($end);
@@ -154,7 +155,18 @@ class manageGadaiController extends Controller
         
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['status'=>"Sedang Berlangsung"]);
 
-        return redirect ('manageGadai');
+        $data =  Mortgage::
+        join('users', 'mortgages.customerID', "=", "users.id")
+        ->join('mortgage_details', "mortgages.mortgageID", "=", "mortgage_details.mortgageID")
+        ->select('users.name', 'users.email as custEmail','mortgage_details.mortgageID')
+        ->where('mortgages.mortgageID',"=",$id)
+        ->get();
+
+        foreach($data as $value){
+            $formatTransaksi = sprintf("%03d", $value->mortgageID);
+
+            return redirect ('manageGadai')->with(['success' => 'Request gadai dari ' .$value->name. ' dengan nama transaksi "Transaksi M' .$formatTransaksi. '" telah berhasil diatur dan dijadwalkan berakhir pada "'  . $end. '"!']);
+        }
     }
 
     public function append($id, Request $req){
@@ -174,7 +186,12 @@ class manageGadaiController extends Controller
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['status'=>"Selesai"]);
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$todate]);
 
-        return redirect ('gadai');
+        $transaction = DB::table('mortgage_details')
+        ->select('mortgageID')
+        ->where('mortgageID',"=",$id)
+        ->get();
+
+        return redirect ('gadai', with('success', 'Anda telah berhasil melakukan pembayaran untuk "Transaksi M' .$transaction. '"!'));
         
     }
 

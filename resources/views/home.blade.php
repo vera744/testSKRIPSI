@@ -1,4 +1,5 @@
 @extends('layouts.auths')
+
 @section('title','Home')
 
 @section('content')
@@ -9,8 +10,8 @@
     <div class="bordered-center ungu" style="background-color:#7C69EF">
     
     @if(count($transaksi)<1)
-    <h2>Anda tidak punya transaksi untuk saat ini</h2>
-    <a href="gadai/add" style="color: floralwhite">Ingin mulai transaksi?</a>
+      <h2>Anda tidak punya transaksi untuk saat ini</h2>
+      <a href="gadai/add" style="color: floralwhite">Ingin mulai transaksi?</a>
     @else
     <h2> <br> Anda punya {{count($transaksi)}} transaksi saat ini<br><a href="gadai" style="color: cornsilk">Tinjau transaksi anda</a> </h2>
     @endif
@@ -60,9 +61,6 @@
   </div>
 </div>
 
-
-
-
 @endif
 {{-- batas user --}}
 @if(Auth::user()->role=="admin" )
@@ -76,13 +74,6 @@
         
     </div>
     <div class="bordered-center" style="background-color: #42BA96"data-toggle="collapse" data-target="#hijau">
-      {{-- @if (count($ditinjau)<1)
-      <h2>Belum ada <br> transaksi baru sejauh ini.</h2>
-      @endif
-      @if (count($ditinjau)>0)
-      <h2>Anda memiliki <br> {{count($ditinjau)}} <br> transaksi baru.</h2>
-      <a href="manageGadai" style="color: white">Tinjau sekarang</a>
-      @endif --}}
       <h2>{{count($ditinjau)}}</h2>
       <a href="#">
         <img src="{{asset('images/trans.png')}}" width="100">
@@ -90,28 +81,11 @@
     </div>
   
     <div class="bordered-center" style="background-color: #FFC107" data-toggle="collapse" data-target="#kuning" >
-    {{-- @if(count($gagal)<1)
-      <br>
-      <h2>Belum ada <br> produk baru <br> untuk saat ini<br>
-        <a href="manageProduct" style="color: white">Tinjau produk</a>
-      </h2>
-    
-    @endif
-  
-    @if(count($gagal)>0)
-    <div class="bordered-center" style="background-color: #FFC107">
-      <h2>Terdapat <br>{{count($gagal)}} <br> produk baru<br>    <a href="manageProduct" style="color: white">Tinjau sekarang</a>
-      </h2>
-      @endif --}}
       <h2>{{count($gagal)}}</h2>
       <a href="#">
         <img src="{{asset('images/prods.png')}}" width="100">
       </a>
     </div>    
-  
-{{-- @endif --}}
-  
-  
   </div>
 
 
