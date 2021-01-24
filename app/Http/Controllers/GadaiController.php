@@ -144,7 +144,7 @@ class GadaiController extends Controller
         return redirect('/gadai')->with(
             ['requestEmail' => 'Silahkan cek email anda di ' . $email . '. Jika belum menerima email dari kami dalam 1-3 hari kerja, harap menghubungi kami melalui email : luisalexsander10@gmail.com'
             ,
-            'success' => 'Request gadai berhasil diajukan!'],
+            'success' => 'Request gadai berhasil diajukan!']
         );
         
     }

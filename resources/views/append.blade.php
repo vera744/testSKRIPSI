@@ -9,7 +9,7 @@
 
 
 <div>
-    <div  class="d-flex justify-content-center" style="height: 500px">
+    <div  class="d-flex justify-content-center">
         <h1 style="text-align: center">PEMBAYARAN</h1>
     </div>
     <div style="border: 1px solid #19365C;border-radius: 10px; margin:10px">

@@ -45,6 +45,7 @@ return array(
     'App\\Mail\\RequestGadaiEmail' => $baseDir . '/app/Mail/RequestGadaiEmail.php',
     'App\\Mortgage' => $baseDir . '/app/Mortgage.php',
     'App\\Notifications\\AcceptRequest' => $baseDir . '/app/Notifications/AcceptRequest.php',
+    'App\\Notifications\\NewRequest' => $baseDir . '/app/Notifications/NewRequest.php',
     'App\\PaymentMethod' => $baseDir . '/app/PaymentMethod.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Register')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -191,8 +192,9 @@
                             <br>
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
-                                    <h5 class="">Sudah punya akun?
-                                    <a class="" href="/login">Masuk</a> </h5>
+                                    <p>Sudah punya akun?
+                                        <a class="" href="/login">Masuk</a> 
+                                    </p>
                                 </div>
                             </div>
                 </div>

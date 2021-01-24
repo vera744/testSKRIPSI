@@ -178,7 +178,16 @@ class manageGadaiController extends Controller
         
         DB::table('mortgage_details')->where('mortgageID',"=",$id)->update(['endDate'=>$date]);
 
-        return redirect ('gadai');
+        $transaction = DB::table('mortgage_details')
+        ->select('mortgageID', 'endDate')
+        ->where('mortgageID',"=",$id)
+        ->get();
+
+        foreach ($transaction as $value) {
+            $formatTransaksi = sprintf("%03d", $value->mortgageID);
+
+            return redirect('gadai')->with(['success' => 'Anda telah berhasil melakukan perpanjangan untuk "Transaksi M' .$formatTransaksi. '" sampai dengan "'.$value->endDate.'"!']);
+        }
     }
 
     public function compelete($id){
@@ -191,7 +200,12 @@ class manageGadaiController extends Controller
         ->where('mortgageID',"=",$id)
         ->get();
 
-        return redirect ('gadai', with('success', 'Anda telah berhasil melakukan pembayaran untuk "Transaksi M' .$transaction. '"!'));
+        foreach($transaction as $value){
+
+            $formatTransaksi = sprintf("%03d", $value->mortgageID);
+
+            return redirect ('gadai')->with(['success' => 'Anda telah berhasil melakukan pembayaran "Transaksi M' .$formatTransaksi. '"!']);
+        }
         
     }
 

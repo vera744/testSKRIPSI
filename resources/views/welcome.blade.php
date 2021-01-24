@@ -103,30 +103,29 @@
 
             #logs{
               border:1px  hsl(233,73%,56%) solid;
-              border-radius: 15px;
-              padding: 14px;
+              border-radius: 5px;
+              padding: 8px;
               color: hsl(233,73%,56%);
               margin-right: 5px;
              
             }
 
-            #regs:hover{
-              color:  hsl(233,73%,56%);
-              background-color: white;
-            }
             #logs:hover{
               color:  hsl(233,73%,56%);
               background-color: white;
               border: none;
             }
+            #regs:hover{
+              color:  hsl(233,73%,56%);
+              background-color: white;
+            }
 
             #regs{
               border:1px none;
               background-color: hsl(233,73%,56%);
-              border-radius: 15px;
-              padding: 14px;
-              color: white;
-             
+              border-radius: 5px;
+              padding: 8px;
+              color: white; 
             }
           
 
@@ -250,30 +249,36 @@
     </div>
 </div>
 
-<footer class="" style="background-color: rgb(25, 54, 92);color:white">
-  <div class="container-fluid text-center text-md-left">
-    <div class="row">
-      <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
-        <p>Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
-      </div>
+<div class="row mt-5 justify-content-center">
+  <div class="col-12">
+      <div class="bottom" style="background-color: rgb(25, 54, 92);color:white">
+          <div class="container-fluid text-center text-md-left">
+              <div class="row align-text-center">
 
-      <hr class="clearfix w-100 d-md-none pb-3">
-      <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
-        <p>Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright text-center py-3">© 2020
-  </div>
-</footer>
+                  <div class="col-md-6 mt-md-2 mb-3">
+                      <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
+                      <hr>
+                      <p style="color: white">Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
+                  </div>
+          
+                  <hr class="clearfix w-100 d-md-none mb-3">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  
+                  <div class="col-md-6 mt-md-2 mb-3">
+                      <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
+                      <hr>
+                      <p style="color: white">Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
+                  </div>
+
+              </div>
+
+              <div class="footer-copyright text-center py-3"><strong>© 2020</strong></div>
+          </div>
+      </div>  
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
     </body>
 </html>

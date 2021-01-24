@@ -35,9 +35,9 @@
             margin: 0;
         }
         a {
-                color: gray;
-                padding: 0 25px;
-                font-size: 18px;
+                color: rgb(14, 105, 209);
+                padding: 0 15px;
+                font-size: 15px;
                 font-weight: 600;
                 /* letter-spacing: .1rem; */
                 text-decoration: none;
@@ -60,11 +60,37 @@
                 
             }
 
+            #logs{
+              border:1px  hsl(233,73%,56%) solid;
+              border-radius: 5px;
+              padding: 8px;
+              color: hsl(233,73%,56%);
+              margin-right: 5px;
+             
+            }
+
+            #logs:hover{
+              color:  hsl(233,73%,56%);
+              background-color: white;
+              border: none;
+            }
+
+            #regs:hover{
+              color:  hsl(233,73%,56%);
+              background-color: white;
+            }
+
+            #regs{
+              border:1px none;
+              background-color: hsl(233,73%,56%);
+              border-radius: 5px;
+              padding: 8px;
+              color: white; 
+            }
+
             body{
                 /* background-image: URL("images/ttkami.jpg"); */
             }
-            
-
 </style>
 <body>
     <div id="app">
@@ -87,14 +113,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
+                            @yield('loginButton')
+                        
+                            @yield('registerButton')
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -118,10 +139,12 @@
                 </div>
             </div>
         </nav>
-
+        
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    
 </body>
 </html>
