@@ -396,7 +396,16 @@ class CartController extends Controller
         ->where('customerID','=', $userLogin)
         ->get();
 
-        return view('/ecom/pesanview', compact('belumbayar'));
+        $detail = TotalTransaction::
+        join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
+        ->join('products', 'products.productID', '=', 'detailtransactions.IDProduct')
+        ->select('productName', 'detailtransactions.quantity', 'total_price', 'fotoProduk', 'transaction_id')
+        ->where('grandtotal', '!=', '0')
+        ->where('statusPayment', "=", "Belum Dibayar")
+        ->where('customerID','=', $userLogin)
+        ->get();
+
+        return view('/ecom/pesanview', compact('belumbayar', 'detail'));
     }
 
     
@@ -411,7 +420,18 @@ class CartController extends Controller
         ->where('customerID','=', $userLogin)
         ->get();
 
-        return view('/ecom/recordtransaksi', compact('sudahbayar'));
+        
+
+        $detail = TotalTransaction::
+        join('detailtransactions', 'detailtransactions.transaction_id', '=', 'totaltransactions.id')
+        ->join('products', 'products.productID', '=', 'detailtransactions.IDProduct')
+        ->select('productName', 'detailtransactions.quantity', 'total_price', 'fotoProduk', 'transaction_id')
+        ->where('grandtotal', '!=', '0')
+        ->where('statusPayment', "=", "Sudah Dibayar")
+        ->where('customerID','=', $userLogin)
+        ->get();
+
+        return view('/ecom/recordtransaksi', compact('sudahbayar', 'detail'));
     }
 
     

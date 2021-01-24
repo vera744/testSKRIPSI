@@ -27,7 +27,7 @@
                         {{ csrf_field() }}
                         {{method_field('POST')}}
 
-<div class="card">
+<div class="card" style="500px">
     <div class="card-body">
     <h5 class="card-title">ID Transaksi : {{$value->id}}</h5>
         <h5 class="card-title">Total Pembayaran : Rp. {{number_format($value->total)}}</h5>
@@ -40,6 +40,41 @@
 
         <br>
         <button class="btn btn-info" style="float:center;" value="editdata">Bayar</button>
+        <br>
+        <br>
+        <h5>Detail Produk</h5>
+
+          <table class="table">
+          <thead>
+              <tr>
+              <th class="column-spacer"></th>
+                  <th scope="col">Produk</th>
+                  <th scope="col">Jumlah</th>
+                  <th scope="col">Harga</th>
+                  <th></th>
+                  <th class="column-spacer"></th>
+                  <th></th>
+              </tr>
+                  </thead>
+
+
+          <tbody>
+          @foreach($detail as $detailprod)
+              @if($value->id == $detailprod->transaction_id)
+          <tr class="">
+                      <td> 
+                      <img src="/storage/fotoProduk/{{$detailprod->fotoProduk}}"height="150" width="150">
+                    
+                      </a>
+                      <td class="align-middle"><strong>{{$detailprod->productName}}</strong></td>
+                      <td class="align-middle ">{{$detailprod->quantity}}</td>
+                      <td class="align-middle">Rp. {{number_format($detailprod->total_price)}},-</td>
+          </tr>
+          @endif
+          @endforeach
+          </tbody>
+          </table>
+
     </div>
 </div>
 </form>
@@ -47,7 +82,9 @@
 @endforeach
 
 @else
+<div style="height:500px">
 
 <h3>Tidak ada transaksi yang perlu dibayar</h3>
+</div>
 @endif
 @endsection
