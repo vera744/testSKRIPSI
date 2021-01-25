@@ -73,7 +73,7 @@
                             <label for="provinsi" class="col-md-4 col-form-label text-md-right">{{ __('Provinsi') }}<span>*</span></label>
                             <div class="col-md-6">
                                 <select name="provinsi" id="provinsi" class="form-control provinsi @error('provinsi') is-invalid @enderror" required autocomplete="provinsi" autofocus>
-                                    <option value="">Provinsi Sesuai KTP</option>
+                                    <option value="0">Provinsi Sesuai KTP</option>
                                     @foreach ($province as $value)
                                         <option value="{{$value->province_id}}">{{$value->title}}</option>
                                     @endforeach
