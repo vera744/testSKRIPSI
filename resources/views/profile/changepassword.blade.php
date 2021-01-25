@@ -17,7 +17,7 @@
       @endif  
       
       <br>
-      <h3 style="text-align:center">Update Password</h3>
+      <h3 style="text-align:center">Ubah Kata Sandi</h3>
       <br>
           
       <div class="card-body">
@@ -26,7 +26,7 @@
           @csrf
             
           <div class="form-group row">
-            <label for="current_password" class="col-md-4 col-for-label">{{__('Current Password :')}}</label>
+            <label for="current_password" class="col-md-4 col-for-label">{{__('Kata Sandi Lama :')}}</label>
                   
             <div class="col-md-6">
               <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required autocomplete="current_password">
@@ -40,7 +40,7 @@
           </div>
                   
           <div class="form-group row">
-            <label for="password" class="col-md-4 col-for-label">{{__('Password :')}}</label>
+            <label for="password" class="col-md-4 col-for-label">{{__('Kata Sandi Baru :')}}</label>
                   
             <div class="col-md-6">
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -58,7 +58,7 @@
           </div>
                 
           <div class="form-group row">
-            <label for="password-confirm" class="col-md-4 col-form-label">{{__('Confirm Password :')}}</label>
+            <label for="password-confirm" class="col-md-4 col-form-label">{{__('Konfirmasi Kata Sandi Baru :')}}</label>
             
             <div class="col-md-6">
               <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">       
@@ -70,7 +70,7 @@
           <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
               <button type="submit" class="btn btn-primary">
-                Update Password
+                Ubah Kata Sandi
               </button>
             </div>
           </div>
