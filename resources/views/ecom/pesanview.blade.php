@@ -36,7 +36,7 @@
         <h6>No Rekening: {{$value->norek}}</h6>
         <br>
         Batas Pembayaran :
-        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 25:39 WIB
+        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
 
         <br>
         <button class="btn btn-info" style="float:center;" value="editdata">Bayar</button>
