@@ -199,11 +199,7 @@
                                         </ul>
                                     </li>
                     
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
-                                            <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>
-                                        </a>
-                                    </li>
+                             
 
                                     <li class="dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -163,10 +163,10 @@
                         @auth
                             <a href="{{ url('/home') }}">Home</a>
                         @else
-                            <a href="{{ route('login') }}" id="logs">Login</a>
+                            <a href="{{ route('login') }}" id="logs">Masuk</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" id="regs">Register</a>
+                                <a href="{{ route('register') }}" id="regs">Registrasi</a>
                             @endif
                         @endauth
                     </div>

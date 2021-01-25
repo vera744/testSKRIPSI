@@ -16,7 +16,7 @@
 @endif
 
 <br>
-    <h3 style="text-align:center"> Profile</h3>
+    <h3 style="text-align:center"> Profil</h3>
 <br>
 
     <!-- <div class="card-body">

@@ -13,7 +13,7 @@
       <h2>Anda tidak punya transaksi untuk saat ini</h2>
       <a href="gadai/add" style="color: floralwhite">Ingin mulai transaksi?</a>
     @else
-    <h2> <br> Anda punya {{count($transaksi)}} transaksi saat ini<br><a href="gadai" style="color: cornsilk">Tinjau transaksi anda</a> </h2>
+    <h2> <br> Anda punya {{count($transaksi)}} transaksi saat ini<br> <a href="gadai"  style="color: cornsilk">Tinjau transaksi anda</a> </h2>
     @endif
 
         

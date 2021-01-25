@@ -30,7 +30,7 @@
         </th>
         
         <th scope="col-6" >
-          <a href="/record" >Record Transaksi</a>
+          <a href="/record" >Riwayat Transaksi</a>
         </th>
       </tr>
     </table>
@@ -42,9 +42,10 @@
           <div class="table-responsive">
             <table class="table">
               <tr>
+              
                 <th>Nama Transaksi</th>
                 <th>Status</th>
-                <th></th>
+                <th>Detail</th>
               </tr>
   
               @foreach($mortgages as $value)
@@ -212,10 +213,7 @@
                             </div>
                           <br>
                         </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-  
-                        </div>
+                    
                       </div>
                     </div>
                   </div>

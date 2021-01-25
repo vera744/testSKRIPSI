@@ -170,7 +170,7 @@ class CartController extends Controller
          $findcart = Cart::find($findcartid)->first();
        
         $findcart->delete();
-        return back()->with('success_message', 'Item has been removed');
+        return back()->with('success_message', 'Produk sudah dihapus');
     }
 
     public function checkout(Request $req){

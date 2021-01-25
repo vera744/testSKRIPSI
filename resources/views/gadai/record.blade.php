@@ -20,7 +20,7 @@
         </th>
         
         <th scope="col" class="active">
-          <a href="/record" >Record Transaksi</a>
+          <a href="/record" >Riwayat Transaksi</a>
         </th>
       </tr>
     </table>
@@ -32,13 +32,16 @@
           <div class="table-responsive">
             <table class="table">
               <tr>
+        
                 <th>Nama Transaksi</th>
                 <th>Status</th>
-                <th></th>
+                <th>Detail</th>
+             
               </tr>
               
               @foreach($mortgages as $value)
                 <tr>
+                
                   <td>Transaksi M{{sprintf("%03d",$value->mortgageID)}}</td>
                 
                   @if ($value->status == "Ecom")
@@ -158,9 +161,7 @@
                             </div>
                           </div>
                         
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                          </div>
+                      
                         </div>
                       </div>
                     </div>

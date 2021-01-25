@@ -4,7 +4,7 @@
 @section('registerButton')
     @if (Route::has('register'))
         <li class="nav-item">
-            <a class="nav-link" id="regs" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="nav-link" id="regs" href="{{ route('register') }}">{{ __('Registrasi') }}</a>
         </li>
     @endif
 @endsection
@@ -20,7 +20,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Masuk') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -69,7 +69,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Masuk') }}
                                 </button>
 
                                 @if (Route::has('password.request'))

@@ -28,7 +28,7 @@ class RequestGadaiEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('gardadanaindonesia@gmail.com')
+        return $this->from('natasyaerlia48@gmail.com')
                    ->markdown('emails.user.gadai.requestemail')
                    ->with(
                     [

@@ -5,8 +5,13 @@
 
 
 @section('content')
-
-    <h2>Your Cart</h2>
+@if ($message = Session::get('Delete'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <strong>{{ $message }}</strong>
+  </div>
+@endif
+    <h2>Keranjangmu</h2>
 
     @if (count($cart)> 0 )
 
@@ -39,7 +44,7 @@
                         <input type="hidden" name="cartid" value="{{$value->id}}">
                         <input type="hidden" name="qty" value="{{$value->quantity}}">
                         <input type="hidden" name="flowerid" value="{{$value->total_price}}">
-                        <button type="submit" class="btn btn-info" style="float:center;">Delete</button>
+                        <button type="submit" class="btn btn-info" style="float:center;">Hapus</button>
                         </form>
                     </td>
                   
@@ -55,7 +60,7 @@
                                     <thead>
                                         <tr class="">
                                             <th class="text-right">
-                                            <h4>Total Price :</h4>
+                                            <h4>Total Harga :</h4>
                                             </th>
                                             
                                             <th class="text-right">

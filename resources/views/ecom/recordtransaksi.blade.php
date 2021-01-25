@@ -7,7 +7,7 @@
 <button class="btn btn-info" style="float:center;" value="editdata">Perlu Dibayar</button>
 </a>
 <a href="/recordtransaksi">
-<button class="btn btn-info" style="float:center;" value="editdata">Record Transaksi</button>
+<button class="btn btn-info" style="float:center;" value="editdata">Riwayat Transaksi</button>
 </a>
 <br>
 <br>
