@@ -30,7 +30,7 @@ class RejectGadaiEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('luisalexsander@gmail.com')
+        return $this->from('gardadanaindonesia@gmail.com')
         ->markdown('emails.admin.gadai.rejectmail');
     }
 }
