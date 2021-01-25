@@ -194,6 +194,7 @@
                                             <li class="dropdown-item">
                                                 <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
                                             </li>
+
                                             @endforelse
                                         </ul>
                                     </li>
@@ -216,6 +217,7 @@
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
+
                                                 {{ __('Logout') }}
                                             </a>
                                                     
