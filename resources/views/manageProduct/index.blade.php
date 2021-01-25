@@ -12,13 +12,13 @@
     <div class="col-12" >
         <p class="font-weight-bold" style="font-size: 25pt">Produk Baru</p>
         @if (count($unreviewed)<1)
-        <button type="button" class="btn style1" data-toggle="collapse" data-target="#nodata">Belum ada produk baru untuk saat ini</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#nodata">Belum ada produk baru untuk saat ini</button>
         <div id="nodata" class="collapse">
           <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
         </div>
         @endif
         @if (count($unreviewed)>0)
-        <button type="button" class="btn style1" data-toggle="collapse" data-target="#demo">Tinjau Sekarang</button>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Tinjau Sekarang</button>
         @endif
         <div id="demo" class="collapse">
             @if(count($unreviewed)>0)
@@ -40,7 +40,7 @@
                                     <h6>
                                         Rp. {{ number_format($value->productPrice) }},-
                                     </h6>
-                                                                    <a href="manageProduct/edit/{{$value->productID}}" class="btn style1">Edit Data</a>
+                                                                    <a href="manageProduct/edit/{{$value->productID}}" class="btn btn-primary">Edit Data</a>
 
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                 <h6>
                                     Rp. {{ number_format($value->productPrice) }},-
                                 </h6>
-                                                                <a href="manageProduct/edit/{{$value->productID}}" class="btn style1">Edit Data</a>
+                                                                <a href="manageProduct/edit/{{$value->productID}}" class="btn btn-primary">Sunting Data</a>
 
                             </div>
                         </div>

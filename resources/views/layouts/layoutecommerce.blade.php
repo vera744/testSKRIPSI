@@ -131,8 +131,8 @@
                               
                             </div>
                                 <form action="{{route('search')}}" method="GET" class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" value="{{request()->input('query')}}">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Cari Produk" aria-label="Search" name="query" id="query" value="{{request()->input('query')}}">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
                                 </form>
                             </div>     
                         </div>
@@ -176,18 +176,18 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                   Halo, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/profile">Profil</a>
                                     <a class="dropdown-item" href="/changepassword">Ubah Kata Sandi</a> 
                                     <a class="dropdown-item" href="/pesanview">Pesanan Saya</a>    
                                 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Keluar') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

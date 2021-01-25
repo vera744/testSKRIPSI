@@ -35,7 +35,7 @@
             
 </div>
 
-<a href="/editalamat" class="btn style1">
+<a href="/editalamat" class="btn btn-primary">
     {{ __('Edit Alamat') }}
 </a>
 </div>

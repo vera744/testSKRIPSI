@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Login')
+@section('title','Masuk')
 
 @section('registerButton')
     @if (Route::has('register'))
         <li class="nav-item">
-            <a class="nav-link" id="regs" href="{{ route('register') }}">{{ __('Registrasi') }}</a>
+            {{-- <a class="nav-link" id="regs" href="{{ route('register') }}">{{ __('Registrasi') }}</a> --}}
         </li>
     @endif
 @endsection
@@ -77,6 +77,8 @@
                                         {{ __('Lupa Kata Sandi?') }}
                                     </a>
                                 @endif
+                                <br>
+                                <a href="/register" class="btn btn-link">Belum Punya Akun?Daftar Sekarang</a>
                             </div>
                         </div>
                     </form>

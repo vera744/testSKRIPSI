@@ -22,14 +22,14 @@
     <div class="col-1 px-4">
         <form action="{{ url('/checkout') }}" method="post">
                             {{ csrf_field() }}
-                    <button id="btnAdd" class="btn btn-info" style="float:center;" value="back">
+                    <button id="btnAdd" class="btn btn-primary" style="float:center;" value="back">
                                             {{ __('Kembali') }}
                     </button>
         </form>
     </div>
     <div class="col-2">
         <a href="/tambahalamatt">
-            <button id="btnAdd" class="btn btn-info" style="float:center;" value="editdata">
+            <button id="btnAdd" class="btn btn-primary" style="float:center;" value="editdata">
                                                 {{ __('Tambah Alamat') }}
             </button>
         </a>
@@ -74,7 +74,7 @@
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
                                 <input type="hidden" name="provinsi" value="{{$alamat->title}}">
                                 <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
-                                <button type="submit" class="btn btn-info" style="float:center;">Delete</button>
+                                <button type="submit" class="btn btn-primary" style="float:center;">Delete</button>
                             </form>
                             <td>
                             <form action="{{ url('/pilihalamat') }}" method="post"><br>
@@ -86,7 +86,7 @@
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
                                 <input type="hidden" name="provinsi" value="{{$alamat->title}}">
                                 <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
-                                <button type="submit" class="btn btn-info" style="float:center;">Pilih Alamat</button>
+                                <button type="submit" class="btn btn-primary" style="float:center;">Pilih Alamat</button>
                             </form>
                             </td>
                             

@@ -6,7 +6,7 @@
 @section('container')
 
 <div class="formGadai">
-<h3>FORM REQUEST GADAI</h3>
+<h3>FORM PENGAJUAN GADAI</h3>
     
     <div class="container">
         <form action="/gadai/store" method="POST" enctype="multipart/form-data">
@@ -62,9 +62,9 @@
             <label for="">Foto Produk</label> 
             <br>
             <input id="fotoProduk" type="file" value="Pilih Foto" name="fotoProduk" value="{{ old('fotoProduk') }}" required autocomplete="fotoProduk" autofocus accept="image/jpeg, image/jpg, image/png"> <br> <br>
-            <br>
             
-            <input type="submit" value="Input Transaksi" class="btn btn-primary">
+            
+            <input type="submit" value="Ajukan Permintaan" class="btn btn-primary">
         </form>
     </div>
 

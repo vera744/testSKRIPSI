@@ -27,7 +27,7 @@
         <br>
         <br>
         <a href="/pesanview">
-        <button class="btn btn-info" style="float:center;" value="editdata">Bayar Sekarang</button>
+        <button class="btn btn-primary" style="float:center;" value="editdata">Bayar Sekarang</button>
 
         </a>
     </div>

@@ -68,7 +68,7 @@
                                             </th>
                                             <th class="text-center">
                                                 <button type="submit" class="btn btn-success">
-                                                    {{ __('Checkout') }}
+                                                    {{ __('Pembayaran') }}
                                             </th>
                                         </tr>
                                     </thead>
@@ -78,8 +78,12 @@
                                 </div>
                                 </form>
     @else
+    
+    <div style="height: 400px">
 
-    <h4>Tidak ada produk di dalam keranjangmu</h4>
+        <h4>Tidak ada produk di dalam keranjangmu</h4>
+        <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+    </div>
         
     @endif
 @endsection

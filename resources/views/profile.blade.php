@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-group row">
-      <label for="nomorHP" class="col-md-4 col-form-label text-md-right">Nomor Handphone  :</label>
+      <label for="nomorHP" class="col-md-4 col-form-label text-md-right">Nomor Ponsel  :</label>
       <div class="col-md-6">
       <input type="text" id="nomorHP"  name="nomorHP" class="form-control" value="{{$value->nomorHP}}" disabled required numeric>
      
@@ -122,9 +122,9 @@
 <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button id="btnEdit"  class="btn btn-primary" value="editdata" onclick="myFunc()">
-                                    {{ __('Edit') }}
+                                    {{ __('Sunting Data') }}
                                 </button>
-                                <button type="submit" id="btnSubmit"  class="btn btn-primary" value="submitdata" disabled onclick="func()"> Submit Data
+                                <button type="submit" id="btnSubmit"  class="btn btn-primary" value="submitdata" disabled onclick="func()"> Simpan
                                 </button>
                             </div>
                       

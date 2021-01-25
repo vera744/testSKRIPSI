@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Register')
+@section('title','Daftar')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registrasi') }}</div>
+                <div class="card-header">{{ __('Daftar') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="nomorHP" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Handphone') }}<span>*</span></label>
+                            <label for="nomorHP" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Ponsel') }}<span>*</span></label>
 
                             <div class="col-md-6">
                                 <input id="nomorHP" type="text" placeholder="Nomor yang Dapat Dihubungi" class="form-control @error('nomorHP') is-invalid @enderror" name="nomorHP" value="{{ old('nomorHP') }}" required autocomplete="nomorHP" autofocus>
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}<span>*</span></label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Alamat E-Mail') }}<span>*</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" placeholder="Email Harus Valid" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -182,7 +182,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
+                                    {{ __('Daftar') }}
                                 </button>
                             </div>
                         </div>

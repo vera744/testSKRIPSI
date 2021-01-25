@@ -33,7 +33,7 @@
 
   {{-- batas --}}
   <div class="col-8" style="margin-top: 10px">
-    <h1> Hello, {{ Auth::user()->name }}</h1>
+    <h1> Halo, {{ Auth::user()->name }}</h1>
     <h2 style="color: black">@php
       date_default_timezone_set("Asia/Bangkok");
     echo date("d M y");
@@ -91,7 +91,7 @@
 
   {{-- batas --}}
   <div class="col-8 admin" style="margin-top: 10px">
-    <h1>ADMIN DASHBOARD</h1>
+    <h1>Panel Admin</h1>
     <h2>@php
       date_default_timezone_set("Asia/Bangkok");
     echo date("d M y");
@@ -129,7 +129,7 @@
             </div>
           </div>
           @endforeach
-          <a class="btn style1" href="manageGadai">Tinjau sekarang</a>
+          <a class="btn btn-success" href="manageGadai">Tinjau sekarang</a>
           
        {{-- ..... --}}
       @endif
@@ -141,12 +141,12 @@
       <br>
       <h1>Atur Produk</h1>
       <h2>Belum ada produk baru untuk saat ini</h2>
-      <a href="manageProduct" class="btn style1">Tinjau data produk yang tersedia.</a>
+      <a href="manageProduct" class="btn btn-success">Tinjau data produk yang tersedia.</a>
      @endif
   
     @if(count($gagal)>0)
       <h2>Terdapat {{count($gagal)}} produk baru</h2>   
-      <a href="manageProduct" class="btn style1">Tinjau sekarang</a>
+      <a href="manageProduct" class="btn btn-success">Tinjau sekarang</a>
       @endif
       <hr>
     </div>

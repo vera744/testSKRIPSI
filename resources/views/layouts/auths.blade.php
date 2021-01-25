@@ -73,9 +73,13 @@
             .btn.style1{
               border:1px none;
               background-color: hsl(233,73%,56%);
-              border-radius: 15px;
-              padding: 14px;
-              color: white;
+              border-radius: 5px;
+              padding: 8px;
+              color: white; 
+            }
+            #regs:hover{
+              color:  hsl(233,73%,56%);
+              background-color: white;
             }
             /* tr{
                 border: 5px solid #E8F1FF  }
@@ -153,8 +157,8 @@
                             @if(Auth::User()->role == 'admin')
                                 <div class="flex-center position-ref height-header">
                                     <div class="top-left links">
-                                        <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
-                                        <a href="{{ url('manageProduct') }}">Manage Produk</a>
+                                        <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Tinjau Transaksi</a>
+                                        <a href="{{ url('manageProduct') }}">Atur Produk</a>
                                     </div>
                                 </div>
                                             
@@ -203,18 +207,18 @@
 
                                     <li class="dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                            Halo, {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
                     
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/profile">Profile</a>
+                                            <a class="dropdown-item" href="/profile">Profil</a>
                                             <a class="dropdown-item" href="/changepassword">Ubah Kata Sandi</a>    
 
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
 
-                                                {{ __('Logout') }}
+                                                {{ __('Keluar') }}
                                             </a>
                                                     
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

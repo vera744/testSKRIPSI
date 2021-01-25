@@ -13,10 +13,10 @@
   </div>
 @endif
 <a href="/pesanview">
-<button class="btn btn-info" style="float:center;" value="editdata">Perlu Dibayar</button>
+<button class="btn btn-primary" style="float:center;" value="editdata">Perlu Dibayar</button>
 </a>
 <a href="/recordtransaksi">
-<button class="btn btn-info" style="float:center;" value="editdata">Riwayat Transaksi</button>
+<button class="btn btn-primary" style="float:center;" value="editdata">Riwayat Transaksi</button>
 </a>
 <br>
 <br>
@@ -39,7 +39,7 @@
         Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
 
         <br>
-        <button class="btn btn-info" style="float:center;" value="editdata">Bayar</button>
+        <button class="btn btn-primary" style="float:center;" value="editdata">Bayar</button>
         <br>
         <br>
         <h5>Detail Produk</h5>

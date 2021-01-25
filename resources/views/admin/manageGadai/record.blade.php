@@ -119,7 +119,7 @@
                       <br>
                     @endif
                       
-                    <label for="">Tanggal Akhir</label>
+                    <label for="">Tanggal Berakhir Pinjaman</label>
                     <br>
                     <input id="endDate" type="date" name="endDate">
                     <br>  
@@ -128,7 +128,7 @@
                     <input class="col-md-6" type="number" name="loans" id="loans" required="required" value="{{$value->loan}}">
                     <br>
                     <br>
-                    <input type="submit" value="Input" class="btn btn-primary">
+                    <input type="submit" value="Mulai Pinjaman" class="btn btn-primary">
                   </form>
                 </div>
                 

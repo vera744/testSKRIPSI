@@ -31,10 +31,10 @@
 
 
                         <div class="form-group row">
-                            <label for="nomorHP" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Handphone') }}</label>
+                            <label for="nomorHP" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Ponsel') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nomorHP" type="text" placeholder="Nomor Handphone yang dapat dihubungi" class="form-control @error('nomorHP') is-invalid @enderror" name="nomorHP" value="{{ old('nomorHP') }}" required autocomplete="nomorHP" autofocus>
+                                <input id="nomorHP" type="text" placeholder="Nomor ponsel yang dapat dihubungi" class="form-control @error('nomorHP') is-invalid @enderror" name="nomorHP" value="{{ old('nomorHP') }}" required autocomplete="nomorHP" autofocus>
 
                                 @error('nomorHP')
                                     <span class="invalid-feedback" role="alert">
@@ -100,7 +100,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
+                                    {{ __('Simpan') }}
                                 </button>
                             </div>
                         </div>
