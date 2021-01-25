@@ -22,9 +22,43 @@
         <h6>No Rekening: {{$value->norek}}</h6>
         <br>
         Batas Pembayaran :
-        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 25:39 WIB
+        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
 
         <br>
+        <br>
+        <h5>Detail Produk</h5>
+
+        <table class="table">
+        <thead>
+            <tr>
+            <th class="column-spacer"></th>
+                <th scope="col">Produk</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Harga</th>
+                <th></th>
+                <th class="column-spacer"></th>
+                <th></th>
+            </tr>
+                </thead>
+      
+     
+        <tbody>
+        @foreach($detail as $detailprod)
+            @if($value->id == $detailprod->transaction_id)
+        <tr class="">
+                    <td> 
+                    <img src="/storage/fotoProduk/{{$detailprod->fotoProduk}}"height="150" width="150">
+                   
+                    </a>
+                    <td class="align-middle"><strong>{{$detailprod->productName}}</strong></td>
+                    <td class="align-middle ">{{$detailprod->quantity}}</td>
+                    <td class="align-middle">Rp. {{number_format($detailprod->total_price)}},-</td>
+        </tr>
+        @endif
+        @endforeach
+        </tbody>
+        </table>
+        
     </div>
 </div>
 <br>
