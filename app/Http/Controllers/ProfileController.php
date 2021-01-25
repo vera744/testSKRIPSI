@@ -10,6 +10,8 @@ use App\Rules\CurrentPassword;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Province;
+use App\City;
 
 use Validator;
 use Redirect;
@@ -25,14 +27,20 @@ class ProfileController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
     public function index()
     {
         $userLogin = auth()->User()->id;
-        $user = User::select('id','name', 'dob', 'nomorHP','alamat','provinsi','kota', 'email', 'password')
-        ->where('id', "=", $userLogin)
+        $user = User::join('provinces', 'provinces.province_id', '=', 'users.provinsi')
+        ->join('cities', 'cities.city_id','=', 'users.kota')
+        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.province_id','cities.city_id','title','cityTitle', 'email', 'password')
+        ->where('users.id', "=", $userLogin)
         ->get();
 
-        return view('profile')->with('users', $user);
+        $provinces = Province::all();
+        $cities = City::all();
+
+        return view('profile', compact('user','provinces','cities'));
     }
 
     public function update(request $request, $ids) {

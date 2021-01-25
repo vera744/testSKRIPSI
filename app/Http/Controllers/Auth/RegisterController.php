@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\City;
+use App\Events\Auth\UserActivationEmail;
 
 class RegisterController extends Controller
 {
@@ -94,7 +95,26 @@ class RegisterController extends Controller
             'fotoKTP' => $image,
             'fotodenganKTP' => $image2,
             'password' => Hash::make($data['password']),
-            'role' => 'member'
+            'role' => 'member',
+            'token_activation' => str_random(6),
+            'isVerified' => false,
         ]);   
-    }  
+    }
+    
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //SEND EMAIL   
+        
+        event(new UserActivationEmail($user));
+
+        $this->guard()->logout();
+            return redirect()->route('verification')->with('success','Registrasi berhasil! Silahkan cek email anda di "'.$user->email. '" untuk aktivasi akun anda!');
+    }
 }

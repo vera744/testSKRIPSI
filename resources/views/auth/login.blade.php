@@ -1,7 +1,22 @@
 @extends('layouts.app')
 @section('title','Login')
+
+@section('registerButton')
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" id="regs" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+    @endif
+@endsection
+
 @section('content')
 <div class="container">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif 
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

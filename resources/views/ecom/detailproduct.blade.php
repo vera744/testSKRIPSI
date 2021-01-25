@@ -19,7 +19,7 @@
           <div class="mdb-lightbox">
             <div class="row justify-content-center">
               <div class="col-md-8">
-                <img src="/storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="300" width="300">  
+                <img src="/storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max">  
               </div>
             </div>
           </div>
@@ -263,7 +263,7 @@ crossorigin="anonymous"></script>
             $('input[name="ongkir"]').attr("value", value.value);
  
             });
-            },
+            }
         });
       }
     });

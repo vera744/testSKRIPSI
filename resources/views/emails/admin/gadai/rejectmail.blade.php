@@ -1,4 +1,5 @@
 @component('mail::message')
+#Request Gadai Ditolak
 
 <h3>Halo, {{ $custName}} !</h3>
 <hr>
@@ -14,7 +15,7 @@ kasih.
 Lihat Status
 @endcomponent
 
-Sincerely, <br>
-<h3>Customer Service Pegadaian Digital</h3>
+Hormat kami, <br>
+<h3>Customer Service PT. Garda Dana Indonesia, tbk</h3>
 {{-- {{config('app.name')}} --}}
 @endcomponent

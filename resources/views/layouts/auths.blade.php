@@ -138,127 +138,129 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md">
-            <div class="container col-12">
+            <div class="container col-12 ml-3">
                 <a class="navbar-brand" href="/">
                     <img src="/images/logs.png" alt="" srcset="" width="30" height="30" style="margin-top: -10px">
                 </a>
-                
+                            
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar">
-                        @if(Auth::User()->role == 'admin')
-                        <div class="flex-center position-ref height-header">
-                            <div class="top-left links">
-
-                            
-                                <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
-                                <a href="{{ url('manageProduct') }}">Manage Produk</a>
-
-                            </div>
-                                
-                        @else
-                            <div class="flex-center position-ref height-header">
-                                <div class="top-left links">
-                                    <a href="/gadai">GADAI</a>
-                                    <a href="/ecom" >E-COMMERCE</a>
+            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                         <!-- Left Side Of Navbar -->
+                        <ul class="navbar">
+                            @if(Auth::User()->role == 'admin')
+                                <div class="flex-center position-ref height-header">
+                                    <div class="top-left links">
+                                        <a href="{{ url('manageGadai')}}" style="background-color: #e3f2fd;">Manage Transaksi Gadai</a>
+                                        <a href="{{ url('manageProduct') }}">Manage Produk</a>
+                                    </div>
                                 </div>
-                            </div>  
-                        @endif
-                    </ul>
+                                            
+                             @else
+                                <div class="flex-center position-ref height-header">
+                                    <div class="top-left links">
+                                        <a href="/gadai">GADAI</a>
+                                        <a href="/ecom" >E-COMMERCE</a>
+                                    </div>
+                                </div>  
+                             @endif
+                            
+                        </ul>
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif 
-                        @else
-
-                                <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
-                                    </a>
-    
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <li class="dropdown-item">
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif 
+                                @else
+                                    <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                        </a>
+                    
+                                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             @forelse(auth()->user()->unreadNotifications as $notification)
                                                 @include('notifications.'.snake_case(class_basename($notification->type)))
-                                                @empty
+                                            @empty
+                                            <li class="dropdown-item">
                                                 <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
-                                            @endforelse
                                             </li>
-                                    </ul>
-                                </li>
-                                @if (auth()->user()->role=="member")
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
-                                    <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>
-                                    </a>
-                                </li>
-                                @endif
-                               
-                                <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                       Hello, {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-    
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/profile">Profile</a>
-                                        <a class="dropdown-item" href="/changepassword">Change Password</a>    
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+
+                                            @endforelse
+                                        </ul>
+                                    </li>
+                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
+                                            <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+                    
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/profile">Profile</a>
+                                            <a class="dropdown-item" href="/changepassword">Change Password</a>    
+
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+
                                                 {{ __('Logout') }}
                                             </a>
-    
+                                                    
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
                                             </form>
-                                    </div>
-                                </li>
-                                
-
-                            
-                        @endguest
-                    </ul>
-                </div>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>  
+                    </div>
             </div>
         </nav>
-
-        <main class="col-12">
+            
+        <div class="col-12">
             @yield('content')
-        </main>
+        </div>
     </div>
 
-    <div class="bottom" style="background-color: rgb(25, 54, 92);color:white">
-        <div class="container-fluid text-center text-md-left">
-          <div class="row">
-            <div class="col-md-6 mt-md-0 mt-3">
-              <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
-              <p style="color: white">Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
-            </div>
-      
-            <hr class="clearfix w-100 d-md-none pb-3">
-            <div class="col-md-6 mb-md-0 mb-3">
-              <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
-              <p style="color: white">Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright text-center py-3">© 2020
-        </div>
-    </div>
-      
-      
+    <div class="row mt-5 justify-content-center">
+        <div class="col-12">
+            <div class="bottom" style="background-color: rgb(25, 54, 92);color:white">
+                <div class="container-fluid text-center text-md-left">
+                    <div class="row align-text-center">
+
+                        <div class="col-md-6 mt-md-2 mb-3">
+                            <h5 class="text-uppercase font-weight-bold">Info Kontak</h5>
+                            <hr>
+                            <p style="color: white">Email : gardadanaindonesia@gmail.com <br> Telp : +021 888 999 <br> Instagram : @gardadanaindonesia</p>
+                        </div>
+                
+                        <hr class="clearfix w-100 d-md-none mb-3">
+
+                        <div class="col-md-6 mt-md-2 mb-3">
+                            <h5 class="text-uppercase font-weight-bold">Gadai & E-Commerce</h5>
+                            <hr>
+                            <p style="color: white">Menyediakan pinjaman dan menjual produk secondhand berkualitas. <br> Solusi untuk segala keperluan anda. Bergabung hari ini dan rasakan kelebihannya. Mudah dan aman.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-copyright text-center py-3"><strong>© 2020</strong></div>
+                </div>
+            </div>  
 </body>
 </html>

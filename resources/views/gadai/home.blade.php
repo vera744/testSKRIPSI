@@ -37,214 +37,219 @@
     
     <tbody>
       @if (count($mortgages)> 0 )
-        <div class="table-responsive">
-          <table class="table">
-            <tr>
-              <th>Nama Transaksi</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-
-            @foreach($mortgages as $value)
-      
-            <tr>
-              <td>
-                Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
-              <td>{{$value->status}}</td>
-              <td>
-                <div class="dropdown">
-                  <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
-                  </a>
-                </div>
-            
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      
-                      <div class="modal-body bg-dark">
-                        <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="100px" style="border: 2px solid #275996" alt="">
-                        <div class="row">
-                          <div class="table-responsive">
-                            <table class="table-dark table-borderless col-12">
-                              <tr>
-                                <td>
-                                  Gadai ID
-                                </td>
-                                <td>
-                                  <strong>
-                                    Transaksi M{{sprintf("%03d",$value->mortgageID)}}
-                                  </strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Kategori Produk
-                                </td>
-                                <td>
-                                    {{$value->namaKategori}}
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Merek Produk
-                                </td>
-                                <td>
-                                    {{$value->merekProduk}}
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Nama Produk
-                                </td>
-                                <td>
-                                    {{$value->productName}}
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Berat Produk
-                                </td>
-                                <td>
-                                    {{number_format($value->productWeight)}} Gram
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Status
-                                </td>
-                                <td>
-                                  <strong>
-                                    {{$value->status}}
-                                  </strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  @if($value->status == "Sedang Ditinjau")
-                                    Harga Pasar
-                                  @else
-                                    Jumlah Pinjaman
-                                  @endif
-                                </td>
-                                <td>
-                                    Rp. {{number_format($value->loan)}},-
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Kondisi Produk
-                                </td>
-                                <td>
-                                    {{$value->namaKondisi}}
-                                </td>
-                              </tr>
-                              @if($value->startDate && $value->endDate)
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th>Nama Transaksi</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+  
+              @foreach($mortgages as $value)
+        
+              <tr>
+                <td>
+                  Transaksi M{{sprintf("%03d",$value->mortgageID)}} </td>
+                <td>{{$value->status}}</td>
+                <td>
+                  <div class="dropdown">
+                    <a data-toggle="modal" data-target="#exampleModalLong{{$value->mortgageID}}" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"  aria-haspopup="true" aria-expanded="false" >
+                    </a>
+                  </div>
+              
+  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        
+                        <div class="modal-body bg-dark">
+                          <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
+                          
+                            <div class="table-responsive">
+                              <table class="table-dark table-borderless col-12">
                                 <tr>
                                   <td>
-                                    Tanggal Mulai Pinjaman
+                                    Gadai ID
                                   </td>
                                   <td>
                                     <strong>
-                                      {{date('d-m-Y', strtotime($value->startDate))}}
-                                    </strong>
-                                  </td>
-                                </tr>  
-                                <tr>
-                                  <td>
-                                    Tanggal Akhir Pinjaman
-                                  </td>
-                                  <td style="color: rgb(255, 42, 42)">
-                                    <strong>
-                                      {{date('d-m-Y', strtotime($value->endDate))}}
+                                      Transaksi M{{sprintf("%03d",$value->mortgageID)}}
                                     </strong>
                                   </td>
                                 </tr>
                                 <tr>
-                                  
-                                   
                                   <td>
-                                    Sisa Hari
+                                    Kategori Produk
                                   </td>
-                                  @php
-                                    $date1=date_create(date('Y-m-d'));
-                                    $date2=date_create($value->endDate);
-                                    $diff=date_diff($date1,$date2);
-                                  @endphp
-                                  
-                                  @if($diff->format("%a")>6)
-                                  <td style="color: rgb(62, 201, 115)">
-                                  @else
-                                  <td style="color: rgb(255, 42, 42)">
-                                  @endif
+                                  <td>
+                                      {{$value->namaKategori}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Merek Produk
+                                  </td>
+                                  <td>
+                                      {{$value->merekProduk}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Nama Produk
+                                  </td>
+                                  <td>
+                                      {{$value->productName}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Berat Produk
+                                  </td>
+                                  <td>
+                                      {{number_format($value->productWeight)}} Gram
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Status
+                                  </td>
+                                  <td>
                                     <strong>
-                                      @php
-                                        $date1=date_create(date('Y-m-d'));
-                                        $date2=date_create($value->endDate);
-                                        $diff=date_diff($date1,$date2);
-                                        echo $diff->format("%a hari");
-                                      @endphp
+                                      {{$value->status}}
                                     </strong>
                                   </td>
                                 </tr>
-                                  <td class="row justify-content-center">
-                                    @if ($diff->format("%a")<7)
-                                    
-                                      <form action="/gadai/append/{{$value->mortgageID}}">
-                                        <button class="btn style1">Perpanjang</button>
-                                      </form>
+                                <tr>
+                                  <td>
+                                    @if($value->status == "Sedang Ditinjau")
+                                      Harga Pasar
+                                    @else
+                                      Jumlah Pinjaman
                                     @endif
                                   </td>
-                                  <td class="px-5">
-                                    <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar sekarang</a>
+                                  <td>
+                                      Rp. {{number_format($value->loan)}},-
                                   </td>
-                              @endif
-                            </table>
-                          </div>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Kondisi Produk
+                                  </td>
+                                  <td>
+                                      {{$value->namaKondisi}} 
+                                  </td>
+                                </tr>
+                                @if($value->startDate && $value->endDate)
+                                  <tr>
+                                    <td>
+                                      Tanggal Mulai Pinjaman
+                                    </td>
+                                    <td>
+                                      <strong>
+                                        {{date('d-m-Y', strtotime($value->startDate))}}
+                                      </strong>
+                                    </td>
+                                  </tr>  
+                                  <tr>
+                                    <td>
+                                      Tanggal Akhir Pinjaman
+                                    </td>
+                                    <td style="color: rgb(255, 42, 42)">
+                                      <strong>
+                                        {{date('d-m-Y', strtotime($value->endDate))}}
+                                      </strong>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    
+                                     
+                                    <td>
+                                      Sisa Hari
+                                    </td>
+                                    @php
+                                      $date1=date_create(date('Y-m-d'));
+                                      $date2=date_create($value->endDate);
+                                      $diff=date_diff($date1,$date2);
+                                    @endphp
+                                    
+                                    @if($diff->format("%a")>6)
+                                    <td style="color: rgb(62, 201, 115)">
+                                    @else
+                                    <td style="color: rgb(255, 42, 42)">
+                                    @endif
+                                      <strong>
+                                        @php
+                                          $date1=date_create(date('Y-m-d'));
+                                          $date2=date_create($value->endDate);
+                                          $diff=date_diff($date1,$date2);
+                                          echo $diff->format("%a hari");
+                                        @endphp
+                                      </strong>
+                                    </td>
+                                  </tr>
+                                    <td class="row justify-content-center">
+                                      @if ($diff->format("%a")<7)
+                                      
+                                        <form action="/gadai/append/{{$value->mortgageID}}">
+                                          <button class="btn style1">Perpanjang</button>
+                                        </form>
+                                      @endif
+                                    </td>
+                                    <td class="px-5">
+                                      <a href="/gadai/payment/{{$value->mortgageID}}" class="btn style1">Bayar sekarang</a>
+                                    </td>
+                                @endif
+                              </table>
+                            </div>
+                          <br>
                         </div>
-                        <br>
-                      </div>
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+  
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-        
-            @endforeach
-          </table>
+                </td>
+              </tr>
+          
+              @endforeach
+            </table>
+          </div>
         </div>
+      </div>
       @else
         <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
         <div class="d-flex justify-content-center">
           <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
         </div>
       @endif
+
+      <br>
+      <div class="row justify-content-center">
+        {{ $mortgages->onEachSide(5)->links() }}
+      </div>
+
+      <hr>
+      
+      <div class="row d-flex justify-content-center">
+        <form action="{{ url('gadai/add')}}">
+          <input type="submit" class="btn style1" value="Ajukan Gadai" style="">
+        </form>
+      </div> 
+
     </tbody>
   </div>
 </div>
-
-<div class="row justify-content-center">
-{{ $mortgages->onEachSide(5)->links() }}
-</div>
-  
-
-<div class="row d-flex justify-content-center">
-  <form action="{{ url('gadai/add')}}">
-    <input type="submit" class="btn style1" value="Request" style="">
-  </form>
-</div> 
-
 
 @endsection
 

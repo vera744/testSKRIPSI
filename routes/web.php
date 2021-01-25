@@ -19,6 +19,9 @@ Route::get('/home', 'HomeController@index');
 //REGISTER
 Auth::routes(['verify' => true]);
 Route::get('/findCityName', 'HomeController@findCityName');
+Route::get('/verification', 'userActivationController@verification')->name('verification');
+Route::post('/post/verification', 'userActivationController@postVerification');
+Route::post('/post/resend', 'userActivationController@postResend');
 
 //CUSTOMER
 Route::get('/gadai', 'GadaiController@index')->middleware('member');

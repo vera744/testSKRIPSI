@@ -560,6 +560,7 @@ class ComposerStaticInit4ca3e551f9b64cfa00ba76d959859f58
         'App\\Mail\\RequestGadaiEmail' => __DIR__ . '/../..' . '/app/Mail/RequestGadaiEmail.php',
         'App\\Mortgage' => __DIR__ . '/../..' . '/app/Mortgage.php',
         'App\\Notifications\\AcceptRequest' => __DIR__ . '/../..' . '/app/Notifications/AcceptRequest.php',
+        'App\\Notifications\\NewRequest' => __DIR__ . '/../..' . '/app/Notifications/NewRequest.php',
         'App\\PaymentMethod' => __DIR__ . '/../..' . '/app/PaymentMethod.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

@@ -14,7 +14,7 @@
 @endif 
 
 @if ($message = Session::get('reject'))
-  <div class="alert alert-warning alert-block">
+  <div class="alert alert-danger alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>	
     <strong>{{ $message }}</strong>
   </div>
@@ -128,32 +128,3 @@
 </tbody>
 </div>
 @endsection
-
-{{-- <script>
-  $(document).ready(function () {
-    $('.showQuickInfo').click(function () {
-      $('#QuickInfo').toggleClass('is-active'); // MODAL
-
-      var $entry = this.getAttribute('data-entry');
-      getEntryData($entry);
-    });
-
-    function getEntryData(entryId) {
-      $.ajax({
-      url: '/entries/getEntryDataForAjax/' + entryId,
-      type: 'get',
-      dataType: 'json',
-      success: function (response) {
-        if (response.length == 0) {
-          console.log( "Datensatz-ID nicht gefunden.");
-        } else { 
-          // set values
-          $('#mortgageID').val( response[0].mortgageID );         
-          $('#status').val( response[0].status);
-          // and so on
-        }
-      }
-    });
-  }
-});
-</script> --}}
