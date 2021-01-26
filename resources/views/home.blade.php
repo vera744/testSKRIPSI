@@ -6,7 +6,7 @@
 
 @if(Auth::user()->role=="member" )
 <div class="row admin">
-  <div class="col-4">'
+  <div class="col-4">
     <div class="bordered-center ungu" style="background-color:#7C69EF">
     
     @if(count($transaksi)<1)
