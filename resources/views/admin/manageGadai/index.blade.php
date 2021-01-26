@@ -74,13 +74,13 @@
 
                     <div class="modal-body">
                       <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
-                      <label for="mortgageID">Gadai ID:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
+                      <label for="mortgageID">ID Gadai:Transaksi M{{sprintf("%03d",$value->mortgageID)}} </label>
                       <br>
                       <label for="status" style="color: blue">
                         STATUS : {{$value->status}}
                       </label>
                       <br>
-                      <label for="productName">Customer ID: {{$value->customerID}}</label>
+                      <label for="productName">ID Pengguna: {{$value->customerID}}</label>
                       <br>
                       <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
                       <br>
@@ -100,7 +100,7 @@
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak Request</button> --}}
                       <a href="/manage/acc/{{$value->mortgageID}}" class="btn btn-success">Terima Permintaan</a>
                       <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Permintaan</a>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     </div>
                   </div>
                 </div>
