@@ -13,7 +13,7 @@
   </div>
 @endif
 <div class="content d-flex justify-content-center mt-3">
-    <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel">
          <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -21,11 +21,11 @@
 
         <div class="carousel-inner" style="border-radius: 10px">
             <div class="carousel-item active">
-                <img src="images/sale.png" class="d-block w-100" alt="first slide">
+                <img src="images/sale.png" class="d-block img-fluid" alt="first slide">
             </div>
                         
             <div class="carousel-item">
-                <img src="images/sale (1).png" class="d-block w-100" alt="second slide">
+                <img src="images/sale (1).png" class="d-block img-fluid" alt="second slide">
             </div>        
         </div>
         

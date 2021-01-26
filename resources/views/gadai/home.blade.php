@@ -23,9 +23,9 @@
 
 <div class="row justify-content-md-center" style="height: 500px">
   <div class="col-12">
-    <table class="table" style="text-align:center">
+    <table class="table table-borderless" style="text-align:center">
       <tr>
-        <th scope="col-6" class="active">
+        <th scope="col-6" class="active shadow p-3 mb-5">
           <a href="/gadai">Transaksi Aktif</a>
         </th>
         
@@ -65,15 +65,15 @@
                   <div class="modal fade" id="exampleModalLong{{$value->mortgageID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header bg-dark border-0">
+                          <h5 class="modal-title" style="color: white;" id="exampleModalLongTitle">Transaksi M{{sprintf("%03d",$value->mortgageID)}}</h5>
+                          <button type="button" class="close" style="color: white" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         
-                        <div class="modal-body bg-dark">
-                          <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
+                        <div class="modal-body bg-dark border-0">
+                          <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top img-fluid rounded-top" alt="">
                           
                             <div class="table-responsive">
                               <table class="table-dark table-borderless col-12">
@@ -237,11 +237,10 @@
         {{ $mortgages->onEachSide(5)->links() }}
       </div>
 
-      <hr>
       
       <div class="row d-flex justify-content-center">
         <form action="{{ url('gadai/add')}}">
-          <input type="submit" class="btn style1" value="Ajukan Gadai" style="">
+          <input type="submit" class="btn style1 shadow" value="Ajukan Gadai" style="">
         </form>
       </div> 
 
