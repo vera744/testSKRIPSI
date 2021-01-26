@@ -19,14 +19,14 @@
 
 <div class="row">
 
-    <div class="col-1 px-4">
+    {{-- <div class="col-1 px-4">
         <form action="{{ url('/checkout') }}" method="post">
                             {{ csrf_field() }}
                     <button id="btnAdd" class="btn btn-primary" style="float:center;" value="back">
                                             {{ __('Kembali') }}
                     </button>
         </form>
-    </div>
+    </div> --}}
     <div class="col-2">
         <a href="/tambahalamatt">
             <button id="btnAdd" class="btn btn-primary" style="float:center;" value="editdata">

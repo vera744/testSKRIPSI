@@ -320,9 +320,52 @@ class CartController extends Controller
     DB::table('alamatpengirimans')->where('alamatpengirimans.statusAlamat', '=', 'Alamat Dipilih')->update(['alamatpengirimans.statusAlamat'=>'null']);
 
     DB::table('alamatpengirimans')->where('id',"=",$req->id)->update(['alamatpengirimans.statusAlamat'=>'Alamat Dipilih']);
-    Session::flash('pilih','Alamat telah dipilih!');
+    // Session::flash('pilih','Alamat telah dipilih!');
+    DB::table('alamatpengirimans')->where('alamatpengirimans.statusAlamat', '=', 'Alamat Dipilih')->update(['alamatpengirimans.statusAlamat'=>'null']);
 
-    return back();
+    DB::table('alamatpengirimans')->where('id',"=",$req->id)->update(['alamatpengirimans.statusAlamat'=>'Alamat Dipilih']);
+    // Session::flash('pilih','Alamat telah dipilih!');
+
+    $provinsi = $this->get_province();
+
+        $userLogin = auth()->User()->id;
+        $userName = auth()->User()->name;
+        $userNomor = auth()->User()->nomorHP;
+        $userAlamat = auth()->User()->alamat;
+     
+        $grandtotal = 0;
+        
+        $cart = Cart::
+        join('products', 'products.productID', '=', 'carts.IDProduct')
+
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'productWeight')
+
+        ->where('customerID', '=', $userLogin)
+        ->get();
+
+        $user = User::join('provinces', 'provinces.province_id', '=', 'users.provinsi')
+        ->join('cities', 'cities.city_id','=', 'users.kota')
+        ->select('users.id','name', 'dob', 'nomorHP','alamat','provinces.province_id as idProvinsi','cities.city_id as idKota','cities.cityTitle as namaKota','email', 'password')
+        ->where('users.id', "=", $userLogin)
+        ->get();
+      
+        foreach($cart as $c){
+            $grandtotal += $c->total_price;
+        }
+
+        $alamat = AlamatPengiriman::
+        join('provinces', 'alamatpengirimans.provinsi','=', 'provinces.province_id')
+        ->join('cities', 'alamatpengirimans.kota','=', 'cities.city_id')
+        ->select('alamatpengirimans.id', 'userID','namaPenerima', 'nomorHP','alamat','provinces.title','cities.cityTitle','provinces.province_id as idProvinsi','cities.city_id as idKota')
+        ->where('userID', "=", $userLogin)
+        ->where('statusAlamat', "=", "Alamat Dipilih")
+        ->get();
+
+        $metode = PaymentMethod::all();
+        
+        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'alamat', 'metode'));
+
+    // return back();
 
    }
 
