@@ -14,7 +14,7 @@
         @if (count($unreviewed)<1)
         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#nodata">Belum ada produk baru untuk saat ini</button>
         <div id="nodata" class="collapse">
-          <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+          <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
         </div>
         @endif
         @if (count($unreviewed)>0)

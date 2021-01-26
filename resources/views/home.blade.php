@@ -151,7 +151,7 @@
       <hr>
     </div>
 
-    <img src="{{asset('images/dash.png')}}" width="max">
+    <img src="{{asset('images/dash.png')}}" width="450px">
 
   </div>
 </div>

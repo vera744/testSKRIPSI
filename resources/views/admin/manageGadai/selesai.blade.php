@@ -108,7 +108,7 @@
   @else
     <p class="font-weight-bold" style="text-align:center">Anda tidak mempunyai transaksi untuk saat ini</p>
     <div class="d-flex justify-content-center">
-      <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+      <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
     </div>
   @endif
 </tbody>

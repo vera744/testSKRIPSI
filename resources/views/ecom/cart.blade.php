@@ -82,7 +82,7 @@
     <div style="height: 400px">
 
         <h4>Tidak ada produk di dalam keranjangmu</h4>
-        <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+        <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
     </div>
         
     @endif

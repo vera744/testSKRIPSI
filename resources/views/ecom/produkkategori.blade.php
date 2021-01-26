@@ -61,7 +61,7 @@
                             
                         <div class="row justify-content-center">
                             <div class="d-flex justify-content-center">
-                                <img src="/images/nodata.jpg" alt="" srcset="" width="300px" height="300px">
+                                <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
                             </div>
                         </div>
                     </div>
