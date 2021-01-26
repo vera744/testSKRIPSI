@@ -38,7 +38,7 @@
         }
         a {
                 color: gray;
-                padding: 0 25px;
+                padding: 0 10px;
                 font-size: 18px;
                 font-weight: 600;
                 /* letter-spacing: .1rem; */
@@ -140,6 +140,9 @@
 
 </style>
 <body>
+    {{-- Ajax --}}    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <div id="app">
         <nav class="navbar navbar-expand-md">
             <div class="container col-12 ml-3">
@@ -173,7 +176,7 @@
                             
                         </ul>
                             <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
+                            <ul class="navbar-nav ml-auto ">
                                 <!-- Authentication Links -->
                                 @guest
                                     <li class="nav-item">
@@ -188,19 +191,19 @@
                                 @else
                                     <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                            <i class="bi-bell-fill" style="padding: 5px;font-size: 20px; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
                                         </a>
                     
-                                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             @forelse(auth()->user()->unreadNotifications as $notification)
                                                 @include('notifications.'.snake_case(class_basename($notification->type)))
                                             @empty
-                                            <li class="dropdown-item">
-                                                <a href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
-                                            </li>
+                                            <!-- <li class="dropdown-item"> -->
+                                                <a class="dropdown-item" href="#" style="font-size: 14px">Tidak ada notifikasi baru</a>
+                                            <!-- </li> -->
 
                                             @endforelse
-                                        </ul>
+                                        </div>
                                     </li>
                     
                              
@@ -232,8 +235,12 @@
             </div>
         </nav>
             
-        <div class="col-12">
-            @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 
@@ -262,5 +269,7 @@
                     <div class="footer-copyright text-center py-3"><strong>© 2020</strong></div>
                 </div>
             </div>  
+
+            
 </body>
 </html>
