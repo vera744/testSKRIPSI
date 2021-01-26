@@ -19,7 +19,7 @@
         @php
             $today=date_create(date('Y-m-d'));
         $start=date_create($value->startDate);
-
+    
       if($start<=$today){
         $diff=date_diff($start,$today); 
         $div=$diff->format("%a")/30;
@@ -30,17 +30,20 @@
         }
       }
 
-
-        $raterate = 0.03;
+      $raterate = 0.03;
         $bunga = $raterate * $value->loan * $rounded;
+
       
       echo ($rounded);
       echo (" bulan");
         @endphp
         <br>
         <label>Pinjaman : Rp. {{number_format($value->loan)}}</label> <br>
+      
+
+      
         <label>Bunga Pinjaman : Rp. {{number_format($bunga)}}</label> <br>
-        <label>Total Pembayaran : Rp. {{number_format($bunga)}}</label>
+        <label>Total Pembayaran : Rp. {{number_format($bunga)}}</label> <br>
         <label>Silahkan melakukan pembayaran bunga pinjaman terlebih dahulu</label>
        
 
