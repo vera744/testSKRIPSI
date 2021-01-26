@@ -31,17 +31,14 @@
       }
 
 
+        $raterate = 0.03;
+        $bunga = $raterate * $value->loan * $rounded;
       
       echo ($rounded);
       echo (" bulan");
         @endphp
         <br>
         <label>Pinjaman : Rp. {{number_format($value->loan)}}</label> <br>
-        @php
-
-        $raterate = 0.03;
-        $bunga = $raterate * $value->loan * $rounded;
-        @endphp
         <label>Bunga Pinjaman : Rp. {{number_format($bunga)}}</label> <br>
         <label>Total Pembayaran : Rp. {{number_format($bunga)}}</label>
         <label>Silahkan melakukan pembayaran bunga pinjaman terlebih dahulu</label>
