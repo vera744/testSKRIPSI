@@ -65,7 +65,7 @@
 {{-- batas user --}}
 @if(Auth::user()->role=="admin" )
 <div class="row admin">
-  <div class="col-4">'
+  <div class="col-4">
     <div class="bordered-center ungu" style="background-color:#7C69EF"data-toggle="collapse" data-target="#ungu" id="colungu">
       <h2>{{count($registered)}}</h2>
       <a href="#">
