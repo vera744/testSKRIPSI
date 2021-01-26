@@ -83,7 +83,7 @@
                   <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="max" width="max" style="border: 2px solid #275996" alt="">
                   <label for="name">Nama: {{$value->name}}</label>
                   <br>
-                  <label for="mortgageID">Gadai ID: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
+                  <label for="mortgageID">ID Gadai: Transaksi M{{sprintf("%03d",$value->mortgageID)}}</label>
                   <br>
                   <label for="productKategori">Kategori Produk: {{$value->namaKategori}}</label>
                   <br>
@@ -99,9 +99,9 @@
 
                   @if ($value->startDate!=null && $value->endDate!=null)
                     <br>
-                    <label for="">Start Datenya :{{date('d-m-Y', strtotime($value->startDate))}}</label>
+                    <label for="">Tanggal Mulai Pinjaman :{{date('d-m-Y', strtotime($value->startDate))}}</label>
                     <br>
-                    <label for="">End Datenya : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
+                    <label for="">Tanggal Berakhir Pinjaman : {{date('d-m-Y', strtotime($value->endDate))}}</label> <br>
                   @endif
 
                   <hr>
@@ -134,7 +134,7 @@
                 
                 <div class="modal-footer">
                   <a href="/manage/reject/{{$value->mortgageID}}" class="btn btn-danger">Tolak Transaksi</a>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 </div>
               </div>
             </div>
