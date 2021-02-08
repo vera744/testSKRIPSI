@@ -47,7 +47,7 @@
                                     <label class="col-md-5 col-form-label text-md-left" for="">Nama Produk</label>
                                     
                                     <div class="col-md-7">
-                                        <input class="col-md-12" type="text" name="namaProduk" required="required" placeholder="Nama Produk"> <br>
+                                        <input class="col-md-12 form-control" type="text" name="namaProduk" required="required" placeholder="Nama Produk"> <br>
                                         <small>
                                             *Harap menuliskan nama produk dengan format: 
                                             <strong>"</strong>(Jenis Produk) (Merek Produk) (Nama Produk)<strong>"</strong> <br> 
@@ -60,7 +60,7 @@
                                     <label class="col-md-5 col-form-label text-md-left" for="">Harga Jual Pasar (Barang Bekas Pakai)</label>
                                     
                                     <div class="col-md-7">
-                                        <input class="col-md-12" type="number" name="nilaiPinjaman" required="required" placeholder="Harga Jual Pasar (dalam rupiah)">
+                                        <input class="col-md-12 form-control" type="number" name="nilaiPinjaman" required="required" placeholder="Harga Jual Pasar (dalam rupiah)">
                                     </div>
                                 </div>
                                 
@@ -68,7 +68,7 @@
                                     <label class="col-md-5 col-form-label text-md-left" for="">Berat Produk</label>
                                     
                                     <div class="col-md-7">
-                                        <input class="col-md-12" type="number" name="beratProduk" required="required" placeholder="Berat Produk (Dalam Gram)"><br> 
+                                        <input class="col-md-12 form-control" type="number" name="beratProduk" required="required" placeholder="Berat Produk (Dalam Gram)"><br> 
                                         <small>*Berat produk dalam gram, contoh 1,7 kg = <strong>1700</strong> gram</small> 
                                     </div>
                                 </div>

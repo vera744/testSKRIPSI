@@ -36,7 +36,7 @@
 </div>
 
 <a href="/editalamat" class="btn btn-primary">
-    {{ __('Edit Alamat') }}
+    {{ __('Ubah Alamat') }}
 </a>
 </div>
 

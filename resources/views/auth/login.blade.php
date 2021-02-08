@@ -76,9 +76,11 @@
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Lupa Kata Sandi?') }}
                                     </a>
+                                    <br>
                                 @endif
-                                <br>
-                                <a href="/register" class="btn btn-link">Belum Punya Akun?Daftar Sekarang</a>
+                                    <label class="mt-3" for="">Belum Punya Akun?</label>
+                                    <a href="/register" class="btn btn-link">Daftar Sekarang</a>
+                                
                             </div>
                         </div>
                     </form>

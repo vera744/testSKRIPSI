@@ -74,7 +74,7 @@
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
                                 <input type="hidden" name="provinsi" value="{{$alamat->title}}">
                                 <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
-                                <button type="submit" class="btn btn-primary" style="float:center;">Delete</button>
+                                <button type="submit" class="btn btn-primary" style="float:center;">Hapus Alamat</button>
                             </form>
                             <td>
                             <form action="{{ url('/pilihalamat') }}" method="post"><br>
