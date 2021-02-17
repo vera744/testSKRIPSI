@@ -64,7 +64,13 @@ class RegisterController extends Controller
             'nomorKTP' => 'required|numeric',
             'fotoKTP' => 'required|mimes:jpeg,jpg,png',
             'fotodenganKTP' => 'required|mimes:jpeg,jpg,png',
-            'password' => 'required|min:8|alpha_num',
+            'password' => array(
+                'required',
+                'min:8',
+                'regex:/(^([a   -zA-Z]+)(\d+)?$)/u',
+                'required_with:password_confirmation',
+                'same:password_confirmation'
+            ),
             'password_confirmation' => 'required|same:password'
             ]);
             

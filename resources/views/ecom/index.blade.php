@@ -6,12 +6,21 @@
 @section('title', "E-Commerce")
 
 @section('content')
+
 @if ($message = Session::get('dataada'))
-  <div class="alert alert-success alert-block">
+  <div class="alert alert-danger alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button> 
     <strong>{{ $message }}</strong>
   </div>
 @endif
+
+@if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+    <strong>{{ $message }}</strong>
+  </div>
+@endif 
+
 <div class="content d-flex justify-content-center mt-3">
     <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel">
          <ol class="carousel-indicators">
@@ -79,7 +88,7 @@
                         @foreach($products as $value)
                         <div class="col-md-4">
                             <a href="/ecom/detailproduct/{{$value->productID}}" class="productName">
-                                <div class="card" style="width: 250px; height: 350px;">
+                                <div class="card" style="width: 240px; height: 380px;">
                                     <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="250" width="250">
                                     <div class="card-body">
                                         {{ $value->namaKategori }}

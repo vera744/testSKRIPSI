@@ -21,6 +21,7 @@ class CreateCartsTable extends Migration
             $table->foreign('IDProduct')->references('productID')->on('products')->onDelete('cascade');
             $table->foreign('customerID')->references('id')->on('users');
             $table->integer('total_price');
+            $table->integer('totalWeight');
             $table->integer('quantity');
         });
 

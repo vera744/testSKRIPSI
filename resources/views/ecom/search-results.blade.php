@@ -45,7 +45,7 @@
                             @foreach($products as $value)
                                 <div class="col-md-4">
                                     <a href="/ecom/detailproduct/{{$value->productID}}" class="productName">
-                                        <div class="card" style="width: 250px; height: 350px;">
+                                        <div class="card" style="width: 240px; height: 380px;">
                                             <img src="storage/fotoProduk/{{$value->fotoProduk}}" class="card-img-top" height="250" width="250">
                                             
                                             <div class="card-body">

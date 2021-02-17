@@ -1,28 +1,39 @@
 
 @extends('layouts.layoutEcommerce')
+
 @section('title', "Pesan")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 @section('content')
+
+
 <a href="/pesanview">
-<button class="btn btn-info" style="float:center;" value="editdata">Perlu Dibayar</button>
-</a>
-<a href="/recordtransaksi">
-<button class="btn btn-info" style="float:center;" value="editdata">Riwayat Transaksi</button>
-</a>
+    <button class="btn btn-primary" style="float:center;font-size:15px;" value="editdata">Perlu Dibayar</button>
+  </a>
+  
+  <a href="/recordtransaksi">
+    <button class="btn btn-primary" style="float:center;font-size:15px;" value="editdata">Riwayat Transaksi</button>
+  </a>
+
 <br>
 <br>
+
 @if (count($sudahbayar)> 0 )
 
 @foreach($sudahbayar as $value)
 <div class="card">
+    <div class="card-header">
+        ID Transaksi : {{$value->id}}
+    </div>
     <div class="card-body">
-        <h5 class="card-title">Total Pembayaran : Rp. {{number_format($value->total)}}</h5>
-        <h5>----------------------------------------</h5>
-        <h6>{{$value->namePayment}}</h6>
-        <h6>No Rekening: {{$value->norek}}</h6>
-        <br>
-        Batas Pembayaran :
-        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:20px">Total Pembayaran</label>
+      <label class="col-md-5 col-form-label text-md-left" style="font-size:20px;color:#f95a37; font-weight:bold; font-family:sans-serif">Rp. {{number_format($value->total)}}</label>
+      
+      <hr>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">Metode Pembayaran</label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">{{$value->namePayment}}</label>
 
         <br>
         <br>
@@ -64,6 +75,13 @@
 <br>
 @endforeach
 @else
-<h3>Anda belum pernah melakukan transaksi</h3>
+<div style="height: 400px">
+
+    <p class="font-weight-bold" style="text-align:center">Anda Belum Melakukan Transaksi</p>
+    
+    <div class="d-flex justify-content-center">
+      <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
+    </div>
+</div>
 @endif
 @endsection
