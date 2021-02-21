@@ -6,52 +6,46 @@
 @section('content')
 
 @if ($message = Session::get('delete'))
-  <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button> 
-    <strong>{{ $message }}</strong>
-  </div>
-@elseif ($message = Session::get('pilih'))
-  <div class="alert alert-success alert-block">
+  <div class="alert alert-danger alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button> 
     <strong>{{ $message }}</strong>
   </div>
 @endif
 
-<div class="row">
-
-    {{-- <div class="col-1 px-4">
-        <form action="{{ url('/checkout') }}" method="post">
-                            {{ csrf_field() }}
-                    <button id="btnAdd" class="btn btn-primary" style="float:center;" value="back">
-                                            {{ __('Kembali') }}
-                    </button>
-        </form>
-    </div> --}}
-    <div class="col-2">
-        <a href="/tambahalamatt">
-            <button id="btnAdd" class="btn btn-primary" style="float:center;" value="editdata">
-                                                {{ __('Tambah Alamat') }}
-            </button>
-        </a>
-    </div>
+@if($message = Session::get('tambahAlamat'))
+<div class="alert alert-success alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+  <strong>{{ $message }}</strong>
 </div>
+@endif
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <a href="/tambahalamatt">
+                <button id="btnAdd" class="btn btn-primary" style="float:center;" value="editdata">
+                                                    {{ __('Tambah Alamat') }}
+                </button>
+            </a>
+        </div>
+    </div>
 
     <br>
-    <br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-
-
-                    <table class="table table-hover">
-                        <thead>
+   
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Alamat Pengiriman
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="" style="">
                             <tr>
                             <th scope="col">Nama Penerima</th>
                             <th scope="col">Nomor Handphone</th>
-                            <th scope="col">Alamat</th>
+                            <th class="align-middle" scope="col">Alamat</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             </tr>
@@ -61,10 +55,10 @@
 
                         <tbody>
                             <tr>
-                            <td> <br> {{$alamat->namaPenerima}}</td>
-                            <td> <br>{{$alamat->nomorHP}}</td>
-                            <td> <br>{{$alamat->alamat}}, {{$alamat->title}}, {{$alamat->cityTitle}}</td>
-                            <td>
+                            <td class="align-middle"> {{$alamat->namaPenerima}}</td>
+                            <td class="align-middle"> {{$alamat->nomorHP}}</td>
+                            <td class="align-middle"> {{$alamat->alamat}}, {{$alamat->title}}, {{$alamat->cityTitle}}</td>
+                            <td class="text-right">
                             <form action="{{ url('/destroyalamat') }}" method="post"><br>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{$alamat->id}}">
@@ -74,7 +68,7 @@
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
                                 <input type="hidden" name="provinsi" value="{{$alamat->title}}">
                                 <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
-                                <button type="submit" class="btn btn-primary" style="float:center;">Hapus Alamat</button>
+                                <button type="submit" class="btn btn-danger" style="float:center;">Hapus Alamat</button>
                             </form>
                             <td>
                             <form action="{{ url('/pilihalamat') }}" method="post"><br>
@@ -86,7 +80,7 @@
                                 <input type="hidden" name="alamat" value="{{$alamat->alamat}}">
                                 <input type="hidden" name="provinsi" value="{{$alamat->title}}">
                                 <input type="hidden" name="kota" value="{{$alamat->cityTitle}}">
-                                <button type="submit" class="btn btn-primary" style="float:center;">Pilih Alamat</button>
+                                <button type="submit" class="btn btn-success" style="float:center;">Pilih Alamat</button>
                             </form>
                             </td>
                             
@@ -104,6 +98,6 @@
                 <br>    
             </div>
         </div>
-    </div>
+</div>
 
 @endsection

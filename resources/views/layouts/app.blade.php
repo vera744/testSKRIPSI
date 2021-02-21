@@ -54,8 +54,7 @@
             }
 
             .card{
-                border: 1px solid #19365C;
-                ;border-radius: 2px;
+                
                 color: #19365C;
                 
             }

@@ -11,18 +11,23 @@
     <strong>{{ $message }}</strong>
   </div>
 @endif
-    <h2>Keranjangmu</h2>
+
+<br>
+<h3 style="text-align:center">Keranjang Anda</h3>
+<br>
 
     @if (count($cart)> 0 )
 
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="" style="background-color: #19365C;color:whitesmoke">
             <tr class="">
                 <th class="table-image"></th>
                 <th scope="col">Produk</th>
                 <th scope="col" class="">Jumlah</th>
                 <th scope="col">Harga</th>
-                <th class="column-spacer"></th>
+                <th scope="col">Berat Produk (gram)</th>
+                <th scope="col">Aksi</th>
+                {{-- <th class="column-spacer"></th> --}}
                 <th></th>
             </tr>
                 </thead>
@@ -36,15 +41,17 @@
                    
                     </a>
                     <td class="align-middle"><strong>{{$value->productName}}</strong></td>
-                    <td class="align-middle ">{{$value->quantity}}</td>
-                    <td class="align-middle">Rp. {{number_format($value->total_price)}},-</td>
+                    <td class="align-middle text-center">{{$value->quantity}}</td>
+                    <td class="align-middle text-center" style="color: #f95a37; font-weight:bold">Rp. {{number_format($value->total_price)}},-</td>
+                    <td class="align-middle text-center">{{$value->productWeight}}</td>
+                    
                     <td class="align-middle">
                     <form action="{{ url('/destroy') }}" method="post"><br>
                         {{ csrf_field() }}
                         <input type="hidden" name="cartid" value="{{$value->id}}">
                         <input type="hidden" name="qty" value="{{$value->quantity}}">
                         <input type="hidden" name="flowerid" value="{{$value->total_price}}">
-                        <button type="submit" class="btn btn-info" style="float:center;">Hapus</button>
+                        <button type="submit" class="btn btn-danger" style="float:center;">Hapus</button>
                         </form>
                     </td>
                   
@@ -64,8 +71,9 @@
                                             </th>
                                             
                                             <th class="text-right">
-                                            <h4> Rp. {{number_format($total_price)}},- </h4>
+                                            <h4 style="color: #f95a37; font-weight:bold; font-family:sans-serif"> Rp. {{number_format($total_price)}},- </h4>
                                             </th>
+                                            
                                             <th class="text-center">
                                                 <button type="submit" class="btn btn-success">
                                                     {{ __('Pembayaran') }}
@@ -81,8 +89,11 @@
     
     <div style="height: 400px">
 
-        <h4>Tidak ada produk di dalam keranjangmu</h4>
-        <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
+        <p class="font-weight-bold" style="text-align:center">Anda belum memasukkan produk ke dalam keranjang</p>
+        
+        <div class="d-flex justify-content-center">
+          <img src="/images/nodata.png" alt="" srcset="" width="300px" height="300px">
+        </div>
     </div>
         
     @endif

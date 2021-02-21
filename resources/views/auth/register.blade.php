@@ -73,7 +73,7 @@
                             <label for="provinsi" class="col-md-4 col-form-label text-md-right">{{ __('Provinsi') }}<span>*</span></label>
                             <div class="col-md-6">
                                 <select name="provinsi" id="provinsi" class="form-control provinsi @error('provinsi') is-invalid @enderror" required autocomplete="provinsi" autofocus>
-                                    <option value="0">Provinsi Sesuai KTP</option>
+                                    <option value="">Provinsi Sesuai KTP</option>
                                     @foreach ($province as $value)
                                         <option value="{{$value->province_id}}">{{$value->title}}</option>
                                     @endforeach
@@ -91,7 +91,7 @@
                             <label for="kota" class="col-md-4 col-form-label text-md-right">{{ __('Kota') }}<span>*</span></label>
                             <div class="col-md-6">
                                 <select class="form-control input-sm kota" name="kota" id="" required autocomplete="kota" autofocus>
-                                    <option value="0" disabled="true" selected="true">Kota Sesuai KTP</option>
+                                    <option value="" disabled="true" selected="true">Kota Sesuai KTP</option>
                                 </select>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                     // console.log(data);
                     // console.log(data.length);
 
-                    op+='<option value="0" selected disabled>Kota Sesuai KTP</option>';
+                    op+='<option value="" selected disabled>Kota Sesuai KTP</option>';
                     for(var i=0;i<data.length;i++){
                         op+='<option value="'+data[i].city_id+'">'+data[i].type+''+" "+''+data[i].cityTitle+'</option>';
                     }

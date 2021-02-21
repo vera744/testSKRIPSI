@@ -8,17 +8,35 @@
     <h3 style="text-align:center">Checkout</h3>
 <br>
 
+@if ($message = Session::get('pilih'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <strong>{{ $message }}</strong>
+  </div>
+@endif
+
 <form action="{{ url('/pesan') }}" method="POST">
                         {{ csrf_field() }}
 <div class="card">
+    <div class="card-header">
+        Alamat Pengiriman
+    </div>
     <div class="card-body">
         <div class="form-group" >
+            @foreach($alamat as $value)
+            <label class="col-md-2 col-form-label text-md-left" style="">Nama</label>
+            <label class="col-md-5 col-form-label text-md-left">: {{$value->namaPenerima}}</label>
+            
+            <br>
+                
+            <label class="col-md-2 col-form-label text-md-left" style="">Nomor Handphone</label>
+            <label class="col-md-5 col-form-label text-md-left">: {{$value->nomorHP}}</label>
+                
+            <br>
 
-                @foreach($alamat as $value)
-                <label for="">Nama : {{$value->namaPenerima}}</label> <br>
-                <label for="">Nomor : {{$value->nomorHP}}</label> <br>
-                <label for="">Alamat : {{$value->alamat}}, {{$value->cityTitle}}, {{$value->title}}</label>
-                @endforeach
+            <label class="col-md-2 col-form-label text-md-left" style="">Alamat Lengkap</label>
+            <label class="col-md-7 col-form-label text-md-left">:  {{$value->alamat}}, Kota {{$value->cityTitle}}, Provinsi {{$value->title}}</label>
+            @endforeach
                 
                  
             <input type="hidden" value="6" class="form-control" id="province_origin" name="province_origin">
@@ -30,23 +48,23 @@
                     
                 <input type="hidden" value="{{$value->idKota}}}}" class="form-control" id="kota" name="kota">
             @endforeach
+        </div>
 
-
-            
-</div>
-
-<a href="/editalamat" class="btn btn-primary">
-    {{ __('Ubah Alamat') }}
-</a>
-</div>
+        <a href="/editalamat" class="btn btn-primary">
+            {{ __('Ubah Alamat') }}
+        </a>
+    </div>
 
 </div>
 <br>
 
 <div class="card">
+    <div class="card-header">
+        Detail Pesanan
+    </div>
     <div class="card-body">
         <table class="table">
-        <thead>
+        <thead class="thead" style="">
             <tr>
                 <th scope="col">Produk</th>
                 <th scope="col">Jumlah</th>
@@ -69,7 +87,7 @@
                     </td>
                 
                     <td class="align-middle">{{$value->quantity}}</td>
-                    <td class="align-middle">{{number_format($value->total_price)}}</td>
+                    <td class="align-middle" style="color: #f95a37; font-weight:bold; font-family:sans-serif">{{number_format($value->total_price)}}</td>
                     <th class="column-spacer"></th>
                     <th class="column-spacer"></th>
                     <th class="column-spacer"></th>
@@ -83,8 +101,7 @@
     <table class="table">
         <tr>
             <td>
-                <label for="">Pesan: </label>
-                <input id="pesan" type="text" name="pesan" > 
+                <textarea id="pesan" name="pesan" rows="5" cols="50" placeholder="Tambahkan Catatan Anda Disini"></textarea>
             </td>
             <th class="column-spacer"></th>
             
@@ -108,12 +125,10 @@
                         Berat Produk
                     </label>
         
-                    @foreach ($cart as $value)
-                      
-                        <input type="text" disabled name="beratProduk" id="beratProduk" class="form-control" value="{{$value->productWeight}}" placeholder="Masukkan Berat (Gram)">
-                        <small>Dalam gram, contoh = 1700 / 1,7kg</small>
-                      
-                    @endforeach
+                    <input type="text" disabled name="beratProduk" id="beratProduk" class="form-control" value="{{$grandWeight}}" placeholder="Masukkan Berat (Gram)">
+                    
+                    <small>Dalam gram, contoh = 1700 / 1,7kg</small>
+              
                 </div>
                 
             </td>
@@ -130,7 +145,7 @@
             <th class="column-spacer"></th>
 
                 <td class="text-center align-middle" style="font-size: 20px" ><strong>Total Pesanan:</strong></td>
-                <td class="align-middle" style="font-size: 20px"><strong>Rp. {{number_format($grandtotal)}}</strong></td>
+                <td class="align-middle" style="font-size: 20px; color: #f95a37; font-weight:bold; font-family:sans-serif"><strong>Rp. {{number_format($grandtotal)}}</strong></td>
             </tr>
            
     </table>

@@ -50,14 +50,11 @@
                 color: white;
                 
                 border: 1px solid #19365C;
-                ;border-radius: 2px;
+                border-radius: 2px
             }
 
             .card{
-                border: 1px solid #19365C;
-                ;border-radius: 2px;
-                color: #19365C;
-                
+                color: #19365C
             }
 
             h3{
@@ -76,16 +73,11 @@
               color: white;
              
             }
-            /* tr{
-                border: 5px solid #E8F1FF  }
-            th{
-                
-            } */
+          
 
             th.active{
                 background-color: #19365C;
                 border-radius: 30px;
-                
                 
             }
 
@@ -156,7 +148,7 @@
                         @else
                             <li class="dropdown" id="markasread" onclick="markNotificationAsRead('{{count(auth()->user()->unreadNotifications)}}')">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="bi-bell-fill" style="font-size: 1.8rem; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
+                                <i class="bi-bell-fill" style="padding:5px;font-size: 20px; color: #19365C;"></i><span class="badge" style="background-color: grey ; color:#e3f2fd ">{{count(auth()->user()->unreadNotifications)}}</span>
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -170,7 +162,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="font-size: 1.8rem; color: #19365C;"></i>
+                                <a class="nav-link" href="/ecom/cart"><i class="bi-cart-fill" style="padding:5px;font-size: 20px; color: #19365C;"></i>
                                 <span class="badge badge-secondary">{{Session::has('cart') ? Session::get('cart')->$totalqty: ''}}</span>
                                 </a>
                             </li>

@@ -125,9 +125,10 @@ class CartController extends Controller
         $reqproductid = $id;
         
         $price= Product::where('productID','=',$id)->first()->productPrice;
+        $weight= Product::where('productID','=',$id)->first()->productWeight;
 
         if ($cartsekarang != null){
-            Session::flash('dataada','Produk ini sudah mencapai batas pembeliaan produk');
+            Session::flash('dataada','Produk ini sudah mencapai batas pembelian maksimum!');
         }
         else{
             $cart = new Cart();
@@ -138,8 +139,12 @@ class CartController extends Controller
             $cart->IDProduct = $id;
             $cart->quantity = 1;
             $cart->total_price = $totalPrice;
+            $cart->totalWeight = $weight;
             $cart->customerID = $userID;
+            
             $cart->save();
+
+            Session::flash('success','Anda berhasil menambahkan produk ke dalam keranjang!');
         }
         return redirect('ecom');
 
@@ -150,19 +155,20 @@ class CartController extends Controller
         $userLogin = auth()->User()->id;
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'carts.totalWeight', 'productName', 'productWeight', 'customerID', 'fotoProduk')
          ->where('customerID', '=', $userLogin)
         ->get();
 
         $total_price = 0;
         $totalqty = 0;
+        $totalWeight = 0;
 
         foreach ($cart as $c) {
             $total_price += $c->total_price;
             $totalqty += 1;
-        
+            $totalWeight += $c->totalWeight;
         }
-         return view('/ecom/cart', compact('cart', 'total_price'));
+         return view('/ecom/cart', compact('cart', 'total_price', 'totalWeight'));
     }
 
     public function destroy(Request $req){
@@ -182,11 +188,12 @@ class CartController extends Controller
         $userAlamat = auth()->User()->alamat;
      
         $grandtotal = 0;
+        $grandWeight = 0;
         
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
 
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'productWeight')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'carts.totalWeight','productName', 'customerID', 'fotoProduk', 'productWeight')
 
         ->where('customerID', '=', $userLogin)
         ->get();
@@ -199,6 +206,7 @@ class CartController extends Controller
       
         foreach($cart as $c){
             $grandtotal += $c->total_price;
+            $grandWeight += $c->totalWeight;
         }
 
         $alamat = AlamatPengiriman::
@@ -211,7 +219,7 @@ class CartController extends Controller
 
         $metode = PaymentMethod::all();
         
-        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'alamat', 'metode'));
+        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal','grandWeight', 'alamat', 'metode'));
 
     }
     public function pesan(Request $req){
@@ -310,7 +318,7 @@ class CartController extends Controller
     public function destroyalamat(Request $req){
         $findalamatid = $req->id;
         $findalamat = AlamatPengiriman::find($findalamatid)->delete();
-        Session::flash('delete','Alamat telah dihapus!');
+        Session::flash('delete','Alamat Pengiriman Telah Dihapus!!');
 
        return back();
    }
@@ -334,11 +342,12 @@ class CartController extends Controller
         $userAlamat = auth()->User()->alamat;
      
         $grandtotal = 0;
+        $grandWeight = 0;
         
         $cart = Cart::
         join('products', 'products.productID', '=', 'carts.IDProduct')
 
-        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'productName', 'customerID', 'fotoProduk', 'productWeight')
+        ->select('carts.id', 'carts.IDProduct', 'carts.total_price', 'carts.quantity', 'carts.totalWeight', 'productName', 'customerID', 'fotoProduk', 'productWeight')
 
         ->where('customerID', '=', $userLogin)
         ->get();
@@ -351,6 +360,7 @@ class CartController extends Controller
       
         foreach($cart as $c){
             $grandtotal += $c->total_price;
+            $grandWeight += $c->totalWeight;
         }
 
         $alamat = AlamatPengiriman::
@@ -363,7 +373,8 @@ class CartController extends Controller
 
         $metode = PaymentMethod::all();
         
-        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'alamat', 'metode'));
+        Session::flash('pilih','Alamat Pengiriman Berhasil Dipilih!');
+        return view('/ecom/checkout', compact('user', 'cart', 'grandtotal', 'grandWeight', 'alamat', 'metode'));
 
     // return back();
 
@@ -373,6 +384,7 @@ class CartController extends Controller
     {
         $provinsi = $this->get_province();
 
+        
         return view('/ecom/tambahalamat', compact('provinsi'));
     }
 
@@ -394,7 +406,7 @@ class CartController extends Controller
         // ->where('userID', "=", $userLogin)
         // ->get();
 
-        
+        Session::flash('tambahAlamat','Alamat Pengiriman Berhasil Ditambahkan!!');
         return redirect()->route('editalamat');
 
     }

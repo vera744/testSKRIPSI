@@ -10,31 +10,47 @@
     <strong>{{ $message }}</strong>
   </div>
 @endif
-@foreach($detail as $value)
 
-                    
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Total Pembayaran : Rp. {{number_format($value->total)}}</h5>
-        <h5>----------------------------------------</h5>
-        <h6>{{$value->namePayment}}</h6>
-        <h6>No Rekening: {{$value->norek}}</h6>
-        <br>
-        Batas Pembayaran :
-        Tanggal {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
-
-
-        <br>
-        <br>
-        <a href="/pesanview">
-        <button class="btn btn-primary" style="float:center;" value="editdata">Bayar Sekarang</button>
-
-        </a>
+  @foreach($detail as $value)
+    <div class="card">
+      <div class="card-header">
+        ID Transaksi : {{$value->id}}
     </div>
-</div>
+    <div class="card-body">
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:20px">Total Pembayaran</label>
+      <label class="col-md-5 col-form-label text-md-left" style="font-size:20px;color:#f95a37; font-weight:bold; font-family:sans-serif">Rp. {{number_format($value->total)}}</label>
+      
+      <hr>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">Metode Pembayaran</label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">{{$value->namePayment}}</label>
+      <br>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">Nomor Rekening</label>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:15px">{{$value->norek}}</label>
+      <br>
+      <br>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-5 col-form-label text-md-center" style="font-size:20px">a/n PT. Garda Dana Indonesia, tbk</label>
+      <br>
+      <label class="col-md-3 col-form-label text-md-left" style="font-size:30px"></label>
+      <label class="col-md-5 col-form-label text-md-center" style="font-size:15px;color:red">Batas Pembayaran :
+        {{ date('d-m-Y', strtotime($value->tglCO)) }}, pukul 23:59 WIB
+      </label>
+        
+        <br>
+        <br>
+        <div class="text-center">
+          <a href="/pesanview" class="text-center">
+            <button class="btn btn-success" style="float:center;" value="editdata">Bayar Sekarang</button>
+          </a>
+        </div>
+      </div>
+    </div>
+   @endforeach             
 
 <br>
-@endforeach
 
 
 @endsection
